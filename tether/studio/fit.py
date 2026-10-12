@@ -42,16 +42,23 @@ class Calibration:
     curves: dict
     base: ParamSet = field(repr=False, default_factory=ParamSet.nominal)
     chosen_by: str = "offline structure search"
+    reliability: dict = field(default_factory=dict)
 
     @property
     def params(self) -> ParamSet:
         return to_params(self.model, self.base)
 
     def to_json(self) -> dict:
+        import copy
+        predicted=copy.deepcopy(self.predicted)
+        if self.reliability and not self.reliability['interval_available']:
+            for name in ('before','after'):
+                predicted[name]['lo']=predicted[name]['hi']=None
         return {"structure": self.structure, "model": self.model, "residuals": self.residuals,
                 "intervals": {k: list(v) for k, v in self.intervals.items()}, "candidates": self.candidates,
-                "predicted": self.predicted, "gap": self.gap, "curves": self.curves, "chosen_by": self.chosen_by,
-                "ensemble_size": len(self.ensemble)}
+                "predicted": predicted, "gap": self.gap, "curves": self.curves, "chosen_by": self.chosen_by,
+                "ensemble_size": len(self.ensemble), "ensemble": self.ensemble[:30],
+                "base": {k: self.base[k] for k in PARAM_SPACE}, "reliability": self.reliability}
 
 
 def fit_base(session: Session) -> ParamSet:
@@ -241,6 +248,36 @@ def mu_at(p: ParamSet, y: float) -> float:
     return mu1 if mu2 is None or y < y0 else mu2
 
 
+def predict_stop(cal: Calibration, launch_speed: float, start: float = 0.0) -> dict:
+    """Mixture of bootstrap models and additive Gaussian stop residuals, at measured launch speed.
+
+    The predictive range includes residual noise; the parameter range does not. Neither includes unseen
+    friction changes or a shared measurement bias. A single push supplies no empirical noise estimate.
+    """
+    if not math.isfinite(launch_speed) or launch_speed <= 0 or not math.isfinite(start):
+        raise ValueError('finite positive launch speed and finite start required')
+    means=[]
+    for model in cal.ensemble or [cal.model]:
+        p=to_params(model,cal.base).with_(actuator_gain=1.0)
+        means.append(slide_distance(launch_speed,p,start))
+    median=_pct(means,0.5)
+    if not cal.ensemble:
+        return {'median_m':median,'parameter_range_m':None,'predictive_range_m':None,
+                'note':'interval unavailable: no empirical between-push uncertainty'}
+    sigma=max(cal.residuals['stop_residual_rms_m'],0.003)
+    def quantile(q):
+        lo,hi=min(means)-8*sigma,max(means)+8*sigma
+        for _ in range(60):
+            mid=(lo+hi)/2
+            cdf=sum(_phi((mid-m)/sigma) for m in means)/len(means)
+            if cdf<q: lo=mid
+            else: hi=mid
+        return max(0.0,(lo+hi)/2)
+    return {'median_m':quantile(0.5),'parameter_range_m':[_pct(means,0.05),_pct(means,0.95)],
+            'predictive_range_m':[quantile(0.05),quantile(0.95)],'residual_sigma_m':sigma,
+            'note':'bootstrap model mixture + Gaussian stop residuals; measured range only; shared bias not covered'}
+
+
 def curves(session: Session, cal: ParamSet, ensemble: list[dict]) -> dict:
     """Plot data: stop vs launch speed (measured, model, ensemble band) and friction along the push axis."""
     base = fit_base(session)
@@ -312,10 +349,20 @@ def calibrate(session: Session, structure: list[str] | None = None, start: dict 
             found = patterns.check(session, to_params(model, base))
     res = wb.residuals(to_params(model, base))
     res["patterns"] = found
-    ens = bootstrap(session, model, structure, n_boot) if n_boot else []
+    enough = sum(not p.tipped for p in session.pushes) > 1
+    ens = bootstrap(session, model, structure, n_boot) if n_boot and enough else []
     iv = intervals(ens, structure)
     cal = to_params(model, base)
     sigma = max(res["stop_residual_rms_m"], 0.003)
-    return Calibration(structure, model, res, iv, ens, cands, predict(session, cal, ens, sigma),
+    result = Calibration(structure, model, res, iv, ens, cands, predict(session, cal, ens, sigma),
                        gap_table(session, model, iv, structure), curves(session, cal, ens), base,
                        chosen_by or "Nemotron agent")
+    from tether.studio.reliability import assess
+    result.reliability=assess(session,result)
+    if not ens:
+        for row in result.gap:
+            row['lo']=row['hi']=None
+            row['significant']=False
+        result.curves['stops']['band']=[]
+    result.curves['stops']['predictive_band']=[predict_stop(result,v)['predictive_range_m'] for v in result.curves['stops']['grid']] if ens else []
+    return result

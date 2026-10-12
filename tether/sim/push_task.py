@@ -95,9 +95,12 @@ def frictions(p: ParamSet) -> tuple[float, float | None, float]:
     return mu1, p["patch_mu"], p["patch_y0"]
 
 
-def slide_distance(command: float, p: ParamSet) -> float:
+def slide_distance(command: float, p: ParamSet, start: float = 0.0) -> float:
     v = command * p["actuator_gain"]
     mu1, mu2, y0 = frictions(p)
+    # Keep the active/off decision in global coordinates. Moving a local boundary past 1 m must not
+    # accidentally turn an active patch into the PATCH_OFF sentinel.
+    y0 = max(0.0, y0 - start)
     d1 = v * v / (2.0 * mu1 * GRAVITY)
     if mu2 is None or d1 <= y0:
         return d1

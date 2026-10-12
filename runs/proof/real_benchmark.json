@@ -6,6 +6,1395 @@
   "mean_abs_error": 0.082,
   "median_abs_error": 0.0246
  },
+ "paper_reference_protocol": "different protocol: RGB-D online tracking and filtering; not a same-input baseline",
+ "inputs": {
+  "splits": [
+   "val_sliding",
+   "test_sliding"
+  ],
+  "video_camera": "dataset camera calibration",
+  "video_tracking_start": "mocap rest position projected into the image (replaces user click)",
+  "video_object_height": "median mocap centre height of last five frames",
+  "log": "mocap centre positions, segmented with the same release/launch estimator as video",
+  "baseline_protocol": "same positive-quadratic-fit training pool for Tether and baselines; full Tether estimates separately; held-out push removed before common training eligibility",
+  "measurement_error_model": "Both hand-launched benchmark paths use the default video prior: 1% shared scale, 1.5% shared speed, 3 mm stop jitter; not independently measured sensor noise."
+ },
+ "baselines": {
+  "log": {
+   "median": {
+    "objects": 5,
+    "mean_abs_error": 0.018
+   },
+   "mean": {
+    "objects": 5,
+    "mean_abs_error": 0.0191
+   },
+   "tether": {
+    "objects": 5,
+    "mean_abs_error": 0.0188
+   }
+  },
+  "video": {
+   "median": {
+    "objects": 5,
+    "mean_abs_error": 0.0367
+   },
+   "mean": {
+    "objects": 5,
+    "mean_abs_error": 0.0336
+   },
+   "tether": {
+    "objects": 5,
+    "mean_abs_error": 0.0285
+   }
+  }
+ },
+ "held_out": {
+  "pitcher": {
+   "log": {
+    "status": "evaluated",
+    "protocol": "leave-one-push-out; refit structure; measured held-out launch speed",
+    "summary": {
+     "tether": {
+      "pushes": 10,
+      "median_cm": 11.1811,
+      "p90_cm": 25.8497
+     },
+     "median": {
+      "pushes": 10,
+      "median_cm": 13.2429,
+      "p90_cm": 28.1246
+     },
+     "mean": {
+      "pushes": 10,
+      "median_cm": 11.942,
+      "p90_cm": 25.6082
+     }
+    },
+    "rows": [
+     {
+      "held_out_index": 0,
+      "training_pushes": 9,
+      "measured_m": 0.491,
+      "launch_mps": 1.2241,
+      "predicted_m": {
+       "tether": 0.35243244393828843,
+       "median": 0.3306151974087753,
+       "mean": 0.3550539776914323
+      },
+      "abs_error_cm": {
+       "tether": 13.8568,
+       "median": 16.0385,
+       "mean": 13.5946
+      }
+     },
+     {
+      "held_out_index": 1,
+      "training_pushes": 9,
+      "measured_m": 0.3438,
+      "launch_mps": 1.6395,
+      "predicted_m": {
+       "tether": 0.6354407797314087,
+       "median": 0.6850051605504586,
+       "mean": 0.6483721349270788
+      },
+      "abs_error_cm": {
+       "tether": 29.1641,
+       "median": 34.1205,
+       "mean": 30.4572
+      }
+     },
+     {
+      "held_out_index": 2,
+      "training_pushes": 9,
+      "measured_m": 0.4108,
+      "launch_mps": 1.0838,
+      "predicted_m": {
+       "tether": 0.27576520447695535,
+       "median": 0.2591715406577792,
+       "mean": 0.27576520447695535
+      },
+      "abs_error_cm": {
+       "tether": 13.5035,
+       "median": 15.1628,
+       "mean": 13.5035
+      }
+     },
+     {
+      "held_out_index": 3,
+      "training_pushes": 9,
+      "measured_m": 0.468,
+      "launch_mps": 1.5677,
+      "predicted_m": {
+       "tether": 0.582082639386257,
+       "median": 0.6263209199796127,
+       "mean": 0.5931069317988757
+      },
+      "abs_error_cm": {
+       "tether": 11.4083,
+       "median": 15.8321,
+       "mean": 12.5107
+      }
+     },
+     {
+      "held_out_index": 4,
+      "training_pushes": 9,
+      "measured_m": 0.5431,
+      "launch_mps": 1.3489,
+      "predicted_m": {
+       "tether": 0.43356051323915495,
+       "median": 0.46369296890927625,
+       "mean": 0.44035419649503915
+      },
+      "abs_error_cm": {
+       "tether": 10.9539,
+       "median": 7.9407,
+       "mean": 10.2746
+      }
+     },
+     {
+      "held_out_index": 5,
+      "training_pushes": 9,
+      "measured_m": 0.4645,
+      "launch_mps": 1.298,
+      "predicted_m": {
+       "tether": 0.40033456180245175,
+       "median": 0.4293588175331295,
+       "mean": 0.40891315955536145
+      },
+      "abs_error_cm": {
+       "tether": 6.4165,
+       "median": 3.5141,
+       "mean": 5.5587
+      }
+     },
+     {
+      "held_out_index": 6,
+      "training_pushes": 9,
+      "measured_m": 0.6261,
+      "launch_mps": 1.2622,
+      "predicted_m": {
+       "tether": 0.37128599308209426,
+       "median": 0.35151621942447625,
+       "mean": 0.3754056712300232
+      },
+      "abs_error_cm": {
+       "tether": 25.4814,
+       "median": 27.4584,
+       "mean": 25.0694
+      }
+     },
+     {
+      "held_out_index": 7,
+      "training_pushes": 9,
+      "measured_m": 0.6086,
+      "launch_mps": 1.5077,
+      "predicted_m": {
+       "tether": 0.5324415948049709,
+       "median": 0.5015553724223448,
+       "mean": 0.5393821742530804
+      },
+      "abs_error_cm": {
+       "tether": 7.6158,
+       "median": 10.7045,
+       "mean": 6.9218
+      }
+     },
+     {
+      "held_out_index": 8,
+      "training_pushes": 9,
+      "measured_m": 0.6536,
+      "launch_mps": 1.8033,
+      "predicted_m": {
+       "tether": 0.6955538837051092,
+       "median": 0.7175050836014137,
+       "mean": 0.7673318255181787
+      },
+      "abs_error_cm": {
+       "tether": 4.1954,
+       "median": 6.3905,
+       "mean": 11.3732
+      }
+     },
+     {
+      "held_out_index": 9,
+      "training_pushes": 9,
+      "measured_m": 0.6428,
+      "launch_mps": 1.7224,
+      "predicted_m": {
+       "tether": 0.7088888984469571,
+       "median": 0.7560300101936798,
+       "mean": 0.7179772176578155
+      },
+      "abs_error_cm": {
+       "tether": 6.6089,
+       "median": 11.323,
+       "mean": 7.5177
+      }
+     }
+    ]
+   },
+   "video": {
+    "status": "evaluated",
+    "protocol": "leave-one-push-out; refit structure; measured held-out launch speed",
+    "summary": {
+     "tether": {
+      "pushes": 4,
+      "median_cm": 5.3097,
+      "p90_cm": 38.0985
+     },
+     "median": {
+      "pushes": 4,
+      "median_cm": 9.8497,
+      "p90_cm": 29.6749
+     },
+     "mean": {
+      "pushes": 4,
+      "median_cm": 7.3421,
+      "p90_cm": 34.8776
+     }
+    },
+    "rows": [
+     {
+      "held_out_index": 0,
+      "training_pushes": 3,
+      "measured_m": 0.5084,
+      "launch_mps": 2.0968,
+      "predicted_m": {
+       "tether": 1.0204287287237104,
+       "median": 0.8843178722483298,
+       "mean": 0.970490033900939
+      },
+      "abs_error_cm": {
+       "tether": 51.2029,
+       "median": 37.5918,
+       "mean": 46.209
+      }
+     },
+     {
+      "held_out_index": 1,
+      "training_pushes": 3,
+      "measured_m": 0.5328,
+      "launch_mps": 1.4679,
+      "predicted_m": {
+       "tether": 0.5153597397956767,
+       "median": 0.4207783929136349,
+       "mean": 0.4703347346914719
+      },
+      "abs_error_cm": {
+       "tether": 1.744,
+       "median": 11.2022,
+       "mean": 6.2465
+      }
+     },
+     {
+      "held_out_index": 2,
+      "training_pushes": 3,
+      "measured_m": 0.4731,
+      "launch_mps": 1.4098,
+      "predicted_m": {
+       "tether": 0.3978850396336361,
+       "median": 0.38812847161196834,
+       "mean": 0.38872421753923153
+      },
+      "abs_error_cm": {
+       "tether": 7.5215,
+       "median": 8.4972,
+       "mean": 8.4376
+      }
+     },
+     {
+      "held_out_index": 3,
+      "training_pushes": 3,
+      "measured_m": 0.0833,
+      "launch_mps": 0.7164,
+      "predicted_m": {
+       "tether": 0.11427898084576815,
+       "median": 0.10322990811206129,
+       "mean": 0.11432892795278117
+      },
+      "abs_error_cm": {
+       "tether": 3.0979,
+       "median": 1.993,
+       "mean": 3.1029
+      }
+     }
+    ]
+   }
+  },
+  "mustard bottle": {
+   "log": {
+    "status": "evaluated",
+    "protocol": "leave-one-push-out; refit structure; measured held-out launch speed",
+    "summary": {
+     "tether": {
+      "pushes": 10,
+      "median_cm": 12.9734,
+      "p90_cm": 40.2203
+     },
+     "median": {
+      "pushes": 10,
+      "median_cm": 13.7255,
+      "p90_cm": 55.4126
+     },
+     "mean": {
+      "pushes": 10,
+      "median_cm": 13.2635,
+      "p90_cm": 57.5753
+     }
+    },
+    "rows": [
+     {
+      "held_out_index": 0,
+      "training_pushes": 9,
+      "measured_m": 0.6377,
+      "launch_mps": 1.9034,
+      "predicted_m": {
+       "tether": 0.9142229040290102,
+       "median": 1.172412847272786,
+       "mean": 1.1936329893048727
+      },
+      "abs_error_cm": {
+       "tether": 27.6523,
+       "median": 53.4713,
+       "mean": 55.5933
+      }
+     },
+     {
+      "held_out_index": 1,
+      "training_pushes": 9,
+      "measured_m": 0.5708,
+      "launch_mps": 1.2154,
+      "predicted_m": {
+       "tether": 0.48139626040550504,
+       "median": 0.46939136613105364,
+       "mean": 0.47894640666298344
+      },
+      "abs_error_cm": {
+       "tether": 8.9404,
+       "median": 10.1409,
+       "mean": 9.1854
+      }
+     },
+     {
+      "held_out_index": 2,
+      "training_pushes": 9,
+      "measured_m": 0.4261,
+      "launch_mps": 0.8923,
+      "predicted_m": {
+       "tether": 0.2566793394546994,
+       "median": 0.25299877536027415,
+       "mean": 0.25268370839220405
+      },
+      "abs_error_cm": {
+       "tether": 16.9421,
+       "median": 17.3101,
+       "mean": 17.3416
+      }
+     },
+     {
+      "held_out_index": 3,
+      "training_pushes": 9,
+      "measured_m": 0.4234,
+      "launch_mps": 1.1064,
+      "predicted_m": {
+       "tether": 0.43232509397298674,
+       "median": 0.39613642056210857,
+       "mean": 0.4025257176679491
+      },
+      "abs_error_cm": {
+       "tether": 0.8925,
+       "median": 2.7264,
+       "mean": 2.0874
+      }
+     },
+     {
+      "held_out_index": 4,
+      "training_pushes": 9,
+      "measured_m": 0.5266,
+      "launch_mps": 1.771,
+      "predicted_m": {
+       "tether": 0.8508703160352984,
+       "median": 1.0149801789557138,
+       "mean": 1.0188615563130972
+      },
+      "abs_error_cm": {
+       "tether": 32.427,
+       "median": 48.838,
+       "mean": 49.2262
+      }
+     },
+     {
+      "held_out_index": 5,
+      "training_pushes": 9,
+      "measured_m": 0.5331,
+      "launch_mps": 1.1645,
+      "predicted_m": {
+       "tether": 0.4430526967510913,
+       "median": 0.43883314725822375,
+       "mean": 0.4413551768401676
+      },
+      "abs_error_cm": {
+       "tether": 9.0047,
+       "median": 9.4267,
+       "mean": 9.1745
+      }
+     },
+     {
+      "held_out_index": 6,
+      "training_pushes": 9,
+      "measured_m": 0.7212,
+      "launch_mps": 2.1168,
+      "predicted_m": {
+       "tether": 1.4677465154123726,
+       "median": 1.450040366972477,
+       "mean": 1.4753317687219971
+      },
+      "abs_error_cm": {
+       "tether": 74.6547,
+       "median": 72.884,
+       "mean": 75.4132
+      }
+     },
+     {
+      "held_out_index": 7,
+      "training_pushes": 9,
+      "measured_m": 0.6926,
+      "launch_mps": 1.5143,
+      "predicted_m": {
+       "tether": 0.7163522031414675,
+       "median": 0.7286525308797324,
+       "mean": 0.7383187994510996
+      },
+      "abs_error_cm": {
+       "tether": 2.3752,
+       "median": 3.6053,
+       "mean": 4.5719
+      }
+     },
+     {
+      "held_out_index": 8,
+      "training_pushes": 9,
+      "measured_m": 0.3136,
+      "launch_mps": 0.8864,
+      "predicted_m": {
+       "tether": 0.25044480527138835,
+       "median": 0.24966411697565463,
+       "mean": 0.25013194480259215
+      },
+      "abs_error_cm": {
+       "tether": 6.3155,
+       "median": 6.3936,
+       "mean": 6.3468
+      }
+     },
+     {
+      "held_out_index": 9,
+      "training_pushes": 9,
+      "measured_m": 0.5061,
+      "launch_mps": 1.7966,
+      "predicted_m": {
+       "tether": 0.8700432948093362,
+       "median": 1.0256505652281123,
+       "mean": 1.039256795089003
+      },
+      "abs_error_cm": {
+       "tether": 36.3943,
+       "median": 51.9551,
+       "mean": 53.3157
+      }
+     }
+    ]
+   },
+   "video": {
+    "status": "evaluated",
+    "protocol": "leave-one-push-out; refit structure; measured held-out launch speed",
+    "summary": {
+     "tether": {
+      "pushes": 7,
+      "median_cm": 2.4683,
+      "p90_cm": 6.087
+     },
+     "median": {
+      "pushes": 7,
+      "median_cm": 2.3783,
+      "p90_cm": 6.713
+     },
+     "mean": {
+      "pushes": 7,
+      "median_cm": 2.8998,
+      "p90_cm": 6.6361
+     }
+    },
+    "rows": [
+     {
+      "held_out_index": 0,
+      "training_pushes": 5,
+      "measured_m": 0.076,
+      "launch_mps": 0.5679,
+      "predicted_m": {
+       "tether": 0.10103158850363418,
+       "median": 0.1017822876132587,
+       "mean": 0.10646269073537099
+      },
+      "abs_error_cm": {
+       "tether": 2.5032,
+       "median": 2.5782,
+       "mean": 3.0463
+      }
+     },
+     {
+      "held_out_index": 1,
+      "training_pushes": 5,
+      "measured_m": 0.5668,
+      "launch_mps": 1.3286,
+      "predicted_m": {
+       "tether": 0.5495925205663874,
+       "median": 0.5567345025786982,
+       "mean": 0.5529704709079141
+      },
+      "abs_error_cm": {
+       "tether": 1.7207,
+       "median": 1.0065,
+       "mean": 1.383
+      }
+     },
+     {
+      "held_out_index": 2,
+      "training_pushes": 6,
+      "measured_m": -0.0208,
+      "launch_mps": 0.1958,
+      "predicted_m": {
+       "tether": 0.012002507094250213,
+       "median": 0.012091634622177813,
+       "mean": 0.012069228875502994
+      },
+      "abs_error_cm": {
+       "tether": 3.2803,
+       "median": 3.2892,
+       "mean": 3.2869
+      }
+     },
+     {
+      "held_out_index": 3,
+      "training_pushes": 5,
+      "measured_m": 0.7407,
+      "launch_mps": 1.5521,
+      "predicted_m": {
+       "tether": 0.7491373341816665,
+       "median": 0.760270025215945,
+       "mean": 0.7583916557898402
+      },
+      "abs_error_cm": {
+       "tether": 0.8437,
+       "median": 1.957,
+       "mean": 1.7692
+      }
+     },
+     {
+      "held_out_index": 4,
+      "training_pushes": 5,
+      "measured_m": 0.1216,
+      "launch_mps": 0.5569,
+      "predicted_m": {
+       "tether": 0.09691733681830936,
+       "median": 0.09781694081105356,
+       "mean": 0.092602329437998
+      },
+      "abs_error_cm": {
+       "tether": 2.4683,
+       "median": 2.3783,
+       "mean": 2.8998
+      }
+     },
+     {
+      "held_out_index": 5,
+      "training_pushes": 5,
+      "measured_m": 0.9,
+      "launch_mps": 1.797,
+      "predicted_m": {
+       "tether": 1.002971448378422,
+       "median": 1.0184877145971476,
+       "mean": 1.0166004612655903
+      },
+      "abs_error_cm": {
+       "tether": 10.2971,
+       "median": 11.8488,
+       "mean": 11.66
+      }
+     },
+     {
+      "held_out_index": 6,
+      "training_pushes": 5,
+      "measured_m": 0.7118,
+      "launch_mps": 1.5039,
+      "predicted_m": {
+       "tether": 0.7231869798441404,
+       "median": 0.7137833101371887,
+       "mean": 0.7227335710793478
+      },
+      "abs_error_cm": {
+       "tether": 1.1387,
+       "median": 0.1983,
+       "mean": 1.0934
+      }
+     }
+    ]
+   }
+  },
+  "bleach cleanser": {
+   "log": {
+    "status": "evaluated",
+    "protocol": "leave-one-push-out; refit structure; measured held-out launch speed",
+    "summary": {
+     "tether": {
+      "pushes": 10,
+      "median_cm": 9.5398,
+      "p90_cm": 39.3223
+     },
+     "median": {
+      "pushes": 10,
+      "median_cm": 9.5462,
+      "p90_cm": 38.4095
+     },
+     "mean": {
+      "pushes": 10,
+      "median_cm": 9.2713,
+      "p90_cm": 41.0233
+     }
+    },
+    "rows": [
+     {
+      "held_out_index": 0,
+      "training_pushes": 9,
+      "measured_m": 0.5596,
+      "launch_mps": 1.3492,
+      "predicted_m": {
+       "tether": 0.5861013842927176,
+       "median": 0.5755573767589156,
+       "mean": 0.593981108409329
+      },
+      "abs_error_cm": {
+       "tether": 2.6501,
+       "median": 1.5957,
+       "mean": 3.4381
+      }
+     },
+     {
+      "held_out_index": 1,
+      "training_pushes": 9,
+      "measured_m": 0.7731,
+      "launch_mps": 1.6391,
+      "predicted_m": {
+       "tether": 0.8699757948674107,
+       "median": 0.8721922937078374,
+       "mean": 0.8811723945439541
+      },
+      "abs_error_cm": {
+       "tether": 9.6876,
+       "median": 9.9092,
+       "mean": 10.8072
+      }
+     },
+     {
+      "held_out_index": 2,
+      "training_pushes": 9,
+      "measured_m": 0.6265,
+      "launch_mps": 1.2787,
+      "predicted_m": {
+       "tether": 0.5218352485579165,
+       "median": 0.5169794615055786,
+       "mean": 0.5274499316120207
+      },
+      "abs_error_cm": {
+       "tether": 10.4665,
+       "median": 10.9521,
+       "mean": 9.905
+      }
+     },
+     {
+      "held_out_index": 3,
+      "training_pushes": 9,
+      "measured_m": 0.5622,
+      "launch_mps": 1.2037,
+      "predicted_m": {
+       "tether": 0.46828023182380246,
+       "median": 0.4703681054688768,
+       "mean": 0.4758234056611705
+      },
+      "abs_error_cm": {
+       "tether": 9.392,
+       "median": 9.1832,
+       "mean": 8.6377
+      }
+     },
+     {
+      "held_out_index": 4,
+      "training_pushes": 9,
+      "measured_m": 0.6883,
+      "launch_mps": 1.5121,
+      "predicted_m": {
+       "tether": 0.7269901077426817,
+       "median": 0.7229312299699248,
+       "mean": 0.7375728751338726
+      },
+      "abs_error_cm": {
+       "tether": 3.869,
+       "median": 3.4631,
+       "mean": 4.9273
+      }
+     },
+     {
+      "held_out_index": 5,
+      "training_pushes": 9,
+      "measured_m": 0.5801,
+      "launch_mps": 1.386,
+      "predicted_m": {
+       "tether": 0.6220463261951666,
+       "median": 0.6236311575994856,
+       "mean": 0.632085808541764
+      },
+      "abs_error_cm": {
+       "tether": 4.1946,
+       "median": 4.3531,
+       "mean": 5.1986
+      }
+     },
+     {
+      "held_out_index": 6,
+      "training_pushes": 9,
+      "measured_m": 0.6831,
+      "launch_mps": 1.7975,
+      "predicted_m": {
+       "tether": 1.0318246718989115,
+       "median": 1.0215832359495425,
+       "mean": 1.047577720324849
+      },
+      "abs_error_cm": {
+       "tether": 34.8725,
+       "median": 33.8483,
+       "mean": 36.4478
+      }
+     },
+     {
+      "held_out_index": 7,
+      "training_pushes": 9,
+      "measured_m": 0.6133,
+      "launch_mps": 2.0825,
+      "predicted_m": {
+       "tether": 1.4070023800393345,
+       "median": 1.407898559899232,
+       "mean": 1.4353251552219444
+      },
+      "abs_error_cm": {
+       "tether": 79.3702,
+       "median": 79.4599,
+       "mean": 82.2025
+      }
+     },
+     {
+      "held_out_index": 8,
+      "training_pushes": 9,
+      "measured_m": 0.6376,
+      "launch_mps": 1.5819,
+      "predicted_m": {
+       "tether": 0.8067280898746003,
+       "median": 0.8123803248991994,
+       "mean": 0.8186374262463051
+      },
+      "abs_error_cm": {
+       "tether": 16.9128,
+       "median": 17.478,
+       "mean": 18.1037
+      }
+     },
+     {
+      "held_out_index": 9,
+      "training_pushes": 9,
+      "measured_m": 0.3836,
+      "launch_mps": 0.9728,
+      "predicted_m": {
+       "tether": 0.30316421819728845,
+       "median": 0.29921480840687703,
+       "mean": 0.30450395906053396
+      },
+      "abs_error_cm": {
+       "tether": 8.0436,
+       "median": 8.4385,
+       "mean": 7.9096
+      }
+     }
+    ]
+   },
+   "video": {
+    "status": "evaluated",
+    "protocol": "leave-one-push-out; refit structure; measured held-out launch speed",
+    "summary": {
+     "tether": {
+      "pushes": 5,
+      "median_cm": 10.7859,
+      "p90_cm": 53.0863
+     },
+     "median": {
+      "pushes": 5,
+      "median_cm": 10.3803,
+      "p90_cm": 63.6232
+     },
+     "mean": {
+      "pushes": 5,
+      "median_cm": 12.8086,
+      "p90_cm": 65.8134
+     }
+    },
+    "rows": [
+     {
+      "held_out_index": 0,
+      "training_pushes": 4,
+      "measured_m": 0.512,
+      "launch_mps": 1.3206,
+      "predicted_m": {
+       "tether": 0.49109442951999593,
+       "median": 0.5406818232549834,
+       "mean": 0.4673401248323831
+      },
+      "abs_error_cm": {
+       "tether": 2.0906,
+       "median": 2.8682,
+       "mean": 4.466
+      }
+     },
+     {
+      "held_out_index": 1,
+      "training_pushes": 4,
+      "measured_m": 0.8234,
+      "launch_mps": 1.9232,
+      "predicted_m": {
+       "tether": 1.1329130400690033,
+       "median": 1.2115471071174948,
+       "mean": 1.014621796918634
+      },
+      "abs_error_cm": {
+       "tether": 30.9513,
+       "median": 38.8147,
+       "mean": 19.1222
+      }
+     },
+     {
+      "held_out_index": 2,
+      "training_pushes": 4,
+      "measured_m": 0.2173,
+      "launch_mps": 1.7637,
+      "predicted_m": {
+       "tether": 0.8957300834499561,
+       "median": 1.018921753024693,
+       "mean": 1.186708269241334
+      },
+      "abs_error_cm": {
+       "tether": 67.843,
+       "median": 80.1622,
+       "mean": 96.9408
+      }
+     },
+     {
+      "held_out_index": 3,
+      "training_pushes": 4,
+      "measured_m": 0.1175,
+      "launch_mps": 0.2675,
+      "predicted_m": {
+       "tether": 0.019907792267047704,
+       "median": 0.018848100999085994,
+       "mean": 0.015774686606068945
+      },
+      "abs_error_cm": {
+       "tether": 9.7592,
+       "median": 9.8652,
+       "mean": 10.1725
+      }
+     },
+     {
+      "held_out_index": 4,
+      "training_pushes": 4,
+      "measured_m": 0.5439,
+      "launch_mps": 1.2926,
+      "predicted_m": {
+       "tether": 0.43604072878808986,
+       "median": 0.4400969216140256,
+       "mean": 0.4158142301382517
+      },
+      "abs_error_cm": {
+       "tether": 10.7859,
+       "median": 10.3803,
+       "mean": 12.8086
+      }
+     }
+    ]
+   }
+  },
+  "cracker box": {
+   "log": {
+    "status": "evaluated",
+    "protocol": "leave-one-push-out; refit structure; measured held-out launch speed",
+    "summary": {
+     "tether": {
+      "pushes": 5,
+      "median_cm": 26.1519,
+      "p90_cm": 29.7221
+     },
+     "median": {
+      "pushes": 5,
+      "median_cm": 25.6864,
+      "p90_cm": 28.8335
+     },
+     "mean": {
+      "pushes": 5,
+      "median_cm": 25.7742,
+      "p90_cm": 29.4532
+     }
+    },
+    "rows": [
+     {
+      "held_out_index": 0,
+      "training_pushes": 4,
+      "measured_m": 0.4921,
+      "launch_mps": 1.7279,
+      "predicted_m": {
+       "tether": 0.7242894408322622,
+       "median": 0.7198354376483364,
+       "mean": 0.7232567087398207
+      },
+      "abs_error_cm": {
+       "tether": 23.2189,
+       "median": 22.7735,
+       "mean": 23.1157
+      }
+     },
+     {
+      "held_out_index": 1,
+      "training_pushes": 4,
+      "measured_m": 0.6544,
+      "launch_mps": 1.9275,
+      "predicted_m": {
+       "tether": 0.9210149082568806,
+       "median": 0.911264028573699,
+       "mean": 0.912141932262113
+      },
+      "abs_error_cm": {
+       "tether": 26.6615,
+       "median": 25.6864,
+       "mean": 25.7742
+      }
+     },
+     {
+      "held_out_index": 2,
+      "training_pushes": 4,
+      "measured_m": 0.3822,
+      "launch_mps": 1.6208,
+      "predicted_m": {
+       "tether": 0.6437192817376304,
+       "median": 0.6409459578814127,
+       "mean": 0.6434099500308847
+      },
+      "abs_error_cm": {
+       "tether": 26.1519,
+       "median": 25.8746,
+       "mean": 26.121
+      }
+     },
+     {
+      "held_out_index": 3,
+      "training_pushes": 4,
+      "measured_m": 0.6014,
+      "launch_mps": 1.9422,
+      "predicted_m": {
+       "tether": 0.9190247688880311,
+       "median": 0.9094606511417981,
+       "mean": 0.9181469992902394
+      },
+      "abs_error_cm": {
+       "tether": 31.7625,
+       "median": 30.8061,
+       "mean": 31.6747
+      }
+     },
+     {
+      "held_out_index": 4,
+      "training_pushes": 4,
+      "measured_m": 0.6275,
+      "launch_mps": 1.6848,
+      "predicted_m": {
+       "tether": 0.7012913411038526,
+       "median": 0.6962290840698978,
+       "mean": 0.6975718595454425
+      },
+      "abs_error_cm": {
+       "tether": 7.3791,
+       "median": 6.8729,
+       "mean": 7.0072
+      }
+     }
+    ]
+   },
+   "video": {
+    "status": "not evaluable",
+    "reason": "single-push object",
+    "rows": []
+   }
+  },
+  "mug": {
+   "log": {
+    "status": "evaluated",
+    "protocol": "leave-one-push-out; refit structure; measured held-out launch speed",
+    "summary": {
+     "tether": {
+      "pushes": 10,
+      "median_cm": 10.9949,
+      "p90_cm": 54.4593
+     },
+     "median": {
+      "pushes": 10,
+      "median_cm": 13.0693,
+      "p90_cm": 51.8301
+     },
+     "mean": {
+      "pushes": 10,
+      "median_cm": 13.2769,
+      "p90_cm": 56.7184
+     }
+    },
+    "rows": [
+     {
+      "held_out_index": 0,
+      "training_pushes": 9,
+      "measured_m": 0.5268,
+      "launch_mps": 1.0574,
+      "predicted_m": {
+       "tether": 0.49640679886484307,
+       "median": 0.49857830717133844,
+       "mean": 0.5074577071209615
+      },
+      "abs_error_cm": {
+       "tether": 3.0393,
+       "median": 2.8222,
+       "mean": 1.9342
+      }
+     },
+     {
+      "held_out_index": 1,
+      "training_pushes": 9,
+      "measured_m": 0.6771,
+      "launch_mps": 1.346,
+      "predicted_m": {
+       "tether": 0.7666261031796651,
+       "median": 0.8078763345203666,
+       "mean": 0.8229970145782344
+      },
+      "abs_error_cm": {
+       "tether": 8.9526,
+       "median": 13.0776,
+       "mean": 14.5897
+      }
+     },
+     {
+      "held_out_index": 2,
+      "training_pushes": 9,
+      "measured_m": 0.587,
+      "launch_mps": 1.5833,
+      "predicted_m": {
+       "tether": 1.1120066689200996,
+       "median": 1.0846312925205386,
+       "mean": 1.1337139863258159
+      },
+      "abs_error_cm": {
+       "tether": 52.5007,
+       "median": 49.7631,
+       "mean": 54.6714
+      }
+     },
+     {
+      "held_out_index": 3,
+      "training_pushes": 9,
+      "measured_m": 0.5349,
+      "launch_mps": 0.909,
+      "predicted_m": {
+       "tether": 0.3636806578884822,
+       "median": 0.3575061136119375,
+       "mean": 0.36813129531019434
+      },
+      "abs_error_cm": {
+       "tether": 17.1219,
+       "median": 17.7394,
+       "mean": 16.6769
+      }
+     },
+     {
+      "held_out_index": 4,
+      "training_pushes": 9,
+      "measured_m": 0.573,
+      "launch_mps": 0.8886,
+      "predicted_m": {
+       "tether": 0.3442699398058404,
+       "median": 0.3416396940857619,
+       "mean": 0.350873199331323
+      },
+      "abs_error_cm": {
+       "tether": 22.873,
+       "median": 23.136,
+       "mean": 22.2127
+      }
+     },
+     {
+      "held_out_index": 5,
+      "training_pushes": 9,
+      "measured_m": 0.5722,
+      "launch_mps": 1.0435,
+      "predicted_m": {
+       "tether": 0.47885328137107197,
+       "median": 0.47112984134895797,
+       "mean": 0.48726159184290824
+      },
+      "abs_error_cm": {
+       "tether": 9.3347,
+       "median": 10.107,
+       "mean": 8.4938
+      }
+     },
+     {
+      "held_out_index": 6,
+      "training_pushes": 9,
+      "measured_m": 0.642,
+      "launch_mps": 1.0709,
+      "predicted_m": {
+       "tether": 0.5154490927265306,
+       "median": 0.5113904384530934,
+       "mean": 0.5223585979909614
+      },
+      "abs_error_cm": {
+       "tether": 12.6551,
+       "median": 13.061,
+       "mean": 11.9641
+      }
+     },
+     {
+      "held_out_index": 7,
+      "training_pushes": 9,
+      "measured_m": 0.6284,
+      "launch_mps": 1.7288,
+      "predicted_m": {
+       "tether": 1.3492628497700776,
+       "median": 1.3327364456609079,
+       "mean": 1.3798168092304508
+      },
+      "abs_error_cm": {
+       "tether": 72.0863,
+       "median": 70.4336,
+       "mean": 75.1417
+      }
+     },
+     {
+      "held_out_index": 8,
+      "training_pushes": 9,
+      "measured_m": 0.5548,
+      "launch_mps": 1.1191,
+      "predicted_m": {
+       "tether": 0.5574851479419004,
+       "median": 0.5584606250161644,
+       "mean": 0.5689130966073761
+      },
+      "abs_error_cm": {
+       "tether": 0.2685,
+       "median": 0.3661,
+       "mean": 1.4113
+      }
+     },
+     {
+      "held_out_index": 9,
+      "training_pushes": 9,
+      "measured_m": 0.6575,
+      "launch_mps": 1.1906,
+      "predicted_m": {
+       "tether": 0.6267480963335299,
+       "median": 0.613320474412825,
+       "mean": 0.6332090436970271
+      },
+      "abs_error_cm": {
+       "tether": 3.0752,
+       "median": 4.418,
+       "mean": 2.4291
+      }
+     }
+    ]
+   },
+   "video": {
+    "status": "evaluated",
+    "protocol": "leave-one-push-out; refit structure; measured held-out launch speed",
+    "summary": {
+     "tether": {
+      "pushes": 8,
+      "median_cm": 8.2071,
+      "p90_cm": 33.963
+     },
+     "median": {
+      "pushes": 8,
+      "median_cm": 11.1839,
+      "p90_cm": 37.6795
+     },
+     "mean": {
+      "pushes": 8,
+      "median_cm": 7.8568,
+      "p90_cm": 33.6628
+     }
+    },
+    "rows": [
+     {
+      "held_out_index": 0,
+      "training_pushes": 7,
+      "measured_m": 0.9315,
+      "launch_mps": 1.5132,
+      "predicted_m": {
+       "tether": 0.987361492727301,
+       "median": 1.0355468362055633,
+       "mean": 0.989034986782771
+      },
+      "abs_error_cm": {
+       "tether": 5.5861,
+       "median": 10.4047,
+       "mean": 5.7535
+      }
+     },
+     {
+      "held_out_index": 1,
+      "training_pushes": 7,
+      "measured_m": 0.805,
+      "launch_mps": 1.1491,
+      "predicted_m": {
+       "tether": 0.5462682236850814,
+       "median": 0.5249629107488458,
+       "mean": 0.5552825508085976
+      },
+      "abs_error_cm": {
+       "tether": 25.8732,
+       "median": 28.0037,
+       "mean": 24.9717
+      }
+     },
+     {
+      "held_out_index": 2,
+      "training_pushes": 7,
+      "measured_m": 0.3548,
+      "launch_mps": 0.9216,
+      "predicted_m": {
+       "tether": 0.3598490013498364,
+       "median": 0.3841156598259567,
+       "mean": 0.36686300730835014
+      },
+      "abs_error_cm": {
+       "tether": 0.5049,
+       "median": 2.9316,
+       "mean": 1.2063
+      }
+     },
+     {
+      "held_out_index": 3,
+      "training_pushes": 7,
+      "measured_m": 0.4329,
+      "launch_mps": 0.9329,
+      "predicted_m": {
+       "tether": 0.36720133277301836,
+       "median": 0.3460056240170095,
+       "mean": 0.3690342845173097
+      },
+      "abs_error_cm": {
+       "tether": 6.5699,
+       "median": 8.6894,
+       "mean": 6.3866
+      }
+     },
+     {
+      "held_out_index": 4,
+      "training_pushes": 7,
+      "measured_m": 0.5562,
+      "launch_mps": 1.0479,
+      "predicted_m": {
+       "tether": 0.4602641009777886,
+       "median": 0.43656875724570265,
+       "mean": 0.46292898824565
+      },
+      "abs_error_cm": {
+       "tether": 9.5936,
+       "median": 11.9631,
+       "mean": 9.3271
+      }
+     },
+     {
+      "held_out_index": 5,
+      "training_pushes": 7,
+      "measured_m": 0.6093,
+      "launch_mps": 1.2136,
+      "predicted_m": {
+       "tether": 0.677504793237579,
+       "median": 0.6660827958360581,
+       "mean": 0.6465764951828058
+      },
+      "abs_error_cm": {
+       "tether": 6.8205,
+       "median": 5.6783,
+       "mean": 3.7276
+      }
+     },
+     {
+      "held_out_index": 6,
+      "training_pushes": 7,
+      "measured_m": 0.9128,
+      "launch_mps": 1.8305,
+      "predicted_m": {
+       "tether": 1.441192897112651,
+       "median": 1.515362540442317,
+       "mean": 1.452222434590554
+      },
+      "abs_error_cm": {
+       "tether": 52.8393,
+       "median": 60.2563,
+       "mean": 53.9422
+      }
+     },
+     {
+      "held_out_index": 7,
+      "training_pushes": 7,
+      "measured_m": 0.7123,
+      "launch_mps": 1.0937,
+      "predicted_m": {
+       "tether": 0.49486497097448917,
+       "median": 0.47556446508624856,
+       "mean": 0.4997324952791563
+      },
+      "abs_error_cm": {
+       "tether": 21.7435,
+       "median": 23.6736,
+       "mean": 21.2568
+      }
+     }
+    ]
+   }
+  }
+ },
+ "excluded": {
+  "log": {
+   "total": 45,
+   "retained": 45,
+   "excluded": 0,
+   "by_reason": {}
+  },
+  "video": {
+   "total": 45,
+   "retained": 25,
+   "excluded": 20,
+   "by_reason": {
+    "left out: track jumps": 4,
+    "left out: track runs backwards": 8,
+    "left out: track stops too soon for its speed": 8
+   }
+  }
+ },
  "summary": {
   "log": {
    "objects": 5,
@@ -37,9 +1426,319 @@
     "structure": [
      "mu_eff"
     ],
+    "reliability": {
+     "level": "limited",
+     "reasons": [
+      {
+       "code": "unexplained_pattern",
+       "params": {}
+      },
+      {
+       "code": "large_stop_residual",
+       "params": {
+        "rms_m": 0.1533
+       }
+      }
+     ],
+     "interval_available": true,
+     "usable_pushes": 10,
+     "policy": "6 pushes is a product policy; status cannot detect shared bias or guarantee coverage"
+    },
     "stop_rms_m": 0.1533,
     "error": -0.0038,
     "inside_interval": true
+   },
+   "baselines": {
+    "log": {
+     "pushes": 10,
+     "usable_quadratic_fits": 10,
+     "median": 0.2155,
+     "mean": 0.2133,
+     "tether_matched_mu": 0.2162,
+     "shared_training_pushes": 10,
+     "shared_excluded_pushes": 0
+    },
+    "video": {
+     "pushes": 4,
+     "usable_quadratic_fits": 4,
+     "median": 0.2572,
+     "mean": 0.2385,
+     "tether_matched_mu": 0.229,
+     "shared_training_pushes": 4,
+     "shared_excluded_pushes": 0
+    }
+   },
+   "held_out": {
+    "log": {
+     "status": "evaluated",
+     "protocol": "leave-one-push-out; refit structure; measured held-out launch speed",
+     "summary": {
+      "tether": {
+       "pushes": 10,
+       "median_cm": 11.1811,
+       "p90_cm": 25.8497
+      },
+      "median": {
+       "pushes": 10,
+       "median_cm": 13.2429,
+       "p90_cm": 28.1246
+      },
+      "mean": {
+       "pushes": 10,
+       "median_cm": 11.942,
+       "p90_cm": 25.6082
+      }
+     },
+     "rows": [
+      {
+       "held_out_index": 0,
+       "training_pushes": 9,
+       "measured_m": 0.491,
+       "launch_mps": 1.2241,
+       "predicted_m": {
+        "tether": 0.35243244393828843,
+        "median": 0.3306151974087753,
+        "mean": 0.3550539776914323
+       },
+       "abs_error_cm": {
+        "tether": 13.8568,
+        "median": 16.0385,
+        "mean": 13.5946
+       }
+      },
+      {
+       "held_out_index": 1,
+       "training_pushes": 9,
+       "measured_m": 0.3438,
+       "launch_mps": 1.6395,
+       "predicted_m": {
+        "tether": 0.6354407797314087,
+        "median": 0.6850051605504586,
+        "mean": 0.6483721349270788
+       },
+       "abs_error_cm": {
+        "tether": 29.1641,
+        "median": 34.1205,
+        "mean": 30.4572
+       }
+      },
+      {
+       "held_out_index": 2,
+       "training_pushes": 9,
+       "measured_m": 0.4108,
+       "launch_mps": 1.0838,
+       "predicted_m": {
+        "tether": 0.27576520447695535,
+        "median": 0.2591715406577792,
+        "mean": 0.27576520447695535
+       },
+       "abs_error_cm": {
+        "tether": 13.5035,
+        "median": 15.1628,
+        "mean": 13.5035
+       }
+      },
+      {
+       "held_out_index": 3,
+       "training_pushes": 9,
+       "measured_m": 0.468,
+       "launch_mps": 1.5677,
+       "predicted_m": {
+        "tether": 0.582082639386257,
+        "median": 0.6263209199796127,
+        "mean": 0.5931069317988757
+       },
+       "abs_error_cm": {
+        "tether": 11.4083,
+        "median": 15.8321,
+        "mean": 12.5107
+       }
+      },
+      {
+       "held_out_index": 4,
+       "training_pushes": 9,
+       "measured_m": 0.5431,
+       "launch_mps": 1.3489,
+       "predicted_m": {
+        "tether": 0.43356051323915495,
+        "median": 0.46369296890927625,
+        "mean": 0.44035419649503915
+       },
+       "abs_error_cm": {
+        "tether": 10.9539,
+        "median": 7.9407,
+        "mean": 10.2746
+       }
+      },
+      {
+       "held_out_index": 5,
+       "training_pushes": 9,
+       "measured_m": 0.4645,
+       "launch_mps": 1.298,
+       "predicted_m": {
+        "tether": 0.40033456180245175,
+        "median": 0.4293588175331295,
+        "mean": 0.40891315955536145
+       },
+       "abs_error_cm": {
+        "tether": 6.4165,
+        "median": 3.5141,
+        "mean": 5.5587
+       }
+      },
+      {
+       "held_out_index": 6,
+       "training_pushes": 9,
+       "measured_m": 0.6261,
+       "launch_mps": 1.2622,
+       "predicted_m": {
+        "tether": 0.37128599308209426,
+        "median": 0.35151621942447625,
+        "mean": 0.3754056712300232
+       },
+       "abs_error_cm": {
+        "tether": 25.4814,
+        "median": 27.4584,
+        "mean": 25.0694
+       }
+      },
+      {
+       "held_out_index": 7,
+       "training_pushes": 9,
+       "measured_m": 0.6086,
+       "launch_mps": 1.5077,
+       "predicted_m": {
+        "tether": 0.5324415948049709,
+        "median": 0.5015553724223448,
+        "mean": 0.5393821742530804
+       },
+       "abs_error_cm": {
+        "tether": 7.6158,
+        "median": 10.7045,
+        "mean": 6.9218
+       }
+      },
+      {
+       "held_out_index": 8,
+       "training_pushes": 9,
+       "measured_m": 0.6536,
+       "launch_mps": 1.8033,
+       "predicted_m": {
+        "tether": 0.6955538837051092,
+        "median": 0.7175050836014137,
+        "mean": 0.7673318255181787
+       },
+       "abs_error_cm": {
+        "tether": 4.1954,
+        "median": 6.3905,
+        "mean": 11.3732
+       }
+      },
+      {
+       "held_out_index": 9,
+       "training_pushes": 9,
+       "measured_m": 0.6428,
+       "launch_mps": 1.7224,
+       "predicted_m": {
+        "tether": 0.7088888984469571,
+        "median": 0.7560300101936798,
+        "mean": 0.7179772176578155
+       },
+       "abs_error_cm": {
+        "tether": 6.6089,
+        "median": 11.323,
+        "mean": 7.5177
+       }
+      }
+     ]
+    },
+    "video": {
+     "status": "evaluated",
+     "protocol": "leave-one-push-out; refit structure; measured held-out launch speed",
+     "summary": {
+      "tether": {
+       "pushes": 4,
+       "median_cm": 5.3097,
+       "p90_cm": 38.0985
+      },
+      "median": {
+       "pushes": 4,
+       "median_cm": 9.8497,
+       "p90_cm": 29.6749
+      },
+      "mean": {
+       "pushes": 4,
+       "median_cm": 7.3421,
+       "p90_cm": 34.8776
+      }
+     },
+     "rows": [
+      {
+       "held_out_index": 0,
+       "training_pushes": 3,
+       "measured_m": 0.5084,
+       "launch_mps": 2.0968,
+       "predicted_m": {
+        "tether": 1.0204287287237104,
+        "median": 0.8843178722483298,
+        "mean": 0.970490033900939
+       },
+       "abs_error_cm": {
+        "tether": 51.2029,
+        "median": 37.5918,
+        "mean": 46.209
+       }
+      },
+      {
+       "held_out_index": 1,
+       "training_pushes": 3,
+       "measured_m": 0.5328,
+       "launch_mps": 1.4679,
+       "predicted_m": {
+        "tether": 0.5153597397956767,
+        "median": 0.4207783929136349,
+        "mean": 0.4703347346914719
+       },
+       "abs_error_cm": {
+        "tether": 1.744,
+        "median": 11.2022,
+        "mean": 6.2465
+       }
+      },
+      {
+       "held_out_index": 2,
+       "training_pushes": 3,
+       "measured_m": 0.4731,
+       "launch_mps": 1.4098,
+       "predicted_m": {
+        "tether": 0.3978850396336361,
+        "median": 0.38812847161196834,
+        "mean": 0.38872421753923153
+       },
+       "abs_error_cm": {
+        "tether": 7.5215,
+        "median": 8.4972,
+        "mean": 8.4376
+       }
+      },
+      {
+       "held_out_index": 3,
+       "training_pushes": 3,
+       "measured_m": 0.0833,
+       "launch_mps": 0.7164,
+       "predicted_m": {
+        "tether": 0.11427898084576815,
+        "median": 0.10322990811206129,
+        "mean": 0.11432892795278117
+       },
+       "abs_error_cm": {
+        "tether": 3.0979,
+        "median": 1.993,
+        "mean": 3.1029
+       }
+      }
+     ]
+    }
    },
    "video": {
     "mu": 0.229,
@@ -50,6 +1749,37 @@
     "structure": [
      "mu_eff"
     ],
+    "reliability": {
+     "level": "limited",
+     "reasons": [
+      {
+       "code": "few_pushes",
+       "params": {
+        "pushes": 4,
+        "policy_min": 6
+       }
+      },
+      {
+       "code": "unexplained_pattern",
+       "params": {}
+      },
+      {
+       "code": "unmeasured_range",
+       "params": {
+        "reach_m": 0.5328
+       }
+      },
+      {
+       "code": "large_stop_residual",
+       "params": {
+        "rms_m": 0.2376
+       }
+      }
+     ],
+     "interval_available": true,
+     "usable_pushes": 4,
+     "policy": "6 pushes is a product policy; status cannot detect shared bias or guarantee coverage"
+    },
     "stop_rms_m": 0.2376,
     "error": 0.009,
     "inside_interval": true
@@ -73,9 +1803,367 @@
      "patch_y0",
      "patch_mu"
     ],
+    "reliability": {
+     "level": "limited",
+     "reasons": [
+      {
+       "code": "unexplained_pattern",
+       "params": {}
+      },
+      {
+       "code": "large_stop_residual",
+       "params": {
+        "rms_m": 0.2203
+       }
+      }
+     ],
+     "interval_available": true,
+     "usable_pushes": 10,
+     "policy": "6 pushes is a product policy; status cannot detect shared bias or guarantee coverage"
+    },
     "stop_rms_m": 0.2203,
     "error": -0.0026,
     "inside_interval": true
+   },
+   "baselines": {
+    "log": {
+     "pushes": 10,
+     "usable_quadratic_fits": 10,
+     "median": 0.1589,
+     "mean": 0.1573,
+     "tether_matched_mu": 0.1564,
+     "shared_training_pushes": 10,
+     "shared_excluded_pushes": 0
+    },
+    "video": {
+     "pushes": 7,
+     "usable_quadratic_fits": 6,
+     "median": 0.1616,
+     "mean": 0.1619,
+     "tether_matched_mu": 0.1628,
+     "shared_training_pushes": 6,
+     "shared_excluded_pushes": 1
+    }
+   },
+   "held_out": {
+    "log": {
+     "status": "evaluated",
+     "protocol": "leave-one-push-out; refit structure; measured held-out launch speed",
+     "summary": {
+      "tether": {
+       "pushes": 10,
+       "median_cm": 12.9734,
+       "p90_cm": 40.2203
+      },
+      "median": {
+       "pushes": 10,
+       "median_cm": 13.7255,
+       "p90_cm": 55.4126
+      },
+      "mean": {
+       "pushes": 10,
+       "median_cm": 13.2635,
+       "p90_cm": 57.5753
+      }
+     },
+     "rows": [
+      {
+       "held_out_index": 0,
+       "training_pushes": 9,
+       "measured_m": 0.6377,
+       "launch_mps": 1.9034,
+       "predicted_m": {
+        "tether": 0.9142229040290102,
+        "median": 1.172412847272786,
+        "mean": 1.1936329893048727
+       },
+       "abs_error_cm": {
+        "tether": 27.6523,
+        "median": 53.4713,
+        "mean": 55.5933
+       }
+      },
+      {
+       "held_out_index": 1,
+       "training_pushes": 9,
+       "measured_m": 0.5708,
+       "launch_mps": 1.2154,
+       "predicted_m": {
+        "tether": 0.48139626040550504,
+        "median": 0.46939136613105364,
+        "mean": 0.47894640666298344
+       },
+       "abs_error_cm": {
+        "tether": 8.9404,
+        "median": 10.1409,
+        "mean": 9.1854
+       }
+      },
+      {
+       "held_out_index": 2,
+       "training_pushes": 9,
+       "measured_m": 0.4261,
+       "launch_mps": 0.8923,
+       "predicted_m": {
+        "tether": 0.2566793394546994,
+        "median": 0.25299877536027415,
+        "mean": 0.25268370839220405
+       },
+       "abs_error_cm": {
+        "tether": 16.9421,
+        "median": 17.3101,
+        "mean": 17.3416
+       }
+      },
+      {
+       "held_out_index": 3,
+       "training_pushes": 9,
+       "measured_m": 0.4234,
+       "launch_mps": 1.1064,
+       "predicted_m": {
+        "tether": 0.43232509397298674,
+        "median": 0.39613642056210857,
+        "mean": 0.4025257176679491
+       },
+       "abs_error_cm": {
+        "tether": 0.8925,
+        "median": 2.7264,
+        "mean": 2.0874
+       }
+      },
+      {
+       "held_out_index": 4,
+       "training_pushes": 9,
+       "measured_m": 0.5266,
+       "launch_mps": 1.771,
+       "predicted_m": {
+        "tether": 0.8508703160352984,
+        "median": 1.0149801789557138,
+        "mean": 1.0188615563130972
+       },
+       "abs_error_cm": {
+        "tether": 32.427,
+        "median": 48.838,
+        "mean": 49.2262
+       }
+      },
+      {
+       "held_out_index": 5,
+       "training_pushes": 9,
+       "measured_m": 0.5331,
+       "launch_mps": 1.1645,
+       "predicted_m": {
+        "tether": 0.4430526967510913,
+        "median": 0.43883314725822375,
+        "mean": 0.4413551768401676
+       },
+       "abs_error_cm": {
+        "tether": 9.0047,
+        "median": 9.4267,
+        "mean": 9.1745
+       }
+      },
+      {
+       "held_out_index": 6,
+       "training_pushes": 9,
+       "measured_m": 0.7212,
+       "launch_mps": 2.1168,
+       "predicted_m": {
+        "tether": 1.4677465154123726,
+        "median": 1.450040366972477,
+        "mean": 1.4753317687219971
+       },
+       "abs_error_cm": {
+        "tether": 74.6547,
+        "median": 72.884,
+        "mean": 75.4132
+       }
+      },
+      {
+       "held_out_index": 7,
+       "training_pushes": 9,
+       "measured_m": 0.6926,
+       "launch_mps": 1.5143,
+       "predicted_m": {
+        "tether": 0.7163522031414675,
+        "median": 0.7286525308797324,
+        "mean": 0.7383187994510996
+       },
+       "abs_error_cm": {
+        "tether": 2.3752,
+        "median": 3.6053,
+        "mean": 4.5719
+       }
+      },
+      {
+       "held_out_index": 8,
+       "training_pushes": 9,
+       "measured_m": 0.3136,
+       "launch_mps": 0.8864,
+       "predicted_m": {
+        "tether": 0.25044480527138835,
+        "median": 0.24966411697565463,
+        "mean": 0.25013194480259215
+       },
+       "abs_error_cm": {
+        "tether": 6.3155,
+        "median": 6.3936,
+        "mean": 6.3468
+       }
+      },
+      {
+       "held_out_index": 9,
+       "training_pushes": 9,
+       "measured_m": 0.5061,
+       "launch_mps": 1.7966,
+       "predicted_m": {
+        "tether": 0.8700432948093362,
+        "median": 1.0256505652281123,
+        "mean": 1.039256795089003
+       },
+       "abs_error_cm": {
+        "tether": 36.3943,
+        "median": 51.9551,
+        "mean": 53.3157
+       }
+      }
+     ]
+    },
+    "video": {
+     "status": "evaluated",
+     "protocol": "leave-one-push-out; refit structure; measured held-out launch speed",
+     "summary": {
+      "tether": {
+       "pushes": 7,
+       "median_cm": 2.4683,
+       "p90_cm": 6.087
+      },
+      "median": {
+       "pushes": 7,
+       "median_cm": 2.3783,
+       "p90_cm": 6.713
+      },
+      "mean": {
+       "pushes": 7,
+       "median_cm": 2.8998,
+       "p90_cm": 6.6361
+      }
+     },
+     "rows": [
+      {
+       "held_out_index": 0,
+       "training_pushes": 5,
+       "measured_m": 0.076,
+       "launch_mps": 0.5679,
+       "predicted_m": {
+        "tether": 0.10103158850363418,
+        "median": 0.1017822876132587,
+        "mean": 0.10646269073537099
+       },
+       "abs_error_cm": {
+        "tether": 2.5032,
+        "median": 2.5782,
+        "mean": 3.0463
+       }
+      },
+      {
+       "held_out_index": 1,
+       "training_pushes": 5,
+       "measured_m": 0.5668,
+       "launch_mps": 1.3286,
+       "predicted_m": {
+        "tether": 0.5495925205663874,
+        "median": 0.5567345025786982,
+        "mean": 0.5529704709079141
+       },
+       "abs_error_cm": {
+        "tether": 1.7207,
+        "median": 1.0065,
+        "mean": 1.383
+       }
+      },
+      {
+       "held_out_index": 2,
+       "training_pushes": 6,
+       "measured_m": -0.0208,
+       "launch_mps": 0.1958,
+       "predicted_m": {
+        "tether": 0.012002507094250213,
+        "median": 0.012091634622177813,
+        "mean": 0.012069228875502994
+       },
+       "abs_error_cm": {
+        "tether": 3.2803,
+        "median": 3.2892,
+        "mean": 3.2869
+       }
+      },
+      {
+       "held_out_index": 3,
+       "training_pushes": 5,
+       "measured_m": 0.7407,
+       "launch_mps": 1.5521,
+       "predicted_m": {
+        "tether": 0.7491373341816665,
+        "median": 0.760270025215945,
+        "mean": 0.7583916557898402
+       },
+       "abs_error_cm": {
+        "tether": 0.8437,
+        "median": 1.957,
+        "mean": 1.7692
+       }
+      },
+      {
+       "held_out_index": 4,
+       "training_pushes": 5,
+       "measured_m": 0.1216,
+       "launch_mps": 0.5569,
+       "predicted_m": {
+        "tether": 0.09691733681830936,
+        "median": 0.09781694081105356,
+        "mean": 0.092602329437998
+       },
+       "abs_error_cm": {
+        "tether": 2.4683,
+        "median": 2.3783,
+        "mean": 2.8998
+       }
+      },
+      {
+       "held_out_index": 5,
+       "training_pushes": 5,
+       "measured_m": 0.9,
+       "launch_mps": 1.797,
+       "predicted_m": {
+        "tether": 1.002971448378422,
+        "median": 1.0184877145971476,
+        "mean": 1.0166004612655903
+       },
+       "abs_error_cm": {
+        "tether": 10.2971,
+        "median": 11.8488,
+        "mean": 11.66
+       }
+      },
+      {
+       "held_out_index": 6,
+       "training_pushes": 5,
+       "measured_m": 0.7118,
+       "launch_mps": 1.5039,
+       "predicted_m": {
+        "tether": 0.7231869798441404,
+        "median": 0.7137833101371887,
+        "mean": 0.7227335710793478
+       },
+       "abs_error_cm": {
+        "tether": 1.1387,
+        "median": 0.1983,
+        "mean": 1.0934
+       }
+      }
+     ]
+    }
    },
    "video": {
     "mu": 0.1638,
@@ -86,6 +2174,24 @@
     "structure": [
      "mu_eff"
     ],
+    "reliability": {
+     "level": "limited",
+     "reasons": [
+      {
+       "code": "unexplained_pattern",
+       "params": {}
+      },
+      {
+       "code": "large_stop_residual",
+       "params": {
+        "rms_m": 0.0443
+       }
+      }
+     ],
+     "interval_available": true,
+     "usable_pushes": 7,
+     "policy": "6 pushes is a product policy; status cannot detect shared bias or guarantee coverage"
+    },
     "stop_rms_m": 0.0443,
     "error": 0.0048,
     "inside_interval": false
@@ -107,9 +2213,335 @@
     "structure": [
      "mu_eff"
     ],
+    "reliability": {
+     "level": "limited",
+     "reasons": [
+      {
+       "code": "unexplained_pattern",
+       "params": {}
+      },
+      {
+       "code": "large_stop_residual",
+       "params": {
+        "rms_m": 0.2834
+       }
+      }
+     ],
+     "interval_available": true,
+     "usable_pushes": 10,
+     "policy": "6 pushes is a product policy; status cannot detect shared bias or guarantee coverage"
+    },
     "stop_rms_m": 0.2834,
     "error": -0.0105,
     "inside_interval": false
+   },
+   "baselines": {
+    "log": {
+     "pushes": 10,
+     "usable_quadratic_fits": 10,
+     "median": 0.1591,
+     "mean": 0.1563,
+     "tether_matched_mu": 0.1585,
+     "shared_training_pushes": 10,
+     "shared_excluded_pushes": 0
+    },
+    "video": {
+     "pushes": 5,
+     "usable_quadratic_fits": 5,
+     "median": 0.1848,
+     "mean": 0.1891,
+     "tether_matched_mu": 0.1814,
+     "shared_training_pushes": 5,
+     "shared_excluded_pushes": 0
+    }
+   },
+   "held_out": {
+    "log": {
+     "status": "evaluated",
+     "protocol": "leave-one-push-out; refit structure; measured held-out launch speed",
+     "summary": {
+      "tether": {
+       "pushes": 10,
+       "median_cm": 9.5398,
+       "p90_cm": 39.3223
+      },
+      "median": {
+       "pushes": 10,
+       "median_cm": 9.5462,
+       "p90_cm": 38.4095
+      },
+      "mean": {
+       "pushes": 10,
+       "median_cm": 9.2713,
+       "p90_cm": 41.0233
+      }
+     },
+     "rows": [
+      {
+       "held_out_index": 0,
+       "training_pushes": 9,
+       "measured_m": 0.5596,
+       "launch_mps": 1.3492,
+       "predicted_m": {
+        "tether": 0.5861013842927176,
+        "median": 0.5755573767589156,
+        "mean": 0.593981108409329
+       },
+       "abs_error_cm": {
+        "tether": 2.6501,
+        "median": 1.5957,
+        "mean": 3.4381
+       }
+      },
+      {
+       "held_out_index": 1,
+       "training_pushes": 9,
+       "measured_m": 0.7731,
+       "launch_mps": 1.6391,
+       "predicted_m": {
+        "tether": 0.8699757948674107,
+        "median": 0.8721922937078374,
+        "mean": 0.8811723945439541
+       },
+       "abs_error_cm": {
+        "tether": 9.6876,
+        "median": 9.9092,
+        "mean": 10.8072
+       }
+      },
+      {
+       "held_out_index": 2,
+       "training_pushes": 9,
+       "measured_m": 0.6265,
+       "launch_mps": 1.2787,
+       "predicted_m": {
+        "tether": 0.5218352485579165,
+        "median": 0.5169794615055786,
+        "mean": 0.5274499316120207
+       },
+       "abs_error_cm": {
+        "tether": 10.4665,
+        "median": 10.9521,
+        "mean": 9.905
+       }
+      },
+      {
+       "held_out_index": 3,
+       "training_pushes": 9,
+       "measured_m": 0.5622,
+       "launch_mps": 1.2037,
+       "predicted_m": {
+        "tether": 0.46828023182380246,
+        "median": 0.4703681054688768,
+        "mean": 0.4758234056611705
+       },
+       "abs_error_cm": {
+        "tether": 9.392,
+        "median": 9.1832,
+        "mean": 8.6377
+       }
+      },
+      {
+       "held_out_index": 4,
+       "training_pushes": 9,
+       "measured_m": 0.6883,
+       "launch_mps": 1.5121,
+       "predicted_m": {
+        "tether": 0.7269901077426817,
+        "median": 0.7229312299699248,
+        "mean": 0.7375728751338726
+       },
+       "abs_error_cm": {
+        "tether": 3.869,
+        "median": 3.4631,
+        "mean": 4.9273
+       }
+      },
+      {
+       "held_out_index": 5,
+       "training_pushes": 9,
+       "measured_m": 0.5801,
+       "launch_mps": 1.386,
+       "predicted_m": {
+        "tether": 0.6220463261951666,
+        "median": 0.6236311575994856,
+        "mean": 0.632085808541764
+       },
+       "abs_error_cm": {
+        "tether": 4.1946,
+        "median": 4.3531,
+        "mean": 5.1986
+       }
+      },
+      {
+       "held_out_index": 6,
+       "training_pushes": 9,
+       "measured_m": 0.6831,
+       "launch_mps": 1.7975,
+       "predicted_m": {
+        "tether": 1.0318246718989115,
+        "median": 1.0215832359495425,
+        "mean": 1.047577720324849
+       },
+       "abs_error_cm": {
+        "tether": 34.8725,
+        "median": 33.8483,
+        "mean": 36.4478
+       }
+      },
+      {
+       "held_out_index": 7,
+       "training_pushes": 9,
+       "measured_m": 0.6133,
+       "launch_mps": 2.0825,
+       "predicted_m": {
+        "tether": 1.4070023800393345,
+        "median": 1.407898559899232,
+        "mean": 1.4353251552219444
+       },
+       "abs_error_cm": {
+        "tether": 79.3702,
+        "median": 79.4599,
+        "mean": 82.2025
+       }
+      },
+      {
+       "held_out_index": 8,
+       "training_pushes": 9,
+       "measured_m": 0.6376,
+       "launch_mps": 1.5819,
+       "predicted_m": {
+        "tether": 0.8067280898746003,
+        "median": 0.8123803248991994,
+        "mean": 0.8186374262463051
+       },
+       "abs_error_cm": {
+        "tether": 16.9128,
+        "median": 17.478,
+        "mean": 18.1037
+       }
+      },
+      {
+       "held_out_index": 9,
+       "training_pushes": 9,
+       "measured_m": 0.3836,
+       "launch_mps": 0.9728,
+       "predicted_m": {
+        "tether": 0.30316421819728845,
+        "median": 0.29921480840687703,
+        "mean": 0.30450395906053396
+       },
+       "abs_error_cm": {
+        "tether": 8.0436,
+        "median": 8.4385,
+        "mean": 7.9096
+       }
+      }
+     ]
+    },
+    "video": {
+     "status": "evaluated",
+     "protocol": "leave-one-push-out; refit structure; measured held-out launch speed",
+     "summary": {
+      "tether": {
+       "pushes": 5,
+       "median_cm": 10.7859,
+       "p90_cm": 53.0863
+      },
+      "median": {
+       "pushes": 5,
+       "median_cm": 10.3803,
+       "p90_cm": 63.6232
+      },
+      "mean": {
+       "pushes": 5,
+       "median_cm": 12.8086,
+       "p90_cm": 65.8134
+      }
+     },
+     "rows": [
+      {
+       "held_out_index": 0,
+       "training_pushes": 4,
+       "measured_m": 0.512,
+       "launch_mps": 1.3206,
+       "predicted_m": {
+        "tether": 0.49109442951999593,
+        "median": 0.5406818232549834,
+        "mean": 0.4673401248323831
+       },
+       "abs_error_cm": {
+        "tether": 2.0906,
+        "median": 2.8682,
+        "mean": 4.466
+       }
+      },
+      {
+       "held_out_index": 1,
+       "training_pushes": 4,
+       "measured_m": 0.8234,
+       "launch_mps": 1.9232,
+       "predicted_m": {
+        "tether": 1.1329130400690033,
+        "median": 1.2115471071174948,
+        "mean": 1.014621796918634
+       },
+       "abs_error_cm": {
+        "tether": 30.9513,
+        "median": 38.8147,
+        "mean": 19.1222
+       }
+      },
+      {
+       "held_out_index": 2,
+       "training_pushes": 4,
+       "measured_m": 0.2173,
+       "launch_mps": 1.7637,
+       "predicted_m": {
+        "tether": 0.8957300834499561,
+        "median": 1.018921753024693,
+        "mean": 1.186708269241334
+       },
+       "abs_error_cm": {
+        "tether": 67.843,
+        "median": 80.1622,
+        "mean": 96.9408
+       }
+      },
+      {
+       "held_out_index": 3,
+       "training_pushes": 4,
+       "measured_m": 0.1175,
+       "launch_mps": 0.2675,
+       "predicted_m": {
+        "tether": 0.019907792267047704,
+        "median": 0.018848100999085994,
+        "mean": 0.015774686606068945
+       },
+       "abs_error_cm": {
+        "tether": 9.7592,
+        "median": 9.8652,
+        "mean": 10.1725
+       }
+      },
+      {
+       "held_out_index": 4,
+       "training_pushes": 4,
+       "measured_m": 0.5439,
+       "launch_mps": 1.2926,
+       "predicted_m": {
+        "tether": 0.43604072878808986,
+        "median": 0.4400969216140256,
+        "mean": 0.4158142301382517
+       },
+       "abs_error_cm": {
+        "tether": 10.7859,
+        "median": 10.3803,
+        "mean": 12.8086
+       }
+      }
+     ]
+    }
    },
    "video": {
     "mu": 0.1814,
@@ -120,6 +2552,31 @@
     "structure": [
      "mu_eff"
     ],
+    "reliability": {
+     "level": "limited",
+     "reasons": [
+      {
+       "code": "few_pushes",
+       "params": {
+        "pushes": 5,
+        "policy_min": 6
+       }
+      },
+      {
+       "code": "unexplained_pattern",
+       "params": {}
+      },
+      {
+       "code": "large_stop_residual",
+       "params": {
+        "rms_m": 0.3141
+       }
+      }
+     ],
+     "interval_available": true,
+     "usable_pushes": 5,
+     "policy": "6 pushes is a product policy; status cannot detect shared bias or guarantee coverage"
+    },
     "stop_rms_m": 0.3141,
     "error": 0.0124,
     "inside_interval": true
@@ -141,22 +2598,198 @@
     "structure": [
      "mu_eff"
     ],
+    "reliability": {
+     "level": "limited",
+     "reasons": [
+      {
+       "code": "few_pushes",
+       "params": {
+        "pushes": 5,
+        "policy_min": 6
+       }
+      },
+      {
+       "code": "unexplained_pattern",
+       "params": {}
+      },
+      {
+       "code": "large_stop_residual",
+       "params": {
+        "rms_m": 0.2454
+       }
+      }
+     ],
+     "interval_available": true,
+     "usable_pushes": 5,
+     "policy": "6 pushes is a product policy; status cannot detect shared bias or guarantee coverage"
+    },
     "stop_rms_m": 0.2454,
     "error": -0.0721,
     "inside_interval": false
    },
+   "baselines": {
+    "log": {
+     "pushes": 5,
+     "usable_quadratic_fits": 5,
+     "median": 0.2104,
+     "mean": 0.2086,
+     "tether_matched_mu": 0.2079,
+     "shared_training_pushes": 5,
+     "shared_excluded_pushes": 0
+    },
+    "video": {
+     "pushes": 1,
+     "usable_quadratic_fits": 1,
+     "median": 0.1627,
+     "mean": 0.1627,
+     "tether_matched_mu": 0.1733,
+     "shared_training_pushes": 1,
+     "shared_excluded_pushes": 0
+    }
+   },
+   "held_out": {
+    "log": {
+     "status": "evaluated",
+     "protocol": "leave-one-push-out; refit structure; measured held-out launch speed",
+     "summary": {
+      "tether": {
+       "pushes": 5,
+       "median_cm": 26.1519,
+       "p90_cm": 29.7221
+      },
+      "median": {
+       "pushes": 5,
+       "median_cm": 25.6864,
+       "p90_cm": 28.8335
+      },
+      "mean": {
+       "pushes": 5,
+       "median_cm": 25.7742,
+       "p90_cm": 29.4532
+      }
+     },
+     "rows": [
+      {
+       "held_out_index": 0,
+       "training_pushes": 4,
+       "measured_m": 0.4921,
+       "launch_mps": 1.7279,
+       "predicted_m": {
+        "tether": 0.7242894408322622,
+        "median": 0.7198354376483364,
+        "mean": 0.7232567087398207
+       },
+       "abs_error_cm": {
+        "tether": 23.2189,
+        "median": 22.7735,
+        "mean": 23.1157
+       }
+      },
+      {
+       "held_out_index": 1,
+       "training_pushes": 4,
+       "measured_m": 0.6544,
+       "launch_mps": 1.9275,
+       "predicted_m": {
+        "tether": 0.9210149082568806,
+        "median": 0.911264028573699,
+        "mean": 0.912141932262113
+       },
+       "abs_error_cm": {
+        "tether": 26.6615,
+        "median": 25.6864,
+        "mean": 25.7742
+       }
+      },
+      {
+       "held_out_index": 2,
+       "training_pushes": 4,
+       "measured_m": 0.3822,
+       "launch_mps": 1.6208,
+       "predicted_m": {
+        "tether": 0.6437192817376304,
+        "median": 0.6409459578814127,
+        "mean": 0.6434099500308847
+       },
+       "abs_error_cm": {
+        "tether": 26.1519,
+        "median": 25.8746,
+        "mean": 26.121
+       }
+      },
+      {
+       "held_out_index": 3,
+       "training_pushes": 4,
+       "measured_m": 0.6014,
+       "launch_mps": 1.9422,
+       "predicted_m": {
+        "tether": 0.9190247688880311,
+        "median": 0.9094606511417981,
+        "mean": 0.9181469992902394
+       },
+       "abs_error_cm": {
+        "tether": 31.7625,
+        "median": 30.8061,
+        "mean": 31.6747
+       }
+      },
+      {
+       "held_out_index": 4,
+       "training_pushes": 4,
+       "measured_m": 0.6275,
+       "launch_mps": 1.6848,
+       "predicted_m": {
+        "tether": 0.7012913411038526,
+        "median": 0.6962290840698978,
+        "mean": 0.6975718595454425
+       },
+       "abs_error_cm": {
+        "tether": 7.3791,
+        "median": 6.8729,
+        "mean": 7.0072
+       }
+      }
+     ]
+    },
+    "video": {
+     "status": "not evaluable",
+     "reason": "single-push object",
+     "rows": []
+    }
+   },
    "video": {
     "mu": 0.1733,
-    "interval": [
-     0.1701,
-     0.1777
-    ],
+    "interval": null,
     "structure": [
      "mu_eff"
     ],
+    "reliability": {
+     "level": "unreliable",
+     "reasons": [
+      {
+       "code": "single_push",
+       "params": {
+        "pushes": 1
+       }
+      },
+      {
+       "code": "unexplained_pattern",
+       "params": {}
+      },
+      {
+       "code": "large_stop_residual",
+       "params": {
+        "rms_m": 0.1244
+       }
+      }
+     ],
+     "interval_available": false,
+     "usable_pushes": 1,
+     "policy": "6 pushes is a product policy; status cannot detect shared bias or guarantee coverage"
+    },
     "stop_rms_m": 0.1244,
     "error": -0.1067,
-    "inside_interval": false
+    "inside_interval": null
    }
   },
   {
@@ -175,9 +2808,383 @@
     "structure": [
      "mu_eff"
     ],
+    "reliability": {
+     "level": "limited",
+     "reasons": [
+      {
+       "code": "unexplained_pattern",
+       "params": {}
+      },
+      {
+       "code": "large_stop_residual",
+       "params": {
+        "rms_m": 0.2968
+       }
+      }
+     ],
+     "interval_available": true,
+     "usable_pushes": 10,
+     "policy": "6 pushes is a product policy; status cannot detect shared bias or guarantee coverage"
+    },
     "stop_rms_m": 0.2968,
     "error": 0.005,
     "inside_interval": true
+   },
+   "baselines": {
+    "log": {
+     "pushes": 10,
+     "usable_quadratic_fits": 10,
+     "median": 0.116,
+     "mean": 0.1129,
+     "tether_matched_mu": 0.115,
+     "shared_training_pushes": 10,
+     "shared_excluded_pushes": 0
+    },
+    "video": {
+     "pushes": 8,
+     "usable_quadratic_fits": 8,
+     "median": 0.1205,
+     "mean": 0.1193,
+     "tether_matched_mu": 0.1205,
+     "shared_training_pushes": 8,
+     "shared_excluded_pushes": 0
+    }
+   },
+   "held_out": {
+    "log": {
+     "status": "evaluated",
+     "protocol": "leave-one-push-out; refit structure; measured held-out launch speed",
+     "summary": {
+      "tether": {
+       "pushes": 10,
+       "median_cm": 10.9949,
+       "p90_cm": 54.4593
+      },
+      "median": {
+       "pushes": 10,
+       "median_cm": 13.0693,
+       "p90_cm": 51.8301
+      },
+      "mean": {
+       "pushes": 10,
+       "median_cm": 13.2769,
+       "p90_cm": 56.7184
+      }
+     },
+     "rows": [
+      {
+       "held_out_index": 0,
+       "training_pushes": 9,
+       "measured_m": 0.5268,
+       "launch_mps": 1.0574,
+       "predicted_m": {
+        "tether": 0.49640679886484307,
+        "median": 0.49857830717133844,
+        "mean": 0.5074577071209615
+       },
+       "abs_error_cm": {
+        "tether": 3.0393,
+        "median": 2.8222,
+        "mean": 1.9342
+       }
+      },
+      {
+       "held_out_index": 1,
+       "training_pushes": 9,
+       "measured_m": 0.6771,
+       "launch_mps": 1.346,
+       "predicted_m": {
+        "tether": 0.7666261031796651,
+        "median": 0.8078763345203666,
+        "mean": 0.8229970145782344
+       },
+       "abs_error_cm": {
+        "tether": 8.9526,
+        "median": 13.0776,
+        "mean": 14.5897
+       }
+      },
+      {
+       "held_out_index": 2,
+       "training_pushes": 9,
+       "measured_m": 0.587,
+       "launch_mps": 1.5833,
+       "predicted_m": {
+        "tether": 1.1120066689200996,
+        "median": 1.0846312925205386,
+        "mean": 1.1337139863258159
+       },
+       "abs_error_cm": {
+        "tether": 52.5007,
+        "median": 49.7631,
+        "mean": 54.6714
+       }
+      },
+      {
+       "held_out_index": 3,
+       "training_pushes": 9,
+       "measured_m": 0.5349,
+       "launch_mps": 0.909,
+       "predicted_m": {
+        "tether": 0.3636806578884822,
+        "median": 0.3575061136119375,
+        "mean": 0.36813129531019434
+       },
+       "abs_error_cm": {
+        "tether": 17.1219,
+        "median": 17.7394,
+        "mean": 16.6769
+       }
+      },
+      {
+       "held_out_index": 4,
+       "training_pushes": 9,
+       "measured_m": 0.573,
+       "launch_mps": 0.8886,
+       "predicted_m": {
+        "tether": 0.3442699398058404,
+        "median": 0.3416396940857619,
+        "mean": 0.350873199331323
+       },
+       "abs_error_cm": {
+        "tether": 22.873,
+        "median": 23.136,
+        "mean": 22.2127
+       }
+      },
+      {
+       "held_out_index": 5,
+       "training_pushes": 9,
+       "measured_m": 0.5722,
+       "launch_mps": 1.0435,
+       "predicted_m": {
+        "tether": 0.47885328137107197,
+        "median": 0.47112984134895797,
+        "mean": 0.48726159184290824
+       },
+       "abs_error_cm": {
+        "tether": 9.3347,
+        "median": 10.107,
+        "mean": 8.4938
+       }
+      },
+      {
+       "held_out_index": 6,
+       "training_pushes": 9,
+       "measured_m": 0.642,
+       "launch_mps": 1.0709,
+       "predicted_m": {
+        "tether": 0.5154490927265306,
+        "median": 0.5113904384530934,
+        "mean": 0.5223585979909614
+       },
+       "abs_error_cm": {
+        "tether": 12.6551,
+        "median": 13.061,
+        "mean": 11.9641
+       }
+      },
+      {
+       "held_out_index": 7,
+       "training_pushes": 9,
+       "measured_m": 0.6284,
+       "launch_mps": 1.7288,
+       "predicted_m": {
+        "tether": 1.3492628497700776,
+        "median": 1.3327364456609079,
+        "mean": 1.3798168092304508
+       },
+       "abs_error_cm": {
+        "tether": 72.0863,
+        "median": 70.4336,
+        "mean": 75.1417
+       }
+      },
+      {
+       "held_out_index": 8,
+       "training_pushes": 9,
+       "measured_m": 0.5548,
+       "launch_mps": 1.1191,
+       "predicted_m": {
+        "tether": 0.5574851479419004,
+        "median": 0.5584606250161644,
+        "mean": 0.5689130966073761
+       },
+       "abs_error_cm": {
+        "tether": 0.2685,
+        "median": 0.3661,
+        "mean": 1.4113
+       }
+      },
+      {
+       "held_out_index": 9,
+       "training_pushes": 9,
+       "measured_m": 0.6575,
+       "launch_mps": 1.1906,
+       "predicted_m": {
+        "tether": 0.6267480963335299,
+        "median": 0.613320474412825,
+        "mean": 0.6332090436970271
+       },
+       "abs_error_cm": {
+        "tether": 3.0752,
+        "median": 4.418,
+        "mean": 2.4291
+       }
+      }
+     ]
+    },
+    "video": {
+     "status": "evaluated",
+     "protocol": "leave-one-push-out; refit structure; measured held-out launch speed",
+     "summary": {
+      "tether": {
+       "pushes": 8,
+       "median_cm": 8.2071,
+       "p90_cm": 33.963
+      },
+      "median": {
+       "pushes": 8,
+       "median_cm": 11.1839,
+       "p90_cm": 37.6795
+      },
+      "mean": {
+       "pushes": 8,
+       "median_cm": 7.8568,
+       "p90_cm": 33.6628
+      }
+     },
+     "rows": [
+      {
+       "held_out_index": 0,
+       "training_pushes": 7,
+       "measured_m": 0.9315,
+       "launch_mps": 1.5132,
+       "predicted_m": {
+        "tether": 0.987361492727301,
+        "median": 1.0355468362055633,
+        "mean": 0.989034986782771
+       },
+       "abs_error_cm": {
+        "tether": 5.5861,
+        "median": 10.4047,
+        "mean": 5.7535
+       }
+      },
+      {
+       "held_out_index": 1,
+       "training_pushes": 7,
+       "measured_m": 0.805,
+       "launch_mps": 1.1491,
+       "predicted_m": {
+        "tether": 0.5462682236850814,
+        "median": 0.5249629107488458,
+        "mean": 0.5552825508085976
+       },
+       "abs_error_cm": {
+        "tether": 25.8732,
+        "median": 28.0037,
+        "mean": 24.9717
+       }
+      },
+      {
+       "held_out_index": 2,
+       "training_pushes": 7,
+       "measured_m": 0.3548,
+       "launch_mps": 0.9216,
+       "predicted_m": {
+        "tether": 0.3598490013498364,
+        "median": 0.3841156598259567,
+        "mean": 0.36686300730835014
+       },
+       "abs_error_cm": {
+        "tether": 0.5049,
+        "median": 2.9316,
+        "mean": 1.2063
+       }
+      },
+      {
+       "held_out_index": 3,
+       "training_pushes": 7,
+       "measured_m": 0.4329,
+       "launch_mps": 0.9329,
+       "predicted_m": {
+        "tether": 0.36720133277301836,
+        "median": 0.3460056240170095,
+        "mean": 0.3690342845173097
+       },
+       "abs_error_cm": {
+        "tether": 6.5699,
+        "median": 8.6894,
+        "mean": 6.3866
+       }
+      },
+      {
+       "held_out_index": 4,
+       "training_pushes": 7,
+       "measured_m": 0.5562,
+       "launch_mps": 1.0479,
+       "predicted_m": {
+        "tether": 0.4602641009777886,
+        "median": 0.43656875724570265,
+        "mean": 0.46292898824565
+       },
+       "abs_error_cm": {
+        "tether": 9.5936,
+        "median": 11.9631,
+        "mean": 9.3271
+       }
+      },
+      {
+       "held_out_index": 5,
+       "training_pushes": 7,
+       "measured_m": 0.6093,
+       "launch_mps": 1.2136,
+       "predicted_m": {
+        "tether": 0.677504793237579,
+        "median": 0.6660827958360581,
+        "mean": 0.6465764951828058
+       },
+       "abs_error_cm": {
+        "tether": 6.8205,
+        "median": 5.6783,
+        "mean": 3.7276
+       }
+      },
+      {
+       "held_out_index": 6,
+       "training_pushes": 7,
+       "measured_m": 0.9128,
+       "launch_mps": 1.8305,
+       "predicted_m": {
+        "tether": 1.441192897112651,
+        "median": 1.515362540442317,
+        "mean": 1.452222434590554
+       },
+       "abs_error_cm": {
+        "tether": 52.8393,
+        "median": 60.2563,
+        "mean": 53.9422
+       }
+      },
+      {
+       "held_out_index": 7,
+       "training_pushes": 7,
+       "measured_m": 0.7123,
+       "launch_mps": 1.0937,
+       "predicted_m": {
+        "tether": 0.49486497097448917,
+        "median": 0.47556446508624856,
+        "mean": 0.4997324952791563
+       },
+       "abs_error_cm": {
+        "tether": 21.7435,
+        "median": 23.6736,
+        "mean": 21.2568
+       }
+      }
+     ]
+    }
    },
    "video": {
     "mu": 0.1205,
@@ -188,6 +3195,24 @@
     "structure": [
      "mu_eff"
     ],
+    "reliability": {
+     "level": "limited",
+     "reasons": [
+      {
+       "code": "unexplained_pattern",
+       "params": {}
+      },
+      {
+       "code": "large_stop_residual",
+       "params": {
+        "rms_m": 0.2156
+       }
+      }
+     ],
+     "interval_available": true,
+     "usable_pushes": 8,
+     "policy": "6 pushes is a product policy; status cannot detect shared bias or guarantee coverage"
+    },
     "stop_rms_m": 0.2156,
     "error": 0.0105,
     "inside_interval": false
@@ -745,5 +3770,3327 @@
    "mu_per_push_video": 0.09987849882660454,
    "video_vs_mocap_stop_m": 0.0548
   }
- ]
+ ],
+ "sessions": {
+  "pitcher": {
+   "log": {
+    "name": "pitcher (log)",
+    "source": "video",
+    "notes": [],
+    "meta": {},
+    "sim": {
+     "object_mu": 0.8,
+     "table_mu": 0.8,
+     "object_density": 500.0,
+     "object_half_size": 0.025,
+     "actuator_gain": 1.0,
+     "restitution": 0.0,
+     "camera_dx": 0.0,
+     "camera_dz": 0.0,
+     "camera_pitch_deg": 0.0,
+     "light_intensity": 1.0,
+     "patch_y0": 1.0,
+     "patch_mu": 0.8,
+     "lens_k": 0.0
+    },
+    "pushes": [
+     {
+      "stop": 0.491,
+      "command": null,
+      "launch_speed": 1.2241,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0441,
+       0.0747,
+       0.1188,
+       0.1658,
+       0.198,
+       0.2357,
+       0.2704,
+       0.3027,
+       0.3294,
+       0.3568,
+       0.3964,
+       0.4187,
+       0.4339,
+       0.4449,
+       0.4541,
+       0.4703,
+       0.481,
+       0.4883,
+       0.4906,
+       0.491,
+       0.491,
+       0.491,
+       0.491,
+       0.491,
+       0.491
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.3438,
+      "command": null,
+      "launch_speed": 1.6395,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0478,
+       0.0982,
+       0.1317,
+       0.1542,
+       0.1737,
+       0.1922,
+       0.2179,
+       0.2431,
+       0.2647,
+       0.2935,
+       0.3135,
+       0.3241,
+       0.3311,
+       0.3361,
+       0.3397,
+       0.3427,
+       0.3438,
+       0.3438,
+       0.3438,
+       0.3438,
+       0.3438
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.4108,
+      "command": null,
+      "launch_speed": 1.0838,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0338,
+       0.0748,
+       0.1061,
+       0.1336,
+       0.1757,
+       0.2043,
+       0.2356,
+       0.2661,
+       0.2996,
+       0.3292,
+       0.3467,
+       0.3595,
+       0.3697,
+       0.382,
+       0.3991,
+       0.4069,
+       0.4099,
+       0.4108,
+       0.4108,
+       0.4108,
+       0.4108,
+       0.4108,
+       0.4108
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.468,
+      "command": null,
+      "launch_speed": 1.5677,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0445,
+       0.1033,
+       0.1423,
+       0.1712,
+       0.1975,
+       0.2423,
+       0.2865,
+       0.3143,
+       0.3343,
+       0.3511,
+       0.3703,
+       0.4055,
+       0.4237,
+       0.436,
+       0.4443,
+       0.4508,
+       0.4571,
+       0.4638,
+       0.4671,
+       0.468,
+       0.468,
+       0.4679,
+       0.468,
+       0.468,
+       0.468
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.5431,
+      "command": null,
+      "launch_speed": 1.3489,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0456,
+       0.0895,
+       0.1351,
+       0.1813,
+       0.22,
+       0.2727,
+       0.3219,
+       0.354,
+       0.3763,
+       0.3937,
+       0.4153,
+       0.4512,
+       0.4804,
+       0.4972,
+       0.5087,
+       0.5171,
+       0.5239,
+       0.5309,
+       0.5376,
+       0.5428,
+       0.5431,
+       0.5431,
+       0.5431,
+       0.5431,
+       0.5431,
+       0.5431
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.4645,
+      "command": null,
+      "launch_speed": 1.298,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0443,
+       0.0861,
+       0.1287,
+       0.1705,
+       0.2211,
+       0.2578,
+       0.2866,
+       0.3072,
+       0.3434,
+       0.3658,
+       0.3828,
+       0.3972,
+       0.4168,
+       0.4298,
+       0.4415,
+       0.4511,
+       0.4575,
+       0.4618,
+       0.4643,
+       0.4646,
+       0.4645,
+       0.4645,
+       0.4645,
+       0.4645
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.6261,
+      "command": null,
+      "launch_speed": 1.2622,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0385,
+       0.0898,
+       0.1296,
+       0.163,
+       0.206,
+       0.2566,
+       0.2995,
+       0.3406,
+       0.3774,
+       0.4108,
+       0.4456,
+       0.4761,
+       0.5004,
+       0.5256,
+       0.5539,
+       0.5784,
+       0.5947,
+       0.6048,
+       0.6115,
+       0.6164,
+       0.6198,
+       0.6238,
+       0.6258,
+       0.6262,
+       0.6261,
+       0.6261,
+       0.6261,
+       0.6261
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.6086,
+      "command": null,
+      "launch_speed": 1.5077,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0446,
+       0.1001,
+       0.142,
+       0.176,
+       0.2072,
+       0.2553,
+       0.294,
+       0.3337,
+       0.3754,
+       0.4168,
+       0.4577,
+       0.485,
+       0.5041,
+       0.519,
+       0.5322,
+       0.5492,
+       0.572,
+       0.5883,
+       0.5968,
+       0.6018,
+       0.6049,
+       0.607,
+       0.6086,
+       0.6086,
+       0.6086,
+       0.6086,
+       0.6086
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.6536,
+      "command": null,
+      "launch_speed": 1.8033,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0547,
+       0.1144,
+       0.156,
+       0.1957,
+       0.2314,
+       0.2657,
+       0.2976,
+       0.3386,
+       0.3795,
+       0.4181,
+       0.4508,
+       0.4788,
+       0.5122,
+       0.5357,
+       0.5592,
+       0.5786,
+       0.5977,
+       0.6127,
+       0.625,
+       0.6364,
+       0.6433,
+       0.6485,
+       0.6515,
+       0.653,
+       0.6535,
+       0.6536,
+       0.6536,
+       0.6536,
+       0.6536
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.6428,
+      "command": null,
+      "launch_speed": 1.7224,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.057,
+       0.1082,
+       0.1609,
+       0.2119,
+       0.2545,
+       0.2999,
+       0.3441,
+       0.3798,
+       0.4137,
+       0.4485,
+       0.4762,
+       0.5037,
+       0.5292,
+       0.5507,
+       0.57,
+       0.587,
+       0.6026,
+       0.6142,
+       0.6246,
+       0.6322,
+       0.6373,
+       0.641,
+       0.6425,
+       0.6428,
+       0.6428,
+       0.6428,
+       0.6428,
+       0.6428
+      ],
+      "origin": "video",
+      "start": 0.0
+     }
+    ]
+   },
+   "video": {
+    "name": "pitcher (video)",
+    "source": "video",
+    "notes": [],
+    "meta": {},
+    "sim": {
+     "object_mu": 0.8,
+     "table_mu": 0.8,
+     "object_density": 500.0,
+     "object_half_size": 0.025,
+     "actuator_gain": 1.0,
+     "restitution": 0.0,
+     "camera_dx": 0.0,
+     "camera_dz": 0.0,
+     "camera_pitch_deg": 0.0,
+     "light_intensity": 1.0,
+     "patch_y0": 1.0,
+     "patch_mu": 0.8,
+     "lens_k": 0.0
+    },
+    "pushes": [
+     {
+      "stop": 0.5084,
+      "command": null,
+      "launch_speed": 2.0968,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.061,
+       0.1323,
+       0.1719,
+       0.21,
+       0.2441,
+       0.2737,
+       0.3033,
+       0.3297,
+       0.3566,
+       0.3829,
+       0.4076,
+       0.4289,
+       0.4463,
+       0.4617,
+       0.4796,
+       0.4884,
+       0.4934,
+       0.5016,
+       0.506,
+       0.509,
+       0.5107,
+       0.5106,
+       0.51,
+       0.5084,
+       0.5084,
+       0.5084
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.5328,
+      "command": null,
+      "launch_speed": 1.4679,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0478,
+       0.1001,
+       0.1493,
+       0.1927,
+       0.2403,
+       0.2975,
+       0.3102,
+       0.3464,
+       0.3686,
+       0.3889,
+       0.4315,
+       0.4526,
+       0.4801,
+       0.498,
+       0.515,
+       0.5185,
+       0.5235,
+       0.5283,
+       0.5331,
+       0.5352,
+       0.5352,
+       0.5328,
+       0.5328,
+       0.5328,
+       0.5328
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.4731,
+      "command": null,
+      "launch_speed": 1.4098,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0465,
+       0.0889,
+       0.1187,
+       0.1626,
+       0.2017,
+       0.2182,
+       0.2425,
+       0.2709,
+       0.2957,
+       0.3245,
+       0.3553,
+       0.3737,
+       0.3943,
+       0.4114,
+       0.4373,
+       0.4488,
+       0.4536,
+       0.4611,
+       0.4713,
+       0.4706,
+       0.4722,
+       0.4745,
+       0.4748,
+       0.4731,
+       0.4731,
+       0.4731
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.0833,
+      "command": null,
+      "launch_speed": 0.7164,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0175,
+       0.0468,
+       0.0571,
+       0.0599,
+       0.0668,
+       0.0772,
+       0.0795,
+       0.0842,
+       0.0822,
+       0.0833,
+       0.0833,
+       0.0833,
+       0.0833
+      ],
+      "origin": "video",
+      "start": 0.0
+     }
+    ]
+   }
+  },
+  "mustard bottle": {
+   "log": {
+    "name": "mustard bottle (log)",
+    "source": "video",
+    "notes": [],
+    "meta": {},
+    "sim": {
+     "object_mu": 0.8,
+     "table_mu": 0.8,
+     "object_density": 500.0,
+     "object_half_size": 0.025,
+     "actuator_gain": 1.0,
+     "restitution": 0.0,
+     "camera_dx": 0.0,
+     "camera_dz": 0.0,
+     "camera_pitch_deg": 0.0,
+     "light_intensity": 1.0,
+     "patch_y0": 1.0,
+     "patch_mu": 0.8,
+     "lens_k": 0.0
+    },
+    "pushes": [
+     {
+      "stop": 0.6377,
+      "command": null,
+      "launch_speed": 1.9034,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0645,
+       0.1064,
+       0.1633,
+       0.208,
+       0.2403,
+       0.2671,
+       0.2899,
+       0.3333,
+       0.3802,
+       0.4103,
+       0.4326,
+       0.4503,
+       0.4663,
+       0.4876,
+       0.5129,
+       0.5312,
+       0.5506,
+       0.5756,
+       0.5905,
+       0.6007,
+       0.6083,
+       0.6139,
+       0.6216,
+       0.6283,
+       0.6327,
+       0.6368,
+       0.6377,
+       0.6377,
+       0.6377,
+       0.6377,
+       0.6377,
+       0.6377
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.5708,
+      "command": null,
+      "launch_speed": 1.2154,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0401,
+       0.0792,
+       0.1187,
+       0.1545,
+       0.1926,
+       0.2283,
+       0.2579,
+       0.2882,
+       0.3374,
+       0.368,
+       0.3901,
+       0.4178,
+       0.4415,
+       0.4581,
+       0.4709,
+       0.4822,
+       0.4931,
+       0.5101,
+       0.5273,
+       0.5407,
+       0.5522,
+       0.5584,
+       0.5626,
+       0.5653,
+       0.5676,
+       0.5696,
+       0.5707,
+       0.5707,
+       0.5708,
+       0.5708,
+       0.5708
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.4261,
+      "command": null,
+      "launch_speed": 0.8923,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.027,
+       0.0634,
+       0.091,
+       0.1133,
+       0.1469,
+       0.1778,
+       0.2061,
+       0.2318,
+       0.2569,
+       0.2808,
+       0.301,
+       0.3205,
+       0.3384,
+       0.3632,
+       0.3814,
+       0.3921,
+       0.3992,
+       0.4051,
+       0.4103,
+       0.416,
+       0.4207,
+       0.4251,
+       0.426,
+       0.4261,
+       0.4261,
+       0.4261,
+       0.4261,
+       0.4261
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.4234,
+      "command": null,
+      "launch_speed": 1.1064,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0397,
+       0.0731,
+       0.1069,
+       0.1469,
+       0.1854,
+       0.2225,
+       0.2456,
+       0.2639,
+       0.2791,
+       0.2934,
+       0.317,
+       0.3397,
+       0.3629,
+       0.3776,
+       0.3873,
+       0.3949,
+       0.401,
+       0.4067,
+       0.4138,
+       0.4187,
+       0.4215,
+       0.4231,
+       0.4234,
+       0.4234,
+       0.4234,
+       0.4234,
+       0.4234
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.5266,
+      "command": null,
+      "launch_speed": 1.771,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0527,
+       0.1069,
+       0.1443,
+       0.173,
+       0.1981,
+       0.2197,
+       0.2534,
+       0.2846,
+       0.3112,
+       0.3392,
+       0.3643,
+       0.3871,
+       0.4073,
+       0.427,
+       0.4452,
+       0.4592,
+       0.4733,
+       0.4858,
+       0.4949,
+       0.5035,
+       0.5098,
+       0.5176,
+       0.5209,
+       0.5226,
+       0.5239,
+       0.5247,
+       0.5266,
+       0.5266,
+       0.5266
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.5331,
+      "command": null,
+      "launch_speed": 1.1645,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0377,
+       0.079,
+       0.1189,
+       0.1533,
+       0.1911,
+       0.2353,
+       0.2708,
+       0.2967,
+       0.3166,
+       0.3502,
+       0.3766,
+       0.396,
+       0.4106,
+       0.4257,
+       0.4461,
+       0.4618,
+       0.4762,
+       0.4892,
+       0.5005,
+       0.5096,
+       0.5174,
+       0.5254,
+       0.5311,
+       0.533,
+       0.5331,
+       0.5331,
+       0.5331,
+       0.5331,
+       0.5331
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.7212,
+      "command": null,
+      "launch_speed": 2.1168,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0637,
+       0.1269,
+       0.1733,
+       0.2083,
+       0.2394,
+       0.265,
+       0.3078,
+       0.3478,
+       0.3801,
+       0.4381,
+       0.4815,
+       0.5114,
+       0.5344,
+       0.5544,
+       0.573,
+       0.5905,
+       0.6066,
+       0.6225,
+       0.6417,
+       0.6651,
+       0.6782,
+       0.6917,
+       0.7014,
+       0.7076,
+       0.7119,
+       0.7171,
+       0.7204,
+       0.7212,
+       0.7212,
+       0.7212,
+       0.7212,
+       0.7212,
+       0.7212
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.6926,
+      "command": null,
+      "launch_speed": 1.5143,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0415,
+       0.1043,
+       0.1398,
+       0.1692,
+       0.1968,
+       0.2459,
+       0.2843,
+       0.3178,
+       0.3549,
+       0.3857,
+       0.416,
+       0.4467,
+       0.4846,
+       0.5209,
+       0.5438,
+       0.5609,
+       0.5745,
+       0.5871,
+       0.6031,
+       0.6268,
+       0.6395,
+       0.6545,
+       0.6655,
+       0.6726,
+       0.6775,
+       0.6815,
+       0.6862,
+       0.6901,
+       0.6918,
+       0.6926,
+       0.6926,
+       0.6926,
+       0.6926,
+       0.6926
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.3136,
+      "command": null,
+      "launch_speed": 0.8864,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0246,
+       0.0619,
+       0.086,
+       0.1028,
+       0.124,
+       0.1555,
+       0.1797,
+       0.1978,
+       0.2109,
+       0.2278,
+       0.2439,
+       0.2577,
+       0.2765,
+       0.2884,
+       0.2981,
+       0.3039,
+       0.3075,
+       0.3101,
+       0.312,
+       0.3134,
+       0.3136,
+       0.3136,
+       0.3136,
+       0.3136
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.5061,
+      "command": null,
+      "launch_speed": 1.7966,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0524,
+       0.1088,
+       0.144,
+       0.1714,
+       0.1935,
+       0.2144,
+       0.2335,
+       0.2658,
+       0.29,
+       0.3161,
+       0.3398,
+       0.361,
+       0.3821,
+       0.4008,
+       0.4183,
+       0.4344,
+       0.4479,
+       0.4652,
+       0.4791,
+       0.4872,
+       0.4927,
+       0.4965,
+       0.5002,
+       0.5055,
+       0.5061,
+       0.5061,
+       0.5061,
+       0.5061,
+       0.5061,
+       0.5061
+      ],
+      "origin": "video",
+      "start": 0.0
+     }
+    ]
+   },
+   "video": {
+    "name": "mustard bottle (video)",
+    "source": "video",
+    "notes": [],
+    "meta": {},
+    "sim": {
+     "object_mu": 0.8,
+     "table_mu": 0.8,
+     "object_density": 500.0,
+     "object_half_size": 0.025,
+     "actuator_gain": 1.0,
+     "restitution": 0.0,
+     "camera_dx": 0.0,
+     "camera_dz": 0.0,
+     "camera_pitch_deg": 0.0,
+     "light_intensity": 1.0,
+     "patch_y0": 1.0,
+     "patch_mu": 0.8,
+     "lens_k": 0.0
+    },
+    "pushes": [
+     {
+      "stop": 0.076,
+      "command": null,
+      "launch_speed": 0.5679,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0197,
+       0.0316,
+       0.0404,
+       0.0606,
+       0.0665,
+       0.067,
+       0.0709,
+       0.0716,
+       0.0722,
+       0.076,
+       0.076,
+       0.076
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.5668,
+      "command": null,
+      "launch_speed": 1.3286,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0437,
+       0.0848,
+       0.125,
+       0.1639,
+       0.2001,
+       0.2348,
+       0.2674,
+       0.2981,
+       0.3287,
+       0.3557,
+       0.3823,
+       0.4063,
+       0.4288,
+       0.45,
+       0.4682,
+       0.4861,
+       0.5005,
+       0.5134,
+       0.5277,
+       0.5388,
+       0.548,
+       0.5553,
+       0.5609,
+       0.5645,
+       0.5682,
+       0.5668,
+       0.5667,
+       0.5668,
+       0.5668,
+       0.5668
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": -0.0208,
+      "command": null,
+      "launch_speed": 0.1958,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0056,
+       0.0049,
+       0.0047,
+       0.0008,
+       -0.0097,
+       -0.0208,
+       -0.0208,
+       -0.0208
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.7407,
+      "command": null,
+      "launch_speed": 1.5521,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0513,
+       0.0992,
+       0.1461,
+       0.193,
+       0.2359,
+       0.2766,
+       0.3155,
+       0.3547,
+       0.3896,
+       0.4223,
+       0.455,
+       0.4837,
+       0.5131,
+       0.5392,
+       0.5653,
+       0.5889,
+       0.6094,
+       0.631,
+       0.6479,
+       0.6648,
+       0.6793,
+       0.6938,
+       0.7059,
+       0.7155,
+       0.7229,
+       0.7301,
+       0.7349,
+       0.7373,
+       0.7398,
+       0.7398,
+       0.7398,
+       0.7407,
+       0.7407,
+       0.7407
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.1216,
+      "command": null,
+      "launch_speed": 0.5569,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0175,
+       0.0348,
+       0.0471,
+       0.061,
+       0.0731,
+       0.0813,
+       0.092,
+       0.0997,
+       0.1068,
+       0.1128,
+       0.1154,
+       0.12,
+       0.1217,
+       0.1215,
+       0.1192,
+       0.1216,
+       0.1216,
+       0.1216
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.9,
+      "command": null,
+      "launch_speed": 1.797,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0577,
+       0.1135,
+       0.1659,
+       0.2124,
+       0.2567,
+       0.3003,
+       0.3427,
+       0.3885,
+       0.4284,
+       0.4676,
+       0.5047,
+       0.5389,
+       0.5891,
+       0.6232,
+       0.6547,
+       0.6821,
+       0.7036,
+       0.7295,
+       0.7538,
+       0.7735,
+       0.7929,
+       0.812,
+       0.8267,
+       0.8411,
+       0.8531,
+       0.8656,
+       0.8756,
+       0.883,
+       0.8893,
+       0.8924,
+       0.8969,
+       0.8999,
+       0.8999,
+       0.8999,
+       0.9,
+       0.9,
+       0.9
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.7118,
+      "command": null,
+      "launch_speed": 1.5039,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0488,
+       0.0975,
+       0.1438,
+       0.1865,
+       0.2295,
+       0.2717,
+       0.3109,
+       0.3477,
+       0.3847,
+       0.4181,
+       0.4644,
+       0.495,
+       0.5219,
+       0.5474,
+       0.5704,
+       0.5924,
+       0.6122,
+       0.6292,
+       0.6457,
+       0.6596,
+       0.6729,
+       0.684,
+       0.6935,
+       0.7,
+       0.705,
+       0.7096,
+       0.7118,
+       0.7118,
+       0.7118,
+       0.7118,
+       0.7118,
+       0.7118
+      ],
+      "origin": "video",
+      "start": 0.0
+     }
+    ]
+   }
+  },
+  "bleach cleanser": {
+   "log": {
+    "name": "bleach cleanser (log)",
+    "source": "video",
+    "notes": [],
+    "meta": {},
+    "sim": {
+     "object_mu": 0.8,
+     "table_mu": 0.8,
+     "object_density": 500.0,
+     "object_half_size": 0.025,
+     "actuator_gain": 1.0,
+     "restitution": 0.0,
+     "camera_dx": 0.0,
+     "camera_dz": 0.0,
+     "camera_pitch_deg": 0.0,
+     "light_intensity": 1.0,
+     "patch_y0": 1.0,
+     "patch_mu": 0.8,
+     "lens_k": 0.0
+    },
+    "pushes": [
+     {
+      "stop": 0.5596,
+      "command": null,
+      "launch_speed": 1.3492,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0436,
+       0.0864,
+       0.1249,
+       0.1618,
+       0.1982,
+       0.2305,
+       0.265,
+       0.2957,
+       0.3269,
+       0.3529,
+       0.3799,
+       0.4042,
+       0.4256,
+       0.4482,
+       0.4662,
+       0.4834,
+       0.4985,
+       0.5173,
+       0.53,
+       0.5384,
+       0.5471,
+       0.5535,
+       0.5568,
+       0.5586,
+       0.5596,
+       0.5596,
+       0.5596,
+       0.5596,
+       0.5596
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.7731,
+      "command": null,
+      "launch_speed": 1.6391,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.052,
+       0.1077,
+       0.1512,
+       0.1953,
+       0.2451,
+       0.2817,
+       0.3224,
+       0.3619,
+       0.3973,
+       0.4311,
+       0.4743,
+       0.5086,
+       0.5343,
+       0.5532,
+       0.5957,
+       0.6212,
+       0.6404,
+       0.6552,
+       0.6701,
+       0.6901,
+       0.708,
+       0.7212,
+       0.7347,
+       0.7487,
+       0.7584,
+       0.7638,
+       0.7674,
+       0.7721,
+       0.7731,
+       0.7731,
+       0.7731,
+       0.7731,
+       0.7731,
+       0.7731
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.6265,
+      "command": null,
+      "launch_speed": 1.2787,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0386,
+       0.0885,
+       0.1241,
+       0.1528,
+       0.1987,
+       0.233,
+       0.269,
+       0.311,
+       0.3316,
+       0.3657,
+       0.3953,
+       0.4246,
+       0.4458,
+       0.47,
+       0.4944,
+       0.5124,
+       0.5322,
+       0.5519,
+       0.5664,
+       0.5799,
+       0.5984,
+       0.608,
+       0.614,
+       0.6182,
+       0.6227,
+       0.6262,
+       0.6265,
+       0.6265,
+       0.6265,
+       0.6265,
+       0.6265,
+       0.6265
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.5622,
+      "command": null,
+      "launch_speed": 1.2037,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.041,
+       0.0793,
+       0.1213,
+       0.1603,
+       0.1976,
+       0.2431,
+       0.2811,
+       0.3149,
+       0.34,
+       0.359,
+       0.3823,
+       0.4069,
+       0.4292,
+       0.4511,
+       0.4684,
+       0.4919,
+       0.5129,
+       0.5254,
+       0.5343,
+       0.5405,
+       0.5456,
+       0.5539,
+       0.5596,
+       0.5618,
+       0.5622,
+       0.5622,
+       0.5622,
+       0.5622,
+       0.5622
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.6883,
+      "command": null,
+      "launch_speed": 1.5121,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0449,
+       0.0972,
+       0.1355,
+       0.1673,
+       0.1938,
+       0.2325,
+       0.2743,
+       0.31,
+       0.345,
+       0.3752,
+       0.4226,
+       0.4603,
+       0.49,
+       0.5114,
+       0.5285,
+       0.5432,
+       0.5607,
+       0.5835,
+       0.601,
+       0.619,
+       0.6389,
+       0.6567,
+       0.6667,
+       0.6733,
+       0.6779,
+       0.6814,
+       0.6857,
+       0.6877,
+       0.6883,
+       0.6883,
+       0.6883,
+       0.6883,
+       0.6883
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.5801,
+      "command": null,
+      "launch_speed": 1.386,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0463,
+       0.0866,
+       0.1301,
+       0.1708,
+       0.2072,
+       0.2425,
+       0.277,
+       0.31,
+       0.3391,
+       0.3686,
+       0.3953,
+       0.4199,
+       0.4532,
+       0.473,
+       0.4879,
+       0.5022,
+       0.5262,
+       0.5399,
+       0.5489,
+       0.5558,
+       0.5645,
+       0.5712,
+       0.5759,
+       0.5796,
+       0.5801,
+       0.5801,
+       0.5801,
+       0.5801,
+       0.5801,
+       0.5801
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.6831,
+      "command": null,
+      "launch_speed": 1.7975,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0543,
+       0.1093,
+       0.1497,
+       0.1827,
+       0.2106,
+       0.2368,
+       0.2752,
+       0.3294,
+       0.363,
+       0.3892,
+       0.4102,
+       0.443,
+       0.4813,
+       0.5086,
+       0.5292,
+       0.545,
+       0.5672,
+       0.5854,
+       0.6038,
+       0.6186,
+       0.6332,
+       0.6494,
+       0.6626,
+       0.6696,
+       0.6741,
+       0.6774,
+       0.6797,
+       0.683,
+       0.6831,
+       0.6831,
+       0.6831,
+       0.6831,
+       0.6831
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.6133,
+      "command": null,
+      "launch_speed": 2.0825,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0614,
+       0.1249,
+       0.1672,
+       0.1989,
+       0.2247,
+       0.2482,
+       0.2778,
+       0.3328,
+       0.3642,
+       0.3885,
+       0.4073,
+       0.4296,
+       0.4563,
+       0.4878,
+       0.5132,
+       0.53,
+       0.5412,
+       0.5506,
+       0.5644,
+       0.5798,
+       0.5887,
+       0.595,
+       0.6006,
+       0.6078,
+       0.612,
+       0.6132,
+       0.6133,
+       0.6133,
+       0.6133,
+       0.6133,
+       0.6133
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.6376,
+      "command": null,
+      "launch_speed": 1.5819,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0457,
+       0.1033,
+       0.1414,
+       0.1725,
+       0.1998,
+       0.241,
+       0.2824,
+       0.3271,
+       0.35,
+       0.3788,
+       0.4202,
+       0.451,
+       0.4736,
+       0.49,
+       0.5077,
+       0.5365,
+       0.557,
+       0.5717,
+       0.5821,
+       0.5915,
+       0.6048,
+       0.6146,
+       0.6221,
+       0.6284,
+       0.6345,
+       0.6374,
+       0.6376,
+       0.6375,
+       0.6376,
+       0.6376,
+       0.6376,
+       0.6376
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.3836,
+      "command": null,
+      "launch_speed": 0.9728,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0266,
+       0.0705,
+       0.0924,
+       0.1125,
+       0.1406,
+       0.1713,
+       0.1976,
+       0.2221,
+       0.2544,
+       0.2775,
+       0.2932,
+       0.306,
+       0.316,
+       0.3321,
+       0.3489,
+       0.3593,
+       0.3662,
+       0.3711,
+       0.3789,
+       0.3821,
+       0.3832,
+       0.3836,
+       0.3836,
+       0.3836,
+       0.3836,
+       0.3836
+      ],
+      "origin": "video",
+      "start": 0.0
+     }
+    ]
+   },
+   "video": {
+    "name": "bleach cleanser (video)",
+    "source": "video",
+    "notes": [],
+    "meta": {},
+    "sim": {
+     "object_mu": 0.8,
+     "table_mu": 0.8,
+     "object_density": 500.0,
+     "object_half_size": 0.025,
+     "actuator_gain": 1.0,
+     "restitution": 0.0,
+     "camera_dx": 0.0,
+     "camera_dz": 0.0,
+     "camera_pitch_deg": 0.0,
+     "light_intensity": 1.0,
+     "patch_y0": 1.0,
+     "patch_mu": 0.8,
+     "lens_k": 0.0
+    },
+    "pushes": [
+     {
+      "stop": 0.512,
+      "command": null,
+      "launch_speed": 1.3206,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0432,
+       0.0841,
+       0.1249,
+       0.1613,
+       0.1983,
+       0.2322,
+       0.2668,
+       0.3041,
+       0.3324,
+       0.3579,
+       0.3809,
+       0.3974,
+       0.4174,
+       0.4347,
+       0.4514,
+       0.4653,
+       0.4777,
+       0.4882,
+       0.4966,
+       0.5027,
+       0.5085,
+       0.5101,
+       0.5117,
+       0.5123,
+       0.5123,
+       0.512,
+       0.512,
+       0.512
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.8234,
+      "command": null,
+      "launch_speed": 1.9232,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0637,
+       0.1203,
+       0.1791,
+       0.2338,
+       0.2836,
+       0.3309,
+       0.3745,
+       0.4173,
+       0.458,
+       0.4926,
+       0.5307,
+       0.5619,
+       0.5908,
+       0.617,
+       0.642,
+       0.6641,
+       0.6896,
+       0.7099,
+       0.7282,
+       0.7478,
+       0.7681,
+       0.7834,
+       0.7957,
+       0.8072,
+       0.8125,
+       0.8185,
+       0.8226,
+       0.8232,
+       0.8237,
+       0.8234,
+       0.8234,
+       0.8234,
+       0.8234
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.2173,
+      "command": null,
+      "launch_speed": 1.7637,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0446,
+       0.1137,
+       0.1301,
+       0.1446,
+       0.1621,
+       0.173,
+       0.1861,
+       0.1957,
+       0.2043,
+       0.2101,
+       0.2139,
+       0.217,
+       0.2173,
+       0.2172,
+       0.2173,
+       0.2173,
+       0.2173
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.1175,
+      "command": null,
+      "launch_speed": 0.2675,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0184,
+       0.0192,
+       0.0193,
+       0.0168,
+       0.0514,
+       0.062,
+       0.0727,
+       0.0812,
+       0.0898,
+       0.1004,
+       0.1068,
+       0.1113,
+       0.1155,
+       0.1175,
+       0.1176,
+       0.1175,
+       0.1175,
+       0.1175,
+       0.1175
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.5439,
+      "command": null,
+      "launch_speed": 1.2926,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0417,
+       0.0833,
+       0.1204,
+       0.1569,
+       0.1918,
+       0.2246,
+       0.2551,
+       0.2594,
+       0.2855,
+       0.3084,
+       0.34,
+       0.3681,
+       0.3941,
+       0.4135,
+       0.4584,
+       0.4746,
+       0.489,
+       0.5029,
+       0.5205,
+       0.5299,
+       0.5374,
+       0.5402,
+       0.542,
+       0.5439,
+       0.5439,
+       0.5439,
+       0.5439,
+       0.5439
+      ],
+      "origin": "video",
+      "start": 0.0
+     }
+    ]
+   }
+  },
+  "cracker box": {
+   "log": {
+    "name": "cracker box (log)",
+    "source": "video",
+    "notes": [],
+    "meta": {},
+    "sim": {
+     "object_mu": 0.8,
+     "table_mu": 0.8,
+     "object_density": 500.0,
+     "object_half_size": 0.025,
+     "actuator_gain": 1.0,
+     "restitution": 0.0,
+     "camera_dx": 0.0,
+     "camera_dz": 0.0,
+     "camera_pitch_deg": 0.0,
+     "light_intensity": 1.0,
+     "patch_y0": 1.0,
+     "patch_mu": 0.8,
+     "lens_k": 0.0
+    },
+    "pushes": [
+     {
+      "stop": 0.4921,
+      "command": null,
+      "launch_speed": 1.7279,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0515,
+       0.1059,
+       0.1441,
+       0.1744,
+       0.2008,
+       0.2269,
+       0.2716,
+       0.301,
+       0.3257,
+       0.3588,
+       0.3807,
+       0.3967,
+       0.4098,
+       0.4287,
+       0.4444,
+       0.4553,
+       0.4628,
+       0.4716,
+       0.4825,
+       0.4883,
+       0.4907,
+       0.4916,
+       0.492,
+       0.492,
+       0.4921,
+       0.4921,
+       0.4921
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.6544,
+      "command": null,
+      "launch_speed": 1.9275,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0561,
+       0.1227,
+       0.1686,
+       0.2034,
+       0.234,
+       0.2776,
+       0.3208,
+       0.376,
+       0.4128,
+       0.4393,
+       0.4595,
+       0.4858,
+       0.5181,
+       0.5507,
+       0.5702,
+       0.5949,
+       0.609,
+       0.6186,
+       0.6264,
+       0.6329,
+       0.6399,
+       0.6456,
+       0.6496,
+       0.6516,
+       0.6526,
+       0.6532,
+       0.6544,
+       0.6544,
+       0.6544
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.3822,
+      "command": null,
+      "launch_speed": 1.6208,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0472,
+       0.0988,
+       0.1318,
+       0.1568,
+       0.1769,
+       0.199,
+       0.2311,
+       0.2549,
+       0.2776,
+       0.2973,
+       0.3258,
+       0.341,
+       0.3513,
+       0.3585,
+       0.3654,
+       0.373,
+       0.378,
+       0.3803,
+       0.3819,
+       0.3825,
+       0.3824,
+       0.3822,
+       0.3822,
+       0.3822
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.6014,
+      "command": null,
+      "launch_speed": 1.9422,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0606,
+       0.1142,
+       0.1628,
+       0.1992,
+       0.2279,
+       0.2557,
+       0.289,
+       0.3337,
+       0.3633,
+       0.4034,
+       0.444,
+       0.4772,
+       0.4986,
+       0.5142,
+       0.5266,
+       0.5379,
+       0.5483,
+       0.5633,
+       0.5785,
+       0.5865,
+       0.5912,
+       0.5948,
+       0.5988,
+       0.5998,
+       0.6004,
+       0.6008,
+       0.6014,
+       0.6014,
+       0.6014
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.6275,
+      "command": null,
+      "launch_speed": 1.6848,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0477,
+       0.113,
+       0.1584,
+       0.1922,
+       0.2205,
+       0.2787,
+       0.3222,
+       0.3541,
+       0.3792,
+       0.4104,
+       0.4585,
+       0.4984,
+       0.5213,
+       0.5378,
+       0.5513,
+       0.5629,
+       0.5758,
+       0.5903,
+       0.6054,
+       0.6137,
+       0.6186,
+       0.6234,
+       0.626,
+       0.627,
+       0.6273,
+       0.6274,
+       0.6275,
+       0.6275,
+       0.6275
+      ],
+      "origin": "video",
+      "start": 0.0
+     }
+    ]
+   },
+   "video": {
+    "name": "cracker box (video)",
+    "source": "video",
+    "notes": [],
+    "meta": {},
+    "sim": {
+     "object_mu": 0.8,
+     "table_mu": 0.8,
+     "object_density": 500.0,
+     "object_half_size": 0.025,
+     "actuator_gain": 1.0,
+     "restitution": 0.0,
+     "camera_dx": 0.0,
+     "camera_dz": 0.0,
+     "camera_pitch_deg": 0.0,
+     "light_intensity": 1.0,
+     "patch_y0": 1.0,
+     "patch_mu": 0.8,
+     "lens_k": 0.0
+    },
+    "pushes": [
+     {
+      "stop": 0.8194,
+      "command": null,
+      "launch_speed": 1.5372,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0461,
+       0.1017,
+       0.1554,
+       0.1767,
+       0.2284,
+       0.2741,
+       0.3227,
+       0.3683,
+       0.4117,
+       0.4576,
+       0.4934,
+       0.5293,
+       0.566,
+       0.5972,
+       0.6279,
+       0.6559,
+       0.6829,
+       0.7057,
+       0.726,
+       0.7442,
+       0.7618,
+       0.7814,
+       0.793,
+       0.802,
+       0.8083,
+       0.8143,
+       0.8175,
+       0.8194,
+       0.8191,
+       0.8196,
+       0.8194,
+       0.8194,
+       0.8194
+      ],
+      "origin": "video",
+      "start": 0.0
+     }
+    ]
+   }
+  },
+  "mug": {
+   "log": {
+    "name": "mug (log)",
+    "source": "video",
+    "notes": [],
+    "meta": {},
+    "sim": {
+     "object_mu": 0.8,
+     "table_mu": 0.8,
+     "object_density": 500.0,
+     "object_half_size": 0.025,
+     "actuator_gain": 1.0,
+     "restitution": 0.0,
+     "camera_dx": 0.0,
+     "camera_dz": 0.0,
+     "camera_pitch_deg": 0.0,
+     "light_intensity": 1.0,
+     "patch_y0": 1.0,
+     "patch_mu": 0.8,
+     "lens_k": 0.0
+    },
+    "pushes": [
+     {
+      "stop": 0.5268,
+      "command": null,
+      "launch_speed": 1.0574,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0327,
+       0.0733,
+       0.1042,
+       0.1295,
+       0.1717,
+       0.1997,
+       0.2214,
+       0.2364,
+       0.2781,
+       0.3084,
+       0.3301,
+       0.3464,
+       0.3709,
+       0.3977,
+       0.4151,
+       0.4282,
+       0.4387,
+       0.45,
+       0.4659,
+       0.4774,
+       0.489,
+       0.4987,
+       0.5063,
+       0.5132,
+       0.5177,
+       0.5229,
+       0.5251,
+       0.5261,
+       0.5267,
+       0.5267,
+       0.5268,
+       0.5268,
+       0.5268
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.6771,
+      "command": null,
+      "launch_speed": 1.346,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0444,
+       0.082,
+       0.1258,
+       0.1626,
+       0.189,
+       0.2268,
+       0.2564,
+       0.2901,
+       0.3313,
+       0.3721,
+       0.399,
+       0.419,
+       0.4363,
+       0.4518,
+       0.4772,
+       0.499,
+       0.5182,
+       0.5382,
+       0.5569,
+       0.5725,
+       0.5881,
+       0.6024,
+       0.6147,
+       0.627,
+       0.6381,
+       0.6467,
+       0.6585,
+       0.6649,
+       0.6689,
+       0.6714,
+       0.6737,
+       0.6758,
+       0.6766,
+       0.6771,
+       0.6771,
+       0.6771,
+       0.6771
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.587,
+      "command": null,
+      "launch_speed": 1.5833,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0464,
+       0.097,
+       0.1288,
+       0.1545,
+       0.1768,
+       0.1971,
+       0.2421,
+       0.2613,
+       0.2889,
+       0.3101,
+       0.3448,
+       0.3721,
+       0.3924,
+       0.4082,
+       0.4317,
+       0.449,
+       0.4781,
+       0.4966,
+       0.5094,
+       0.5197,
+       0.5283,
+       0.5456,
+       0.5571,
+       0.5645,
+       0.5697,
+       0.5754,
+       0.5813,
+       0.5843,
+       0.5865,
+       0.587,
+       0.587,
+       0.587,
+       0.587,
+       0.587
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.5349,
+      "command": null,
+      "launch_speed": 0.909,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0261,
+       0.0665,
+       0.0906,
+       0.1134,
+       0.1451,
+       0.1772,
+       0.2084,
+       0.2339,
+       0.2613,
+       0.2886,
+       0.3108,
+       0.3347,
+       0.3574,
+       0.3849,
+       0.4087,
+       0.4247,
+       0.4375,
+       0.4478,
+       0.4611,
+       0.4793,
+       0.493,
+       0.502,
+       0.5084,
+       0.5151,
+       0.5225,
+       0.528,
+       0.5315,
+       0.5346,
+       0.5349,
+       0.5349,
+       0.5349,
+       0.5349,
+       0.5349
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.573,
+      "command": null,
+      "launch_speed": 0.8886,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0266,
+       0.065,
+       0.0918,
+       0.1142,
+       0.1401,
+       0.1843,
+       0.2312,
+       0.2615,
+       0.2828,
+       0.3018,
+       0.3169,
+       0.331,
+       0.3528,
+       0.3751,
+       0.3947,
+       0.4127,
+       0.4381,
+       0.454,
+       0.473,
+       0.4874,
+       0.4982,
+       0.5067,
+       0.5131,
+       0.5271,
+       0.5346,
+       0.5398,
+       0.5468,
+       0.554,
+       0.557,
+       0.5606,
+       0.5638,
+       0.5664,
+       0.5685,
+       0.5708,
+       0.5722,
+       0.5727,
+       0.573,
+       0.573,
+       0.573
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.5722,
+      "command": null,
+      "launch_speed": 1.0435,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0301,
+       0.0722,
+       0.1025,
+       0.1271,
+       0.1503,
+       0.191,
+       0.2283,
+       0.254,
+       0.2743,
+       0.2974,
+       0.3242,
+       0.347,
+       0.382,
+       0.4034,
+       0.4198,
+       0.4325,
+       0.4527,
+       0.4683,
+       0.4845,
+       0.499,
+       0.5109,
+       0.5299,
+       0.5406,
+       0.548,
+       0.5532,
+       0.5573,
+       0.5631,
+       0.5669,
+       0.5697,
+       0.5716,
+       0.5722,
+       0.5722,
+       0.5722,
+       0.5722,
+       0.5722
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.642,
+      "command": null,
+      "launch_speed": 1.0709,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0374,
+       0.0712,
+       0.1025,
+       0.1457,
+       0.1785,
+       0.2143,
+       0.2609,
+       0.3008,
+       0.3287,
+       0.351,
+       0.3706,
+       0.3936,
+       0.4228,
+       0.4469,
+       0.4681,
+       0.4899,
+       0.5242,
+       0.5432,
+       0.5632,
+       0.5793,
+       0.5897,
+       0.5974,
+       0.6097,
+       0.6225,
+       0.6296,
+       0.6343,
+       0.6372,
+       0.6392,
+       0.6405,
+       0.6416,
+       0.642,
+       0.642,
+       0.642
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.6284,
+      "command": null,
+      "launch_speed": 1.7288,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0561,
+       0.0998,
+       0.1449,
+       0.1823,
+       0.2103,
+       0.2327,
+       0.2531,
+       0.2847,
+       0.3145,
+       0.343,
+       0.3889,
+       0.4218,
+       0.4443,
+       0.4613,
+       0.4748,
+       0.4878,
+       0.504,
+       0.5238,
+       0.5407,
+       0.5653,
+       0.5797,
+       0.5893,
+       0.5967,
+       0.603,
+       0.6102,
+       0.6195,
+       0.6257,
+       0.6277,
+       0.6284,
+       0.6284,
+       0.6284,
+       0.6284,
+       0.6284
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.5548,
+      "command": null,
+      "launch_speed": 1.1191,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0311,
+       0.0789,
+       0.1114,
+       0.1378,
+       0.1573,
+       0.2082,
+       0.2386,
+       0.2609,
+       0.2806,
+       0.3022,
+       0.3279,
+       0.3668,
+       0.3996,
+       0.4164,
+       0.4293,
+       0.4409,
+       0.4513,
+       0.4736,
+       0.4945,
+       0.5062,
+       0.5143,
+       0.5214,
+       0.5274,
+       0.5374,
+       0.5423,
+       0.5476,
+       0.5513,
+       0.5536,
+       0.5548,
+       0.5548,
+       0.5548,
+       0.5548,
+       0.5548
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.6575,
+      "command": null,
+      "launch_speed": 1.1906,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0344,
+       0.0802,
+       0.1134,
+       0.1386,
+       0.163,
+       0.2035,
+       0.2432,
+       0.2712,
+       0.2933,
+       0.3182,
+       0.3503,
+       0.375,
+       0.4027,
+       0.4279,
+       0.4502,
+       0.4736,
+       0.5031,
+       0.5305,
+       0.5475,
+       0.5599,
+       0.571,
+       0.5808,
+       0.598,
+       0.6101,
+       0.6188,
+       0.6281,
+       0.6368,
+       0.644,
+       0.6494,
+       0.6537,
+       0.6562,
+       0.6575,
+       0.6576,
+       0.6575,
+       0.6575,
+       0.6575
+      ],
+      "origin": "video",
+      "start": 0.0
+     }
+    ]
+   },
+   "video": {
+    "name": "mug (video)",
+    "source": "video",
+    "notes": [],
+    "meta": {},
+    "sim": {
+     "object_mu": 0.8,
+     "table_mu": 0.8,
+     "object_density": 500.0,
+     "object_half_size": 0.025,
+     "actuator_gain": 1.0,
+     "restitution": 0.0,
+     "camera_dx": 0.0,
+     "camera_dz": 0.0,
+     "camera_pitch_deg": 0.0,
+     "light_intensity": 1.0,
+     "patch_y0": 1.0,
+     "patch_mu": 0.8,
+     "lens_k": 0.0
+    },
+    "pushes": [
+     {
+      "stop": 0.9315,
+      "command": null,
+      "launch_speed": 1.5132,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0511,
+       0.0975,
+       0.145,
+       0.1947,
+       0.2418,
+       0.2827,
+       0.3263,
+       0.3683,
+       0.4028,
+       0.4373,
+       0.4736,
+       0.5105,
+       0.553,
+       0.5813,
+       0.6151,
+       0.633,
+       0.6665,
+       0.6933,
+       0.7158,
+       0.7367,
+       0.7585,
+       0.7807,
+       0.8053,
+       0.8173,
+       0.841,
+       0.8591,
+       0.8654,
+       0.8857,
+       0.898,
+       0.9083,
+       0.9169,
+       0.9152,
+       0.9195,
+       0.9252,
+       0.9329,
+       0.9307,
+       0.938,
+       0.9405,
+       0.9315,
+       0.9315,
+       0.9315,
+       0.9315
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.805,
+      "command": null,
+      "launch_speed": 1.1491,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0377,
+       0.0771,
+       0.1171,
+       0.1522,
+       0.1884,
+       0.232,
+       0.2622,
+       0.297,
+       0.3375,
+       0.3677,
+       0.4043,
+       0.4377,
+       0.4684,
+       0.4931,
+       0.5206,
+       0.5471,
+       0.5742,
+       0.5945,
+       0.6172,
+       0.6363,
+       0.6583,
+       0.6764,
+       0.6949,
+       0.7111,
+       0.7238,
+       0.7384,
+       0.7514,
+       0.7626,
+       0.774,
+       0.7826,
+       0.7894,
+       0.7943,
+       0.7981,
+       0.8011,
+       0.803,
+       0.805,
+       0.805,
+       0.805,
+       0.805,
+       0.805
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.3548,
+      "command": null,
+      "launch_speed": 0.9216,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0298,
+       0.0605,
+       0.0874,
+       0.1145,
+       0.1423,
+       0.1669,
+       0.1868,
+       0.2066,
+       0.2264,
+       0.2473,
+       0.2575,
+       0.275,
+       0.2886,
+       0.3022,
+       0.3156,
+       0.3267,
+       0.3327,
+       0.339,
+       0.3458,
+       0.3504,
+       0.3519,
+       0.3546,
+       0.3546,
+       0.3547,
+       0.3548,
+       0.3548,
+       0.3548
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.4329,
+      "command": null,
+      "launch_speed": 0.9329,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0303,
+       0.0619,
+       0.0891,
+       0.1188,
+       0.1462,
+       0.1735,
+       0.1976,
+       0.2217,
+       0.2426,
+       0.2671,
+       0.2876,
+       0.3056,
+       0.3236,
+       0.3379,
+       0.354,
+       0.3679,
+       0.3843,
+       0.3935,
+       0.4057,
+       0.412,
+       0.4206,
+       0.4261,
+       0.4268,
+       0.4293,
+       0.4337,
+       0.4324,
+       0.4335,
+       0.4329,
+       0.4329,
+       0.4329
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.5562,
+      "command": null,
+      "launch_speed": 1.0479,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0342,
+       0.0685,
+       0.1006,
+       0.1325,
+       0.163,
+       0.1934,
+       0.223,
+       0.2502,
+       0.2754,
+       0.303,
+       0.3263,
+       0.35,
+       0.3708,
+       0.3924,
+       0.4114,
+       0.4306,
+       0.4466,
+       0.464,
+       0.4779,
+       0.4916,
+       0.5036,
+       0.5154,
+       0.5235,
+       0.5332,
+       0.5394,
+       0.5454,
+       0.5494,
+       0.5538,
+       0.5542,
+       0.5561,
+       0.5562,
+       0.5562,
+       0.5562,
+       0.5562
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.6093,
+      "command": null,
+      "launch_speed": 1.2136,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0398,
+       0.0815,
+       0.1205,
+       0.1584,
+       0.2005,
+       0.2384,
+       0.2731,
+       0.3044,
+       0.3257,
+       0.3542,
+       0.3801,
+       0.4068,
+       0.4316,
+       0.4546,
+       0.4725,
+       0.4934,
+       0.5119,
+       0.5281,
+       0.5446,
+       0.5657,
+       0.5769,
+       0.5871,
+       0.5925,
+       0.5985,
+       0.6029,
+       0.6049,
+       0.6076,
+       0.6093,
+       0.6093,
+       0.6093,
+       0.6093,
+       0.6093
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.9128,
+      "command": null,
+      "launch_speed": 1.8305,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0597,
+       0.1111,
+       0.1672,
+       0.21,
+       0.2518,
+       0.2912,
+       0.3301,
+       0.37,
+       0.4051,
+       0.4394,
+       0.4751,
+       0.5089,
+       0.539,
+       0.5703,
+       0.5993,
+       0.6281,
+       0.6533,
+       0.6786,
+       0.7019,
+       0.7272,
+       0.7506,
+       0.7712,
+       0.7906,
+       0.8062,
+       0.8229,
+       0.8381,
+       0.8496,
+       0.864,
+       0.8758,
+       0.8822,
+       0.8914,
+       0.8976,
+       0.9015,
+       0.9037,
+       0.9081,
+       0.9097,
+       0.9125,
+       0.9128,
+       0.9123,
+       0.9128,
+       0.9128,
+       0.9128
+      ],
+      "origin": "video",
+      "start": 0.0
+     },
+     {
+      "stop": 0.7123,
+      "command": null,
+      "launch_speed": 1.0937,
+      "target": null,
+      "perceived": null,
+      "tipped": false,
+      "track": [
+       0.0,
+       0.0354,
+       0.072,
+       0.1071,
+       0.1385,
+       0.1717,
+       0.2054,
+       0.2405,
+       0.2727,
+       0.3059,
+       0.3362,
+       0.3665,
+       0.3964,
+       0.4229,
+       0.4508,
+       0.4747,
+       0.4986,
+       0.5225,
+       0.5444,
+       0.5641,
+       0.5841,
+       0.6016,
+       0.6176,
+       0.6332,
+       0.6471,
+       0.6591,
+       0.671,
+       0.681,
+       0.689,
+       0.6963,
+       0.7024,
+       0.7067,
+       0.7084,
+       0.7103,
+       0.7123,
+       0.7123,
+       0.7123,
+       0.7123,
+       0.7123
+      ],
+      "origin": "video",
+      "start": 0.0
+     }
+    ]
+   }
+  }
+ },
+ "reliability_evaluation": {
+  "rows": [
+   {
+    "object": "pitcher",
+    "path": "log",
+    "abs_mu_error": 0.0038,
+    "over_0_05": false,
+    "flagged": true,
+    "level": "limited",
+    "interval_available": true,
+    "covered": true
+   },
+   {
+    "object": "pitcher",
+    "path": "video",
+    "abs_mu_error": 0.009,
+    "over_0_05": false,
+    "flagged": true,
+    "level": "limited",
+    "interval_available": true,
+    "covered": true
+   },
+   {
+    "object": "mustard bottle",
+    "path": "log",
+    "abs_mu_error": 0.0026,
+    "over_0_05": false,
+    "flagged": true,
+    "level": "limited",
+    "interval_available": true,
+    "covered": true
+   },
+   {
+    "object": "mustard bottle",
+    "path": "video",
+    "abs_mu_error": 0.0048,
+    "over_0_05": false,
+    "flagged": true,
+    "level": "limited",
+    "interval_available": true,
+    "covered": false
+   },
+   {
+    "object": "bleach cleanser",
+    "path": "log",
+    "abs_mu_error": 0.0105,
+    "over_0_05": false,
+    "flagged": true,
+    "level": "limited",
+    "interval_available": true,
+    "covered": false
+   },
+   {
+    "object": "bleach cleanser",
+    "path": "video",
+    "abs_mu_error": 0.0124,
+    "over_0_05": false,
+    "flagged": true,
+    "level": "limited",
+    "interval_available": true,
+    "covered": true
+   },
+   {
+    "object": "cracker box",
+    "path": "log",
+    "abs_mu_error": 0.0721,
+    "over_0_05": true,
+    "flagged": true,
+    "level": "limited",
+    "interval_available": true,
+    "covered": false
+   },
+   {
+    "object": "cracker box",
+    "path": "video",
+    "abs_mu_error": 0.1067,
+    "over_0_05": true,
+    "flagged": true,
+    "level": "unreliable",
+    "interval_available": false,
+    "covered": null
+   },
+   {
+    "object": "mug",
+    "path": "log",
+    "abs_mu_error": 0.005,
+    "over_0_05": false,
+    "flagged": true,
+    "level": "limited",
+    "interval_available": true,
+    "covered": true
+   },
+   {
+    "object": "mug",
+    "path": "video",
+    "abs_mu_error": 0.0105,
+    "over_0_05": false,
+    "flagged": true,
+    "level": "limited",
+    "interval_available": true,
+    "covered": false
+   }
+  ],
+  "unflagged_coverage": {
+   "cases": 0,
+   "covered": 0
+  },
+  "note": "Flags do not identify causation; accurate cases can also be flagged; shared bias remains undetectable."
+ },
+ "comparison_exclusions": {
+  "log": 0,
+  "video": 1
+ },
+ "recompute_protocol": "refit recorded sessions; original ingestion/track exclusions retained",
+ "data_license": {
+  "name": "CC BY-SA 4.0",
+  "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "source": "https://keeper.mpdl.mpg.de/d/5ec213b655b44e40a382/",
+  "attribution": "EV-RealPhys, Kandukuri, Strecke, Stueckler (MPI); derived numerical measurements"
+ }
 }

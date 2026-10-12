@@ -15,7 +15,7 @@ Two ways in, both ending in Tether's own fitter (offline structure search + boot
   log     the motion-capture centre of mass, as a robot would log it.
 
 Each push is cut at release (peak speed, the hand lets go) and kept to rest; pushes of one object form one session.
-Also reported: the paper's own estimator on the same real sequences (mean error 0.082, median 0.025).
+The paper's estimator is a different-protocol reference (RGB-D online tracking and filtering), not a baseline.
 
 Run: .venv/bin/python -m tether.eval.real_benchmark --download   (1.7 GB to runs/real_data/ev-realphys, git-ignored)
      .venv/bin/python -m tether.eval.real_benchmark              -> runs/proof/real_benchmark.json
@@ -39,10 +39,118 @@ OUT = ROOT / "runs" / "proof" / "real_benchmark.json"
 URL = "https://keeper.mpdl.mpg.de/d/5ec213b655b44e40a382/files/?p=/ev-realphys.tar.gz&dl=1"
 FPS = 30.0
 GT = {"2": ("cracker box", 0.280), "5": ("mustard bottle", 0.159), "11": ("pitcher", 0.220), "12": ("bleach cleanser", 0.169),
-      # not in the paper's table: the dataset's physics_properties.json stores 5x the tilt-test value for the four above
-      # (1.4, 0.794, 1.102, 0.846) and 0.55 for the mug, i.e. 0.110 on the same scale
+      # All five independently measured combined values are in the paper's Table 5 (v3, May 2024).
       "14": ("mug", 0.110)}
 PAPER = {"mean_abs_error": 0.082, "median_abs_error": 0.0246}
+
+
+def baselines(pushes: list) -> dict:
+    """Same retained pushes as Tether; report missing/nonphysical quadratic fits rather than silently filling them."""
+    values = [constant_decel_mu(p.track, p.stop) for p in pushes]
+    valid = [v for v in values if v is not None and math.isfinite(v) and v > 0]
+    return {"pushes": len(pushes), "usable_quadratic_fits": len(valid),
+            "median": None if not valid else round(float(np.median(valid)), 4),
+            "mean": None if not valid else round(float(np.mean(valid)), 4)}
+
+
+def matched_pushes(pushes: list) -> list:
+    """Common comparison eligibility, independent of friction truth and model predictions."""
+    out=[]
+    for p in pushes:
+        value=constant_decel_mu(p.track,p.stop)
+        if value is not None and math.isfinite(value) and value>0:
+            out.append(p)
+    return out
+
+
+def comparison(pushes: list, name='matched') -> dict:
+    from tether.studio.fit import calibrate
+    from tether.studio.session import Session
+    out=baselines(pushes)
+    common=matched_pushes(pushes)
+    out['tether_matched_mu']=round(calibrate(Session(name,'video',common),n_boot=0).model['mu_eff'],4) if common else None
+    out['shared_training_pushes']=len(common)
+    out['shared_excluded_pushes']=len(pushes)-len(common)
+    return out
+
+
+def enrich(out: dict) -> dict:
+    """All derived summaries come from the same object results on full and matched inputs."""
+    objects=out['objects']
+    out['data_license']={'name':'CC BY-SA 4.0','url':'https://creativecommons.org/licenses/by-sa/4.0/',
+                         'source':'https://keeper.mpdl.mpg.de/d/5ec213b655b44e40a382/',
+                         'attribution':'EV-RealPhys, Kandukuri, Strecke, Stueckler (MPI); derived numerical measurements'}
+    out['held_out']={o['object']:o.get('held_out',{}) for o in objects}
+    out['comparison_exclusions']={way:sum(o.get('baselines',{}).get(way,{}).get('shared_excluded_pushes',0) for o in objects)
+                                  for way in ('log','video')}
+    rows=[{'object':o['object'],'path':way,'abs_mu_error':abs(o[way]['error']),
+           'over_0_05':abs(o[way]['error'])>0.05,'flagged':o[way]['reliability']['level']!='ok',
+           'level':o[way]['reliability']['level'],'interval_available':o[way]['interval'] is not None,
+           'covered':o[way]['inside_interval']} for o in objects for way in ('log','video') if way in o]
+    unflagged=[r for r in rows if not r['flagged'] and r['interval_available']]
+    out['reliability_evaluation']={'rows':rows,'unflagged_coverage':{'cases':len(unflagged),'covered':sum(bool(r['covered']) for r in unflagged)},
+                                 'note':'Flags do not identify causation; accurate cases can also be flagged; shared bias remains undetectable.'}
+    out['inputs']['measurement_error_model']='Both hand-launched benchmark paths use the default video prior: 1% shared scale, 1.5% shared speed, 3 mm stop jitter; not independently measured sensor noise.'
+    return out
+
+
+def refit_saved(path: Path = OUT) -> dict:
+    """Recompute on the recorded ingestion, without decoding/tracking the images again."""
+    from tether.studio.session import Session
+    out=json.loads(path.read_text())
+    for o in out['objects']:
+        for way,raw in out['sessions'][o['object']].items():
+            session=Session.from_json(raw)
+            fitted=calibrate_pushes(session.name,session.pushes)
+            fitted['error']=round(fitted['mu']-o['mu_tilt_test'],4)
+            iv=fitted['interval'];fitted['inside_interval']=None if iv is None else iv[0]<=o['mu_tilt_test']<=iv[1]
+            o[way]=fitted
+            o['baselines'][way]=comparison(session.pushes,session.name)
+            o['held_out'][way]=held_out(session.pushes,session.name)
+    for way in ('log','video'):
+        for method,key in (('median','median'),('mean','mean'),('tether','tether_matched_mu')):
+            errs=[abs(o['baselines'][way][key]-o['mu_tilt_test']) for o in out['objects']
+                  if way in o['baselines'] and o['baselines'][way][key] is not None]
+            out['baselines'][way][method]={'objects':len(errs),'mean_abs_error':round(float(np.mean(errs)),4) if errs else None}
+    out['inputs']['baseline_protocol']='same positive-quadratic-fit training pool for Tether and baselines; full Tether estimates separately; held-out push removed before common training eligibility'
+    out['recompute_protocol']='refit recorded sessions; original ingestion/track exclusions retained'
+    enrich(out)
+    path.write_text(json.dumps(out,indent=1)+'\n')
+    return out
+
+
+def held_out(pushes: list, name: str = "held-out") -> dict:
+    """Refit structure AND numbers without the scored push; only its measured launch speed is used to predict."""
+    from tether.sim.push_task import slide_distance
+    from tether.studio.fit import calibrate
+    from tether.studio.session import Session
+
+    if len(pushes) < 2:
+        return {"status": "not evaluable", "reason": "single-push object", "rows": []}
+    rows = []
+    for i, p in enumerate(pushes):
+        train = matched_pushes(pushes[:i] + pushes[i + 1:])
+        if not train:
+            rows.append({'held_out_index':i,'training_pushes':0,'measured_m':p.stop,'launch_mps':p.launch_speed,
+                         'predicted_m':{k:None for k in ('tether','median','mean')},
+                         'abs_error_cm':{k:None for k in ('tether','median','mean')},'reason':'no common eligible training push'})
+            continue
+        cal = calibrate(Session(name, "video", train), n_boot=0)
+        params = cal.params.with_(actuator_gain=1.0)
+        predicted = {"tether": slide_distance(p.launch_speed, params, p.start)}
+        bs = baselines(train)
+        for method in ("median", "mean"):
+            mu = bs[method]
+            predicted[method] = None if mu is None else p.launch_speed ** 2 / (2 * 9.81 * mu)
+        rows.append({"held_out_index": i, "training_pushes": len(train), "measured_m": p.stop,
+                     "launch_mps": p.launch_speed, "predicted_m": predicted,
+                     "abs_error_cm": {k: None if v is None else round(abs(v - p.stop) * 100, 4) for k, v in predicted.items()}})
+    summary = {}
+    for method in ("tether", "median", "mean"):
+        errs = [r["abs_error_cm"][method] for r in rows if r["abs_error_cm"][method] is not None]
+        summary[method] = {"pushes": len(errs), "median_cm": round(float(np.median(errs)), 4) if errs else None,
+                           "p90_cm": round(float(np.percentile(errs, 90)), 4) if errs else None}
+    return {"status": "evaluated", "protocol": "leave-one-push-out; refit structure; measured held-out launch speed", "summary": summary, "rows": rows}
 
 
 def sequences() -> list[Path]:
@@ -135,12 +243,14 @@ def calibrate_pushes(name: str, pushes: list) -> dict:
 
     s = Session(name, "video", pushes)
     cal = calibrate(s)
-    lo, hi = cal.intervals.get("mu_eff", (cal.model["mu_eff"],) * 2)
-    return {"mu": round(cal.model["mu_eff"], 4), "interval": [round(lo, 4), round(hi, 4)], "structure": cal.structure,
+    iv = cal.intervals.get("mu_eff")
+    return {"mu": round(cal.model["mu_eff"], 4), "interval": None if iv is None else [round(x,4) for x in iv], "structure": cal.structure,
+            'reliability': cal.reliability,
             "stop_rms_m": cal.residuals["stop_residual_rms_m"]}
 
 
 def main(with_video: bool = True) -> dict:
+    from tether.studio.session import Session
     seqs = sequences()
     if not seqs:
         sys.exit("EV-RealPhys not found: run with --download first")
@@ -185,8 +295,10 @@ def main(with_video: bool = True) -> dict:
             if ps[way]:
                 r = calibrate_pushes(f"{name} ({way})", ps[way])
                 r["error"] = round(r["mu"] - mu_true, 4)
-                r["inside_interval"] = r["interval"][0] <= mu_true <= r["interval"][1]
+                r["inside_interval"] = None if r['interval'] is None else r["interval"][0] <= mu_true <= r["interval"][1]
                 o[way] = r
+                o.setdefault("baselines", {})[way] = comparison(ps[way],f'{name} ({way}, matched)')
+                o.setdefault("held_out", {})[way] = held_out(ps[way], f"{name} ({way})")
         objects.append(o)
     summary = {}
     for way in ("log", "video"):
@@ -194,10 +306,40 @@ def main(with_video: bool = True) -> dict:
         if errs:
             summary[way] = {"objects": len(errs), "mean_abs_error": round(float(np.mean(errs)), 4),
                             "median_abs_error": round(float(np.median(errs)), 4), "within_0_05": int(sum(e <= 0.05 for e in errs))}
+    baseline_summary = {}
+    for way in ("log", "video"):
+        baseline_summary[way] = {}
+        for method,key in (("median","median"),("mean","mean"),("tether","tether_matched_mu")):
+            errs = [abs(o["baselines"][way][key] - o["mu_tilt_test"]) for o in objects
+                    if way in o.get("baselines", {}) and o["baselines"][way][key] is not None]
+            baseline_summary[way][method] = {"objects": len(errs), "mean_abs_error": round(float(np.mean(errs)), 4) if errs else None}
+    excluded = {}
+    for way in ("log", "video"):
+        if way == "video" and not with_video:
+            excluded[way] = {"status": "not run"}
+            continue
+        reasons = {}
+        for row in rows:
+            reason = row.get(way, "ok")
+            if reason != "ok":
+                reasons[reason] = reasons.get(reason, 0) + 1
+        excluded[way] = {"total": len(rows), "retained": sum(o["pushes"][way] for o in objects),
+                         "excluded": sum(reasons.values()), "by_reason": reasons}
     out = {"source": "EV-RealPhys (Kandukuri et al. 2023, MPI, CC BY-SA 4.0), real split", "fps": FPS,
            "ground_truth": "tilted-table slides, measured separately (paper Table 5)", "paper_estimator_on_real": PAPER,
-           "summary": summary, "objects": objects, "rows": rows}
+           "paper_reference_protocol": "different protocol: RGB-D online tracking and filtering; not a same-input baseline",
+           "inputs": {"splits": ["val_sliding", "test_sliding"], "video_camera": "dataset camera calibration",
+                      "video_tracking_start": "mocap rest position projected into the image (replaces user click)",
+                      "video_object_height": "median mocap centre height of last five frames",
+                      "log": "mocap centre positions, segmented with the same release/launch estimator as video",
+                      "baseline_protocol": "same positive-quadratic-fit training pool for Tether and baselines; full Tether estimates also shown separately; held-out push excluded before common training eligibility"},
+           "baselines": baseline_summary, "held_out": {o["object"]: o.get("held_out", {}) for o in objects},
+           "excluded": excluded, "summary": summary, "objects": objects, "rows": rows,
+           "sessions": {GT[oid][0]: {way: Session(
+                       f'{GT[oid][0]} ({way})', 'video', ps[way]).to_json() for way in ('log', 'video') if ps[way]}
+                        for oid, ps in by_obj.items()}}
     OUT.parent.mkdir(parents=True, exist_ok=True)
+    enrich(out)
     OUT.write_text(json.dumps(out, indent=1, default=str))
     print(json.dumps({k: out[k] for k in ("summary", "objects")}, indent=1, default=str))
     return out
@@ -217,8 +359,12 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--download", action="store_true")
     ap.add_argument("--no-video", action="store_true")
+    ap.add_argument('--from-recorded-sessions',action='store_true',help='refit the recorded public input tracks, no re-tracking')
     a = ap.parse_args()
-    if a.download:
-        download()
-    main(with_video=not a.no_video)
+    if a.from_recorded_sessions:
+        refit_saved()
+    else:
+        if a.download:
+            download()
+        main(with_video=not a.no_video)
     _ = math

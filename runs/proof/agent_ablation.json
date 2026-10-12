@@ -1,0 +1,1035 @@
+{
+  "protocol": "last 20% held out before ANY agent call; one shared agent call; same fitter guards in all conditions",
+  "precommitted_interpretation": "No accuracy advantage if agent+cross-check is indistinguishable from offline within uncertainty; guidance and experiment choice only.",
+  "live": false,
+  "cases": 35,
+  "missing_fixtures": 26,
+  "measured_overrules": 0,
+  "rows": [
+    {
+      "case": "mujoco-00",
+      "origin": "MuJoCo",
+      "training_pushes": 15,
+      "evaluation_pushes": 3,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 2.563074564025264,
+          "stop_p90_cm": 3.375278684063926,
+          "structure_correct": true,
+          "seconds": 1.908903666999322,
+          "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 2.563074564025264,
+          "stop_p90_cm": 3.375278684063926,
+          "structure_correct": false,
+          "agent_seconds": 0.3792336670003351,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 2.563074564025264,
+          "stop_p90_cm": 3.375278684063926,
+          "structure_correct": false,
+          "agent_seconds": 0.3792336670003351,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 3.14,
+            "search_misfit": 3.14,
+            "search_structure": [
+              "mu_eff",
+              "actuator_gain",
+              "camera_dx",
+              "camera_pitch_deg",
+              "patch_y0",
+              "patch_mu"
+            ],
+            "unexplained": [
+              "stops not explained (> 1 cm rms): the structure is missing an effect"
+            ],
+            "adopted": "agent"
+          }
+        }
+      },
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 8,
+        "prompt_tokens": 31981,
+        "completion_tokens": 2186
+      },
+      "original_live_agent_seconds": null,
+      "cost_usd": null,
+      "cost_note": "offline replay; no live-cost claim",
+      "overruled": false
+    },
+    {
+      "case": "mujoco-01",
+      "origin": "MuJoCo",
+      "training_pushes": 15,
+      "evaluation_pushes": 3,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 2.333259223169426,
+          "stop_p90_cm": 4.224751298723866,
+          "structure_correct": true,
+          "seconds": 1.546618791999208,
+          "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 2.333259223169426,
+          "stop_p90_cm": 4.224751298723866,
+          "structure_correct": false,
+          "agent_seconds": 1.514709624999341,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 2.333259223169426,
+          "stop_p90_cm": 4.224751298723866,
+          "structure_correct": false,
+          "agent_seconds": 1.514709624999341,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 3.71,
+            "search_misfit": 3.71,
+            "search_structure": [
+              "mu_eff",
+              "actuator_gain",
+              "camera_dx",
+              "camera_pitch_deg",
+              "patch_y0",
+              "patch_mu"
+            ],
+            "unexplained": [
+              "stops not explained (> 1 cm rms): the structure is missing an effect"
+            ],
+            "adopted": "agent"
+          }
+        }
+      },
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 7,
+        "prompt_tokens": 28901,
+        "completion_tokens": 1403
+      },
+      "original_live_agent_seconds": null,
+      "cost_usd": null,
+      "cost_note": "offline replay; no live-cost claim",
+      "overruled": false
+    },
+    {
+      "case": "mujoco-02",
+      "origin": "MuJoCo",
+      "training_pushes": 15,
+      "evaluation_pushes": 3,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 1.3147404961359022,
+          "stop_p90_cm": 3.0356877672832487,
+          "structure_correct": true,
+          "seconds": 1.3286118329997407,
+          "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 1.3147404961359022,
+          "stop_p90_cm": 3.0356877672832487,
+          "structure_correct": false,
+          "agent_seconds": 0.40861608300019725,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 1.3147404961359022,
+          "stop_p90_cm": 3.0356877672832487,
+          "structure_correct": false,
+          "agent_seconds": 0.40861608300019725,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 1.95,
+            "search_misfit": 1.95,
+            "search_structure": [
+              "mu_eff",
+              "actuator_gain",
+              "camera_dx",
+              "camera_pitch_deg",
+              "patch_y0",
+              "patch_mu"
+            ],
+            "unexplained": [
+              "stops not explained (> 1 cm rms): the structure is missing an effect",
+              "perceived target distances not explained: try camera_pitch_deg (error grows with range) or lens_k"
+            ],
+            "adopted": "agent"
+          }
+        }
+      },
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 8,
+        "prompt_tokens": 29727,
+        "completion_tokens": 2039
+      },
+      "original_live_agent_seconds": null,
+      "cost_usd": null,
+      "cost_note": "offline replay; no live-cost claim",
+      "overruled": false
+    },
+    {
+      "case": "mujoco-03",
+      "origin": "MuJoCo",
+      "training_pushes": 15,
+      "evaluation_pushes": 3,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 0.9508295314236193,
+          "stop_p90_cm": 2.7716640794266247,
+          "structure_correct": true,
+          "seconds": 1.7036934170000677,
+          "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 0.9508295314236193,
+          "stop_p90_cm": 2.7716640794266247,
+          "structure_correct": false,
+          "agent_seconds": 0.2376737080003295,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 0.9508295314236193,
+          "stop_p90_cm": 2.7716640794266247,
+          "structure_correct": false,
+          "agent_seconds": 0.2376737080003295,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 0.75,
+            "search_misfit": 0.75,
+            "search_structure": [
+              "mu_eff",
+              "actuator_gain",
+              "camera_dx",
+              "camera_pitch_deg",
+              "patch_y0",
+              "patch_mu"
+            ],
+            "unexplained": [],
+            "adopted": "agent"
+          }
+        }
+      },
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 5,
+        "prompt_tokens": 16487,
+        "completion_tokens": 699
+      },
+      "original_live_agent_seconds": null,
+      "cost_usd": null,
+      "cost_note": "offline replay; no live-cost claim",
+      "overruled": false
+    },
+    {
+      "case": "mujoco-04",
+      "origin": "MuJoCo",
+      "training_pushes": 15,
+      "evaluation_pushes": 3,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 1.5409803896377972,
+          "stop_p90_cm": 1.9098274807314173,
+          "structure_correct": true,
+          "seconds": 1.457560249999915,
+          "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 1.2050425730687486,
+          "stop_p90_cm": 2.0485871436707903,
+          "structure_correct": false,
+          "agent_seconds": 0.7885187499996391,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 1.2050425730687486,
+          "stop_p90_cm": 2.0485871436707903,
+          "structure_correct": false,
+          "agent_seconds": 0.7885187499996391,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 1.29,
+            "search_misfit": 1.35,
+            "search_structure": [
+              "mu_eff",
+              "actuator_gain",
+              "camera_dx",
+              "camera_pitch_deg",
+              "patch_y0",
+              "patch_mu"
+            ],
+            "unexplained": [
+              "stops not explained (> 1 cm rms): the structure is missing an effect"
+            ],
+            "adopted": "agent"
+          }
+        }
+      },
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 7,
+        "prompt_tokens": 24530,
+        "completion_tokens": 2431
+      },
+      "original_live_agent_seconds": null,
+      "cost_usd": null,
+      "cost_note": "offline replay; no live-cost claim",
+      "overruled": false
+    },
+    {
+      "case": "mujoco-05",
+      "origin": "MuJoCo",
+      "training_pushes": 15,
+      "evaluation_pushes": 3,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 2.1122902420937173,
+          "stop_p90_cm": 2.307417352711596,
+          "structure_correct": true,
+          "seconds": 1.732862458999989,
+          "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 2.1122902420937173,
+          "stop_p90_cm": 2.307417352711596,
+          "structure_correct": false,
+          "agent_seconds": 1.1109487089997856,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 2.1122902420937173,
+          "stop_p90_cm": 2.307417352711596,
+          "structure_correct": false,
+          "agent_seconds": 1.1109487089997856,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 2.12,
+            "search_misfit": 2.12,
+            "search_structure": [
+              "mu_eff",
+              "actuator_gain",
+              "camera_dx",
+              "camera_pitch_deg",
+              "patch_y0",
+              "patch_mu"
+            ],
+            "unexplained": [
+              "stops not explained (> 1 cm rms): the structure is missing an effect"
+            ],
+            "adopted": "agent"
+          }
+        }
+      },
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 6,
+        "prompt_tokens": 22625,
+        "completion_tokens": 1874
+      },
+      "original_live_agent_seconds": null,
+      "cost_usd": null,
+      "cost_note": "offline replay; no live-cost claim",
+      "overruled": false
+    },
+    {
+      "case": "mujoco-06",
+      "origin": "MuJoCo",
+      "training_pushes": 15,
+      "evaluation_pushes": 3,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 0.8828612908119204,
+          "stop_p90_cm": 1.9911434870324562,
+          "structure_correct": true,
+          "seconds": 2.5205179579998003,
+          "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 0.8828612908119204,
+          "stop_p90_cm": 1.9911434870324562,
+          "structure_correct": false,
+          "agent_seconds": 0.16497462499955873,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 0.8828612908119204,
+          "stop_p90_cm": 1.9911434870324562,
+          "structure_correct": false,
+          "agent_seconds": 0.16497462499955873,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 2.24,
+            "search_misfit": 2.24,
+            "search_structure": [
+              "mu_eff",
+              "actuator_gain",
+              "camera_dx",
+              "camera_pitch_deg",
+              "patch_y0",
+              "patch_mu"
+            ],
+            "unexplained": [
+              "stops not explained (> 1 cm rms): the structure is missing an effect"
+            ],
+            "adopted": "agent"
+          }
+        }
+      },
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 7,
+        "prompt_tokens": 30354,
+        "completion_tokens": 2551
+      },
+      "original_live_agent_seconds": null,
+      "cost_usd": null,
+      "cost_note": "offline replay; no live-cost claim",
+      "overruled": false
+    },
+    {
+      "case": "mujoco-07",
+      "origin": "MuJoCo",
+      "training_pushes": 15,
+      "evaluation_pushes": 3,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 2.4538516395761043,
+          "stop_p90_cm": 3.2531973113728005,
+          "structure_correct": true,
+          "seconds": 1.6564159170002313,
+          "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 2.4538516395761043,
+          "stop_p90_cm": 3.2531973113728005,
+          "structure_correct": false,
+          "agent_seconds": 0.36257287500029634,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 2.4538516395761043,
+          "stop_p90_cm": 3.2531973113728005,
+          "structure_correct": false,
+          "agent_seconds": 0.36257287500029634,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 2.69,
+            "search_misfit": 2.69,
+            "search_structure": [
+              "mu_eff",
+              "actuator_gain",
+              "camera_dx",
+              "camera_pitch_deg",
+              "patch_y0",
+              "patch_mu"
+            ],
+            "unexplained": [
+              "stops not explained (> 1 cm rms): the structure is missing an effect",
+              "launch speeds disagree with the model: the stops may fit only by trading friction against actuator_gain (stops depend on gain^2/mu); free actuator_gain"
+            ],
+            "adopted": "agent"
+          }
+        }
+      },
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 8,
+        "prompt_tokens": 31997,
+        "completion_tokens": 1992
+      },
+      "original_live_agent_seconds": null,
+      "cost_usd": null,
+      "cost_note": "offline replay; no live-cost claim",
+      "overruled": false
+    },
+    {
+      "case": "mujoco-08",
+      "origin": "MuJoCo",
+      "training_pushes": 15,
+      "evaluation_pushes": 3,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 2.2112451040574355,
+          "stop_p90_cm": 3.1488042534431626,
+          "structure_correct": true,
+          "seconds": 2.2606837500006804,
+          "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 2.2112451040574355,
+          "stop_p90_cm": 3.1488042534431626,
+          "structure_correct": false,
+          "agent_seconds": 0.20276716599983047,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 2.2112451040574355,
+          "stop_p90_cm": 3.1488042534431626,
+          "structure_correct": false,
+          "agent_seconds": 0.20276716599983047,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 1.92,
+            "search_misfit": 1.92,
+            "search_structure": [
+              "mu_eff",
+              "actuator_gain",
+              "camera_dx",
+              "camera_pitch_deg",
+              "patch_y0",
+              "patch_mu"
+            ],
+            "unexplained": [
+              "stops not explained (> 1 cm rms): the structure is missing an effect"
+            ],
+            "adopted": "agent"
+          }
+        }
+      },
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 7,
+        "prompt_tokens": 30165,
+        "completion_tokens": 2415
+      },
+      "original_live_agent_seconds": null,
+      "cost_usd": null,
+      "cost_note": "offline replay; no live-cost claim",
+      "overruled": false
+    },
+    {
+      "case": "mujoco-09",
+      "origin": "MuJoCo",
+      "training_pushes": 15,
+      "evaluation_pushes": 3,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 1.287823266952226,
+          "stop_p90_cm": 2.339081115255035,
+          "structure_correct": true,
+          "seconds": 1.741388082999947,
+          "calls": 0
+        }
+      },
+      "agent_status": "not evaluable: partial fixture at approved credit limit"
+    },
+    {
+      "case": "mujoco-10",
+      "origin": "MuJoCo",
+      "training_pushes": 15,
+      "evaluation_pushes": 3,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 1.6746014831716005,
+          "stop_p90_cm": 1.9911308161988872,
+          "structure_correct": true,
+          "seconds": 2.430791166000745,
+          "calls": 0
+        }
+      },
+      "agent_status": "not evaluable: partial fixture at approved credit limit"
+    },
+    {
+      "case": "mujoco-11",
+      "origin": "MuJoCo",
+      "training_pushes": 15,
+      "evaluation_pushes": 3,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 3.308368772128861,
+          "stop_p90_cm": 9.606127031943844,
+          "structure_correct": true,
+          "seconds": 1.5336002499998358,
+          "calls": 0
+        }
+      },
+      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+    },
+    {
+      "case": "mujoco-12",
+      "origin": "MuJoCo",
+      "training_pushes": 15,
+      "evaluation_pushes": 3,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 1.1294694354714363,
+          "stop_p90_cm": 7.475333617129085,
+          "structure_correct": true,
+          "seconds": 1.655573416000152,
+          "calls": 0
+        }
+      },
+      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+    },
+    {
+      "case": "mujoco-13",
+      "origin": "MuJoCo",
+      "training_pushes": 15,
+      "evaluation_pushes": 3,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 0.27189881053291676,
+          "stop_p90_cm": 1.0844438349548435,
+          "structure_correct": true,
+          "seconds": 1.8203603330002807,
+          "calls": 0
+        }
+      },
+      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+    },
+    {
+      "case": "mujoco-14",
+      "origin": "MuJoCo",
+      "training_pushes": 15,
+      "evaluation_pushes": 3,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 1.3497328096242267,
+          "stop_p90_cm": 2.6343795668822256,
+          "structure_correct": true,
+          "seconds": 1.4425214579996464,
+          "calls": 0
+        }
+      },
+      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+    },
+    {
+      "case": "mujoco-15",
+      "origin": "MuJoCo",
+      "training_pushes": 15,
+      "evaluation_pushes": 3,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 1.7493703465999655,
+          "stop_p90_cm": 2.9124917002052086,
+          "structure_correct": true,
+          "seconds": 2.2595248329998867,
+          "calls": 0
+        }
+      },
+      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+    },
+    {
+      "case": "mujoco-16",
+      "origin": "MuJoCo",
+      "training_pushes": 15,
+      "evaluation_pushes": 3,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 1.7481457648059862,
+          "stop_p90_cm": 2.7589699138926504,
+          "structure_correct": true,
+          "seconds": 2.137852582999585,
+          "calls": 0
+        }
+      },
+      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+    },
+    {
+      "case": "mujoco-17",
+      "origin": "MuJoCo",
+      "training_pushes": 15,
+      "evaluation_pushes": 3,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 2.026085910864517,
+          "stop_p90_cm": 4.007957882826168,
+          "structure_correct": true,
+          "seconds": 1.9329590839997763,
+          "calls": 0
+        }
+      },
+      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+    },
+    {
+      "case": "mujoco-18",
+      "origin": "MuJoCo",
+      "training_pushes": 15,
+      "evaluation_pushes": 3,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 0.16941152944837667,
+          "stop_p90_cm": 0.33853206215655685,
+          "structure_correct": true,
+          "seconds": 2.054498667000189,
+          "calls": 0
+        }
+      },
+      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+    },
+    {
+      "case": "mujoco-19",
+      "origin": "MuJoCo",
+      "training_pushes": 15,
+      "evaluation_pushes": 3,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 1.9054132687733594,
+          "stop_p90_cm": 3.725529006246888,
+          "structure_correct": true,
+          "seconds": 2.519883999999365,
+          "calls": 0
+        }
+      },
+      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+    },
+    {
+      "case": "mujoco-20",
+      "origin": "MuJoCo",
+      "training_pushes": 15,
+      "evaluation_pushes": 3,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 0.26939907948811403,
+          "stop_p90_cm": 1.4075913173367838,
+          "structure_correct": true,
+          "seconds": 1.8890702919998148,
+          "calls": 0
+        }
+      },
+      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+    },
+    {
+      "case": "mujoco-21",
+      "origin": "MuJoCo",
+      "training_pushes": 15,
+      "evaluation_pushes": 3,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 5.273287441786101,
+          "stop_p90_cm": 8.37907254302336,
+          "structure_correct": true,
+          "seconds": 1.9079796659998465,
+          "calls": 0
+        }
+      },
+      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+    },
+    {
+      "case": "mujoco-22",
+      "origin": "MuJoCo",
+      "training_pushes": 15,
+      "evaluation_pushes": 3,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 2.0627340917536485,
+          "stop_p90_cm": 3.368365352708167,
+          "structure_correct": true,
+          "seconds": 2.067319249999855,
+          "calls": 0
+        }
+      },
+      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+    },
+    {
+      "case": "mujoco-23",
+      "origin": "MuJoCo",
+      "training_pushes": 15,
+      "evaluation_pushes": 3,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 1.3071747174210446,
+          "stop_p90_cm": 2.2424174488581072,
+          "structure_correct": true,
+          "seconds": 1.8637139170004957,
+          "calls": 0
+        }
+      },
+      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+    },
+    {
+      "case": "newton-brake-log",
+      "origin": "Newton synthetic",
+      "training_pushes": 15,
+      "evaluation_pushes": 3,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 0.03575444087142721,
+          "stop_p90_cm": 0.04597886211942459,
+          "structure_correct": true,
+          "seconds": 2.141202957999667,
+          "calls": 0
+        }
+      },
+      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+    },
+    {
+      "case": "newton-flick",
+      "origin": "Newton synthetic",
+      "training_pushes": 9,
+      "evaluation_pushes": 2,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 2,
+          "stop_median_cm": 0.7469517818301963,
+          "stop_p90_cm": 1.0699393196927964,
+          "structure_correct": true,
+          "seconds": 0.07999225000003207,
+          "calls": 0
+        }
+      },
+      "agent_status": "not evaluable: partial fixture at approved credit limit"
+    },
+    {
+      "case": "newton-lab-bench",
+      "origin": "Newton synthetic",
+      "training_pushes": 16,
+      "evaluation_pushes": 4,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 4,
+          "stop_median_cm": 0.24982162943556208,
+          "stop_p90_cm": 0.4088289713866783,
+          "structure_correct": true,
+          "seconds": 1.3141817920004542,
+          "calls": 0
+        }
+      },
+      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+    },
+    {
+      "case": "newton-press-line",
+      "origin": "Newton synthetic",
+      "training_pushes": 15,
+      "evaluation_pushes": 3,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 0.49151789507526633,
+          "stop_p90_cm": 0.6604382197931047,
+          "structure_correct": true,
+          "seconds": 1.9658662080000795,
+          "calls": 0
+        }
+      },
+      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+    },
+    {
+      "case": "newton-short-reach",
+      "origin": "Newton synthetic",
+      "training_pushes": 7,
+      "evaluation_pushes": 1,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 1,
+          "stop_median_cm": 0.6107562084769036,
+          "stop_p90_cm": 0.6107562084769036,
+          "structure_correct": false,
+          "seconds": 0.14629575000071782,
+          "calls": 0
+        }
+      },
+      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+    },
+    {
+      "case": "newton-stop-line",
+      "origin": "Newton synthetic",
+      "training_pushes": 9,
+      "evaluation_pushes": 2,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 2,
+          "stop_median_cm": 0.7886575197272983,
+          "stop_p90_cm": 1.0869326645419974,
+          "structure_correct": true,
+          "seconds": 0.07091445800051588,
+          "calls": 0
+        }
+      },
+      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+    },
+    {
+      "case": "real-pitcher",
+      "origin": "EV-RealPhys log",
+      "training_pushes": 8,
+      "evaluation_pushes": 2,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 2,
+          "stop_median_cm": 10.002365649937284,
+          "stop_p90_cm": 12.642245686533302,
+          "structure_correct": null,
+          "seconds": 0.136767833999329,
+          "calls": 0
+        }
+      },
+      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+    },
+    {
+      "case": "real-mustard-bottle",
+      "origin": "EV-RealPhys log",
+      "training_pushes": 8,
+      "evaluation_pushes": 2,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 2,
+          "stop_median_cm": 28.957835182794224,
+          "stop_p90_cm": 46.897789311866546,
+          "structure_correct": null,
+          "seconds": 0.13151099999959115,
+          "calls": 0
+        }
+      },
+      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+    },
+    {
+      "case": "real-bleach-cleanser",
+      "origin": "EV-RealPhys log",
+      "training_pushes": 8,
+      "evaluation_pushes": 2,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 2,
+          "stop_median_cm": 12.27175185578896,
+          "stop_p90_cm": 15.700109065955939,
+          "structure_correct": null,
+          "seconds": 0.1335542920005537,
+          "calls": 0
+        }
+      },
+      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+    },
+    {
+      "case": "real-cracker-box",
+      "origin": "EV-RealPhys log",
+      "training_pushes": 4,
+      "evaluation_pushes": 1,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 1,
+          "stop_median_cm": 7.379134110385266,
+          "stop_p90_cm": 7.379134110385266,
+          "structure_correct": null,
+          "seconds": 0.0021966250005789334,
+          "calls": 0
+        }
+      },
+      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+    },
+    {
+      "case": "real-mug",
+      "origin": "EV-RealPhys log",
+      "training_pushes": 8,
+      "evaluation_pushes": 2,
+      "conditions": {
+        "offline": {
+          "evaluation_pushes": 2,
+          "stop_median_cm": 2.5306985004693083,
+          "stop_p90_cm": 2.617104113048916,
+          "structure_correct": null,
+          "seconds": 0.1744839580005646,
+          "calls": 0
+        }
+      },
+      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+    }
+  ],
+  "users": "not tested with users",
+  "scope": "24 in-menu MuJoCo + 6 Newton samples + 5 real log objects; queued probes not executed",
+  "cost_basis": "reported tokens multiplied by contemporaneous model API prices, not an invoice/balance verification",
+  "live_spent_usd": 0.0,
+  "live_reserved_unknown_usd": 0.0,
+  "recorded_live_cost_usd": 0.0963855,
+  "summary": {
+    "paired_cases": 9,
+    "unavailable_cases": 26,
+    "agent_failed_cases": 0,
+    "agent_failure_rate": 0.0,
+    "methods": {
+      "offline": {
+        "cases": 9,
+        "mean_of_case_medians_cm": 1.818125831214576,
+        "mean_of_case_p90_cm": 2.8908635238654554,
+        "structure_evaluable_cases": 9,
+        "structure_accuracy": 1.0
+      },
+      "agent": {
+        "cases": 9,
+        "mean_of_case_medians_cm": 1.7807994071513487,
+        "mean_of_case_p90_cm": 2.9062812641920526,
+        "structure_evaluable_cases": 9,
+        "structure_accuracy": 0.0
+      },
+      "agent_cross_check": {
+        "cases": 9,
+        "mean_of_case_medians_cm": 1.7807994071513487,
+        "mean_of_case_p90_cm": 2.9062812641920526,
+        "structure_evaluable_cases": 9,
+        "structure_accuracy": 0.0
+      }
+    },
+    "note": "case-balanced errors on the complete subset; selected pilot cases, not population inference",
+    "paired_delta_cm": {
+      "mean": -0.037326424063227615,
+      "case_bootstrap_95": [
+        -0.11197927218968284,
+        0.0
+      ]
+    }
+  }
+}

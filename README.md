@@ -1,12 +1,9 @@
 # Tether
 
-**Tie your simulator to the real world.** Tether reads how things really slide and stop, from a phone video or the
-log a robot, car or production line already writes. It finds which physics the simulator gets wrong, says how sure
-that is, checks the fix by replaying every run in NVIDIA Newton, and exports configs for NVIDIA Newton, Isaac Lab
-and CARLA.
+Tether estimates the physics gap of a pushing task from video or logs, shows where measurements are missing, and provides the next experiment and a verifiable setup.
 
 One physics model (launched, sliding to a stop; part of the surface differs; the actuator under-delivers; a camera
-judges distance) covers three domains:
+judges distance) covers robot and factory pushing. Driving demonstrates the same model at a different scale:
 
 | Domain | Scene | What Tether finds | Exports |
 |---|---|---|---|
@@ -37,7 +34,7 @@ flowchart LR
     A --> F[Calibrate<br/>least squares + bootstrap<br/>90% intervals, next experiment]
     X[Library search] -. cross-check .-> F
     F --> P[Pattern check<br/>speed or position effects<br/>the model still misses]
-    F --> V[Verify<br/>replay every run in NVIDIA Newton]
+    F --> V[Verify<br/>read export files in a new process<br/>held-out prediction or labelled fit replay]
     F --> R[Retrain<br/>16 parallel Newton worlds:<br/>current / wide DR / Tether ranges]
     R --> H[Score in the hidden world<br/>+ Newton-rendered rollouts]
     V --> E[Export<br/>Newton · Isaac Lab · CARLA · report]
@@ -153,7 +150,7 @@ sees those values. Two ways in, both through Tether's own fitter:
 
 - **Log:** the motion-capture centre of mass, as a robot would log it.
 - **Video:** Tether's tracker on the RGB frames, with pixels placed on the table using the dataset's camera calibration
-  (the role the A4 sheet plays in the Studio). One click per clip marks the object at rest.
+  (the role the A4 sheet plays in the Studio). The tracking start is supplied from motion capture, as detailed below.
 
 | Object | Tilt test | Tether, log (90%) | Tether, video (90%) | Pushes log / video |
 |---|---|---|---|---|
@@ -161,18 +158,44 @@ sees those values. Two ways in, both through Tether's own fitter:
 | mustard bottle | 0.159 | 0.156 (0.137–0.163) | 0.164 (0.160–0.168) | 10 / 7 |
 | bleach cleanser | 0.169 | 0.159 (0.155–0.165) | 0.181 (0.153–0.198) | 10 / 5 |
 | pitcher | 0.220 | 0.216 (0.210–0.225) | 0.229 (0.201–0.260) | 10 / 4 |
-| cracker box | 0.280 | 0.208 (0.201–0.213) | 0.173 (0.170–0.178) | 5 / 1 |
+| cracker box | 0.280 | 0.208 (0.201–0.213) | 0.173 (unavailable: one push) | 5 / 1 |
 
 Four of five objects land within ±0.05 of the tilt test on both paths. Mean error is 0.019 for the log path
-(median 0.005) and 0.029 for the video path (median 0.011). The paper's own physics-based estimator on the same real
-sequences has a mean error of 0.082 (median 0.025). The cracker box is off on every path. On real data the 90%
-intervals are too narrow: they contain the tilt-test value for 3 of 5 objects (log) and 2 of 5 (video).
+(median 0.005) and 0.029 for the video path (median 0.011). The cracker box is off on every path. On real data the 90%
+intervals are too narrow: they contain the tilt-test value for 3 of 5 objects (log) and 2 of 4 evaluable video cases (one-push interval unavailable).
+
+Reference only: the paper reports mean error 0.082 (median 0.025) under a **different protocol: RGB-D online tracking and filtering**; this is not a same-input baseline.
+
+Inputs and exclusions: the video path uses the **dataset camera calibration**, a **tracking start projected from the mocap rest position**, and **object centre height from mocap**. It is not an independent phone-only test. Of 45 video tracks, 25 are retained and **20/45 excluded** (4 jumps, 8 backward tracks, 8 stopping too soon). The log path retains 45/45. No tilt-test friction enters either fit.
+
+| Input path | Tether μ MAE (matched training) | Quadratic μ median MAE | Quadratic μ mean MAE |
+|---|---|---|---|
+| log | 0.019 | 0.018 | 0.019 |
+| video | 0.029 | 0.037 | 0.034 |
+
+Same common training pool, release initialisation and exclusions for all three methods. One mustard-video push has too few moving frames for a positive quadratic fit; it is excluded from ALL methods’ training for this comparison (6 of 7 usable). Full-data Tether friction estimates in the preceding table remain separate. Held-out targets stay in the evaluation; eligibility is applied to the other training pushes only. These five-object results do not establish an accuracy advantage.
+
+| Object / path | Held-out pushes | Tether stop median / p90 (cm) | Quadratic median (cm) | Quadratic mean (cm) |
+|---|---|---|---|---|
+| mug / log | 10 | 11.0 / 54.5 | 13.1 / 51.8 | 13.3 / 56.7 |
+| mug / video | 8 | 8.2 / 34.0 | 11.2 / 37.7 | 7.9 / 33.7 |
+| mustard bottle / log | 10 | 13.0 / 40.2 | 13.7 / 55.4 | 13.3 / 57.6 |
+| mustard bottle / video | 7 | 2.5 / 6.1 | 2.4 / 6.7 | 2.9 / 6.6 |
+| bleach cleanser / log | 10 | 9.5 / 39.3 | 9.5 / 38.4 | 9.3 / 41.0 |
+| bleach cleanser / video | 5 | 10.8 / 53.1 | 10.4 / 63.6 | 12.8 / 65.8 |
+| pitcher / log | 10 | 11.2 / 25.8 | 13.2 / 28.1 | 11.9 / 25.6 |
+| pitcher / video | 4 | 5.3 / 38.1 | 9.8 / 29.7 | 7.3 / 34.9 |
+| cracker box / log | 5 | 26.2 / 29.7 | 25.7 / 28.8 | 25.8 / 29.5 |
+| cracker box / video | 0 | not evaluable (one push) | — | — |
+
+Leave-one-push-out: remove the held-out push first, form a common eligible training pool, select the structure and fit, then predict from the held-out measured launch speed alone. Held-out stop/track never enters training or its eligibility filter. Prediction errors are distinct from friction-estimation errors and still include launch-speed/tracking limits. No LLM calls are used.
+
 
 Two things this benchmark changed in Tether:
 
 - **The fit now reads the shape of each slide**, meaning how long the object takes to stop, not only its launch speed
-  and stopping distance. The dataset's clock groups 240 Hz poses with 60 Hz images, so a launch speed read off a few
-  frames can be 20–30% off. Fitting the timing pins friction anyway.
+  and stopping distance. Source timestamps are synchronized and downsampled to 30 Hz; release segmentation and
+  tracking can affect launch-speed estimates. The trajectory fit is not proof of a clock error or accurate new-push prediction.
 - **Implausible tracks are dropped and reported.** A track that runs backwards, jumps by more than 3 g, or stops far
   too soon for its speed is the tracker losing the object (a ruler pushing a white bottle across a white table), not
   physics.
@@ -401,3 +424,65 @@ Every command is a `make` target (see the `Makefile`, grouped by purpose).
 Uses NVIDIA Newton (Apache-2.0), NVIDIA Nemotron 3 open models, NVIDIA Cosmos Reason 2 (NVIDIA Open Model License; Built on NVIDIA Cosmos), Nebius Token Factory and Ollama. This project is not affiliated with or endorsed by NVIDIA or Nebius.
 
 License: Apache-2.0.
+
+
+### Reliability on public real data (2026-10-12 recomputed)
+
+| Object / path | μ error | Reliability | Error > 0.05 flagged | Interval covers tilt |
+|---|---|---|---|---|
+| pitcher / log | 0.004 | limited | — | yes |
+| pitcher / video | 0.009 | limited | — | yes |
+| mustard bottle / log | 0.003 | limited | — | yes |
+| mustard bottle / video | 0.005 | limited | — | no |
+| bleach cleanser / log | 0.011 | limited | — | no |
+| bleach cleanser / video | 0.012 | limited | — | yes |
+| cracker box / log | 0.072 | limited | yes | no |
+| cracker box / video | 0.107 | unreliable | yes | unavailable |
+| mug / log | 0.005 | limited | — | yes |
+| mug / video | 0.011 | limited | — | no |
+
+This is a diagnostic flag, not a validated detector of friction bias. Both >0.05-error cases receive warnings, but other accurate cases also do. Among unflagged cases: 0 evaluable, 0 covered (coverage cannot be estimated with no unflagged cases).
+
+
+### Coverage versus push count (2026-10-12 recomputed)
+
+| Usable pushes | Public real coverage | MuJoCo coverage |
+|---|---|---|
+| 1 | 1/10 | 0/24 |
+| 2 | 5/9 | 0/24 |
+| 4 | 7/9 | 0/24 |
+| 6 | 5/6 | 14/24 |
+| 8 | 3/5 | 14/24 |
+
+Fixed, evenly spaced subsamples; 30 bootstrap draws; ten public real cases when enough pushes exist, and 24 in-menu MuJoCo worlds. The one-push row is the **pre-change diagnostic**; the product now hides that interval. Six pushes is a conservative product policy because structure search becomes available there, not proof of statistical sufficiency. Coverage remains poor and nonmonotonic; shared bias and cross-engine differences are not covered. An OK status does not mean 90% accuracy or validated coverage.
+
+
+### Export-file verification on held-out Newton pushes (2026-10-12 recomputed)
+
+| Newton sample | Fit / held-out pushes | Calibrated RMS (base cm) | Current RMS (base cm) |
+|---|---|---|---|
+| brake-log | 14 / 4 | 0.79 | 5.93 |
+| flick | 8 / 3 | 1.45 | 31.54 |
+| lab-bench | 16 / 4 | 0.60 | 2.81 |
+| press-line | 14 / 4 | 1.09 | 22.80 |
+| short-reach | 6 / 2 | 0.64 | 6.72 |
+| stop-line | 8 / 3 | 1.79 | 17.63 |
+
+Data origin: Newton synthetic. Roughly the first 80% calibrates; the remaining pushes are withheld. Generated JSON and Newton constants are checked, then a separate process executes the withheld launches. Base units are shown to compare samples; driving lengths displayed/exported at full scale are 25× these values. This checks file execution and prediction within the data-generating engine; public real-data prediction is a separate evaluation. Isaac Lab and CARLA are format-checked against stand-ins and were not executed here.
+
+
+### Nemotron contribution: bounded pilot (2026-10-12)
+
+| Case (MuJoCo) | Offline median cm | Agent median cm | Agent + cross-check median cm |
+|---|---|---|---|
+| mujoco-00 | 2.56 | 2.56 | 2.56 |
+| mujoco-01 | 2.33 | 2.33 | 2.33 |
+| mujoco-02 | 1.31 | 1.31 | 1.31 |
+| mujoco-03 | 0.95 | 0.95 | 0.95 |
+| mujoco-04 | 1.54 | 1.21 | 1.21 |
+| mujoco-05 | 2.11 | 2.11 | 2.11 |
+| mujoco-06 | 0.88 | 0.88 | 0.88 |
+| mujoco-07 | 2.45 | 2.45 | 2.45 |
+| mujoco-08 | 2.21 | 2.21 | 2.21 |
+
+Data origin: MuJoCo cross-engine. Nine of the planned 35 cases have complete training-only Nemotron fixtures. Cross-check overrules: 0/9. These selected in-menu cases do not establish an accuracy advantage or cover all domains. The remaining 26 cases are unavailable or incomplete after the approved $0.10 cap blocked further calls. Reported tokens × model API prices total $0.0963855; invoice/balance not verified. Original per-case live latency was not retained for this pilot; replay latency is not live latency. No user comprehension test was performed. Responses replay offline with identical training-input hashes.

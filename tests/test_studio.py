@@ -81,7 +81,8 @@ def test_exports_are_valid_python_and_carry_the_numbers():
     assert f"{cal.model['mu_eff']:.4f}" in nb and "FRICTION_REGION" in nb
     assert "randomize_rigid_body_material" in il and "dynamic_friction_range" in il
     lo, hi = cal.intervals["mu_eff"]
-    assert f"({lo:.4f}, {hi:.4f})" in il
+    mu = cal.model['mu_eff']
+    assert f"({max(0,2*lo-mu):.4f}, {max(0,2*hi-mu):.4f})" in il
     md = export.markdown(s, cal, design.suggest(s, cal))
     assert "Friction region starts at" in md and "Predicted effect" in md
     doc = export.to_json(s, cal)

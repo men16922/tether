@@ -37,7 +37,7 @@ def test_log_upload_analyze_export(tmp_path):
     assert {g["field"] for g in res["calibration"]["gap"]} >= {"mu_eff", "actuator_gain", "patch_y0", "camera_pitch_deg"}
     nb = c.get(f"/api/studio/sessions/{s['id']}/export/newton")
     assert nb.status_code == 200 and "MU_EFF" in nb.text and "attachment" in nb.headers["content-disposition"]
-    assert c.get(f"/api/studio/sessions/{s['id']}/export/isaaclab").text.count("EventTerm(") == 1
+    assert c.get(f"/api/studio/sessions/{s['id']}/export/isaaclab").text.count("EventTerm(") == 2
     assert c.get(f"/api/studio/sessions/{s['id']}/truth").status_code == 404  # uploads have no ground truth
 
 
@@ -169,7 +169,9 @@ def test_newton_replay_of_the_export_beats_the_current_sim(tmp_path):
     c.post(f"/api/studio/sessions/{s['id']}/analyze", json={"agent": False})
     events(c, s["id"])
     v = c.post(f"/api/studio/sessions/{s['id']}/verify").json()
-    assert len(v["pushes"]) == 18 and v["engine"].startswith("NVIDIA Newton")
+    assert len(v["pushes"]) == 4 and v["engine"].startswith("NVIDIA Newton")
+    assert v['mode'] == 'held-out prediction' and v['training_pushes'] == 14
+    assert v['file_roundtrip']['verification'] == 'executed'
     assert v["rms_calibrated_m"] < 0.015 and v["rms_current_m"] > 5 * v["rms_calibrated_m"]
 
 

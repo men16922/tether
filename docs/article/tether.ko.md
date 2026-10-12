@@ -1,37 +1,47 @@
 # 정책 대신 시뮬레이터를 고치기
 
-*Tether가 Nebius Token Factory의 NVIDIA Nemotron과 NVIDIA Newton으로 시뮬레이터가 틀린 물리를 찾아내고, 그 답을 얼마나 확신하는지까지 말하는 방법*
+_Tether가 Nebius Token Factory의 NVIDIA Nemotron과 NVIDIA Newton으로 시뮬레이터가 틀린 물리를 찾아내고, 그 답을 얼마나 확신하는지까지 말하는 방법_
 
 ![Tether](https://raw.githubusercontent.com/men16922/tether/main/docs/article/img/cover.jpg)
+
+_Figure origin: Newton synthetic recorded demo / Newton 합성 데이터의 기록 화면; not independent phone footage._
 
 **공개 데모:** https://tether-454741001655.us-central1.run.app (Studio는 `/studio?lang=ko`) · **코드 (Apache-2.0):** https://github.com/men16922/tether · **데모 영상 (2분 28초):** YOUTUBE_LINK
 
 Nebius × NVIDIA Global AI Hackathon의 Physical AI 트랙 출품작입니다.
 
+Tether는 밀기 작업의 영상·로그에서 시뮬레이터의 물리 차이를 추정하고, 아직 측정하지 않은 구간을 드러내며, 다음 실험과 검증 가능한 설정을 제공합니다.
+
+로봇·제조의 밀기 작업을 기준으로 영상·로그 → 마찰 보정 → 보정에서 제외한 시행의 정지 위치 예측 순서로 확인합니다. 공개 실측 EV-RealPhys에서 시행 하나씩 빼고 보정한 정지 오차의 중앙값은 기록 9.5–26.2 cm, 사용한 영상 2.5–10.8 cm였습니다. 시행이 하나뿐인 크래커 상자 영상은 평가할 수 없습니다. 데이터셋의 카메라 보정과 모션캡처를 보조 입력으로 사용했으며, 독립 휴대폰 영상 검증은 남아 있습니다. 세부 조건과 물체별 결과는 아래에 정리했습니다.
+
 ---
 
 ## 시뮬레이터에서는 98% 맞히는 정책
 
-제동 제어기를 시뮬레이터에서 학습시키면 정지선에 거의 매번 맞춰 섭니다. 그런데 실제 도로에서는 정지선을 지나칩니다. 제어기에는 문제가 없습니다. 실제 도로는 8.6 m 지점부터 젖어 있는데, 시뮬레이터에는 그 사실이 없을 뿐입니다.
+시뮬레이션의 제동 제어기를 시뮬레이터에서 학습시키면 정지선에 거의 매번 맞춰 섭니다. 그런데 실제 도로에서는 정지선을 지나칩니다. 제어기에는 문제가 없습니다. 실제 도로는 8.6 m 지점부터 젖어 있는데, 시뮬레이터에는 그 사실이 없을 뿐입니다.
 
 이것이 Sim2Real 격차입니다. 흔히 쓰는 해결책은 느리거나 거칩니다.
 
 - **손으로 고치기:** 실패를 보고 원인을 짐작해 시뮬레이터를 고치고, 다시 학습하기를 반복합니다. 한 바퀴에 며칠이 걸립니다. 튜닝 스크립트도 누군가 미리 떠올린 파라미터만 조정합니다.
-- **도메인 랜덤화(DR):** 물리값을 넓게 흔들어 정책이 강건해지기를 기대합니다. 저희 실험에서 넓은 DR로 학습한 정책은 어디서나 어중간했고, 숨겨진 실제 환경에서 0–38%를 기록했습니다.
+- **도메인 랜덤화(DR):** 물리값을 넓게 흔들어 정책이 강건해지기를 기대합니다. 저희 실험에서 넓은 DR로 학습한 정책은 어디서나 어중간했고, 숨겨진 시뮬레이션 환경에서 0–38%를 기록했습니다.
 
 Tether는 세 번째 길을 택합니다. 무엇이 다른지 **측정**하고, 각 값에 검증을 거친 오차 범위를 붙인 다음, 데이터가 아직 허용하는 범위 안에서만 랜덤화해 다시 학습합니다.
 
 ![같은 정책, 다른 물리](https://raw.githubusercontent.com/men16922/tether/main/docs/article/img/gap.jpg)
 
+_Figure origin: Newton synthetic recorded demo / Newton 합성 데이터의 기록 화면; not independent phone footage._
+
 ## 하나의 물리, 세 개의 산업
 
 문제 하나를 골랐고, 세 산업에서 같은 모습을 찾았습니다. 무언가가 목표를 향해 출발하고, 미끄러지다 멈춥니다.
 
-| 분야 | 장면 | Tether가 찾는 것 |
-|---|---|---|
-| 로봇 조작 | 로봇 팔이 상자를 밀어 목표선에 세움 | 탁자 마찰, 젖은 부분, 팔 힘, 카메라 기울기 |
-| 자율주행 차량 | 차량이 제동해 정지선에 섬 | 노면 마찰, 젖거나 언 구간, 속도 제어, 카메라 피치 |
-| 제조 검사 | 푸셔가 부품을 검사 카메라 앞으로 밂 | 레일 마찰, 기름 묻은 구간, 푸셔 힘, 카메라 기울기 |
+_Data origin: Conceptual domain mapping, not measured results / 업무 개념 대응표._
+
+| 분야          | 장면                                | Tether가 찾는 것                                  |
+| ------------- | ----------------------------------- | ------------------------------------------------- |
+| 로봇 조작     | 로봇 팔이 상자를 밀어 목표선에 세움 | 탁자 마찰, 젖은 부분, 팔 힘, 카메라 기울기        |
+| 자율주행 차량 | 차량이 제동해 정지선에 섬           | 노면 마찰, 젖거나 언 구간, 속도 제어, 카메라 피치 |
+| 제조 검사     | 푸셔가 부품을 검사 카메라 앞으로 밂 | 레일 마찰, 기름 묻은 구간, 푸셔 힘, 카메라 기울기 |
 
 밑에 깔린 식은 같습니다. 정지 거리 = v² / (2μg)입니다. 바퀴가 잠기거나 ABS로 제한된 채 제동하는 차는 탁자 위 상자와 똑같이 쿨롱 마찰로 미끄러집니다.
 
@@ -40,6 +50,8 @@ Tether는 세 번째 길을 택합니다. 무엇이 다른지 **측정**하고, 
 ## 전체 구조
 
 ![Tether 파이프라인](https://raw.githubusercontent.com/men16922/tether/main/docs/article/img/pipeline-ko.png)
+
+_Figure origin: Architecture schematic / 구조 설명도; not a measurement._
 
 - **물리, 렌더링, 검증:** NVIDIA Newton(Warp, CPU). 가상 영상을 렌더링하고, 측정한 모든 시행을 다시 실행하며, 병렬 학습 세계를 돌립니다.
 - **추론:** Nebius Token Factory의 NVIDIA Nemotron 3 Super(`nvidia/nemotron-3-super-120b-a12b`)를 OpenAI 호환 API의 도구 호출로 씁니다. 같은 에이전트를 NVIDIA NeMo Agent Toolkit 워크플로(`nat run`, `nat serve`)로도 실행할 수 있습니다.
@@ -60,6 +72,8 @@ Studio는 스마트폰이나 도로변 카메라 영상을 받고, 로봇·차�
 Newton이 렌더링한 영상에서 미끄러진 거리는 1 mm 이내, 출발 속도는 rms 0.6% 이내로 맞습니다.
 
 ![Studio에서 시행 측정](https://raw.githubusercontent.com/men16922/tether/main/docs/article/img/measure.jpg)
+
+_Figure origin: Newton synthetic recorded demo / Newton 합성 데이터의 기록 화면; not independent phone footage._
 
 ## 2단계. 진단: 도구를 쓰는 과학자로서의 Nemotron
 
@@ -139,6 +153,8 @@ commit          두 구간 마찰 모델
 
 ![Studio의 AI 분석 기록](https://raw.githubusercontent.com/men16922/tether/main/docs/article/img/notebook.jpg)
 
+_Figure origin: Newton synthetic recorded demo / Newton 합성 데이터의 기록 화면; not independent phone footage._
+
 ## 3단계. 보정: 검증한 오차 범위
 
 모든 값에는 부트스트랩으로 구한 90% 구간이 붙습니다. 처음에는 시행만 다시 뽑았는데, 영상의 구간이 정답을 벗어났습니다. 추적 오차와 축척 오차는 계통 오차라서 모든 시행이 함께 지고 있고, 시행을 다시 뽑는 것만으로는 드러나지 않습니다.
@@ -155,16 +171,20 @@ commit          두 구간 마찰 모델
 
 ![보정된 시뮬레이터](https://raw.githubusercontent.com/men16922/tether/main/docs/article/img/calibrated.jpg)
 
+_Figure origin: Newton synthetic recorded demo / Newton 합성 데이터의 기록 화면; not independent phone footage._
+
 ### 다음 실험
 
 그럴듯한 모델들이 아직 서로 다른 답을 내는 곳이 있으면, Studio는 그 사실을 말하고 답을 가를 시행을 추천합니다. 도로변 예시가 그 효과를 잘 보여 줍니다.
 
-- **처음 7번의 시행 후:** 젖은 구간의 시작은 7.9–10.8 m 사이 어딘가이고, 그 구간의 마찰은 0.12–0.31 사이 어디든 될 수 있습니다. Studio는 13.4 m 너머의 도로를 측정되지 않은 구간으로 표시하고 더 긴 시행을 요청합니다. 이 범위로 다시 학습한 정책은 숨겨진 실제 환경에서 63% 성공합니다.
+- **처음 7번의 시행 후:** 젖은 구간의 시작은 7.9–10.8 m 사이 어딘가이고, 그 구간의 마찰은 0.12–0.31 사이 어디든 될 수 있습니다. Studio는 13.4 m 너머의 도로를 측정되지 않은 구간으로 표시하고 더 긴 시행을 요청합니다. 이 범위로 다시 학습한 정책은 숨겨진 시뮬레이션 환경에서 63% 성공합니다.
 - **요청한 4번을 추가한 후:** 8.60 m(8.36–8.94)부터 젖은 구간, 마찰 0.294(0.283–0.303)입니다. 정답은 8.82 m와 0.30입니다. 다시 학습한 정책은 96% 성공합니다.
 
 숨은 세계 50개로 측정했을 때, 95% 성공에 도달하는 데 추천 시행으로는 5.76번, 무작위 시행으로는 6.84번이 필요했습니다. 잘 설계한 수동 스윕(5.76번)과 같은 수준입니다. 차이는 추천이 표면에 맞춰 달라진다는 점입니다. 어디를 밀어야 할지 미리 알 필요가 없습니다.
 
 ![다음 실험 카드](https://raw.githubusercontent.com/men16922/tether/main/docs/article/img/next-experiment.jpg)
+
+_Figure origin: Newton synthetic recorded demo / Newton 합성 데이터의 기록 화면; not independent phone footage._
 
 ## 4단계. NVIDIA Newton 병렬 세계에서 다시 학습하기
 
@@ -188,28 +208,34 @@ def k(body_q: wp.array(dtype=wp.transform), bodies: wp.array(dtype=int), shapes:
     shape_mu[shapes[i]] = wp.where(y >= y0[i], mu_far[i], mu_near[i])
 ```
 
-숨겨진 실제 환경에서의 성공률입니다(목표 24개).
+숨겨진 시뮬레이션 환경에서의 성공률입니다(목표 24개).
 
-| 예시 | 지금 시뮬레이터 | 넓은 DR | Tether 범위 |
-|---|---|---|---|
-| 차량 제동 로그 | 42% | 0% | **100%** |
-| 로봇 스마트폰 영상 | 0% | 13% | **100%** |
-| 로봇 로그 | 63% | 0% | **100%** |
-| 푸셔 로그 | 0% | 38% | **100%** |
-| 도로변 영상 | 29% | 8% | **96%** |
-| 짧은 시행만 있는 로그 | 0% | 25% | **46%** |
+_Data origin: Newton synthetic; quoted recorded experiment / Newton 합성, 기존 기록 인용._
+
+| 예시                  | 지금 시뮬레이터 | 넓은 DR | Tether 범위 |
+| --------------------- | --------------- | ------- | ----------- |
+| 차량 제동 로그        | 42%             | 0%      | **100%**    |
+| 로봇 스마트폰 영상    | 0%              | 13%     | **100%**    |
+| 로봇 로그             | 63%             | 0%      | **100%**    |
+| 푸셔 로그             | 0%              | 38%     | **100%**    |
+| 도로변 영상           | 29%             | 8%      | **96%**     |
+| 짧은 시행만 있는 로그 | 0%              | 25%     | **46%**     |
 
 마지막 줄이 낮은 데는 분명한 이유가 있습니다. 그 로그는 탁자의 먼 쪽을 한 번도 측정하지 않았고, Studio는 학습 전에 그 점을 알려 줍니다. 지금 시뮬레이터는 자신 있게 틀리고, 넓은 DR은 어디서나 어중간합니다.
 
 ![Newton 병렬 세계에서 다시 학습한 정책](https://raw.githubusercontent.com/men16922/tether/main/docs/article/img/retrain.jpg)
 
+_Figure origin: Newton synthetic recorded demo / Newton 합성 데이터의 기록 화면; not independent phone footage._
+
 ## 5단계. Newton에서 검증하고 내보내기
 
-내보내기 전에, 측정한 모든 시행을 각자의 출발 위치와 출발 속도 그대로 전체 Newton 엔진에서 다시 실행합니다. 한 번은 내보낼 물리값으로, 한 번은 지금 시뮬레이터로 실행합니다.
+내보내기 전에 calibration.json을 읽고 newton_calibration.py의 상수를 코드 실행 없이 대조한 뒤, 별도 Newton 프로세스를 실행합니다. 사용 가능한 시행이 6개 이상이면 앞의 약 80%로 보정하고 나머지 시행은 평가에만 씁니다. 부족하면 보정에 쓴 시행의 재현이라고 명시합니다.
 
-내보낼 물리값으로는 탁자 축척 예시 4개에서 정지 위치 rms 오차가 4–8 mm이고, 보정 전 시뮬레이터는 3–25 cm 어긋납니다. 실제 크기의 주행 예시 2개에서는 18–27 cm로, 보정 전의 1.1–2.7 m와 비교됩니다. 예시 데이터를 Newton이 만들었으므로, 이것은 내보낸 결과의 자기 일관성 확인입니다. 독립적인 검증은 다음 절에 있습니다.
+Newton 합성 예시의 새 평가에서 정지 위치 rms 오차는 탁자 축척 0.6–1.45 cm, 실제 크기로 환산한 주행 예시 2개는 19.8–44.8 cm였습니다. 파일을 읽어 실행하는 과정과 데이터를 만든 엔진 안의 예측을 검증한 결과입니다. 공개 실측 데이터의 예측 평가는 별도로 제시합니다. 아래 화면은 이전의 보정 데이터 재현 화면을 남긴 참고 이미지입니다.
 
 ![NVIDIA Newton에서 검증](https://raw.githubusercontent.com/men16922/tether/main/docs/article/img/verify.jpg)
+
+_Figure origin: Newton synthetic recorded demo / Newton 합성 데이터의 기록 화면; not independent phone footage._
 
 내보내기 파일은 이미 쓰고 있는 도구에 맞춰 만듭니다.
 
@@ -219,6 +245,8 @@ def k(body_q: wp.array(dtype=wp.transform), bodies: wp.array(dtype=int), shapes:
 
 ![CARLA로 내보내기](https://raw.githubusercontent.com/men16922/tether/main/docs/article/img/export-carla.jpg)
 
+_Figure origin: Newton synthetic recorded demo / Newton 합성 데이터의 기록 화면; not independent phone footage._
+
 ## 자기 시뮬레이터 밖에서도 통할까
 
 Newton이 만든 데이터를 Newton 계열 모델로 맞추는 것은 일관성 확인일 뿐입니다. 그래서 데이터가 다른 곳에서 오는 세 가지 경우를 시험했습니다.
@@ -227,12 +255,16 @@ Newton이 만든 데이터를 Newton 계열 모델로 맞추는 것은 일관성
 
 ![다른 엔진이 만든 숨은 세계](https://raw.githubusercontent.com/men16922/tether/main/docs/article/img/cross-engine.jpg)
 
-| 숨은 세계 (MuJoCo) | 지금 시뮬레이터 | 최적 폭 DR | 실제 분포 DR* | **Tether** |
-|---|---|---|---|---|
-| 모델에 있는 효과만 | 9% | 12% | 25% | **89%** |
-| + 속도에 따라 변하는 마찰 | 10% | 12% | 26% | **83%** |
-| + 두 번째 마찰 구간 | 10% | 13% | 25% | **83%** |
-| + 1.5–3° 기울기 | 8% | 9% | 26% | **90%** |
+_Figure origin: Newton synthetic recorded demo / Newton 합성 데이터의 기록 화면; not independent phone footage._
+
+_Data origin: Newton synthetic; quoted recorded experiment / Newton 합성, 기존 기록 인용._
+
+| 숨은 세계 (MuJoCo)        | 지금 시뮬레이터 | 최적 폭 DR | 실제 분포 DR\* | **Tether** |
+| ------------------------- | --------------- | ---------- | -------------- | ---------- |
+| 모델에 있는 효과만        | 9%              | 12%        | 25%            | **89%**    |
+| + 속도에 따라 변하는 마찰 | 10%             | 12%        | 26%            | **83%**    |
+| + 두 번째 마찰 구간       | 10%             | 13%        | 25%            | **83%**    |
+| + 1.5–3° 기울기           | 8%              | 9%         | 26%            | **90%**    |
 
 \* 어떤 사용자도 만들 수 없는 기준선(오라클)입니다. Tether는 96개 세계 중 94개에서 최적 DR 이상입니다. 학습에 쓰지 않은 시행에서 정지 위치 오차는 1.6–2.0 cm로, 지금 시뮬레이터의 18–30 cm와 비교됩니다.
 
@@ -240,9 +272,17 @@ Newton이 만든 데이터를 Newton 계열 모델로 맞추는 것은 일관성
 
 ![실제 물체](https://raw.githubusercontent.com/men16922/tether/main/docs/article/img/real-objects.jpg)
 
-다섯 물체 중 넷이 로그 경로와 영상 경로 모두에서 기울임 시험 값의 ±0.05 안에 듭니다. 평균 오차는 로그 0.019, 영상 0.029로, 같은 시퀀스에 대한 논문 자체 추정기의 0.082보다 작습니다. 크래커 상자는 모든 경로에서 빗나갑니다. 실제 데이터에서는 구간이 너무 좁습니다. 기울임 시험 값을 포함하는 경우가 로그 5개 중 3개, 영상 5개 중 2개뿐입니다.
+_Figure origin: Public real EV-RealPhys / 공개 실측. Friction values quoted; protocols differ; see inputs below._
 
-이 벤치마크 덕분에 Tether도 바뀌었습니다. 데이터셋의 시계가 240 Hz 자세 데이터와 60 Hz 영상을 묶어 두어서, 몇 프레임으로 읽은 출발 속도가 20–30% 틀릴 수 있습니다. 이제 피팅은 각 미끄러짐의 전체 모양, 즉 멈추기까지 걸리는 시간을 읽습니다. 그러면 출발 속도가 틀려도 마찰을 잡아낼 수 있습니다.
+다섯 물체 중 넷이 로그 경로와 영상 경로 모두에서 기울임 시험 값의 ±0.05 안에 듭니다. 평균 오차는 로그 0.019, 영상 0.029입니다. 크래커 상자는 모든 경로에서 빗나갑니다. 실제 데이터에서는 구간이 너무 좁습니다. 기울임 시험 값을 포함하는 경우가 로그 5개 중 3개, 평가 가능한 영상 4개 중 2개(시행 하나의 구간은 표시하지 않습니다)뿐입니다.
+
+참고: 논문의 평균 오차 0.082(중앙값 0.025)는 **다른 프로토콜(RGB-D 온라인 추적·필터링)**의 값입니다. 같은 입력 조건의 기준선으로 비교할 수 없습니다.
+
+입력 조건과 제외: 영상 경로에는 데이터셋 카메라 보정값, 모션캡처 정지 위치를 투영한 추적 시작점, 모션캡처로 잰 물체 중심 높이를 사용했습니다. 독립적인 휴대폰 영상 시험은 아닙니다. 영상 45개 중 25개를 사용하고 **20/45개를 제외**했습니다(급격한 점프 4개, 역방향 8개, 속도에 비해 이른 정지 8개). 기록 경로는 45개 모두 사용했습니다.
+
+동일한 시행의 단순 감속 기준선과 비교한 마찰 평균 절대 오차는 기록 경로에서 Tether 0.019 / 중앙값 기준선 0.018 / 평균 기준선 0.019, 영상 경로에서 0.029 / 0.037 / 0.034입니다. 정확도 우위를 입증하는 결과는 아닙니다. 시행을 하나씩 빼고 구조와 수치를 다시 보정한 정지 위치 예측 오차는 물체별 중앙값이 기록 9.5–26.2 cm, 영상 2.5–10.8 cm였습니다. 크래커 상자 영상은 시행이 하나여서 평가할 수 없습니다. 출발 속도의 측정 오차와 추적 오차도 예측에 영향을 줍니다.
+
+이 벤치마크 덕분에 Tether도 바뀌었습니다. 원 논문은 자세 데이터와 영상을 동기화한 뒤 30 Hz로 낮췄다고 설명합니다. 출발 구간을 나누는 과정과 추적 오차는 출발 속도에 영향을 줄 수 있지만, 이를 시간축 오류로 확정하지는 않았습니다. 이제 피팅은 각 미끄러짐의 전체 모양, 즉 멈추기까지 걸리는 시간을 읽습니다. 그러면 출발 속도가 틀려도 마찰을 잡아낼 수 있습니다.
 
 **어떤 마찰 법칙인가.** 실제 미끄러짐을 찍은 공개 슬로모션 영상 52개(IDPP) 중 45개를 추적했습니다. Tether가 쓰는 쿨롱 마찰, 곧 일정한 감속이 각 미끄러짐을 중앙값 R² 0.9985로 설명하고, 45개 중 36개에서 세 법칙 중 가장 잘 맞습니다. 다만 크기 기준이나 프레임 속도를 모르면 마찰 값 자체는 정할 수 없습니다. Studio가 기준 사각형과 프레임 속도를 요구하는 이유입니다.
 
@@ -250,11 +290,13 @@ Newton이 만든 데이터를 Newton 계열 모델로 맞추는 것은 일관성
 
 숨은 Newton 세계에서 에이전트를 더 단순한 방법들과 비교했습니다(Gap-Bench, 공개 데모의 [검증](https://tether-454741001655.us-central1.run.app/benchmark?lang=ko) 화면). 단계마다 세계 15개이고, 숨은 세계에서의 평균 성공률입니다.
 
-| 단계 | 기본 시뮬레이터 | DR | 규칙 기반 | 시스템 식별 | **Nemotron 에이전트** |
-|---|---|---|---|---|---|
-| 닫힌 세계 (알려진 파라미터) | 46% | 0% | 100% | 100% | 100% |
-| 열린 세계 (마찰 구간 또는 렌즈) | 39% | 6% | 83% | 100% | 100% |
-| 복합 (구간 + 렌즈 + 하나 더) | 22% | 14% | 54% | 97% | 96% |
+_Data origin: Newton synthetic; quoted recorded experiment / Newton 합성, 기존 기록 인용._
+
+| 단계                            | 기본 시뮬레이터 | DR  | 규칙 기반 | 시스템 식별 | **Nemotron 에이전트** |
+| ------------------------------- | --------------- | --- | --------- | ----------- | --------------------- |
+| 닫힌 세계 (알려진 파라미터)     | 46%             | 0%  | 100%      | 100%        | 100%                  |
+| 열린 세계 (마찰 구간 또는 렌즈) | 39%             | 6%  | 83%       | 100%        | 100%                  |
+| 복합 (구간 + 렌즈 + 하나 더)    | 22%             | 14% | 54%       | 97%         | 96%                   |
 
 정직하게 읽으면 다음과 같습니다.
 
@@ -270,6 +312,8 @@ Nemotron 모델별로도 열린 세계와 복합 단계를 돌렸습니다. 단�
 Studio에는 내 세션에 대해 영어나 한국어로 답하는 채팅 창이 있습니다. 이것도 Token Factory의 Nemotron으로 돌아가고, 세션의 숫자를 근거로 답합니다. 로봇 로그 결과에 대해 "가장 믿기 어려운 숫자는 무엇이고, 왜 그런가요?"라고 물으면, 구간이 약 8°로 모든 파라미터 중 가장 넓은 카메라 기울기 추정값을 꼽고, 어떤 시행을 더 하면 좁힐 수 있는지 제안합니다.
 
 ![Tether에게 물어보기](https://raw.githubusercontent.com/men16922/tether/main/docs/article/img/ask.jpg)
+
+_Figure origin: Newton synthetic recorded demo / Newton 합성 데이터의 기록 화면; not independent phone footage._
 
 ## 하루씩 잡아먹은 교훈들
 
@@ -308,4 +352,6 @@ Studio에는 내 세션에 대해 영어나 한국어로 답하는 채팅 창이
 
 ---
 
-*실제 물체 영상: EV-RealPhys (Kandukuri, Strecke, Stueckler 2023, Max Planck Institute), CC BY-SA 4.0. 실제 미끄러짐 영상: IDPP, Apache-2.0. Tether는 독립적인 해커톤 프로젝트이며 NVIDIA나 Nebius와 제휴하거나 보증받은 관계가 아닙니다.*
+_실제 물체 영상: EV-RealPhys (Kandukuri, Strecke, Stueckler 2023, Max Planck Institute), CC BY-SA 4.0. 실제 미끄러짐 영상: IDPP, Apache-2.0. Tether는 독립적인 해커톤 프로젝트이며 NVIDIA나 Nebius와 제휴하거나 보증받은 관계가 아닙니다._
+
+공통 입력 비교에서는 단순 감속을 계산할 수 없는 짧은 영상 시행 하나를 모든 방법의 학습에서 함께 제외했습니다. 보류한 시행은 평가에 남기고, 그 시행을 먼저 뺀 뒤 나머지 학습 시행의 공통 조건을 적용합니다. 앞의 물체별 Tether 마찰 표는 전체 채택 데이터를 사용한 별도 결과입니다.

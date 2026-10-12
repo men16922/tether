@@ -119,7 +119,8 @@ def run_agent(session: Session, llm, on_step=None) -> dict:
     return out
 
 
-def analyze(session: Session, llm=None, on_event=None, n_boot: int | None = None) -> Result:
+def analyze(session: Session, llm=None, on_event=None, n_boot: int | None = None, *,
+            cross_check: bool = True, agent_result: dict | None = None) -> Result:
     """Full pipeline. on_event(dict) receives: stage, agent_step*, calibration, next, done."""
     t0 = time.perf_counter()
     events: list[dict] = []
@@ -131,8 +132,9 @@ def analyze(session: Session, llm=None, on_event=None, n_boot: int | None = None
 
     emit({"type": "stage", "stage": "data", "pushes": len(session.pushes), "coverage_m": [round(x, 3) for x in session.coverage()],
           "notes": session.notes})
-    agent = None
-    if llm is not None:
+    import copy
+    agent = copy.deepcopy(agent_result)
+    if llm is not None and agent is None:
         emit({"type": "stage", "stage": "agent"})
         agent = run_agent(session, llm, on_step=lambda s: emit({"type": "agent_step", "step": s}))
     emit({"type": "stage", "stage": "fit"})
@@ -140,6 +142,15 @@ def analyze(session: Session, llm=None, on_event=None, n_boot: int | None = None
     if agent and agent["structure"]:
         cal = calibrate(session, agent["structure"], {**from_params(fit_base(session)), **agent["committed"]},
                         chosen_by=f"Nemotron agent ({agent['model_name'] or 'llm'})", **kw)
+        # The ablation shares one agent response and disables only this post-agent library cross-check.
+        if not cross_check:
+            agent.pop('cross_check',None)
+            emit({"type": "calibration", "calibration": cal.to_json()})
+            nxt = design.suggest(session, cal, extra_requests=agent.get("requested_commands"))
+            emit({'type':'next','next_experiment':nxt})
+            res=Result(session, cal, nxt, agent, time.perf_counter() - t0, events)
+            emit({'type':'done','seconds':round(res.seconds,2)})
+            return res
         # cross-check: never ship a model that leaves evidence unexplained when a library structure explains it
         cands = search(session)
         alt = min(cands, key=lambda c: (round(misfit(c), 1), c["n_params"]))

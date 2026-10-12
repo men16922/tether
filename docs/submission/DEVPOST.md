@@ -20,6 +20,10 @@ The same gap shows up in three industries with the same physics underneath: an o
 slides to a stop. A robot pushing a box onto a line, a car braking to a stop line and a pusher sliding a part to an
 inspection camera differ in scale and vocabulary, not in the equations. We built one tool for all three.
 
+Tether estimates the physics gap of a pushing task from video or logs, shows where measurements are missing, and provides the next experiment and a verifiable setup.
+
+Robot and factory pushing are the lead cases. Driving is the same simplified model, scaled; real vehicle dynamics are not validated. User comprehension has not been tested with users.
+
 ## What it does
 
 Tether has three connected pages: an **Overview**, a **Benchmark** that tests the AI on worlds whose answer is known, and
@@ -46,8 +50,7 @@ Tether has three connected pages: an **Overview**, a **Benchmark** that tests th
    with its own friction, region and actuator through a per-body Warp kernel): on your current simulator, on wide
    domain randomization, and on worlds drawn from Tether's bootstrap ensemble. When the hidden world is known, each
    policy is scored there, and Newton renders the three policies acting side by side.
-7. **Verify in NVIDIA Newton:** before export, every measured run is replayed in the full engine, from its own start
-   and launch, with the exported physics and with your current simulator.
+7. **Verify in NVIDIA Newton:** read the exported JSON, check the generated Newton constants, and execute new pushes in a separate process. With at least six usable pushes, roughly the first 80% calibrates and the rest evaluates; otherwise the output explicitly says fit replay.
 8. **Export:** NVIDIA Newton materials and friction region, an Isaac Lab `EventTermCfg` whose randomization ranges
    are the measured intervals, and for driving a **CARLA 0.9.16** script (tire friction scaled by measured/simulated
    μ, a `static.trigger.friction` box on the wet section, and a braking-distance check), plus a report and JSON.
@@ -92,10 +95,7 @@ world whose physics the agent cannot see, let Nemotron investigate, fix the simu
   the 90% intervals contain the truth 97% of the time; before we added a 1% length-scale term for logs it was 82%. That term was tuned on these
   worlds, so we checked it on fresh ones made by a different engine (MuJoCo, error model frozen): 88% of 120 values.
   `make prove` recomputes all of this, plus the replay and retraining tables, with no network (`runs/proof/PROOF.md`).
-- **Replay in NVIDIA Newton:** with the exported physics, rms stop error is 4–8 mm on the four table-scale examples,
-  where the uncalibrated simulators are off by 3–25 cm; on the two driving examples at full size, 18–27 cm vs 1.1–2.7 m
-  (`runs/proof/PROOF.md`). This replays in the engine that generated the data, so it is a self-consistency check of the
-  export, not an independent validation.
+- **Export-file verification in NVIDIA Newton:** held-out RMS is 0.6–1.45 cm at table scale; on the driving examples, 19.8–44.8 cm at full scale. The generated files are read and checked before a separate process runs the withheld pushes. This uses Newton synthetic examples; real prediction is reported separately below.
 - **Retrain and test** (policy learned by trial in 16 parallel Newton worlds × 11 table points, 10 iterations; success
   in the hidden world, 24 targets):
 
@@ -148,15 +148,41 @@ world whose physics the agent cannot see, let Nemotron investigate, fix the simu
   | pitcher | 0.220 | 0.216 | 0.229 |
   | cracker box | 0.280 | 0.208 | 0.173 |
 
-  4 of 5 objects within ±0.05 on both paths; mean error 0.019 (log) and 0.029 (video), against 0.082 for the paper's
-  own estimator on the same sequences. The cracker box misses on every path, and on real data the 90% intervals are
+  4 of 5 objects within ±0.05 on both paths; mean error 0.019 (log) and 0.029 (video). The cracker box misses on every path, and on real data the 90% intervals are
   too narrow (3 of 5 and 2 of 5 contain the tilt-test value). The benchmark changed Tether: the fit now reads how long
-  each slide takes to stop (a jittery clock made launch speeds 20–30% off), and tracks that jump or run backwards are
+  each slide takes to stop (release segmentation and tracking can affect launch-speed estimates), and tracks that jump or run backwards are
   dropped with a note.
 - **Real footage, friction law:** on the 45 tracked real slides, Coulomb sliding (Tether's model) beats a viscous
   law decisively on 35 and is the best of three laws on 36 (scale-free BIC).
 - **Next experiment:** reaching 95% hidden-world success takes 5.76 runs with Tether's suggestions vs 6.84 random, the
   same as a well-designed manual sweep (5.76): the suggestions match an expert's sweep without knowing the table.
+
+Reference only: the paper reports mean error 0.082 (median 0.025) under a **different protocol: RGB-D online tracking and filtering**; this is not a same-input baseline.
+
+Inputs and exclusions: the video path uses the **dataset camera calibration**, a **tracking start projected from the mocap rest position**, and **object centre height from mocap**. It is not an independent phone-only test. Of 45 video tracks, 25 are retained and **20/45 excluded** (4 jumps, 8 backward tracks, 8 stopping too soon). The log path retains 45/45. No tilt-test friction enters either fit.
+
+| Input path | Tether μ MAE (matched training) | Quadratic μ median MAE | Quadratic μ mean MAE |
+|---|---|---|---|
+| log | 0.019 | 0.018 | 0.019 |
+| video | 0.029 | 0.037 | 0.034 |
+
+Same common training pool, release initialisation and exclusions for all three methods. One mustard-video push has too few moving frames for a positive quadratic fit; it is excluded from ALL methods’ training for this comparison (6 of 7 usable). Full-data Tether friction estimates in the preceding table remain separate. Held-out targets stay in the evaluation; eligibility is applied to the other training pushes only. These five-object results do not establish an accuracy advantage.
+
+| Object / path | Held-out pushes | Tether stop median / p90 (cm) | Quadratic median (cm) | Quadratic mean (cm) |
+|---|---|---|---|---|
+| mug / log | 10 | 11.0 / 54.5 | 13.1 / 51.8 | 13.3 / 56.7 |
+| mug / video | 8 | 8.2 / 34.0 | 11.2 / 37.7 | 7.9 / 33.7 |
+| mustard bottle / log | 10 | 13.0 / 40.2 | 13.7 / 55.4 | 13.3 / 57.6 |
+| mustard bottle / video | 7 | 2.5 / 6.1 | 2.4 / 6.7 | 2.9 / 6.6 |
+| bleach cleanser / log | 10 | 9.5 / 39.3 | 9.5 / 38.4 | 9.3 / 41.0 |
+| bleach cleanser / video | 5 | 10.8 / 53.1 | 10.4 / 63.6 | 12.8 / 65.8 |
+| pitcher / log | 10 | 11.2 / 25.8 | 13.2 / 28.1 | 11.9 / 25.6 |
+| pitcher / video | 4 | 5.3 / 38.1 | 9.8 / 29.7 | 7.3 / 34.9 |
+| cracker box / log | 5 | 26.2 / 29.7 | 25.7 / 28.8 | 25.8 / 29.5 |
+| cracker box / video | 0 | not evaluable (one push) | — | — |
+
+Leave-one-push-out: remove the held-out push first, form a common eligible training pool, select the structure and fit, then predict from the held-out measured launch speed alone. Held-out stop/track never enters training or its eligibility filter. Prediction errors are distinct from friction-estimation errors and still include launch-speed/tracking limits. No LLM calls are used.
+
 
 **Gap-Bench** (Benchmark page; NVIDIA Newton, 15 hidden worlds per tier, mean hidden-world success ± 95% CI):
 
@@ -222,3 +248,68 @@ validation on real objects (EV-RealPhys) and on worlds from a different engine (
 | Design | One design system on three pages; Studio in three steps (Data → Analysis → Results) with one headline number; friction painted on the visitor's own video; ghost replays; EN/KO |
 | Potential impact | Same tool for robots, vehicles and production lines; exports into Newton, Isaac Lab and CARLA |
 | Quality of the idea | An agent that fixes the simulator instead of the policy, and says how sure it is |
+
+
+### Reliability on public real data (2026-10-12 recomputed)
+
+| Object / path | μ error | Reliability | Error > 0.05 flagged | Interval covers tilt |
+|---|---|---|---|---|
+| pitcher / log | 0.004 | limited | — | yes |
+| pitcher / video | 0.009 | limited | — | yes |
+| mustard bottle / log | 0.003 | limited | — | yes |
+| mustard bottle / video | 0.005 | limited | — | no |
+| bleach cleanser / log | 0.011 | limited | — | no |
+| bleach cleanser / video | 0.012 | limited | — | yes |
+| cracker box / log | 0.072 | limited | yes | no |
+| cracker box / video | 0.107 | unreliable | yes | unavailable |
+| mug / log | 0.005 | limited | — | yes |
+| mug / video | 0.011 | limited | — | no |
+
+This is a diagnostic flag, not a validated detector of friction bias. Both >0.05-error cases receive warnings, but other accurate cases also do. Among unflagged cases: 0 evaluable, 0 covered (coverage cannot be estimated with no unflagged cases).
+
+
+If the live demo is unavailable: clone the repository, install `requirements.txt`, run `make serve`, and open `/studio`. `make pages` also produces recorded standalone pages in `tether/web/dist/`. They replay recorded responses and do not establish new live-model results.
+
+
+### Coverage versus push count (2026-10-12 recomputed)
+
+| Usable pushes | Public real coverage | MuJoCo coverage |
+|---|---|---|
+| 1 | 1/10 | 0/24 |
+| 2 | 5/9 | 0/24 |
+| 4 | 7/9 | 0/24 |
+| 6 | 5/6 | 14/24 |
+| 8 | 3/5 | 14/24 |
+
+Fixed, evenly spaced subsamples; 30 bootstrap draws; ten public real cases when enough pushes exist, and 24 in-menu MuJoCo worlds. The one-push row is the **pre-change diagnostic**; the product now hides that interval. Six pushes is a conservative product policy because structure search becomes available there, not proof of statistical sufficiency. Coverage remains poor and nonmonotonic; shared bias and cross-engine differences are not covered. An OK status does not mean 90% accuracy or validated coverage.
+
+
+### Export-file verification on held-out Newton pushes (2026-10-12 recomputed)
+
+| Newton sample | Fit / held-out pushes | Calibrated RMS (base cm) | Current RMS (base cm) |
+|---|---|---|---|
+| brake-log | 14 / 4 | 0.79 | 5.93 |
+| flick | 8 / 3 | 1.45 | 31.54 |
+| lab-bench | 16 / 4 | 0.60 | 2.81 |
+| press-line | 14 / 4 | 1.09 | 22.80 |
+| short-reach | 6 / 2 | 0.64 | 6.72 |
+| stop-line | 8 / 3 | 1.79 | 17.63 |
+
+Data origin: Newton synthetic. Roughly the first 80% calibrates; the remaining pushes are withheld. Generated JSON and Newton constants are checked, then a separate process executes the withheld launches. Base units are shown to compare samples; driving lengths displayed/exported at full scale are 25× these values. This checks file execution and prediction within the data-generating engine; public real-data prediction is a separate evaluation. Isaac Lab and CARLA are format-checked against stand-ins and were not executed here.
+
+
+### Nemotron contribution: bounded pilot (2026-10-12)
+
+| Case (MuJoCo) | Offline median cm | Agent median cm | Agent + cross-check median cm |
+|---|---|---|---|
+| mujoco-00 | 2.56 | 2.56 | 2.56 |
+| mujoco-01 | 2.33 | 2.33 | 2.33 |
+| mujoco-02 | 1.31 | 1.31 | 1.31 |
+| mujoco-03 | 0.95 | 0.95 | 0.95 |
+| mujoco-04 | 1.54 | 1.21 | 1.21 |
+| mujoco-05 | 2.11 | 2.11 | 2.11 |
+| mujoco-06 | 0.88 | 0.88 | 0.88 |
+| mujoco-07 | 2.45 | 2.45 | 2.45 |
+| mujoco-08 | 2.21 | 2.21 | 2.21 |
+
+Data origin: MuJoCo cross-engine. Nine of the planned 35 cases have complete training-only Nemotron fixtures. Cross-check overrules: 0/9. These selected in-menu cases do not establish an accuracy advantage or cover all domains. The remaining 26 cases are unavailable or incomplete after the approved $0.10 cap blocked further calls. Reported tokens × model API prices total $0.0963855; invoice/balance not verified. Original per-case live latency was not retained for this pilot; replay latency is not live latency. No user comprehension test was performed. Responses replay offline with identical training-input hashes.

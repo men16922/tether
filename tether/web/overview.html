@@ -155,10 +155,8 @@ const L = {
   img: id => STATIC ? STATIC.img[id] : `/api/studio/sample-frame/${id}`,
 };
 
-/* The roadside braking example as recorded (runs/studio-demo/stop-line.json, first take): for each run, where the car
-   really stopped, where the uncalibrated simulator says it would, and where Tether's calibrated simulator says it would.
-   Metres and km/h at full scale. */
-const TETHER = [[2.43, 2.09, 2.26, 21], [3.79, 3.5, 3.79, 27], [4.69, 4.33, 4.69, 30], [5.39, 5.02, 5.43, 32], [6.85, 6.36, 6.88, 36], [8.56, 7.85, 8.6, 40], [13.22, 9.51, 13.0, 44]];
+/* Newton synthetic robot phone-video sample, fit replay; not independent real footage. */
+const TETHER = [[0.1007, 0.0696, 0.1008, 1.0453], [0.1925, 0.1313, 0.1901, 1.4358], [0.2205, 0.152, 0.22, 1.5444], [0.3496, 0.2445, 0.3539, 1.9591], [0.5148, 0.309, 0.5187, 2.2024], [0.5865, 0.3363, 0.5871, 2.2974], [0.7876, 0.4082, 0.7764, 2.5312]];
 let calibrated = false;
 
 const DOMAINS = [
@@ -180,31 +178,31 @@ const DOMAINS = [
 ];
 
 function tetherSvg() {
-  const W = 620, H = 250, x0 = 60, x1 = W - 24, xmax = 14.5, X = m => x0 + m / xmax * (x1 - x0);
+  const W = 620, H = 250, x0 = 60, x1 = W - 24, xmax = 0.9, X = m => x0 + m / xmax * (x1 - x0);
   const ySim = 70, yReal = 182;
-  const rows = TETHER.map(([real, sim, cal, kmh], i) => {
-    const s = calibrated ? cal : sim, off = Math.abs(s - real) > 0.4;
+  const rows = TETHER.map(([real, sim, cal, speed], i) => {
+    const s = calibrated ? cal : sim, off = Math.abs(s - real) > 0.02;
     const col = calibrated ? "#76b900" : off ? "#d9a13b" : "#a3a3a3";
     return `<line class="tl" x1="${X(s)}" y1="${ySim + 9}" x2="${X(real)}" y2="${yReal - 9}" stroke="${col}" stroke-width="${calibrated ? 1.6 : 1.2}" stroke-dasharray="${calibrated ? "0" : "4 4"}"/>
       <rect class="mk" x="${X(s) - 6}" y="${ySim - 7}" width="12" height="14" fill="${calibrated ? "#76b900" : "#6e6e6e"}"/>
       <rect x="${X(real) - 6}" y="${yReal - 7}" width="12" height="14" fill="#eeeeee"/>
-      ${i === TETHER.length - 1 ? `<text x="${X(real) + 10}" y="${yReal + 4}">${kmh} km/h</text>` : ""}`;
+      ${i === TETHER.length - 1 ? `<text x="${X(real) + 10}" y="${yReal + 4}">${speed.toFixed(1)} m/s</text>` : ""}`;
   }).join("");
-  const ticks = [0, 2, 4, 6, 8, 10, 12, 14].map(t => `<line x1="${X(t)}" x2="${X(t)}" y1="${yReal + 16}" y2="${yReal + 21}" stroke="#333333"/><text x="${X(t)}" y="${yReal + 36}" text-anchor="middle">${t} m</text>`).join("");
-  const wet = `<rect x="${X(8.82)}" y="${yReal - 16}" width="${X(14.5) - X(8.82)}" height="32" fill="rgba(76,181,230,0.16)"/><text x="${X(8.82) + 6}" y="${yReal - 22}" style="fill:#4cb5e6">${T("wet from 8.8 m", "8.8 m 지점부터 젖은 노면")}</text>`;
+  const ticks = [0, 0.2, 0.4, 0.6, 0.8].map(t => `<line x1="${X(t)}" x2="${X(t)}" y1="${yReal + 16}" y2="${yReal + 21}" stroke="#333333"/><text x="${X(t)}" y="${yReal + 36}" text-anchor="middle">${t} m</text>`).join("");
+  const wet = `<rect x="${X(0.376)}" y="${yReal - 16}" width="${X(0.9) - X(0.376)}" height="32" fill="rgba(76,181,230,0.16)"/><text x="${X(0.376) + 6}" y="${yReal - 22}" style="fill:#4cb5e6">${T("different friction from 0.38 m", "0.38 m 이후 마찰이 다른 구간")}</text>`;
   const last = TETHER[TETHER.length - 1], s = calibrated ? last[2] : last[1];
-  const gap = `<text x="${X(s)}" y="${ySim - 18}" text-anchor="middle" style="fill:${calibrated ? "#76b900" : "#d9a13b"};font-family:var(--f-mono)">${calibrated ? T(`${s.toFixed(1)} m (real ${last[0].toFixed(1)})`, `${s.toFixed(1)} m (실제 ${last[0].toFixed(1)})`) : T(`${s.toFixed(1)} m, ${(last[0] - s).toFixed(1)} m short`, `${s.toFixed(1)} m, ${(last[0] - s).toFixed(1)} m 모자람`)}</text>`;
+  const gap = `<text x="${X(s)}" y="${ySim - 18}" text-anchor="middle" style="fill:${calibrated ? "#76b900" : "#d9a13b"};font-family:var(--f-mono)">${calibrated ? T(`${s.toFixed(2)} m (real ${last[0].toFixed(2)})`, `${s.toFixed(2)} m (실제 ${last[0].toFixed(2)})`) : T(`${s.toFixed(2)} m, ${(last[0] - s).toFixed(2)} m short`, `${s.toFixed(2)} m, ${(last[0] - s).toFixed(2)} m 모자람`)}</text>`;
   return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${T("Simulated stops tethered to real stops", "시뮬레이터가 예측한 정지 위치와 실제 정지 위치")}">
     <line x1="${x0}" x2="${x1}" y1="${ySim}" y2="${ySim}" stroke="#333333"/><line x1="${x0}" x2="${x1}" y1="${yReal}" y2="${yReal}" stroke="#333333"/>
-    <text class="lab" x="0" y="${ySim + 4}">${T("SIM", "시뮬")}</text><text class="lab" x="0" y="${yReal + 4}">${T("REAL", "실제")}</text>
+    <text class="lab" x="0" y="${ySim + 4}">${T("SIM", "시뮬")}</text><text class="lab" x="0" y="${yReal + 4}">${T("OBS", "관측")}</text>
     ${wet}${rows}${gap}${ticks}</svg>`;
 }
 function renderTether() {
   $("#tsvg").innerHTML = tetherSvg();
   document.querySelectorAll("#ttog button").forEach(b => b.setAttribute("aria-pressed", String((b.dataset.v === "cal") === calibrated)));
   $("#tnote").textContent = calibrated
-    ? T("Tether's calibrated simulator: every predicted stop lands on the real one, including the run that reached the wet section.", "Tether로 보정한 시뮬레이터: 젖은 구간까지 들어간 경우를 포함해 모든 정지 위치를 실제와 같게 예측합니다.")
-    : T("Your current simulator: dry asphalt everywhere. It is close on short runs and 3.7 m short where the road is wet.", "보정 전 시뮬레이터: 도로 전체를 마른 아스팔트로 가정합니다. 짧은 제동은 거의 맞지만, 젖은 구간에서는 실제보다 3.7 m 앞에 선다고 예측합니다.");
+    ? T("Newton synthetic example: calibrated fit replay on the measured pushes. New-push prediction is evaluated separately.", "Newton 합성 예시에서 보정에 쓴 시행을 재현합니다. 보정에서 제외한 새 시행의 예측은 별도로 평가합니다.")
+    : T("Robot pushing sample: the current sim assumes uniform friction and underestimates slide distance. This is Newton synthetic data.", "로봇 밀기 예시입니다. 보정 전 시뮬레이터는 균일한 마찰을 가정해 이동 거리를 짧게 예측합니다. Newton 합성 데이터입니다.");
 }
 
 function render() {
@@ -217,11 +215,11 @@ function render() {
   <section class="hero">
     <div>
       <h2>${T("Tie your simulator to the real world.", "시뮬레이터를 현실에 맞춥니다.")}</h2>
-      <p class="lede">${T("Give Tether a video or a log of how things really slide and stop. It finds what your simulator gets wrong, says how sure it is, and retrains the policy on the corrected physics.", "실제 움직임이 담긴 영상이나 로그만 있으면 됩니다. Tether가 시뮬레이터의 어느 값이 틀렸는지 찾아 보정하고, 보정된 물리로 정책을 다시 학습합니다.")}</p>
+      <p class="lede">${T("Tether estimates the physics gap of a pushing task from video or logs, shows where measurements are missing, and provides the next experiment and a verifiable setup.", "Tether는 밀기 작업의 영상·로그에서 시뮬레이터의 물리 차이를 추정하고, 아직 측정하지 않은 구간을 드러내며, 다음 실험과 검증 가능한 설정을 제공합니다.")}</p>
       <div class="ctas"><a class="btn primary" href="${L.studio(q)}">${T("Start in Studio", "Studio에서 시작하기")}</a><a class="link" href="${L.benchmark(q)}">${T("See how the AI is tested", "AI 검증 보기")}</a></div>
     </div>
     <div class="tether">
-      <div class="hd"><b>${T("Braking to a stop line", "정지선 제동")}</b>
+      <div class="hd"><b>${T("Robot pushing: Newton synthetic video", "로봇 밀기: Newton 합성 영상")}</b>
         <div class="toggle" id="ttog" role="group" aria-label="${T("Simulator", "시뮬레이터")}"><button type="button" data-v="cur">${T("Before", "보정 전")}</button><button type="button" data-v="cal">${T("Tethered", "보정 후")}</button></div></div>
       <div id="tsvg"></div>
       <p class="ft" id="tnote"></p>

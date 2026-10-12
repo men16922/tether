@@ -428,19 +428,23 @@ def track_video(path: Path, corners_px, sheet: str = "a4", name: str | None = No
         raise SessionError("no push found: the object moves too little (needs > 6 cm/s)")
     prior = prior or {}
     origin = float(prior["origin_from_sheet_m"]) if "origin_from_sheet_m" in prior else float(np.median([s_abs[r] for r, _ in segs]))
-    pushes, debug_pushes = [], []
+    pushes, debug_pushes, rejected = [], [], []
     lost = 0
     from tether.agent.loop import fit_launch
 
     for i, (r, e) in enumerate(segs):
         if not good[r:e + 1].mean() > 0.8:
+            lost += 1
+            rejected.append({'push':i,'release_frame':r,'rest_frame':e,'reason':'tracker confidence too low'})
             continue
         rest = float(np.median(s_abs[e:min(len(s_abs), e + 5)]))
         s0, v0 = launch_state(s_abs, r, e, fps)
         tr_native = [s0] + list(s_abs[r + 1:e + 1]) + [rest] * 3
         tr = resample([float(x - s0) for x in tr_native], fps)
-        if implausible(tr, 30.0, float(v0)):
+        why = implausible(tr, 30.0, float(v0))
+        if why:
             lost += 1
+            rejected.append({'push':i,'release_frame':r,'rest_frame':e,'reason':why})
             continue
         start = float(s0 - origin)
         stop = rest - float(s0)
@@ -489,6 +493,7 @@ def track_video(path: Path, corners_px, sheet: str = "a4", name: str | None = No
 
     debug = {"fps": fps, "frames": len(frames), "scale": scale, "camera": {"height_m": round(cam.height_m, 3), "focal_px": round(cam.f / scale, 1)},
              "object_px": [round(obj[0] / scale, 1), round(obj[1] / scale, 1)], "pushes": debug_pushes,
+             'rejected_pushes': rejected, 'detected_pushes':len(segs),
              "axis_px": {f"{d:.2f}": to_px(d) for d in np.arange(0.0, 0.91, 0.05)},
              "to_px": to_px, "box_px": box_px, "track_score_min": round(float(score[good].min()) if good.any() else 0.0, 3)}
     return session, debug

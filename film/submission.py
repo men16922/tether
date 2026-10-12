@@ -83,10 +83,8 @@ def main() -> None:
 
     total = sum(d for _, d in sc.values())
     chapters = "\n".join(f"{stamp(sc[n][0])} {label}" for n, label in CHAPTERS.items() if n in sc)
-    (OUT / "youtube-description.txt").write_text(f"""Tether ties your simulator to the real world. From a phone video or the log a robot, car or production line
-already writes, it finds which physics the simulator gets wrong, says how sure it is, checks the fix by replaying
-every run in NVIDIA Newton, retrains the policy in parallel Newton worlds, and exports configs for NVIDIA Newton,
-Isaac Lab and CARLA. The reasoning agent is NVIDIA Nemotron 3 Super running on Nebius Token Factory.
+    (OUT / "youtube-description.txt").write_text(f"""Tether estimates the physics gap of a pushing task from video or logs, shows where measurements are missing, and provides the next experiment and a verifiable setup.
+The reasoning agent is NVIDIA Nemotron 3 Super on Nebius Token Factory. Robot and factory pushing are the lead cases; driving illustrates the same model at another scale.
 
 Try it: {LIVE}
 Code (Apache-2.0): {REPO}

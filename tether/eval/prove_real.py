@@ -20,6 +20,7 @@ from __future__ import annotations
 import json
 import math
 import sys
+from dataclasses import replace
 from pathlib import Path
 from tether.paths import REPO
 
@@ -27,6 +28,39 @@ ROOT = REPO
 REAL = ROOT / "film" / "real"
 OUT = ROOT / "runs" / "proof" / "real_calibration.json"
 TOL = 0.05
+
+
+def evaluate_session(session, calibration_count=10, out_dir=None):
+    from tether.studio.fit import calibrate, predict_stop
+    from tether.studio import export
+    from tether.studio.roundtrip import replay
+    if calibration_count<2:
+        raise ValueError('at least two calibration pushes required')
+    valid=[p for p in session.pushes if not p.tipped]
+    train=replace(session,pushes=valid[:calibration_count])
+    cal=calibrate(train)
+    test=valid[calibration_count:]
+    rows=[]
+    for p in test:
+        prediction=predict_stop(cal,p.launch_speed,p.start)
+        iv=prediction['predictive_range_m']
+        rows.append({'launch_mps':p.launch_speed,'start_m':p.start,'measured_stop_m':p.stop,
+                     'predicted_stop_m':prediction['median_m'],'predictive_range_m':iv,
+                     'abs_error_cm':abs(prediction['median_m']-p.stop)*100,
+                     'covered':None if iv is None else iv[0]<=p.stop<=iv[1]})
+    import numpy as np
+    out={'protocol':'first k retained pushes calibrate; remaining retained pushes evaluate; measured launch speed only',
+         'status':'evaluated' if rows else 'not evaluable: no pushes left after calibration',
+         'calibration_pushes':len(train.pushes),'evaluation_pushes':len(rows),'rows':rows,
+         'median_cm':float(np.median([r['abs_error_cm'] for r in rows])) if rows else None,
+         'p90_cm':float(np.percentile([r['abs_error_cm'] for r in rows],90)) if rows else None,
+         'predictive_coverage':sum(bool(r['covered']) for r in rows)/len(rows) if rows else None}
+    if out_dir is not None:
+        export.write_all(out_dir,train,cal)
+        if test:
+            trip=replay(out_dir,[p.launch_speed for p in test],[p.start for p in test])
+            out['file_roundtrip']=trip
+    return cal,out
 
 
 def one(path: Path, t: dict) -> dict:
@@ -38,13 +72,14 @@ def one(path: Path, t: dict) -> dict:
     if corners is None:
         return {"clip": path.stem, "error": "sheet not found: add its four corners to truth.json"}
     session, dbg = track_video(path, corners, t.get("sheet", "a4"), path.stem, None, t.get("object_height_cm", 5.0) / 100)
-    cal = calibrate(session)
+    cal,held_out = evaluate_session(session,int(t.get('calibration_pushes',10)), ROOT/'runs/studio/prove-real'/path.stem)
     mu = cal.model["mu_eff"]
-    lo, hi = cal.intervals.get("mu_eff", (mu, mu))
+    iv = cal.intervals.get('mu_eff')
     mu_k = math.tan(math.radians(t["tilt_kinetic_deg"])) if t.get("tilt_kinetic_deg") is not None else None
     mu_s = math.tan(math.radians(t["tilt_static_deg"])) if t.get("tilt_static_deg") is not None else None
     return {"clip": path.stem, "pushes": len(session.pushes), "fps": dbg.get("fps"), "camera_height_m": dbg["camera"].get("height_m"),
-            "structure": cal.structure, "mu": round(mu, 4), "mu_interval": [round(lo, 4), round(hi, 4)],
+            "structure": cal.structure, "mu": round(mu, 4), "mu_interval": None if iv is None else [round(x,4) for x in iv],
+            'held_out':held_out, 'rejected_pushes':dbg.get('rejected_pushes',[]), 'reliability':cal.reliability,
             "region": {"from_m": cal.model.get("patch_y0"), "mu": cal.model.get("patch_mu")} if cal.model.get("patch_y0") else None,
             "stop_residual_rms_m": cal.residuals["stop_residual_rms_m"],
             "left_unexplained": structure.describe(cal.residuals.get("patterns") or {"findings": [], "note": "not checked"}),
@@ -79,7 +114,7 @@ def main(real: Path = REAL) -> dict:
         if r.get("error"):
             print(f"{r['clip']:24s} {r['error']}")
             continue
-        iv = r["mu_interval"]
+        iv = r["mu_interval"] or [float('nan'),float('nan')]
         print(f"{r['clip']:24s} {r['pushes']:6d} {r['mu']:.3f} ({iv[0]:.3f}-{iv[1]:.3f}) {r['mu_tilt_kinetic'] or float('nan'):9.3f} "
               f"{r['error_vs_tilt'] if r['error_vs_tilt'] is not None else float('nan'):+7.3f}")
     print(json.dumps({k: v for k, v in out.items() if k != "rows"}))

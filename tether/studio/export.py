@@ -12,7 +12,7 @@ car and road even though the fit runs at the base scale (Froude similarity keeps
 Notes on friction: Tether measures *sliding* (dynamic) friction of the pair. Newton XPBD and PhysX
 ("average" combine mode, the Isaac Lab default) both use the mean of the two materials, so setting both
 the object and the table material to mu_eff reproduces the measured pair. Static friction is not observed
-by a sliding test; the exports keep it equal to the dynamic value and say so.
+by a sliding test; it is an assumption (Newton uses the sliding value; Isaac fixes static friction to the upper bound).
 """
 
 from __future__ import annotations
@@ -23,8 +23,18 @@ from datetime import date
 from tether.studio import domains as D
 from tether.studio.fit import LABELS, UNITS, Calibration
 from tether.studio.session import Session
+from tether.studio.reliability import assess, text as reliability_text
 
 SCHEMA = "tether.calibration/v1"
+
+
+def _status(session, cal):
+    return cal.reliability or assess(session, cal)
+
+
+def _status_header(session, cal):
+    status=_status(session,cal)
+    return '# Reliability: ' + reliability_text(status) + ('\n# Intervals unavailable; numerical bounds below are point values only.' if not status['interval_available'] else '')
 
 
 def _iv(cal: Calibration, f: str, d: D.Domain | None = None) -> tuple[float, float]:
@@ -42,7 +52,8 @@ def to_json(session: Session, cal: Calibration, nxt: dict | None = None, agent: 
     return {"schema": SCHEMA, "created": date.today().isoformat(),
             "domain": {"id": d.id, "name": d.name["en"], "length_scale": d.scale,
                        "model_in_domain_units": D.model_to_domain(d, cal.model)}, "session": {"name": session.name, "source": session.source,
-            "pushes": len(session.pushes), "tipped": sum(p.tipped for p in session.pushes), "notes": session.notes},
+            "pushes": len(session.pushes), "tipped": sum(p.tipped for p in session.pushes), "notes": session.notes,
+            "has_commands": session.has_commands, "has_targets": session.has_targets},
             "calibration": cal.to_json(), "next_experiment": nxt, "agent": agent}
 
 
@@ -54,6 +65,8 @@ def newton_snippet(session: Session, cal: Calibration) -> str:
     lo, hi = _iv(cal, "mu_eff", d)
     lines = [
         f"# Tether calibration for '{session.name}' ({d.name['en']}, {len(session.pushes)} runs, {date.today().isoformat()})",
+        _status_header(session,cal),
+        '# Verification: run `python -m tether.studio replay EXPORT_DIR` to execute new pushes; generation alone is not execution.',
         "# NVIDIA Newton: XPBD averages the two materials' mu, so set both to the measured pair value.",
         "import newton",
         "",
@@ -83,22 +96,31 @@ def newton_snippet(session: Session, cal: Calibration) -> str:
         lines += ["", f"# Perception ({w['target']} distance as the {w['camera']} reports it):",
                   f"CAMERA = {{'dx_m': {m['camera_dx']:.4f}, 'pitch_error_deg': {m['camera_pitch_deg']:.3f}, 'lens_k_per_m': {m['lens_k']:.5f}}}",
                   "# perceived = true * (1 + tan(pitch)) + dx + lens_k * true**2"]
-    return "\n".join(lines) + "\n"
+    result="\n".join(lines) + "\n"
+    if not _status(session,cal)['interval_available']:
+        result=result.replace(f'90% interval {lo:.4f} - {hi:.4f} (bootstrap)','interval unavailable (point estimate only)')
+    return result
 
 
 def isaaclab_snippet(session: Session, cal: Calibration) -> str:
     d = D.of_session(session)
     w = d.words["en"]
     lo, hi = _iv(cal, "mu_eff", d)
+    mu = cal.model['mu_eff']
+    obj_lo, obj_hi = max(0.0, 2 * lo - mu), max(0.0, 2 * hi - mu)
     lines = [
         f'"""Tether calibrated domain randomization for \'{session.name}\' ({date.today().isoformat()}).',
-        "Ranges are 90% bootstrap intervals of the measured values, not hand-picked bounds: train on what the real",
-        'table can plausibly be, nothing wider. PhysX "average" friction combine (the default) matches the measurement."""',
+        "Per-variable ranges, not joint draws. Format-checked against a stand-in, not executed here (Isaac Lab 2.2.1).",
+        'Requires average friction combine on both materials, and scene assets named object and table (RigidObject).',
+        'Effective pair mu = (object + table) / 2. Object range = max(0, 2 * interval - MU_EFF).',
+        'If clamping occurs, the lower effective bound is MU_EFF/2. Static friction is unmeasured; fixed to the upper bound."""',
+        _status_header(session,cal),
         "from isaaclab.envs import mdp",
         "from isaaclab.managers import EventTermCfg as EventTerm",
         "from isaaclab.managers import SceneEntityCfg",
         "from isaaclab.utils import configclass",
         "",
+        f"MU_EFF = {mu:.4f}",
         "",
         "@configclass",
         "class CalibratedEventCfg:",
@@ -108,10 +130,22 @@ def isaaclab_snippet(session: Session, cal: Calibration) -> str:
         '        mode="startup",',
         "        params={",
         '            "asset_cfg": SceneEntityCfg("object"),',
-        f'            "static_friction_range": ({lo:.4f}, {hi:.4f}),',
-        f'            "dynamic_friction_range": ({lo:.4f}, {hi:.4f}),',
+        f'            "static_friction_range": ({obj_hi:.4f}, {obj_hi:.4f}),',
+        f'            "dynamic_friction_range": ({obj_lo:.4f}, {obj_hi:.4f}),',
         '            "restitution_range": (0.0, 0.0),',
         '            "num_buckets": 64,',
+        '            "make_consistent": True,',
+        "        },",
+        "    )",
+        "    table_material = EventTerm(",
+        "        func=mdp.randomize_rigid_body_material,",
+        '        mode="startup",',
+        "        params={",
+        '            "asset_cfg": SceneEntityCfg("table"),',
+        f'            "static_friction_range": ({mu:.4f}, {mu:.4f}),',
+        f'            "dynamic_friction_range": ({mu:.4f}, {mu:.4f}),',
+        '            "restitution_range": (0.0, 0.0),',
+        '            "num_buckets": 1,',
         '            "make_consistent": True,',
         "        },",
         "    )",
@@ -213,7 +247,7 @@ def carla_snippet(session: Session, cal: Calibration) -> str:
     stop = v * v / (2 * m["mu_eff"] * 9.81)
     lines += ["", f"# Braking check: a full stop from 50 km/h on the dry section should take about {stop:.1f} m",
               f"# (v^2 / (2 mu g) with mu {m['mu_eff']:.3f}); if your CARLA vehicle differs, adjust tire_friction until it matches."]
-    return "\n".join(lines) + "\n"
+    return _status_header(session,cal) + '\n# Verification: format-checked against a stand-in, not executed here.\n' + "\n".join(lines) + "\n"
 
 
 def _fmt(v, unit: str) -> str:
@@ -237,16 +271,17 @@ def markdown(session: Session, cal: Calibration, nxt: dict | None = None, agent:
     labels = D.FIELD_LABELS[d.id]
     pr = cal.predicted
     out = [f"# Sim2Real calibration: {session.name}", "", f"Domain: **{d.name['en']}**. {d.blurb['en']}", "",
+           'Reliability: ' + reliability_text(_status(session,cal)), '',
            f"{len(session.pushes)} runs ({session.source}), structure chosen by {cal.chosen_by}. "
            f"Stop residual {_len(d, cal.residuals['stop_residual_rms_m'])} rms.", "",
            "## What differs from your simulator", "", "| Parameter | Sim | Real (measured) | 90% interval | |", "|---|---|---|---|---|"]
     for g in cal.gap:
-        flag = "changed" if g["significant"] else "within noise"
+        flag = 'not assessed' if g['lo'] is None else "changed" if g["significant"] else "within noise"
         f = g["field"]
         k = d.scale if f in ("patch_y0", "camera_dx") else (1 / d.scale if f == "lens_k" else 1.0)
         sc = (lambda x: None if x is None else x * k)
         out.append(f"| {labels.get(f, g['label'])} | {_fmt(sc(g['sim']), g['unit'])} | {_fmt(sc(g['real']), g['unit'])} | "
-                   f"{_fmt(sc(g['lo']), g['unit'])} – {_fmt(sc(g['hi']), g['unit'])} | {flag} |")
+                   f"{(_fmt(sc(g['lo']), g['unit']) + ' – ' + _fmt(sc(g['hi']), g['unit'])) if g['lo'] is not None else 'unavailable'} | {flag} |")
     t0, t1 = pr["target_range_m"]
     out += ["", "## Predicted effect (model rollouts, not measured)", "",
             f"Success = stopping within {_len(d, pr['tolerance_m'])} of the {w['target']}, over targets {_len(d, t0, 1)}–{_len(d, t1, 1)}, "
@@ -257,6 +292,12 @@ def markdown(session: Session, cal: Calibration, nxt: dict | None = None, agent:
              f"- calibrated sim: **{pr['after']['median'] * 100:.0f}%** (90%: {pr['after']['lo'] * 100:.0f}–{pr['after']['hi'] * 100:.0f}%)")]
     if pr.get("unmeasured_whatif"):
         out.append(f"- your runs reach {_len(d, pr['measured_reach_m'])}; beyond that the prediction includes ±30% friction what-ifs")
+    if not _status(session,cal)['interval_available']:
+        start=out.index('## Predicted effect (model rollouts, not measured)')
+        out[start:]=['## Predicted effect (model rollouts, not measured)', '',
+                    f"- current sim point prediction: **{pr['before']['median']*100:.0f}%**; interval unavailable",
+                    f"- calibrated sim point prediction: **{pr['after']['median']*100:.0f}%**; interval unavailable",
+                    'Insufficient empirical uncertainty: these point predictions are not accuracy guarantees.']
     if nxt:
         out += ["", "## Next experiment", ""]
         if nxt["settled"]:
@@ -274,7 +315,8 @@ def markdown(session: Session, cal: Calibration, nxt: dict | None = None, agent:
     if d.scale != 1.0:
         out += ["", f"Lengths are full scale. The fit runs on a Froude-scaled model (lengths 1:{d.scale:.0f}, speeds 1:{d.speed_scale:.0f}); "
                 "friction is scale-free, so stop = v² / (2 μ g) holds at both scales."]
-    out += ["", "Generated by Tether Studio (NVIDIA Newton physics, Nemotron agent). Intervals: bootstrap over runs."]
+    out += ["", "Generated by Tether Studio (NVIDIA Newton physics, Nemotron agent). " +
+            ('Intervals: bootstrap over runs.' if _status(session,cal)['interval_available'] else 'Intervals unavailable.')]
     return "\n".join(out) + "\n"
 
 

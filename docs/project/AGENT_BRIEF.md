@@ -1,8 +1,8 @@
 # Agent Brief
 
-Last Updated: 2026-10-11
+Last Updated: 2026-10-13
 
-> ▶ NEXT SESSION: Plan-only round done. Read `docs/project/plans/2026-10-11-feedback-hardening.md`, then start NEXT_PLAN Priority 1-A (`tether/eval/real_benchmark.py`: baselines + leave-one-push-out; move the paper's 0.082 to a different-protocol reference line in README/DEVPOST/articles/film; re-render film). Owner should hold the YouTube upload until A is done.
+> ▶ NEXT SESSION: Goal blocked, not complete. Read `docs/project/NEXT_PLAN.md` Priority 1 and execution record `docs/project/plans/2026-10-11-feedback-hardening.md`; first confirm the additional-credit decision. Only if cumulative $0.40 is approved, run `.venv/bin/python -m tether.eval.agent_ablation --live --budget-usd 0.4` with the existing ledger (9/35 complete, $0.0963855 token×price; $0.10 cap). Local A/B/C/E-tooling/F work, 144 tests and rebuilt film are preserved. Tether local ship is authorized; push/Cloud Run/portfolio approval, owner filming/tilt record, YouTube/Devpost remain pending. Portfolio copies are uncommitted; local credit ledger and generated QA/evaluation outputs remain outside the ship commit.
 
 ## Snapshot
 

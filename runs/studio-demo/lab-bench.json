@@ -2688,7 +2688,169 @@
          0.8023,
          0.844
         ],
-        "x_label": "launch speed (m/s)"
+        "x_label": "launch speed (m/s)",
+        "predictive_band": [
+         [
+          0.0,
+          0.005537717904038829
+         ],
+         [
+          0.0,
+          0.00734727669067912
+         ],
+         [
+          0.0004931945368479734,
+          0.010363500386809027
+         ],
+         [
+          0.00471396383023333,
+          0.014586827452190348
+         ],
+         [
+          0.010139616256466259,
+          0.02001787113732783
+         ],
+         [
+          0.01676142049127484,
+          0.026649458236587875
+         ],
+         [
+          0.024592992274091438,
+          0.03449713571105113
+         ],
+         [
+          0.03362659054313773,
+          0.04355539397331473
+         ],
+         [
+          0.04386094385236032,
+          0.05382551076908598
+         ],
+         [
+          0.055294641608822914,
+          0.06530890640832646
+         ],
+         [
+          0.06792615472804905,
+          0.0780071245551826
+         ],
+         [
+          0.08175386361223533,
+          0.0919218061667677
+         ],
+         [
+          0.09677609431215728,
+          0.10705465571645825
+         ],
+         [
+          0.11299116304916343,
+          0.12340739934816977
+         ],
+         [
+          0.13039742811942734,
+          0.1409817354837763
+         ],
+         [
+          0.14897225906918465,
+          0.1597579511537084
+         ],
+         [
+          0.16875513839331052,
+          0.17977883229679625
+         ],
+         [
+          0.18972510372668916,
+          0.20102567648295083
+         ],
+         [
+          0.21188121714868152,
+          0.2234995256277032
+         ],
+         [
+          0.23522280176367888,
+          0.24720115426719919
+         ],
+         [
+          0.2597494361445497,
+          0.27213106324507297
+         ],
+         [
+          0.28546092683620783,
+          0.2982894972642659
+         ],
+         [
+          0.3123572648386095,
+          0.32567648362312107
+         ],
+         [
+          0.3404385752313345,
+          0.3542918849936506
+         ],
+         [
+          0.36987053414335125,
+          0.3883909723022698
+         ],
+         [
+          0.41327338277452563,
+          0.43604578282438344
+         ],
+         [
+          0.46222532792477933,
+          0.48580486767690023
+         ],
+         [
+          0.5129923248707116,
+          0.5376372922618791
+         ],
+         [
+          0.5655750664779293,
+          0.5914967590006308
+         ],
+         [
+          0.6199760193195178,
+          0.6473167805399256
+         ],
+         [
+          0.6762010291241567,
+          0.7050836261268343
+         ],
+         [
+          0.7342582114728906,
+          0.7649097280160702
+         ],
+         [
+          0.7941540422579869,
+          0.8269355304606996
+         ],
+         [
+          0.8558893107190957,
+          0.8912377141297949
+         ],
+         [
+          0.919458598241063,
+          0.9578835229081228
+         ],
+         [
+          0.9847807091784584,
+          1.026744105054533
+         ],
+         [
+          1.0519921190822972,
+          1.0977667334804693
+         ],
+         [
+          1.121017898507286,
+          1.1707614592063935
+         ],
+         [
+          1.1918571647373453,
+          1.2457053911988614
+         ],
+         [
+          1.2645111088215515,
+          1.3225962010477486
+         ]
+        ]
        },
        "friction": {
         "measured": [
@@ -3293,7 +3455,301 @@
        ]
       },
       "chosen_by": "Nemotron agent (nvidia/nemotron-3-super-120b-a12b)",
-      "ensemble_size": 30
+      "ensemble_size": 30,
+      "ensemble": [
+       {
+        "mu_eff": 0.7033,
+        "actuator_gain": 0.8815,
+        "patch_y0": 0.3848,
+        "patch_mu": 0.4551,
+        "camera_dx": 0.0098,
+        "camera_pitch_deg": -1.025,
+        "lens_k": 0.0659
+       },
+       {
+        "mu_eff": 0.6975,
+        "actuator_gain": 0.8714,
+        "patch_y0": 0.3763,
+        "patch_mu": 0.4528,
+        "camera_dx": 0.0159,
+        "camera_pitch_deg": -3.447,
+        "lens_k": 0.1297
+       },
+       {
+        "mu_eff": 0.6941,
+        "actuator_gain": 0.8688,
+        "patch_y0": 0.3773,
+        "patch_mu": 0.4319,
+        "camera_dx": 0.009,
+        "camera_pitch_deg": -0.853,
+        "lens_k": 0.0608
+       },
+       {
+        "mu_eff": 0.7018,
+        "actuator_gain": 0.8735,
+        "patch_y0": 0.3674,
+        "patch_mu": 0.4555,
+        "camera_dx": -0.0022,
+        "camera_pitch_deg": 2.787,
+        "lens_k": -0.024
+       },
+       {
+        "mu_eff": 0.7018,
+        "actuator_gain": 0.8766,
+        "patch_y0": 0.3713,
+        "patch_mu": 0.4614,
+        "camera_dx": 0.0012,
+        "camera_pitch_deg": 1.797,
+        "lens_k": 0.0006
+       },
+       {
+        "mu_eff": 0.7073,
+        "actuator_gain": 0.8765,
+        "patch_y0": 0.3725,
+        "patch_mu": 0.459,
+        "camera_dx": -0.0029,
+        "camera_pitch_deg": 2.928,
+        "lens_k": -0.0248
+       },
+       {
+        "mu_eff": 0.6924,
+        "actuator_gain": 0.8641,
+        "patch_y0": 0.3691,
+        "patch_mu": 0.4493,
+        "camera_dx": 0.0106,
+        "camera_pitch_deg": -1.318,
+        "lens_k": 0.0678
+       },
+       {
+        "mu_eff": 0.6929,
+        "actuator_gain": 0.8679,
+        "patch_y0": 0.3756,
+        "patch_mu": 0.4493,
+        "camera_dx": -0.0086,
+        "camera_pitch_deg": 4.696,
+        "lens_k": -0.0599
+       },
+       {
+        "mu_eff": 0.7004,
+        "actuator_gain": 0.8776,
+        "patch_y0": 0.3799,
+        "patch_mu": 0.4518,
+        "camera_dx": 0.0069,
+        "camera_pitch_deg": -0.195,
+        "lens_k": 0.0465
+       },
+       {
+        "mu_eff": 0.688,
+        "actuator_gain": 0.8641,
+        "patch_y0": 0.3707,
+        "patch_mu": 0.4576,
+        "camera_dx": 0.0209,
+        "camera_pitch_deg": -5.0,
+        "lens_k": 0.1602
+       },
+       {
+        "mu_eff": 0.6995,
+        "actuator_gain": 0.867,
+        "patch_y0": 0.3686,
+        "patch_mu": 0.4528,
+        "camera_dx": -0.0074,
+        "camera_pitch_deg": 4.627,
+        "lens_k": -0.0602
+       },
+       {
+        "mu_eff": 0.7038,
+        "actuator_gain": 0.8744,
+        "patch_y0": 0.3656,
+        "patch_mu": 0.4594,
+        "camera_dx": -0.0014,
+        "camera_pitch_deg": 2.852,
+        "lens_k": -0.0253
+       },
+       {
+        "mu_eff": 0.7053,
+        "actuator_gain": 0.8787,
+        "patch_y0": 0.376,
+        "patch_mu": 0.4548,
+        "camera_dx": 0.0152,
+        "camera_pitch_deg": -2.718,
+        "lens_k": 0.0959
+       },
+       {
+        "mu_eff": 0.6948,
+        "actuator_gain": 0.8709,
+        "patch_y0": 0.3791,
+        "patch_mu": 0.4474,
+        "camera_dx": 0.0013,
+        "camera_pitch_deg": 1.856,
+        "lens_k": -0.0013
+       },
+       {
+        "mu_eff": 0.7036,
+        "actuator_gain": 0.8847,
+        "patch_y0": 0.3845,
+        "patch_mu": 0.4549,
+        "camera_dx": 0.0063,
+        "camera_pitch_deg": -0.174,
+        "lens_k": 0.0528
+       },
+       {
+        "mu_eff": 0.7069,
+        "actuator_gain": 0.8809,
+        "patch_y0": 0.3791,
+        "patch_mu": 0.4555,
+        "camera_dx": -0.0053,
+        "camera_pitch_deg": 3.662,
+        "lens_k": -0.0382
+       },
+       {
+        "mu_eff": 0.6949,
+        "actuator_gain": 0.8645,
+        "patch_y0": 0.3713,
+        "patch_mu": 0.4463,
+        "camera_dx": 0.0025,
+        "camera_pitch_deg": 1.366,
+        "lens_k": 0.0195
+       },
+       {
+        "mu_eff": 0.7014,
+        "actuator_gain": 0.8729,
+        "patch_y0": 0.3758,
+        "patch_mu": 0.4544,
+        "camera_dx": -0.0012,
+        "camera_pitch_deg": 2.675,
+        "lens_k": -0.0212
+       },
+       {
+        "mu_eff": 0.7073,
+        "actuator_gain": 0.8846,
+        "patch_y0": 0.3817,
+        "patch_mu": 0.4586,
+        "camera_dx": -0.0076,
+        "camera_pitch_deg": 4.672,
+        "lens_k": -0.061
+       },
+       {
+        "mu_eff": 0.7045,
+        "actuator_gain": 0.8787,
+        "patch_y0": 0.3798,
+        "patch_mu": 0.4537,
+        "camera_dx": -0.0001,
+        "camera_pitch_deg": 1.362,
+        "lens_k": 0.0263
+       },
+       {
+        "mu_eff": 0.708,
+        "actuator_gain": 0.8795,
+        "patch_y0": 0.3748,
+        "patch_mu": 0.4561,
+        "camera_dx": -0.0095,
+        "camera_pitch_deg": 5.0,
+        "lens_k": -0.0662
+       },
+       {
+        "mu_eff": 0.695,
+        "actuator_gain": 0.8756,
+        "patch_y0": 0.389,
+        "patch_mu": 0.4336,
+        "camera_dx": 0.0024,
+        "camera_pitch_deg": 1.444,
+        "lens_k": 0.011
+       },
+       {
+        "mu_eff": 0.6951,
+        "actuator_gain": 0.8744,
+        "patch_y0": 0.3828,
+        "patch_mu": 0.4482,
+        "camera_dx": 0.0065,
+        "camera_pitch_deg": -0.296,
+        "lens_k": 0.0565
+       },
+       {
+        "mu_eff": 0.6911,
+        "actuator_gain": 0.8674,
+        "patch_y0": 0.3798,
+        "patch_mu": 0.4473,
+        "camera_dx": -0.003,
+        "camera_pitch_deg": 3.312,
+        "lens_k": -0.0343
+       },
+       {
+        "mu_eff": 0.6963,
+        "actuator_gain": 0.8764,
+        "patch_y0": 0.3856,
+        "patch_mu": 0.4507,
+        "camera_dx": 0.0017,
+        "camera_pitch_deg": 1.646,
+        "lens_k": 0.0074
+       },
+       {
+        "mu_eff": 0.7064,
+        "actuator_gain": 0.8839,
+        "patch_y0": 0.3839,
+        "patch_mu": 0.4494,
+        "camera_dx": 0.0053,
+        "camera_pitch_deg": 0.291,
+        "lens_k": 0.0412
+       },
+       {
+        "mu_eff": 0.7125,
+        "actuator_gain": 0.8858,
+        "patch_y0": 0.3763,
+        "patch_mu": 0.4646,
+        "camera_dx": -0.0076,
+        "camera_pitch_deg": 4.819,
+        "lens_k": -0.0681
+       },
+       {
+        "mu_eff": 0.6985,
+        "actuator_gain": 0.8713,
+        "patch_y0": 0.3745,
+        "patch_mu": 0.4528,
+        "camera_dx": -0.0066,
+        "camera_pitch_deg": 4.452,
+        "lens_k": -0.0595
+       },
+       {
+        "mu_eff": 0.6991,
+        "actuator_gain": 0.8778,
+        "patch_y0": 0.3803,
+        "patch_mu": 0.4569,
+        "camera_dx": 0.0138,
+        "camera_pitch_deg": -2.6,
+        "lens_k": 0.1033
+       },
+       {
+        "mu_eff": 0.6913,
+        "actuator_gain": 0.8653,
+        "patch_y0": 0.3718,
+        "patch_mu": 0.4535,
+        "camera_dx": 0.0031,
+        "camera_pitch_deg": 1.143,
+        "lens_k": 0.0161
+       }
+      ],
+      "base": {
+       "object_mu": 0.8,
+       "table_mu": 0.8,
+       "object_density": 500.0,
+       "object_half_size": 0.025,
+       "actuator_gain": 1.0,
+       "restitution": 0.0,
+       "camera_dx": 0.0,
+       "camera_dz": 0.0,
+       "camera_pitch_deg": 0.0,
+       "light_intensity": 1.0,
+       "patch_y0": 1.0,
+       "patch_mu": 0.8,
+       "lens_k": 0.0
+      },
+      "reliability": {
+       "level": "ok",
+       "reasons": [],
+       "interval_available": true,
+       "usable_pushes": 20,
+       "policy": "6 pushes is a product policy; status cannot detect shared bias or guarantee coverage"
+      }
      }
     },
     {
@@ -6052,7 +6508,169 @@
           0.8023,
           0.844
          ],
-         "x_label": "launch speed (m/s)"
+         "x_label": "launch speed (m/s)",
+         "predictive_band": [
+          [
+           0.0,
+           0.005537717904038829
+          ],
+          [
+           0.0,
+           0.00734727669067912
+          ],
+          [
+           0.0004931945368479734,
+           0.010363500386809027
+          ],
+          [
+           0.00471396383023333,
+           0.014586827452190348
+          ],
+          [
+           0.010139616256466259,
+           0.02001787113732783
+          ],
+          [
+           0.01676142049127484,
+           0.026649458236587875
+          ],
+          [
+           0.024592992274091438,
+           0.03449713571105113
+          ],
+          [
+           0.03362659054313773,
+           0.04355539397331473
+          ],
+          [
+           0.04386094385236032,
+           0.05382551076908598
+          ],
+          [
+           0.055294641608822914,
+           0.06530890640832646
+          ],
+          [
+           0.06792615472804905,
+           0.0780071245551826
+          ],
+          [
+           0.08175386361223533,
+           0.0919218061667677
+          ],
+          [
+           0.09677609431215728,
+           0.10705465571645825
+          ],
+          [
+           0.11299116304916343,
+           0.12340739934816977
+          ],
+          [
+           0.13039742811942734,
+           0.1409817354837763
+          ],
+          [
+           0.14897225906918465,
+           0.1597579511537084
+          ],
+          [
+           0.16875513839331052,
+           0.17977883229679625
+          ],
+          [
+           0.18972510372668916,
+           0.20102567648295083
+          ],
+          [
+           0.21188121714868152,
+           0.2234995256277032
+          ],
+          [
+           0.23522280176367888,
+           0.24720115426719919
+          ],
+          [
+           0.2597494361445497,
+           0.27213106324507297
+          ],
+          [
+           0.28546092683620783,
+           0.2982894972642659
+          ],
+          [
+           0.3123572648386095,
+           0.32567648362312107
+          ],
+          [
+           0.3404385752313345,
+           0.3542918849936506
+          ],
+          [
+           0.36987053414335125,
+           0.3883909723022698
+          ],
+          [
+           0.41327338277452563,
+           0.43604578282438344
+          ],
+          [
+           0.46222532792477933,
+           0.48580486767690023
+          ],
+          [
+           0.5129923248707116,
+           0.5376372922618791
+          ],
+          [
+           0.5655750664779293,
+           0.5914967590006308
+          ],
+          [
+           0.6199760193195178,
+           0.6473167805399256
+          ],
+          [
+           0.6762010291241567,
+           0.7050836261268343
+          ],
+          [
+           0.7342582114728906,
+           0.7649097280160702
+          ],
+          [
+           0.7941540422579869,
+           0.8269355304606996
+          ],
+          [
+           0.8558893107190957,
+           0.8912377141297949
+          ],
+          [
+           0.919458598241063,
+           0.9578835229081228
+          ],
+          [
+           0.9847807091784584,
+           1.026744105054533
+          ],
+          [
+           1.0519921190822972,
+           1.0977667334804693
+          ],
+          [
+           1.121017898507286,
+           1.1707614592063935
+          ],
+          [
+           1.1918571647373453,
+           1.2457053911988614
+          ],
+          [
+           1.2645111088215515,
+           1.3225962010477486
+          ]
+         ]
         },
         "friction": {
          "measured": [
@@ -6657,7 +7275,301 @@
         ]
        },
        "chosen_by": "Nemotron agent (nvidia/nemotron-3-super-120b-a12b)",
-       "ensemble_size": 30
+       "ensemble_size": 30,
+       "ensemble": [
+        {
+         "mu_eff": 0.7033,
+         "actuator_gain": 0.8815,
+         "patch_y0": 0.3848,
+         "patch_mu": 0.4551,
+         "camera_dx": 0.0098,
+         "camera_pitch_deg": -1.025,
+         "lens_k": 0.0659
+        },
+        {
+         "mu_eff": 0.6975,
+         "actuator_gain": 0.8714,
+         "patch_y0": 0.3763,
+         "patch_mu": 0.4528,
+         "camera_dx": 0.0159,
+         "camera_pitch_deg": -3.447,
+         "lens_k": 0.1297
+        },
+        {
+         "mu_eff": 0.6941,
+         "actuator_gain": 0.8688,
+         "patch_y0": 0.3773,
+         "patch_mu": 0.4319,
+         "camera_dx": 0.009,
+         "camera_pitch_deg": -0.853,
+         "lens_k": 0.0608
+        },
+        {
+         "mu_eff": 0.7018,
+         "actuator_gain": 0.8735,
+         "patch_y0": 0.3674,
+         "patch_mu": 0.4555,
+         "camera_dx": -0.0022,
+         "camera_pitch_deg": 2.787,
+         "lens_k": -0.024
+        },
+        {
+         "mu_eff": 0.7018,
+         "actuator_gain": 0.8766,
+         "patch_y0": 0.3713,
+         "patch_mu": 0.4614,
+         "camera_dx": 0.0012,
+         "camera_pitch_deg": 1.797,
+         "lens_k": 0.0006
+        },
+        {
+         "mu_eff": 0.7073,
+         "actuator_gain": 0.8765,
+         "patch_y0": 0.3725,
+         "patch_mu": 0.459,
+         "camera_dx": -0.0029,
+         "camera_pitch_deg": 2.928,
+         "lens_k": -0.0248
+        },
+        {
+         "mu_eff": 0.6924,
+         "actuator_gain": 0.8641,
+         "patch_y0": 0.3691,
+         "patch_mu": 0.4493,
+         "camera_dx": 0.0106,
+         "camera_pitch_deg": -1.318,
+         "lens_k": 0.0678
+        },
+        {
+         "mu_eff": 0.6929,
+         "actuator_gain": 0.8679,
+         "patch_y0": 0.3756,
+         "patch_mu": 0.4493,
+         "camera_dx": -0.0086,
+         "camera_pitch_deg": 4.696,
+         "lens_k": -0.0599
+        },
+        {
+         "mu_eff": 0.7004,
+         "actuator_gain": 0.8776,
+         "patch_y0": 0.3799,
+         "patch_mu": 0.4518,
+         "camera_dx": 0.0069,
+         "camera_pitch_deg": -0.195,
+         "lens_k": 0.0465
+        },
+        {
+         "mu_eff": 0.688,
+         "actuator_gain": 0.8641,
+         "patch_y0": 0.3707,
+         "patch_mu": 0.4576,
+         "camera_dx": 0.0209,
+         "camera_pitch_deg": -5.0,
+         "lens_k": 0.1602
+        },
+        {
+         "mu_eff": 0.6995,
+         "actuator_gain": 0.867,
+         "patch_y0": 0.3686,
+         "patch_mu": 0.4528,
+         "camera_dx": -0.0074,
+         "camera_pitch_deg": 4.627,
+         "lens_k": -0.0602
+        },
+        {
+         "mu_eff": 0.7038,
+         "actuator_gain": 0.8744,
+         "patch_y0": 0.3656,
+         "patch_mu": 0.4594,
+         "camera_dx": -0.0014,
+         "camera_pitch_deg": 2.852,
+         "lens_k": -0.0253
+        },
+        {
+         "mu_eff": 0.7053,
+         "actuator_gain": 0.8787,
+         "patch_y0": 0.376,
+         "patch_mu": 0.4548,
+         "camera_dx": 0.0152,
+         "camera_pitch_deg": -2.718,
+         "lens_k": 0.0959
+        },
+        {
+         "mu_eff": 0.6948,
+         "actuator_gain": 0.8709,
+         "patch_y0": 0.3791,
+         "patch_mu": 0.4474,
+         "camera_dx": 0.0013,
+         "camera_pitch_deg": 1.856,
+         "lens_k": -0.0013
+        },
+        {
+         "mu_eff": 0.7036,
+         "actuator_gain": 0.8847,
+         "patch_y0": 0.3845,
+         "patch_mu": 0.4549,
+         "camera_dx": 0.0063,
+         "camera_pitch_deg": -0.174,
+         "lens_k": 0.0528
+        },
+        {
+         "mu_eff": 0.7069,
+         "actuator_gain": 0.8809,
+         "patch_y0": 0.3791,
+         "patch_mu": 0.4555,
+         "camera_dx": -0.0053,
+         "camera_pitch_deg": 3.662,
+         "lens_k": -0.0382
+        },
+        {
+         "mu_eff": 0.6949,
+         "actuator_gain": 0.8645,
+         "patch_y0": 0.3713,
+         "patch_mu": 0.4463,
+         "camera_dx": 0.0025,
+         "camera_pitch_deg": 1.366,
+         "lens_k": 0.0195
+        },
+        {
+         "mu_eff": 0.7014,
+         "actuator_gain": 0.8729,
+         "patch_y0": 0.3758,
+         "patch_mu": 0.4544,
+         "camera_dx": -0.0012,
+         "camera_pitch_deg": 2.675,
+         "lens_k": -0.0212
+        },
+        {
+         "mu_eff": 0.7073,
+         "actuator_gain": 0.8846,
+         "patch_y0": 0.3817,
+         "patch_mu": 0.4586,
+         "camera_dx": -0.0076,
+         "camera_pitch_deg": 4.672,
+         "lens_k": -0.061
+        },
+        {
+         "mu_eff": 0.7045,
+         "actuator_gain": 0.8787,
+         "patch_y0": 0.3798,
+         "patch_mu": 0.4537,
+         "camera_dx": -0.0001,
+         "camera_pitch_deg": 1.362,
+         "lens_k": 0.0263
+        },
+        {
+         "mu_eff": 0.708,
+         "actuator_gain": 0.8795,
+         "patch_y0": 0.3748,
+         "patch_mu": 0.4561,
+         "camera_dx": -0.0095,
+         "camera_pitch_deg": 5.0,
+         "lens_k": -0.0662
+        },
+        {
+         "mu_eff": 0.695,
+         "actuator_gain": 0.8756,
+         "patch_y0": 0.389,
+         "patch_mu": 0.4336,
+         "camera_dx": 0.0024,
+         "camera_pitch_deg": 1.444,
+         "lens_k": 0.011
+        },
+        {
+         "mu_eff": 0.6951,
+         "actuator_gain": 0.8744,
+         "patch_y0": 0.3828,
+         "patch_mu": 0.4482,
+         "camera_dx": 0.0065,
+         "camera_pitch_deg": -0.296,
+         "lens_k": 0.0565
+        },
+        {
+         "mu_eff": 0.6911,
+         "actuator_gain": 0.8674,
+         "patch_y0": 0.3798,
+         "patch_mu": 0.4473,
+         "camera_dx": -0.003,
+         "camera_pitch_deg": 3.312,
+         "lens_k": -0.0343
+        },
+        {
+         "mu_eff": 0.6963,
+         "actuator_gain": 0.8764,
+         "patch_y0": 0.3856,
+         "patch_mu": 0.4507,
+         "camera_dx": 0.0017,
+         "camera_pitch_deg": 1.646,
+         "lens_k": 0.0074
+        },
+        {
+         "mu_eff": 0.7064,
+         "actuator_gain": 0.8839,
+         "patch_y0": 0.3839,
+         "patch_mu": 0.4494,
+         "camera_dx": 0.0053,
+         "camera_pitch_deg": 0.291,
+         "lens_k": 0.0412
+        },
+        {
+         "mu_eff": 0.7125,
+         "actuator_gain": 0.8858,
+         "patch_y0": 0.3763,
+         "patch_mu": 0.4646,
+         "camera_dx": -0.0076,
+         "camera_pitch_deg": 4.819,
+         "lens_k": -0.0681
+        },
+        {
+         "mu_eff": 0.6985,
+         "actuator_gain": 0.8713,
+         "patch_y0": 0.3745,
+         "patch_mu": 0.4528,
+         "camera_dx": -0.0066,
+         "camera_pitch_deg": 4.452,
+         "lens_k": -0.0595
+        },
+        {
+         "mu_eff": 0.6991,
+         "actuator_gain": 0.8778,
+         "patch_y0": 0.3803,
+         "patch_mu": 0.4569,
+         "camera_dx": 0.0138,
+         "camera_pitch_deg": -2.6,
+         "lens_k": 0.1033
+        },
+        {
+         "mu_eff": 0.6913,
+         "actuator_gain": 0.8653,
+         "patch_y0": 0.3718,
+         "patch_mu": 0.4535,
+         "camera_dx": 0.0031,
+         "camera_pitch_deg": 1.143,
+         "lens_k": 0.0161
+        }
+       ],
+       "base": {
+        "object_mu": 0.8,
+        "table_mu": 0.8,
+        "object_density": 500.0,
+        "object_half_size": 0.025,
+        "actuator_gain": 1.0,
+        "restitution": 0.0,
+        "camera_dx": 0.0,
+        "camera_dz": 0.0,
+        "camera_pitch_deg": 0.0,
+        "light_intensity": 1.0,
+        "patch_y0": 1.0,
+        "patch_mu": 0.8,
+        "lens_k": 0.0
+       },
+       "reliability": {
+        "level": "ok",
+        "reasons": [],
+        "interval_available": true,
+        "usable_pushes": 20,
+        "policy": "6 pushes is a product policy; status cannot detect shared bias or guarantee coverage"
+       }
       },
       "next_experiment": {
        "settled": false,
@@ -7259,12 +8171,13 @@
         "adopted": "agent"
        }
       },
-      "seconds": 19.47,
+      "seconds": 9.71,
       "exports": {
-       "newton": "# Tether calibration for 'Robot log: first day on the real bench' (Robot manipulation, 20 runs, 2026-10-10)\n# NVIDIA Newton: XPBD averages the two materials' mu, so set both to the measured pair value.\nimport newton\n\nMU_EFF = 0.7006  # box-table sliding friction, 90% interval 0.6912 - 0.7077 (bootstrap)\nobject_cfg = newton.ModelBuilder.ShapeConfig(mu=MU_EFF)\nsurface_cfg = newton.ModelBuilder.ShapeConfig(mu=MU_EFF)\n# builder.add_shape_box(body, hx=..., hy=..., hz=..., cfg=object_cfg)   # the box\n# builder.add_ground_plane(cfg=surface_cfg)                             # the table\n\nACTUATOR_GAIN = 0.8749  # arm strength: actual speed / commanded (0.8643 - 0.8847); scale commanded velocities\n\n# Measured friction region (spill, mat, worn spot) along the travel axis (+y from the launch point).\nFRICTION_REGION = {'y_start_m': 0.3765, 'mu_eff': 0.4527}  # y 0.368-0.385, mu 0.439-0.461\n# Two surface bodies leave a seam that trips sliding objects; Tether instead switches the object's own mu\n# when it crosses y_start with a Warp kernel and ground mu 0 (see sim/newton_push.py: _patch_setup).\n\n# Perception (line distance as the robot camera reports it):\nCAMERA = {'dx_m': -0.0004, 'pitch_error_deg': 2.288, 'lens_k_per_m': -0.00910}\n# perceived = true * (1 + tan(pitch)) + dx + lens_k * true**2\n",
-       "isaaclab": "\"\"\"Tether calibrated domain randomization for 'Robot log: first day on the real bench' (2026-10-10).\nRanges are 90% bootstrap intervals of the measured values, not hand-picked bounds: train on what the real\ntable can plausibly be, nothing wider. PhysX \"average\" friction combine (the default) matches the measurement.\"\"\"\nfrom isaaclab.envs import mdp\nfrom isaaclab.managers import EventTermCfg as EventTerm\nfrom isaaclab.managers import SceneEntityCfg\nfrom isaaclab.utils import configclass\n\n\n@configclass\nclass CalibratedEventCfg:\n    # sliding friction of the box-table pair; static friction is not observed by a sliding test\n    object_material = EventTerm(\n        func=mdp.randomize_rigid_body_material,\n        mode=\"startup\",\n        params={\n            \"asset_cfg\": SceneEntityCfg(\"object\"),\n            \"static_friction_range\": (0.6912, 0.7077),\n            \"dynamic_friction_range\": (0.6912, 0.7077),\n            \"restitution_range\": (0.0, 0.0),\n            \"num_buckets\": 64,\n            \"make_consistent\": True,\n        },\n    )\n\n\n# Arm strength: the real launch speed is 0.875x the command (90% 0.864-0.885). It belongs\n# in the push action's scale (joint names: your robot's).\nACTUATOR_GAIN = 0.8749\npush_action = mdp.JointVelocityActionCfg(asset_name=\"robot\", joint_names=[\".*\"], scale=ACTUATOR_GAIN)\n\n\n# Friction region (spill, mat, worn spot): from y = 0.377 m (90% 0.368-0.385) the pair slides at mu 0.453\n# (90% 0.439-0.461). A static table prim whose top is flush with the first;\n# shorten the first one so it ends at REGION_Y0 (overlapping coplanar surfaces leave PhysX two materials to pick from).\n# Its combine mode 'min' outranks PhysX's default 'average', so the pair takes the region's value.\nimport isaaclab.sim as sim_utils\nfrom isaaclab.assets import AssetBaseCfg\n\nREGION_Y0 = 0.3765  # m along the push axis from the launch point\nSURFACE_TOP_Z = 0.0  # set to your table top height\ncalibrated_region = AssetBaseCfg(\n    prim_path=\"{ENV_REGEX_NS}/CalibratedRegion\",\n    spawn=sim_utils.CuboidCfg(\n        size=(0.4, 2.0, 0.002),  # across the path, along it from REGION_Y0, thin\n        collision_props=sim_utils.CollisionPropertiesCfg(),\n        physics_material=sim_utils.RigidBodyMaterialCfg(static_friction=0.4527, dynamic_friction=0.4527,\n                                                        friction_combine_mode=\"min\"),\n    ),\n    init_state=AssetBaseCfg.InitialStateCfg(pos=(0.0, REGION_Y0 + 1.0, SURFACE_TOP_Z - 0.001)),\n)\n",
-       "markdown": "# Sim2Real calibration: Robot log: first day on the real bench\n\nDomain: **Robot manipulation**. A robot arm pushes a box so it stops on a line. The table may be slicker, wet in places, or the arm weaker than in simulation.\n\n20 runs (log), structure chosen by Nemotron agent (nvidia/nemotron-3-super-120b-a12b). Stop residual 0 cm rms.\n\n## What differs from your simulator\n\n| Parameter | Sim | Real (measured) | 90% interval | |\n|---|---|---|---|---|\n| Box-table friction | 0.800 | 0.701 | 0.691 \u2013 0.708 | changed |\n| Arm strength (actual / commanded speed) | 1.000x | 0.875x | 0.864x \u2013 0.885x | changed |\n| Friction region starts at | none | 0.377 m | 0.368 m \u2013 0.385 m | changed |\n| Friction in that region | none | 0.453 | 0.439 \u2013 0.461 | changed |\n| Camera offset | 0.000 m | -0.000 m | -0.008 m \u2013 0.016 m | within noise |\n| Camera tilt error | 0.000 deg | 2.288 deg | -3.119 deg \u2013 4.764 deg | within noise |\n| Lens distortion | 0.000 1/m | -0.009 1/m | -0.064 1/m \u2013 0.118 1/m | within noise |\n\n## Predicted effect (model rollouts, not measured)\n\nSuccess = stopping within 3 cm of the line, over targets 0.2 m\u20130.6 m, for a policy trained in each simulator:\n\n- current sim: **66%** (90%: 56\u201378%)\n- calibrated sim: **100%** (90%: 100\u2013100%)\n\n## Next experiment\n\n- run so the box stops near **0.63 m** (command 3.12): models disagree by \u00b10.8 cm here\n- run so the box stops near **0.54 m** (command 2.94): models disagree by \u00b10.7 cm here\n- run so the box stops near **0.45 m** (command 2.76): models disagree by \u00b10.7 cm here\n\n## Agent's explanation\n\n> Added a friction patch starting at 0.38\u202fm with higher friction to capture position\u2011dependent deceleration; adjusted actuator gain to 0.87; camera pitch ~2.3\u00b0 and slight lens distortion fix perception bias.\n\nGenerated by Tether Studio (NVIDIA Newton physics, Nemotron agent). Intervals: bootstrap over runs.\n"
+       "newton": "# Tether calibration for 'Robot log: first day on the real bench' (Robot manipulation, 20 runs, 2026-10-12)\n# Reliability: Within the measured range\n# Verification: run `python -m tether.studio replay EXPORT_DIR` to execute new pushes; generation alone is not execution.\n# NVIDIA Newton: XPBD averages the two materials' mu, so set both to the measured pair value.\nimport newton\n\nMU_EFF = 0.7006  # box-table sliding friction, 90% interval 0.6912 - 0.7077 (bootstrap)\nobject_cfg = newton.ModelBuilder.ShapeConfig(mu=MU_EFF)\nsurface_cfg = newton.ModelBuilder.ShapeConfig(mu=MU_EFF)\n# builder.add_shape_box(body, hx=..., hy=..., hz=..., cfg=object_cfg)   # the box\n# builder.add_ground_plane(cfg=surface_cfg)                             # the table\n\nACTUATOR_GAIN = 0.8749  # arm strength: actual speed / commanded (0.8643 - 0.8847); scale commanded velocities\n\n# Measured friction region (spill, mat, worn spot) along the travel axis (+y from the launch point).\nFRICTION_REGION = {'y_start_m': 0.3765, 'mu_eff': 0.4527}  # y 0.368-0.385, mu 0.439-0.461\n# Two surface bodies leave a seam that trips sliding objects; Tether instead switches the object's own mu\n# when it crosses y_start with a Warp kernel and ground mu 0 (see tether/sim/newton_push.py: _patch_setup).\n\n# Perception (line distance as the robot camera reports it):\nCAMERA = {'dx_m': -0.0004, 'pitch_error_deg': 2.288, 'lens_k_per_m': -0.00910}\n# perceived = true * (1 + tan(pitch)) + dx + lens_k * true**2\n",
+       "isaaclab": "\"\"\"Tether calibrated domain randomization for 'Robot log: first day on the real bench' (2026-10-12).\nPer-variable ranges, not joint draws. Format-checked against a stand-in, not executed here (Isaac Lab 2.2.1).\nRequires average friction combine on both materials, and scene assets named object and table (RigidObject).\nEffective pair mu = (object + table) / 2. Object range = max(0, 2 * interval - MU_EFF).\nIf clamping occurs, the lower effective bound is MU_EFF/2. Static friction is unmeasured; fixed to the upper bound.\"\"\"\n# Reliability: Within the measured range\nfrom isaaclab.envs import mdp\nfrom isaaclab.managers import EventTermCfg as EventTerm\nfrom isaaclab.managers import SceneEntityCfg\nfrom isaaclab.utils import configclass\n\nMU_EFF = 0.7006\n\n@configclass\nclass CalibratedEventCfg:\n    # sliding friction of the box-table pair; static friction is not observed by a sliding test\n    object_material = EventTerm(\n        func=mdp.randomize_rigid_body_material,\n        mode=\"startup\",\n        params={\n            \"asset_cfg\": SceneEntityCfg(\"object\"),\n            \"static_friction_range\": (0.7148, 0.7148),\n            \"dynamic_friction_range\": (0.6818, 0.7148),\n            \"restitution_range\": (0.0, 0.0),\n            \"num_buckets\": 64,\n            \"make_consistent\": True,\n        },\n    )\n    table_material = EventTerm(\n        func=mdp.randomize_rigid_body_material,\n        mode=\"startup\",\n        params={\n            \"asset_cfg\": SceneEntityCfg(\"table\"),\n            \"static_friction_range\": (0.7006, 0.7006),\n            \"dynamic_friction_range\": (0.7006, 0.7006),\n            \"restitution_range\": (0.0, 0.0),\n            \"num_buckets\": 1,\n            \"make_consistent\": True,\n        },\n    )\n\n\n# Arm strength: the real launch speed is 0.875x the command (90% 0.864-0.885). It belongs\n# in the push action's scale (joint names: your robot's).\nACTUATOR_GAIN = 0.8749\npush_action = mdp.JointVelocityActionCfg(asset_name=\"robot\", joint_names=[\".*\"], scale=ACTUATOR_GAIN)\n\n\n# Friction region (spill, mat, worn spot): from y = 0.377 m (90% 0.368-0.385) the pair slides at mu 0.453\n# (90% 0.439-0.461). A static table prim whose top is flush with the first;\n# shorten the first one so it ends at REGION_Y0 (overlapping coplanar surfaces leave PhysX two materials to pick from).\n# Its combine mode 'min' outranks PhysX's default 'average', so the pair takes the region's value.\nimport isaaclab.sim as sim_utils\nfrom isaaclab.assets import AssetBaseCfg\n\nREGION_Y0 = 0.3765  # m along the push axis from the launch point\nSURFACE_TOP_Z = 0.0  # set to your table top height\ncalibrated_region = AssetBaseCfg(\n    prim_path=\"{ENV_REGEX_NS}/CalibratedRegion\",\n    spawn=sim_utils.CuboidCfg(\n        size=(0.4, 2.0, 0.002),  # across the path, along it from REGION_Y0, thin\n        collision_props=sim_utils.CollisionPropertiesCfg(),\n        physics_material=sim_utils.RigidBodyMaterialCfg(static_friction=0.4527, dynamic_friction=0.4527,\n                                                        friction_combine_mode=\"min\"),\n    ),\n    init_state=AssetBaseCfg.InitialStateCfg(pos=(0.0, REGION_Y0 + 1.0, SURFACE_TOP_Z - 0.001)),\n)\n",
+       "markdown": "# Sim2Real calibration: Robot log: first day on the real bench\n\nDomain: **Robot manipulation**. A robot arm pushes a box so it stops on a line. The table may be slicker, wet in places, or the arm weaker than in simulation.\n\nReliability: Within the measured range\n\n20 runs (log), structure chosen by Nemotron agent (nvidia/nemotron-3-super-120b-a12b). Stop residual 0 cm rms.\n\n## What differs from your simulator\n\n| Parameter | Sim | Real (measured) | 90% interval | |\n|---|---|---|---|---|\n| Box-table friction | 0.800 | 0.701 | 0.691 \u2013 0.708 | changed |\n| Arm strength (actual / commanded speed) | 1.000x | 0.875x | 0.864x \u2013 0.885x | changed |\n| Friction region starts at | none | 0.377 m | 0.368 m \u2013 0.385 m | changed |\n| Friction in that region | none | 0.453 | 0.439 \u2013 0.461 | changed |\n| Camera offset | 0.000 m | -0.000 m | -0.008 m \u2013 0.016 m | within noise |\n| Camera tilt error | 0.000 deg | 2.288 deg | -3.119 deg \u2013 4.764 deg | within noise |\n| Lens distortion | 0.000 1/m | -0.009 1/m | -0.064 1/m \u2013 0.118 1/m | within noise |\n\n## Predicted effect (model rollouts, not measured)\n\nSuccess = stopping within 3 cm of the line, over targets 0.2 m\u20130.6 m, for a policy trained in each simulator:\n\n- current sim: **66%** (90%: 56\u201378%)\n- calibrated sim: **100%** (90%: 100\u2013100%)\n\n## Next experiment\n\n- run so the box stops near **0.63 m** (command 3.12): models disagree by \u00b10.8 cm here\n- run so the box stops near **0.54 m** (command 2.94): models disagree by \u00b10.7 cm here\n- run so the box stops near **0.45 m** (command 2.76): models disagree by \u00b10.7 cm here\n\n## Agent's explanation\n\n> Added a friction patch starting at 0.38\u202fm with higher friction to capture position\u2011dependent deceleration; adjusted actuator gain to 0.87; camera pitch ~2.3\u00b0 and slight lens distortion fix perception bias.\n\nGenerated by Tether Studio (NVIDIA Newton physics, Nemotron agent). Intervals: bootstrap over runs.\n"
       },
+      "recording_provenance": "original recorded Nemotron decisions; fitter/diagnostics recomputed offline 2026-10-12",
       "report_json": {
        "schema": "tether.calibration/v1",
        "created": "2026-10-10",
@@ -11529,7 +12442,169 @@
         0.8023,
         0.844
        ],
-       "x_label": "launch speed (m/s)"
+       "x_label": "launch speed (m/s)",
+       "predictive_band": [
+        [
+         0.0,
+         0.005537717904038829
+        ],
+        [
+         0.0,
+         0.00734727669067912
+        ],
+        [
+         0.0004931945368479734,
+         0.010363500386809027
+        ],
+        [
+         0.00471396383023333,
+         0.014586827452190348
+        ],
+        [
+         0.010139616256466259,
+         0.02001787113732783
+        ],
+        [
+         0.01676142049127484,
+         0.026649458236587875
+        ],
+        [
+         0.024592992274091438,
+         0.03449713571105113
+        ],
+        [
+         0.03362659054313773,
+         0.04355539397331473
+        ],
+        [
+         0.04386094385236032,
+         0.05382551076908598
+        ],
+        [
+         0.055294641608822914,
+         0.06530890640832646
+        ],
+        [
+         0.06792615472804905,
+         0.0780071245551826
+        ],
+        [
+         0.08175386361223533,
+         0.0919218061667677
+        ],
+        [
+         0.09677609431215728,
+         0.10705465571645825
+        ],
+        [
+         0.11299116304916343,
+         0.12340739934816977
+        ],
+        [
+         0.13039742811942734,
+         0.1409817354837763
+        ],
+        [
+         0.14897225906918465,
+         0.1597579511537084
+        ],
+        [
+         0.16875513839331052,
+         0.17977883229679625
+        ],
+        [
+         0.18972510372668916,
+         0.20102567648295083
+        ],
+        [
+         0.21188121714868152,
+         0.2234995256277032
+        ],
+        [
+         0.23522280176367888,
+         0.24720115426719919
+        ],
+        [
+         0.2597494361445497,
+         0.27213106324507297
+        ],
+        [
+         0.28546092683620783,
+         0.2982894972642659
+        ],
+        [
+         0.3123572648386095,
+         0.32567648362312107
+        ],
+        [
+         0.3404385752313345,
+         0.3542918849936506
+        ],
+        [
+         0.36987053414335125,
+         0.3883909723022698
+        ],
+        [
+         0.41327338277452563,
+         0.43604578282438344
+        ],
+        [
+         0.46222532792477933,
+         0.48580486767690023
+        ],
+        [
+         0.5129923248707116,
+         0.5376372922618791
+        ],
+        [
+         0.5655750664779293,
+         0.5914967590006308
+        ],
+        [
+         0.6199760193195178,
+         0.6473167805399256
+        ],
+        [
+         0.6762010291241567,
+         0.7050836261268343
+        ],
+        [
+         0.7342582114728906,
+         0.7649097280160702
+        ],
+        [
+         0.7941540422579869,
+         0.8269355304606996
+        ],
+        [
+         0.8558893107190957,
+         0.8912377141297949
+        ],
+        [
+         0.919458598241063,
+         0.9578835229081228
+        ],
+        [
+         0.9847807091784584,
+         1.026744105054533
+        ],
+        [
+         1.0519921190822972,
+         1.0977667334804693
+        ],
+        [
+         1.121017898507286,
+         1.1707614592063935
+        ],
+        [
+         1.1918571647373453,
+         1.2457053911988614
+        ],
+        [
+         1.2645111088215515,
+         1.3225962010477486
+        ]
+       ]
       },
       "friction": {
        "measured": [
@@ -12134,7 +13209,301 @@
       ]
      },
      "chosen_by": "Nemotron agent (nvidia/nemotron-3-super-120b-a12b)",
-     "ensemble_size": 30
+     "ensemble_size": 30,
+     "ensemble": [
+      {
+       "mu_eff": 0.7033,
+       "actuator_gain": 0.8815,
+       "patch_y0": 0.3848,
+       "patch_mu": 0.4551,
+       "camera_dx": 0.0098,
+       "camera_pitch_deg": -1.025,
+       "lens_k": 0.0659
+      },
+      {
+       "mu_eff": 0.6975,
+       "actuator_gain": 0.8714,
+       "patch_y0": 0.3763,
+       "patch_mu": 0.4528,
+       "camera_dx": 0.0159,
+       "camera_pitch_deg": -3.447,
+       "lens_k": 0.1297
+      },
+      {
+       "mu_eff": 0.6941,
+       "actuator_gain": 0.8688,
+       "patch_y0": 0.3773,
+       "patch_mu": 0.4319,
+       "camera_dx": 0.009,
+       "camera_pitch_deg": -0.853,
+       "lens_k": 0.0608
+      },
+      {
+       "mu_eff": 0.7018,
+       "actuator_gain": 0.8735,
+       "patch_y0": 0.3674,
+       "patch_mu": 0.4555,
+       "camera_dx": -0.0022,
+       "camera_pitch_deg": 2.787,
+       "lens_k": -0.024
+      },
+      {
+       "mu_eff": 0.7018,
+       "actuator_gain": 0.8766,
+       "patch_y0": 0.3713,
+       "patch_mu": 0.4614,
+       "camera_dx": 0.0012,
+       "camera_pitch_deg": 1.797,
+       "lens_k": 0.0006
+      },
+      {
+       "mu_eff": 0.7073,
+       "actuator_gain": 0.8765,
+       "patch_y0": 0.3725,
+       "patch_mu": 0.459,
+       "camera_dx": -0.0029,
+       "camera_pitch_deg": 2.928,
+       "lens_k": -0.0248
+      },
+      {
+       "mu_eff": 0.6924,
+       "actuator_gain": 0.8641,
+       "patch_y0": 0.3691,
+       "patch_mu": 0.4493,
+       "camera_dx": 0.0106,
+       "camera_pitch_deg": -1.318,
+       "lens_k": 0.0678
+      },
+      {
+       "mu_eff": 0.6929,
+       "actuator_gain": 0.8679,
+       "patch_y0": 0.3756,
+       "patch_mu": 0.4493,
+       "camera_dx": -0.0086,
+       "camera_pitch_deg": 4.696,
+       "lens_k": -0.0599
+      },
+      {
+       "mu_eff": 0.7004,
+       "actuator_gain": 0.8776,
+       "patch_y0": 0.3799,
+       "patch_mu": 0.4518,
+       "camera_dx": 0.0069,
+       "camera_pitch_deg": -0.195,
+       "lens_k": 0.0465
+      },
+      {
+       "mu_eff": 0.688,
+       "actuator_gain": 0.8641,
+       "patch_y0": 0.3707,
+       "patch_mu": 0.4576,
+       "camera_dx": 0.0209,
+       "camera_pitch_deg": -5.0,
+       "lens_k": 0.1602
+      },
+      {
+       "mu_eff": 0.6995,
+       "actuator_gain": 0.867,
+       "patch_y0": 0.3686,
+       "patch_mu": 0.4528,
+       "camera_dx": -0.0074,
+       "camera_pitch_deg": 4.627,
+       "lens_k": -0.0602
+      },
+      {
+       "mu_eff": 0.7038,
+       "actuator_gain": 0.8744,
+       "patch_y0": 0.3656,
+       "patch_mu": 0.4594,
+       "camera_dx": -0.0014,
+       "camera_pitch_deg": 2.852,
+       "lens_k": -0.0253
+      },
+      {
+       "mu_eff": 0.7053,
+       "actuator_gain": 0.8787,
+       "patch_y0": 0.376,
+       "patch_mu": 0.4548,
+       "camera_dx": 0.0152,
+       "camera_pitch_deg": -2.718,
+       "lens_k": 0.0959
+      },
+      {
+       "mu_eff": 0.6948,
+       "actuator_gain": 0.8709,
+       "patch_y0": 0.3791,
+       "patch_mu": 0.4474,
+       "camera_dx": 0.0013,
+       "camera_pitch_deg": 1.856,
+       "lens_k": -0.0013
+      },
+      {
+       "mu_eff": 0.7036,
+       "actuator_gain": 0.8847,
+       "patch_y0": 0.3845,
+       "patch_mu": 0.4549,
+       "camera_dx": 0.0063,
+       "camera_pitch_deg": -0.174,
+       "lens_k": 0.0528
+      },
+      {
+       "mu_eff": 0.7069,
+       "actuator_gain": 0.8809,
+       "patch_y0": 0.3791,
+       "patch_mu": 0.4555,
+       "camera_dx": -0.0053,
+       "camera_pitch_deg": 3.662,
+       "lens_k": -0.0382
+      },
+      {
+       "mu_eff": 0.6949,
+       "actuator_gain": 0.8645,
+       "patch_y0": 0.3713,
+       "patch_mu": 0.4463,
+       "camera_dx": 0.0025,
+       "camera_pitch_deg": 1.366,
+       "lens_k": 0.0195
+      },
+      {
+       "mu_eff": 0.7014,
+       "actuator_gain": 0.8729,
+       "patch_y0": 0.3758,
+       "patch_mu": 0.4544,
+       "camera_dx": -0.0012,
+       "camera_pitch_deg": 2.675,
+       "lens_k": -0.0212
+      },
+      {
+       "mu_eff": 0.7073,
+       "actuator_gain": 0.8846,
+       "patch_y0": 0.3817,
+       "patch_mu": 0.4586,
+       "camera_dx": -0.0076,
+       "camera_pitch_deg": 4.672,
+       "lens_k": -0.061
+      },
+      {
+       "mu_eff": 0.7045,
+       "actuator_gain": 0.8787,
+       "patch_y0": 0.3798,
+       "patch_mu": 0.4537,
+       "camera_dx": -0.0001,
+       "camera_pitch_deg": 1.362,
+       "lens_k": 0.0263
+      },
+      {
+       "mu_eff": 0.708,
+       "actuator_gain": 0.8795,
+       "patch_y0": 0.3748,
+       "patch_mu": 0.4561,
+       "camera_dx": -0.0095,
+       "camera_pitch_deg": 5.0,
+       "lens_k": -0.0662
+      },
+      {
+       "mu_eff": 0.695,
+       "actuator_gain": 0.8756,
+       "patch_y0": 0.389,
+       "patch_mu": 0.4336,
+       "camera_dx": 0.0024,
+       "camera_pitch_deg": 1.444,
+       "lens_k": 0.011
+      },
+      {
+       "mu_eff": 0.6951,
+       "actuator_gain": 0.8744,
+       "patch_y0": 0.3828,
+       "patch_mu": 0.4482,
+       "camera_dx": 0.0065,
+       "camera_pitch_deg": -0.296,
+       "lens_k": 0.0565
+      },
+      {
+       "mu_eff": 0.6911,
+       "actuator_gain": 0.8674,
+       "patch_y0": 0.3798,
+       "patch_mu": 0.4473,
+       "camera_dx": -0.003,
+       "camera_pitch_deg": 3.312,
+       "lens_k": -0.0343
+      },
+      {
+       "mu_eff": 0.6963,
+       "actuator_gain": 0.8764,
+       "patch_y0": 0.3856,
+       "patch_mu": 0.4507,
+       "camera_dx": 0.0017,
+       "camera_pitch_deg": 1.646,
+       "lens_k": 0.0074
+      },
+      {
+       "mu_eff": 0.7064,
+       "actuator_gain": 0.8839,
+       "patch_y0": 0.3839,
+       "patch_mu": 0.4494,
+       "camera_dx": 0.0053,
+       "camera_pitch_deg": 0.291,
+       "lens_k": 0.0412
+      },
+      {
+       "mu_eff": 0.7125,
+       "actuator_gain": 0.8858,
+       "patch_y0": 0.3763,
+       "patch_mu": 0.4646,
+       "camera_dx": -0.0076,
+       "camera_pitch_deg": 4.819,
+       "lens_k": -0.0681
+      },
+      {
+       "mu_eff": 0.6985,
+       "actuator_gain": 0.8713,
+       "patch_y0": 0.3745,
+       "patch_mu": 0.4528,
+       "camera_dx": -0.0066,
+       "camera_pitch_deg": 4.452,
+       "lens_k": -0.0595
+      },
+      {
+       "mu_eff": 0.6991,
+       "actuator_gain": 0.8778,
+       "patch_y0": 0.3803,
+       "patch_mu": 0.4569,
+       "camera_dx": 0.0138,
+       "camera_pitch_deg": -2.6,
+       "lens_k": 0.1033
+      },
+      {
+       "mu_eff": 0.6913,
+       "actuator_gain": 0.8653,
+       "patch_y0": 0.3718,
+       "patch_mu": 0.4535,
+       "camera_dx": 0.0031,
+       "camera_pitch_deg": 1.143,
+       "lens_k": 0.0161
+      }
+     ],
+     "base": {
+      "object_mu": 0.8,
+      "table_mu": 0.8,
+      "object_density": 500.0,
+      "object_half_size": 0.025,
+      "actuator_gain": 1.0,
+      "restitution": 0.0,
+      "camera_dx": 0.0,
+      "camera_dz": 0.0,
+      "camera_pitch_deg": 0.0,
+      "light_intensity": 1.0,
+      "patch_y0": 1.0,
+      "patch_mu": 0.8,
+      "lens_k": 0.0
+     },
+     "reliability": {
+      "level": "ok",
+      "reasons": [],
+      "interval_available": true,
+      "usable_pushes": 20,
+      "policy": "6 pushes is a product policy; status cannot detect shared bias or guarantee coverage"
+     }
     },
     "next_experiment": {
      "settled": false,
@@ -12736,12 +14105,13 @@
       "adopted": "agent"
      }
     },
-    "seconds": 19.47,
+    "seconds": 9.71,
     "exports": {
-     "newton": "# Tether calibration for 'Robot log: first day on the real bench' (Robot manipulation, 20 runs, 2026-10-10)\n# NVIDIA Newton: XPBD averages the two materials' mu, so set both to the measured pair value.\nimport newton\n\nMU_EFF = 0.7006  # box-table sliding friction, 90% interval 0.6912 - 0.7077 (bootstrap)\nobject_cfg = newton.ModelBuilder.ShapeConfig(mu=MU_EFF)\nsurface_cfg = newton.ModelBuilder.ShapeConfig(mu=MU_EFF)\n# builder.add_shape_box(body, hx=..., hy=..., hz=..., cfg=object_cfg)   # the box\n# builder.add_ground_plane(cfg=surface_cfg)                             # the table\n\nACTUATOR_GAIN = 0.8749  # arm strength: actual speed / commanded (0.8643 - 0.8847); scale commanded velocities\n\n# Measured friction region (spill, mat, worn spot) along the travel axis (+y from the launch point).\nFRICTION_REGION = {'y_start_m': 0.3765, 'mu_eff': 0.4527}  # y 0.368-0.385, mu 0.439-0.461\n# Two surface bodies leave a seam that trips sliding objects; Tether instead switches the object's own mu\n# when it crosses y_start with a Warp kernel and ground mu 0 (see sim/newton_push.py: _patch_setup).\n\n# Perception (line distance as the robot camera reports it):\nCAMERA = {'dx_m': -0.0004, 'pitch_error_deg': 2.288, 'lens_k_per_m': -0.00910}\n# perceived = true * (1 + tan(pitch)) + dx + lens_k * true**2\n",
-     "isaaclab": "\"\"\"Tether calibrated domain randomization for 'Robot log: first day on the real bench' (2026-10-10).\nRanges are 90% bootstrap intervals of the measured values, not hand-picked bounds: train on what the real\ntable can plausibly be, nothing wider. PhysX \"average\" friction combine (the default) matches the measurement.\"\"\"\nfrom isaaclab.envs import mdp\nfrom isaaclab.managers import EventTermCfg as EventTerm\nfrom isaaclab.managers import SceneEntityCfg\nfrom isaaclab.utils import configclass\n\n\n@configclass\nclass CalibratedEventCfg:\n    # sliding friction of the box-table pair; static friction is not observed by a sliding test\n    object_material = EventTerm(\n        func=mdp.randomize_rigid_body_material,\n        mode=\"startup\",\n        params={\n            \"asset_cfg\": SceneEntityCfg(\"object\"),\n            \"static_friction_range\": (0.6912, 0.7077),\n            \"dynamic_friction_range\": (0.6912, 0.7077),\n            \"restitution_range\": (0.0, 0.0),\n            \"num_buckets\": 64,\n            \"make_consistent\": True,\n        },\n    )\n\n\n# Arm strength: the real launch speed is 0.875x the command (90% 0.864-0.885). It belongs\n# in the push action's scale (joint names: your robot's).\nACTUATOR_GAIN = 0.8749\npush_action = mdp.JointVelocityActionCfg(asset_name=\"robot\", joint_names=[\".*\"], scale=ACTUATOR_GAIN)\n\n\n# Friction region (spill, mat, worn spot): from y = 0.377 m (90% 0.368-0.385) the pair slides at mu 0.453\n# (90% 0.439-0.461). A static table prim whose top is flush with the first;\n# shorten the first one so it ends at REGION_Y0 (overlapping coplanar surfaces leave PhysX two materials to pick from).\n# Its combine mode 'min' outranks PhysX's default 'average', so the pair takes the region's value.\nimport isaaclab.sim as sim_utils\nfrom isaaclab.assets import AssetBaseCfg\n\nREGION_Y0 = 0.3765  # m along the push axis from the launch point\nSURFACE_TOP_Z = 0.0  # set to your table top height\ncalibrated_region = AssetBaseCfg(\n    prim_path=\"{ENV_REGEX_NS}/CalibratedRegion\",\n    spawn=sim_utils.CuboidCfg(\n        size=(0.4, 2.0, 0.002),  # across the path, along it from REGION_Y0, thin\n        collision_props=sim_utils.CollisionPropertiesCfg(),\n        physics_material=sim_utils.RigidBodyMaterialCfg(static_friction=0.4527, dynamic_friction=0.4527,\n                                                        friction_combine_mode=\"min\"),\n    ),\n    init_state=AssetBaseCfg.InitialStateCfg(pos=(0.0, REGION_Y0 + 1.0, SURFACE_TOP_Z - 0.001)),\n)\n",
-     "markdown": "# Sim2Real calibration: Robot log: first day on the real bench\n\nDomain: **Robot manipulation**. A robot arm pushes a box so it stops on a line. The table may be slicker, wet in places, or the arm weaker than in simulation.\n\n20 runs (log), structure chosen by Nemotron agent (nvidia/nemotron-3-super-120b-a12b). Stop residual 0 cm rms.\n\n## What differs from your simulator\n\n| Parameter | Sim | Real (measured) | 90% interval | |\n|---|---|---|---|---|\n| Box-table friction | 0.800 | 0.701 | 0.691 \u2013 0.708 | changed |\n| Arm strength (actual / commanded speed) | 1.000x | 0.875x | 0.864x \u2013 0.885x | changed |\n| Friction region starts at | none | 0.377 m | 0.368 m \u2013 0.385 m | changed |\n| Friction in that region | none | 0.453 | 0.439 \u2013 0.461 | changed |\n| Camera offset | 0.000 m | -0.000 m | -0.008 m \u2013 0.016 m | within noise |\n| Camera tilt error | 0.000 deg | 2.288 deg | -3.119 deg \u2013 4.764 deg | within noise |\n| Lens distortion | 0.000 1/m | -0.009 1/m | -0.064 1/m \u2013 0.118 1/m | within noise |\n\n## Predicted effect (model rollouts, not measured)\n\nSuccess = stopping within 3 cm of the line, over targets 0.2 m\u20130.6 m, for a policy trained in each simulator:\n\n- current sim: **66%** (90%: 56\u201378%)\n- calibrated sim: **100%** (90%: 100\u2013100%)\n\n## Next experiment\n\n- run so the box stops near **0.63 m** (command 3.12): models disagree by \u00b10.8 cm here\n- run so the box stops near **0.54 m** (command 2.94): models disagree by \u00b10.7 cm here\n- run so the box stops near **0.45 m** (command 2.76): models disagree by \u00b10.7 cm here\n\n## Agent's explanation\n\n> Added a friction patch starting at 0.38\u202fm with higher friction to capture position\u2011dependent deceleration; adjusted actuator gain to 0.87; camera pitch ~2.3\u00b0 and slight lens distortion fix perception bias.\n\nGenerated by Tether Studio (NVIDIA Newton physics, Nemotron agent). Intervals: bootstrap over runs.\n"
+     "newton": "# Tether calibration for 'Robot log: first day on the real bench' (Robot manipulation, 20 runs, 2026-10-12)\n# Reliability: Within the measured range\n# Verification: run `python -m tether.studio replay EXPORT_DIR` to execute new pushes; generation alone is not execution.\n# NVIDIA Newton: XPBD averages the two materials' mu, so set both to the measured pair value.\nimport newton\n\nMU_EFF = 0.7006  # box-table sliding friction, 90% interval 0.6912 - 0.7077 (bootstrap)\nobject_cfg = newton.ModelBuilder.ShapeConfig(mu=MU_EFF)\nsurface_cfg = newton.ModelBuilder.ShapeConfig(mu=MU_EFF)\n# builder.add_shape_box(body, hx=..., hy=..., hz=..., cfg=object_cfg)   # the box\n# builder.add_ground_plane(cfg=surface_cfg)                             # the table\n\nACTUATOR_GAIN = 0.8749  # arm strength: actual speed / commanded (0.8643 - 0.8847); scale commanded velocities\n\n# Measured friction region (spill, mat, worn spot) along the travel axis (+y from the launch point).\nFRICTION_REGION = {'y_start_m': 0.3765, 'mu_eff': 0.4527}  # y 0.368-0.385, mu 0.439-0.461\n# Two surface bodies leave a seam that trips sliding objects; Tether instead switches the object's own mu\n# when it crosses y_start with a Warp kernel and ground mu 0 (see tether/sim/newton_push.py: _patch_setup).\n\n# Perception (line distance as the robot camera reports it):\nCAMERA = {'dx_m': -0.0004, 'pitch_error_deg': 2.288, 'lens_k_per_m': -0.00910}\n# perceived = true * (1 + tan(pitch)) + dx + lens_k * true**2\n",
+     "isaaclab": "\"\"\"Tether calibrated domain randomization for 'Robot log: first day on the real bench' (2026-10-12).\nPer-variable ranges, not joint draws. Format-checked against a stand-in, not executed here (Isaac Lab 2.2.1).\nRequires average friction combine on both materials, and scene assets named object and table (RigidObject).\nEffective pair mu = (object + table) / 2. Object range = max(0, 2 * interval - MU_EFF).\nIf clamping occurs, the lower effective bound is MU_EFF/2. Static friction is unmeasured; fixed to the upper bound.\"\"\"\n# Reliability: Within the measured range\nfrom isaaclab.envs import mdp\nfrom isaaclab.managers import EventTermCfg as EventTerm\nfrom isaaclab.managers import SceneEntityCfg\nfrom isaaclab.utils import configclass\n\nMU_EFF = 0.7006\n\n@configclass\nclass CalibratedEventCfg:\n    # sliding friction of the box-table pair; static friction is not observed by a sliding test\n    object_material = EventTerm(\n        func=mdp.randomize_rigid_body_material,\n        mode=\"startup\",\n        params={\n            \"asset_cfg\": SceneEntityCfg(\"object\"),\n            \"static_friction_range\": (0.7148, 0.7148),\n            \"dynamic_friction_range\": (0.6818, 0.7148),\n            \"restitution_range\": (0.0, 0.0),\n            \"num_buckets\": 64,\n            \"make_consistent\": True,\n        },\n    )\n    table_material = EventTerm(\n        func=mdp.randomize_rigid_body_material,\n        mode=\"startup\",\n        params={\n            \"asset_cfg\": SceneEntityCfg(\"table\"),\n            \"static_friction_range\": (0.7006, 0.7006),\n            \"dynamic_friction_range\": (0.7006, 0.7006),\n            \"restitution_range\": (0.0, 0.0),\n            \"num_buckets\": 1,\n            \"make_consistent\": True,\n        },\n    )\n\n\n# Arm strength: the real launch speed is 0.875x the command (90% 0.864-0.885). It belongs\n# in the push action's scale (joint names: your robot's).\nACTUATOR_GAIN = 0.8749\npush_action = mdp.JointVelocityActionCfg(asset_name=\"robot\", joint_names=[\".*\"], scale=ACTUATOR_GAIN)\n\n\n# Friction region (spill, mat, worn spot): from y = 0.377 m (90% 0.368-0.385) the pair slides at mu 0.453\n# (90% 0.439-0.461). A static table prim whose top is flush with the first;\n# shorten the first one so it ends at REGION_Y0 (overlapping coplanar surfaces leave PhysX two materials to pick from).\n# Its combine mode 'min' outranks PhysX's default 'average', so the pair takes the region's value.\nimport isaaclab.sim as sim_utils\nfrom isaaclab.assets import AssetBaseCfg\n\nREGION_Y0 = 0.3765  # m along the push axis from the launch point\nSURFACE_TOP_Z = 0.0  # set to your table top height\ncalibrated_region = AssetBaseCfg(\n    prim_path=\"{ENV_REGEX_NS}/CalibratedRegion\",\n    spawn=sim_utils.CuboidCfg(\n        size=(0.4, 2.0, 0.002),  # across the path, along it from REGION_Y0, thin\n        collision_props=sim_utils.CollisionPropertiesCfg(),\n        physics_material=sim_utils.RigidBodyMaterialCfg(static_friction=0.4527, dynamic_friction=0.4527,\n                                                        friction_combine_mode=\"min\"),\n    ),\n    init_state=AssetBaseCfg.InitialStateCfg(pos=(0.0, REGION_Y0 + 1.0, SURFACE_TOP_Z - 0.001)),\n)\n",
+     "markdown": "# Sim2Real calibration: Robot log: first day on the real bench\n\nDomain: **Robot manipulation**. A robot arm pushes a box so it stops on a line. The table may be slicker, wet in places, or the arm weaker than in simulation.\n\nReliability: Within the measured range\n\n20 runs (log), structure chosen by Nemotron agent (nvidia/nemotron-3-super-120b-a12b). Stop residual 0 cm rms.\n\n## What differs from your simulator\n\n| Parameter | Sim | Real (measured) | 90% interval | |\n|---|---|---|---|---|\n| Box-table friction | 0.800 | 0.701 | 0.691 \u2013 0.708 | changed |\n| Arm strength (actual / commanded speed) | 1.000x | 0.875x | 0.864x \u2013 0.885x | changed |\n| Friction region starts at | none | 0.377 m | 0.368 m \u2013 0.385 m | changed |\n| Friction in that region | none | 0.453 | 0.439 \u2013 0.461 | changed |\n| Camera offset | 0.000 m | -0.000 m | -0.008 m \u2013 0.016 m | within noise |\n| Camera tilt error | 0.000 deg | 2.288 deg | -3.119 deg \u2013 4.764 deg | within noise |\n| Lens distortion | 0.000 1/m | -0.009 1/m | -0.064 1/m \u2013 0.118 1/m | within noise |\n\n## Predicted effect (model rollouts, not measured)\n\nSuccess = stopping within 3 cm of the line, over targets 0.2 m\u20130.6 m, for a policy trained in each simulator:\n\n- current sim: **66%** (90%: 56\u201378%)\n- calibrated sim: **100%** (90%: 100\u2013100%)\n\n## Next experiment\n\n- run so the box stops near **0.63 m** (command 3.12): models disagree by \u00b10.8 cm here\n- run so the box stops near **0.54 m** (command 2.94): models disagree by \u00b10.7 cm here\n- run so the box stops near **0.45 m** (command 2.76): models disagree by \u00b10.7 cm here\n\n## Agent's explanation\n\n> Added a friction patch starting at 0.38\u202fm with higher friction to capture position\u2011dependent deceleration; adjusted actuator gain to 0.87; camera pitch ~2.3\u00b0 and slight lens distortion fix perception bias.\n\nGenerated by Tether Studio (NVIDIA Newton physics, Nemotron agent). Intervals: bootstrap over runs.\n"
     },
+    "recording_provenance": "original recorded Nemotron decisions; fitter/diagnostics recomputed offline 2026-10-12",
     "report_json": {
      "schema": "tether.calibration/v1",
      "created": "2026-10-10",
@@ -12764,7 +14134,9 @@
       "source": "log",
       "pushes": 20,
       "tipped": 0,
-      "notes": []
+      "notes": [],
+      "has_commands": true,
+      "has_targets": true
      },
      "calibration": {
       "structure": [
@@ -13386,7 +14758,169 @@
          0.8023,
          0.844
         ],
-        "x_label": "launch speed (m/s)"
+        "x_label": "launch speed (m/s)",
+        "predictive_band": [
+         [
+          0.0,
+          0.005537717904038829
+         ],
+         [
+          0.0,
+          0.00734727669067912
+         ],
+         [
+          0.0004931945368479734,
+          0.010363500386809027
+         ],
+         [
+          0.00471396383023333,
+          0.014586827452190348
+         ],
+         [
+          0.010139616256466259,
+          0.02001787113732783
+         ],
+         [
+          0.01676142049127484,
+          0.026649458236587875
+         ],
+         [
+          0.024592992274091438,
+          0.03449713571105113
+         ],
+         [
+          0.03362659054313773,
+          0.04355539397331473
+         ],
+         [
+          0.04386094385236032,
+          0.05382551076908598
+         ],
+         [
+          0.055294641608822914,
+          0.06530890640832646
+         ],
+         [
+          0.06792615472804905,
+          0.0780071245551826
+         ],
+         [
+          0.08175386361223533,
+          0.0919218061667677
+         ],
+         [
+          0.09677609431215728,
+          0.10705465571645825
+         ],
+         [
+          0.11299116304916343,
+          0.12340739934816977
+         ],
+         [
+          0.13039742811942734,
+          0.1409817354837763
+         ],
+         [
+          0.14897225906918465,
+          0.1597579511537084
+         ],
+         [
+          0.16875513839331052,
+          0.17977883229679625
+         ],
+         [
+          0.18972510372668916,
+          0.20102567648295083
+         ],
+         [
+          0.21188121714868152,
+          0.2234995256277032
+         ],
+         [
+          0.23522280176367888,
+          0.24720115426719919
+         ],
+         [
+          0.2597494361445497,
+          0.27213106324507297
+         ],
+         [
+          0.28546092683620783,
+          0.2982894972642659
+         ],
+         [
+          0.3123572648386095,
+          0.32567648362312107
+         ],
+         [
+          0.3404385752313345,
+          0.3542918849936506
+         ],
+         [
+          0.36987053414335125,
+          0.3883909723022698
+         ],
+         [
+          0.41327338277452563,
+          0.43604578282438344
+         ],
+         [
+          0.46222532792477933,
+          0.48580486767690023
+         ],
+         [
+          0.5129923248707116,
+          0.5376372922618791
+         ],
+         [
+          0.5655750664779293,
+          0.5914967590006308
+         ],
+         [
+          0.6199760193195178,
+          0.6473167805399256
+         ],
+         [
+          0.6762010291241567,
+          0.7050836261268343
+         ],
+         [
+          0.7342582114728906,
+          0.7649097280160702
+         ],
+         [
+          0.7941540422579869,
+          0.8269355304606996
+         ],
+         [
+          0.8558893107190957,
+          0.8912377141297949
+         ],
+         [
+          0.919458598241063,
+          0.9578835229081228
+         ],
+         [
+          0.9847807091784584,
+          1.026744105054533
+         ],
+         [
+          1.0519921190822972,
+          1.0977667334804693
+         ],
+         [
+          1.121017898507286,
+          1.1707614592063935
+         ],
+         [
+          1.1918571647373453,
+          1.2457053911988614
+         ],
+         [
+          1.2645111088215515,
+          1.3225962010477486
+         ]
+        ]
        },
        "friction": {
         "measured": [
@@ -13991,7 +15525,301 @@
        ]
       },
       "chosen_by": "Nemotron agent (nvidia/nemotron-3-super-120b-a12b)",
-      "ensemble_size": 30
+      "ensemble_size": 30,
+      "ensemble": [
+       {
+        "mu_eff": 0.7033,
+        "actuator_gain": 0.8815,
+        "patch_y0": 0.3848,
+        "patch_mu": 0.4551,
+        "camera_dx": 0.0098,
+        "camera_pitch_deg": -1.025,
+        "lens_k": 0.0659
+       },
+       {
+        "mu_eff": 0.6975,
+        "actuator_gain": 0.8714,
+        "patch_y0": 0.3763,
+        "patch_mu": 0.4528,
+        "camera_dx": 0.0159,
+        "camera_pitch_deg": -3.447,
+        "lens_k": 0.1297
+       },
+       {
+        "mu_eff": 0.6941,
+        "actuator_gain": 0.8688,
+        "patch_y0": 0.3773,
+        "patch_mu": 0.4319,
+        "camera_dx": 0.009,
+        "camera_pitch_deg": -0.853,
+        "lens_k": 0.0608
+       },
+       {
+        "mu_eff": 0.7018,
+        "actuator_gain": 0.8735,
+        "patch_y0": 0.3674,
+        "patch_mu": 0.4555,
+        "camera_dx": -0.0022,
+        "camera_pitch_deg": 2.787,
+        "lens_k": -0.024
+       },
+       {
+        "mu_eff": 0.7018,
+        "actuator_gain": 0.8766,
+        "patch_y0": 0.3713,
+        "patch_mu": 0.4614,
+        "camera_dx": 0.0012,
+        "camera_pitch_deg": 1.797,
+        "lens_k": 0.0006
+       },
+       {
+        "mu_eff": 0.7073,
+        "actuator_gain": 0.8765,
+        "patch_y0": 0.3725,
+        "patch_mu": 0.459,
+        "camera_dx": -0.0029,
+        "camera_pitch_deg": 2.928,
+        "lens_k": -0.0248
+       },
+       {
+        "mu_eff": 0.6924,
+        "actuator_gain": 0.8641,
+        "patch_y0": 0.3691,
+        "patch_mu": 0.4493,
+        "camera_dx": 0.0106,
+        "camera_pitch_deg": -1.318,
+        "lens_k": 0.0678
+       },
+       {
+        "mu_eff": 0.6929,
+        "actuator_gain": 0.8679,
+        "patch_y0": 0.3756,
+        "patch_mu": 0.4493,
+        "camera_dx": -0.0086,
+        "camera_pitch_deg": 4.696,
+        "lens_k": -0.0599
+       },
+       {
+        "mu_eff": 0.7004,
+        "actuator_gain": 0.8776,
+        "patch_y0": 0.3799,
+        "patch_mu": 0.4518,
+        "camera_dx": 0.0069,
+        "camera_pitch_deg": -0.195,
+        "lens_k": 0.0465
+       },
+       {
+        "mu_eff": 0.688,
+        "actuator_gain": 0.8641,
+        "patch_y0": 0.3707,
+        "patch_mu": 0.4576,
+        "camera_dx": 0.0209,
+        "camera_pitch_deg": -5.0,
+        "lens_k": 0.1602
+       },
+       {
+        "mu_eff": 0.6995,
+        "actuator_gain": 0.867,
+        "patch_y0": 0.3686,
+        "patch_mu": 0.4528,
+        "camera_dx": -0.0074,
+        "camera_pitch_deg": 4.627,
+        "lens_k": -0.0602
+       },
+       {
+        "mu_eff": 0.7038,
+        "actuator_gain": 0.8744,
+        "patch_y0": 0.3656,
+        "patch_mu": 0.4594,
+        "camera_dx": -0.0014,
+        "camera_pitch_deg": 2.852,
+        "lens_k": -0.0253
+       },
+       {
+        "mu_eff": 0.7053,
+        "actuator_gain": 0.8787,
+        "patch_y0": 0.376,
+        "patch_mu": 0.4548,
+        "camera_dx": 0.0152,
+        "camera_pitch_deg": -2.718,
+        "lens_k": 0.0959
+       },
+       {
+        "mu_eff": 0.6948,
+        "actuator_gain": 0.8709,
+        "patch_y0": 0.3791,
+        "patch_mu": 0.4474,
+        "camera_dx": 0.0013,
+        "camera_pitch_deg": 1.856,
+        "lens_k": -0.0013
+       },
+       {
+        "mu_eff": 0.7036,
+        "actuator_gain": 0.8847,
+        "patch_y0": 0.3845,
+        "patch_mu": 0.4549,
+        "camera_dx": 0.0063,
+        "camera_pitch_deg": -0.174,
+        "lens_k": 0.0528
+       },
+       {
+        "mu_eff": 0.7069,
+        "actuator_gain": 0.8809,
+        "patch_y0": 0.3791,
+        "patch_mu": 0.4555,
+        "camera_dx": -0.0053,
+        "camera_pitch_deg": 3.662,
+        "lens_k": -0.0382
+       },
+       {
+        "mu_eff": 0.6949,
+        "actuator_gain": 0.8645,
+        "patch_y0": 0.3713,
+        "patch_mu": 0.4463,
+        "camera_dx": 0.0025,
+        "camera_pitch_deg": 1.366,
+        "lens_k": 0.0195
+       },
+       {
+        "mu_eff": 0.7014,
+        "actuator_gain": 0.8729,
+        "patch_y0": 0.3758,
+        "patch_mu": 0.4544,
+        "camera_dx": -0.0012,
+        "camera_pitch_deg": 2.675,
+        "lens_k": -0.0212
+       },
+       {
+        "mu_eff": 0.7073,
+        "actuator_gain": 0.8846,
+        "patch_y0": 0.3817,
+        "patch_mu": 0.4586,
+        "camera_dx": -0.0076,
+        "camera_pitch_deg": 4.672,
+        "lens_k": -0.061
+       },
+       {
+        "mu_eff": 0.7045,
+        "actuator_gain": 0.8787,
+        "patch_y0": 0.3798,
+        "patch_mu": 0.4537,
+        "camera_dx": -0.0001,
+        "camera_pitch_deg": 1.362,
+        "lens_k": 0.0263
+       },
+       {
+        "mu_eff": 0.708,
+        "actuator_gain": 0.8795,
+        "patch_y0": 0.3748,
+        "patch_mu": 0.4561,
+        "camera_dx": -0.0095,
+        "camera_pitch_deg": 5.0,
+        "lens_k": -0.0662
+       },
+       {
+        "mu_eff": 0.695,
+        "actuator_gain": 0.8756,
+        "patch_y0": 0.389,
+        "patch_mu": 0.4336,
+        "camera_dx": 0.0024,
+        "camera_pitch_deg": 1.444,
+        "lens_k": 0.011
+       },
+       {
+        "mu_eff": 0.6951,
+        "actuator_gain": 0.8744,
+        "patch_y0": 0.3828,
+        "patch_mu": 0.4482,
+        "camera_dx": 0.0065,
+        "camera_pitch_deg": -0.296,
+        "lens_k": 0.0565
+       },
+       {
+        "mu_eff": 0.6911,
+        "actuator_gain": 0.8674,
+        "patch_y0": 0.3798,
+        "patch_mu": 0.4473,
+        "camera_dx": -0.003,
+        "camera_pitch_deg": 3.312,
+        "lens_k": -0.0343
+       },
+       {
+        "mu_eff": 0.6963,
+        "actuator_gain": 0.8764,
+        "patch_y0": 0.3856,
+        "patch_mu": 0.4507,
+        "camera_dx": 0.0017,
+        "camera_pitch_deg": 1.646,
+        "lens_k": 0.0074
+       },
+       {
+        "mu_eff": 0.7064,
+        "actuator_gain": 0.8839,
+        "patch_y0": 0.3839,
+        "patch_mu": 0.4494,
+        "camera_dx": 0.0053,
+        "camera_pitch_deg": 0.291,
+        "lens_k": 0.0412
+       },
+       {
+        "mu_eff": 0.7125,
+        "actuator_gain": 0.8858,
+        "patch_y0": 0.3763,
+        "patch_mu": 0.4646,
+        "camera_dx": -0.0076,
+        "camera_pitch_deg": 4.819,
+        "lens_k": -0.0681
+       },
+       {
+        "mu_eff": 0.6985,
+        "actuator_gain": 0.8713,
+        "patch_y0": 0.3745,
+        "patch_mu": 0.4528,
+        "camera_dx": -0.0066,
+        "camera_pitch_deg": 4.452,
+        "lens_k": -0.0595
+       },
+       {
+        "mu_eff": 0.6991,
+        "actuator_gain": 0.8778,
+        "patch_y0": 0.3803,
+        "patch_mu": 0.4569,
+        "camera_dx": 0.0138,
+        "camera_pitch_deg": -2.6,
+        "lens_k": 0.1033
+       },
+       {
+        "mu_eff": 0.6913,
+        "actuator_gain": 0.8653,
+        "patch_y0": 0.3718,
+        "patch_mu": 0.4535,
+        "camera_dx": 0.0031,
+        "camera_pitch_deg": 1.143,
+        "lens_k": 0.0161
+       }
+      ],
+      "base": {
+       "object_mu": 0.8,
+       "table_mu": 0.8,
+       "object_density": 500.0,
+       "object_half_size": 0.025,
+       "actuator_gain": 1.0,
+       "restitution": 0.0,
+       "camera_dx": 0.0,
+       "camera_dz": 0.0,
+       "camera_pitch_deg": 0.0,
+       "light_intensity": 1.0,
+       "patch_y0": 1.0,
+       "patch_mu": 0.8,
+       "lens_k": 0.0
+      },
+      "reliability": {
+       "level": "ok",
+       "reasons": [],
+       "interval_available": true,
+       "usable_pushes": 20,
+       "policy": "6 pushes is a product policy; status cannot detect shared bias or guarantee coverage"
+      }
      },
      "next_experiment": {
       "settled": false,
@@ -14611,150 +16439,46 @@
   "engine": "NVIDIA Newton (XPBD, CPU)",
   "pushes": [
    {
-    "i": 0,
-    "measured": 0.5191,
-    "calibrated": 0.5139,
-    "current": 0.5329,
-    "tipped_in_sim": false
-   },
-   {
-    "i": 1,
-    "measured": 0.2978,
-    "calibrated": 0.2955,
-    "current": 0.338,
-    "tipped_in_sim": false
-   },
-   {
-    "i": 2,
-    "measured": 0.2691,
-    "calibrated": 0.2647,
-    "current": 0.3029,
-    "tipped_in_sim": false
-   },
-   {
-    "i": 3,
-    "measured": 0.5397,
-    "calibrated": 0.5286,
-    "current": 0.5426,
-    "tipped_in_sim": false
-   },
-   {
-    "i": 4,
-    "measured": 0.2244,
-    "calibrated": 0.2196,
-    "current": 0.2513,
-    "tipped_in_sim": false
-   },
-   {
-    "i": 5,
-    "measured": 0.3534,
-    "calibrated": 0.3496,
-    "current": 0.3999,
-    "tipped_in_sim": false
-   },
-   {
-    "i": 6,
-    "measured": 0.3864,
-    "calibrated": 0.3803,
-    "current": 0.4336,
-    "tipped_in_sim": false
-   },
-   {
-    "i": 7,
-    "measured": 0.4134,
-    "calibrated": 0.4099,
-    "current": 0.4556,
-    "tipped_in_sim": false
-   },
-   {
-    "i": 8,
-    "measured": 0.2319,
-    "calibrated": 0.2306,
-    "current": 0.2638,
-    "tipped_in_sim": false
-   },
-   {
-    "i": 9,
-    "measured": 0.4262,
-    "calibrated": 0.421,
-    "current": 0.4635,
-    "tipped_in_sim": false
-   },
-   {
-    "i": 10,
-    "measured": 0.3634,
-    "calibrated": 0.3583,
-    "current": 0.41,
-    "tipped_in_sim": false
-   },
-   {
-    "i": 11,
-    "measured": 0.5544,
-    "calibrated": 0.5436,
-    "current": 0.5544,
-    "tipped_in_sim": false
-   },
-   {
-    "i": 12,
-    "measured": 0.1942,
-    "calibrated": 0.1885,
-    "current": 0.2156,
-    "tipped_in_sim": false
-   },
-   {
-    "i": 13,
-    "measured": 0.6079,
-    "calibrated": 0.6019,
-    "current": 0.5981,
-    "tipped_in_sim": false
-   },
-   {
-    "i": 14,
-    "measured": 0.2412,
-    "calibrated": 0.2403,
-    "current": 0.275,
-    "tipped_in_sim": false
-   },
-   {
-    "i": 15,
-    "measured": 0.5262,
-    "calibrated": 0.5223,
-    "current": 0.5388,
-    "tipped_in_sim": false
-   },
-   {
     "i": 16,
     "measured": 0.1383,
-    "calibrated": 0.1402,
+    "calibrated": 0.1405,
     "current": 0.1604,
     "tipped_in_sim": false
    },
    {
     "i": 17,
     "measured": 0.2681,
-    "calibrated": 0.2663,
+    "calibrated": 0.2668,
     "current": 0.3047,
     "tipped_in_sim": false
    },
    {
     "i": 18,
     "measured": 0.4722,
-    "calibrated": 0.4626,
+    "calibrated": 0.4627,
     "current": 0.4948,
     "tipped_in_sim": false
    },
    {
     "i": 19,
     "measured": 0.6757,
-    "calibrated": 0.6686,
+    "calibrated": 0.6687,
     "current": 0.6471,
     "tipped_in_sim": false
    }
   ],
-  "rms_calibrated_m": 0.0058,
-  "rms_current_m": 0.0312,
-  "worst_calibrated_m": 0.0111,
-  "seconds": 0.7
+  "rms_calibrated_m": 0.006,
+  "mode": "held-out prediction",
+  "training_pushes": 16,
+  "evaluation_pushes": 4,
+  "file_roundtrip": {
+   "verification": "executed",
+   "worker_pid": 83434,
+   "protocol": "export files -> separate process -> new measured-speed pushes"
+  },
+  "rms_current_m": 0.0281,
+  "worst_calibrated_m": 0.0095,
+  "seconds": 7.2
  },
  "training": {
   "grid_m": [
@@ -40032,5 +41756,6 @@
   "by_model": {
    "nvidia/nemotron-3-super-120b-a12b": 11
   }
- }
+ },
+ "verification_provenance": "export files and held-out split recomputed offline 2026-10-12; previous retraining recording retained"
 }

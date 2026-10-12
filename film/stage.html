@@ -220,7 +220,8 @@ const SCENES = {
       const e = el(`<div class="row mono" style="font-size:30px"><span>${r.object}</span><span>${r.truth.toFixed(3)}</span><span style="color:${r.ok ? "#76b900" : "#e6a23c"}">${r.tether.toFixed(3)}</span></div>`);
       e.style.opacity = eo(P(t, 1.6 + i * 0.35, 2.1 + i * 0.35)); tb.appendChild(e);
     });
-    const foot = line(`mean error ${DATA.real.mae.toFixed(3)} · the paper's own estimator ${DATA.real.paper.toFixed(3)}`, "lede", 146, 600, { fontSize: "30px" }); rise(foot, t, 3.6);
+    const foot = line(`mean error ${DATA.real.mae.toFixed(3)} · public real data, mocap-assisted video inputs`, "lede", 146, 600, { fontSize: "27px" }); rise(foot, t, 3.6);
+    const ref = line(`Reference: paper ${DATA.real.paper_reference.toFixed(3)} · different protocol: RGB-D online tracking and filtering`, "lede", 146, 650, { fontSize: "23px" }); rise(ref, t, 4.0);
     const src = put(`<div class="abs lab" style="font-size:20px;color:#6f6f6f">EV-RealPhys, Kandukuri, Strecke, Stückler 2023 (Max Planck Institute), CC BY-SA 4.0</div>`, { left: "140px", top: "960px" }); fade(src, t, 1);
   },
   async proofEngine(t, d) {

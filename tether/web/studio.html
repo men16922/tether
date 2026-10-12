@@ -535,7 +535,7 @@ function toView(x) {
     const p = c.predicted; if (p) { p.noise_sigma_m = l(p.noise_sigma_m); p.target_range_m = l(p.target_range_m); p.tolerance_m = l(p.tolerance_m); p.measured_reach_m = l(p.measured_reach_m); }
     (c.gap || []).forEach(g => { const f = LEN_FIELDS.has(g.field) ? l : g.field === "lens_k" ? (v => v == null ? v : v / L) : (v => v); ["sim", "real", "lo", "hi"].forEach(k => g[k] = f(g[k])); });
     const cu = c.curves || {};
-    if (cu.stops) { cu.stops.points.forEach(q => { q.x = sp(q.x); q.y = l(q.y); }); cu.stops.grid = sp(cu.stops.grid); cu.stops.model = l(cu.stops.model); cu.stops.sim = l(cu.stops.sim); cu.stops.band = l(cu.stops.band); }
+    if (cu.stops) { cu.stops.points.forEach(q => { q.x = sp(q.x); q.y = l(q.y); }); cu.stops.grid = sp(cu.stops.grid); cu.stops.model = l(cu.stops.model); cu.stops.sim = l(cu.stops.sim); cu.stops.band = l(cu.stops.band); cu.stops.predictive_band = l(cu.stops.predictive_band); }
     if (cu.friction) { (cu.friction.measured || []).forEach(q => { q.y0 = l(q.y0); q.y1 = l(q.y1); }); cu.friction.y = l(cu.friction.y); }
     (cu.perception || []).forEach(q => { q.true = l(q.true); q.perceived = l(q.perceived); });
   };
@@ -663,7 +663,7 @@ const KO = {
   "Cube-table friction": "탁자 마찰계수", "Actuator gain": "모터 출력", "Friction region starts at": "다른 구간 시작 거리", "Friction in that region": "구간 마찰계수",
   "Camera offset": "카메라 위치 오차", "Camera pitch error": "카메라 기울기 오차", "Lens distortion": "렌즈 왜곡",
   "The evidence": "근거 자료", "Where it stops": "정지 위치 비교",
-  "Your pushes against the calibrated model (band: 90% of plausible models) and your current sim.": "실제 기록(점), 보정된 시뮬레이터(초록 선), 보정 전 시뮬레이터(점선)를 비교합니다.",
+  "Dark band: parameter uncertainty. Light band: next-push prediction including stop residual noise. Neither covers shared bias or unmeasured surface.": "진한 띠는 파라미터 불확실성, 옅은 띠는 잔차 잡음을 포함한 다음 시행 예측입니다. 공통 편향과 미측정 표면은 포함하지 않습니다.",
   "your pushes": "실제 기록", "calibrated": "보정된 시뮬레이터", "Friction along the table": "탁자 위치별 마찰",
   "Deceleration seen in the tracks (bars) and the friction the calibrated sim uses (line, band).": "막대는 실측 감속, 초록 선은 보정된 시뮬레이터의 마찰계수입니다.",
   "measured": "측정", "unmeasured": "미측정", "Success by target distance": "목표 거리별 성공률",
@@ -1479,8 +1479,9 @@ function renderResults() {
   const tr = measuredTraining(), cond = tr && tr.conditions;
   const measured = cond && tr.hidden_known && cond.current.final_real != null;
   const spread = p.unmeasured_whatif && p.after.hi - p.after.lo > 0.1;
-  const afterNote = spread ? T(`${pct(p.after.lo)}–${pct(p.after.hi)} depending on the unmeasured ${CS("surfaceWord")}`, `미측정 구간에 따라 ${pct(p.after.lo)}~${pct(p.after.hi)}`) : `90%: ${pct(p.after.lo)}–${pct(p.after.hi)}`;
+  const afterNote = c.reliability && !c.reliability.interval_available ? T("interval unavailable", "구간을 계산할 수 없습니다") : spread ? T(`${pct(p.after.lo)}–${pct(p.after.hi)} depending on the unmeasured ${CS("surfaceWord")}`, `미측정 구간에 따라 ${pct(p.after.lo)}~${pct(p.after.hi)}`) : `90%: ${pct(p.after.lo)}–${pct(p.after.hi)}`;
   $("#r-verdict").innerHTML = `
+    ${reliabilityPanel(c)}
     <div class="small muted">${measured ? T(`Hidden-world success after retraining: stops within ${tolText(p.tolerance_m)} of the ${CS("targetWord")}, targets ${fmt(lo, 1)}–${fmt(hi, 1)} m`, `재학습 후 숨겨진 실제 환경 성공률: ${fmt(lo, 1)}–${fmt(hi, 1)} m 목표에서 ${CS("targetWordKo")} ${tolText(p.tolerance_m)} 이내 정지`)
       : T(`Predicted success of a policy trained in each simulator: stops within ${tolText(p.tolerance_m)} of the ${CS("targetWord")}, targets ${fmt(lo, 1)}–${fmt(hi, 1)} m`, `각 시뮬레이터로 학습한 정책의 예상 성공률: ${fmt(lo, 1)}–${fmt(hi, 1)} m 목표에서 ${CS("targetWordKo")} ${tolText(p.tolerance_m)} 이내 정지`)}</div>
     <div class="pair">
@@ -1602,6 +1603,15 @@ function strip1d(c, s) {
     ${bands}${unm}${stops}<text x="${x1}" y="172" text-anchor="end" class="lbl">${T("ticks: where your runs stopped", "눈금: 실제 정지 위치")}</text>
     <line x1="${X(tr[0])}" x2="${X(tr[1])}" y1="190" y2="190" stroke="#76b900" stroke-width="3"/><text x="${X(tr[0])}" y="184" class="lbl">target range</text>${ticks}</svg>`;
 }
+const RELIABILITY_LABELS = {"ok": {"en": "Within the measured range", "ko": "측정한 범위 안에서 사용할 수 있습니다"}, "limited": {"en": "Use with limits", "ko": "제약을 확인하고 사용해야 합니다"}, "unreliable": {"en": "More measurements needed", "ko": "측정이 더 필요합니다"}};
+const RELIABILITY_REASONS = {"single_push": {"en": "One push cannot measure between-push uncertainty.", "ko": "시행 하나로는 시행 간 불확실성을 측정할 수 없습니다."}, "few_pushes": {"en": "Fewer than six usable pushes; this is a product policy, not a statistical guarantee.", "ko": "사용 가능한 시행이 6개 미만입니다. 이는 제품 정책이며 통계적 보장 기준이 아닙니다."}, "unexplained_pattern": {"en": "The fitted model leaves a pattern in the measurements.", "ko": "보정 모델로 설명하지 못한 패턴이 측정값에 남아 있습니다."}, "unmeasured_range": {"en": "The target range extends beyond the measured surface.", "ko": "목표 범위가 측정한 표면 구간을 벗어납니다."}, "no_tracks": {"en": "No motion tracks; friction and launch errors may be confounded.", "ko": "이동 궤적이 없어 마찰과 출발 오차를 구분하기 어려울 수 있습니다."}, "large_stop_residual": {"en": "Stop residual exceeds the existing 1 cm model tolerance.", "ko": "정지 위치 잔차가 기존 모델 허용값인 1 cm를 넘습니다."}};
+function reliabilityPanel(c) {
+  const r = c.reliability;
+  if (!r) return `<span class="chip w">${T("Recorded result: rerun to assess reliability", "기록된 결과입니다. 신뢰 상태를 확인하려면 다시 분석해야 합니다")}</span>`;
+  const label = RELIABILITY_LABELS[r.level][LANG];
+  const why = r.reasons.map(x => `<li>${esc(RELIABILITY_REASONS[x.code][LANG])}</li>`).join("");
+  return `<div style="margin-bottom:16px" id="reliability"><span class="chip ${r.level === "ok" ? "g" : "w"}">${esc(label)}</span>${why ? `<details style="margin-top:8px"><summary>${T("Why this status", "판정 이유")}</summary><ul>${why}</ul></details>` : ""}<div class="small muted">${T("Status cannot detect shared bias or guarantee interval coverage.", "이 상태는 공통 편향을 감지하거나 구간의 포함률을 보장하지 않습니다.")}</div></div>`;
+}
 function forest(gap, truth) {
   const tm = truth && truth.model;
   const rows = gap.map(g => {
@@ -1609,7 +1619,7 @@ function forest(gap, truth) {
     let a = Math.min(...vals), b = Math.max(...vals); const pad = (b - a) * 0.25 || Math.abs(b) * 0.1 || 0.1; a -= pad; b += pad;
     const X = x => 8 + (x - a) / (b - a) * 284;
     const svg = `<svg viewBox="0 0 300 26" preserveAspectRatio="none" aria-hidden="true">
-      <line x1="${X(g.lo)}" x2="${X(g.hi)}" y1="13" y2="13" stroke="${g.significant ? "#76b900" : "#a3a3a3"}" stroke-width="4"/>
+      ${g.lo != null && g.hi != null ? `<line x1="${X(g.lo)}" x2="${X(g.hi)}" y1="13" y2="13" stroke="${g.significant ? "#76b900" : "#a3a3a3"}" stroke-width="4"/>` : ""}
       ${g.sim != null ? `<line x1="${X(g.sim)}" x2="${X(g.sim)}" y1="4" y2="22" stroke="#6e6e6e" stroke-width="2"/>` : ""}
       <circle cx="${X(g.real)}" cy="13" r="5" fill="#eeeeee"/>
       ${tm && tm[g.field] != null ? `<rect x="${X(tm[g.field]) - 5}" y="8" width="10" height="10" transform="rotate(45 ${X(tm[g.field])} 13)" fill="none" stroke="#fff" stroke-width="2"/>` : ""}</svg>`;
@@ -1617,8 +1627,8 @@ function forest(gap, truth) {
     const d = g.field === "camera_pitch_deg" ? 1 : g.field === "camera_dx" ? 3 : 3;
     const truthCell = tm ? `<td class="v">${tm[g.field] == null ? "none" : fmt(tm[g.field], d) + u}</td>` : "";
     const lab = (DOM.labels && (DOM.labels[LANG] || DOM.labels.en) || {})[g.field] || g.label;
-    return `<tr><td>${esc(lab)}<div class="tag ${g.significant ? "g" : ""}">${g.significant ? "differs from your sim" : "within noise of your sim"}</div></td>
-      <td class="v dim">${g.sim == null ? "none" : fmt(g.sim, d) + u}</td><td class="v">${fmt(g.real, d)}${u}</td><td class="v dim">${fmt(g.lo, d)}–${fmt(g.hi, d)}</td>${truthCell}<td class="plot">${svg}</td></tr>`;
+    return `<tr><td>${esc(lab)}<div class="tag ${g.significant ? "g" : ""}">${g.lo == null ? T("uncertainty unavailable", "불확실성을 측정할 수 없습니다") : g.significant ? "differs from your sim" : "within noise of your sim"}</div></td>
+      <td class="v dim">${g.sim == null ? "none" : fmt(g.sim, d) + u}</td><td class="v">${fmt(g.real, d)}${u}</td><td class="v dim">${g.lo == null ? T("unavailable", "측정 부족") : `${fmt(g.lo, d)}–${fmt(g.hi, d)}`}</td>${truthCell}<td class="plot">${svg}</td></tr>`;
   }).join("");
   return `<div class="tablewrap" style="max-height:none"><table class="forest"><thead><tr><th>Parameter</th><th>Your sim</th><th>Measured</th><th>90% interval</th>${tm ? "<th>Hidden truth</th>" : ""}<th></th></tr></thead><tbody>${rows}</tbody></table></div>`;
 }
@@ -1637,11 +1647,13 @@ function chartStops(c) {
   const xmax = Math.max(...d.grid), ymax = Math.min(1.2 * DOM.scale, Math.max(0.3 * DOM.scale, ...d.points.map(p => p.y), ...d.model) * 1.08);
   const A = axes(W, H, m, [0, xmax], [0, ymax], d.x_label, "slide (m)", nice(0, xmax, 5), nice(0, ymax, 5));
   const clip = y => Math.min(ymax, y);
-  const band = `<path d="M${d.grid.map((x, i) => `${A.X(x)},${A.Y(clip(d.band[i][1]))}`).join("L")}L${d.grid.map((x, i) => `${A.X(x)},${A.Y(clip(d.band[i][0]))}`).reverse().join("L")}Z" fill="rgba(118,185,0,0.22)"/>`;
+  const bandPath = (data, color) => data && data.length === d.grid.length ? `<path d="M${d.grid.map((x, i) => `${A.X(x)},${A.Y(clip(data[i][1]))}`).join("L")}L${d.grid.map((x, i) => `${A.X(x)},${A.Y(clip(data[i][0]))}`).reverse().join("L")}Z" fill="${color}"/>` : "";
+  const band = bandPath(d.band, "rgba(118,185,0,0.28)");
+  const predictive = bandPath(d.predictive_band, "rgba(118,185,0,0.10)");
   const line = (ys, col, dash) => `<polyline points="${d.grid.map((x, i) => `${A.X(x)},${A.Y(clip(ys[i]))}`).join(" ")}" fill="none" stroke="${col}" stroke-width="2" ${dash ? 'stroke-dasharray="5 4"' : ""}/>`;
   const pts = d.points.map(p => `<circle cx="${A.X(p.x)}" cy="${A.Y(clip(p.y))}" r="3.6" fill="${p.tipped ? "none" : "#eeeeee"}" stroke="#eeeeee"/>`).join("");
-  return `<div class="chart"><h4>Where it stops</h4><p>Your pushes against the calibrated model (band: 90% of plausible models) and your current sim.</p>
-    <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Slide distance against launch speed">${A.g}${band}${line(d.sim, "#6e6e6e", true)}${line(d.model, "#76b900")}${pts}</svg>
+  return `<div class="chart"><h4>Where it stops</h4><p>${T("Dark band: parameter uncertainty. Light band: next-push prediction including stop residual noise. Neither covers shared bias or unmeasured surface.", "진한 띠는 파라미터 불확실성, 옅은 띠는 정지 잔차 잡음을 포함한 다음 시행의 예측 범위입니다. 공통 편향이나 미측정 표면은 포함하지 않습니다.")}</p>
+    <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Slide distance against launch speed">${A.g}${predictive}${band}${line(d.sim, "#6e6e6e", true)}${line(d.model, "#76b900")}${pts}</svg>
     <div class="legend"><span><i style="background:#eeeeee;height:7px;width:7px"></i>your pushes</span><span><i style="background:#76b900"></i>calibrated</span><span><i style="background:#6e6e6e"></i>current sim</span></div></div>`;
 }
 function chartFriction(c) {
@@ -1796,8 +1808,8 @@ function verifyChart(v) {
 }
 function renderVerify() {
   const el = $("#verify"), v = state.result && state.result.verify;
-  const head = `<div><h3>${T("Verified in NVIDIA Newton", "NVIDIA Newton으로 검증")}</h3>
-    <p class="small muted" style="margin-top:4px">${T(`Before you take it home: every measured ${CS("run")} replayed in the full physics engine, from its own start and launch, once with the exported physics and once with your current simulator. The fit used a fast analytic model; this checks the numbers in the engine you will load them into.`, `내보내기 전에 확인합니다. 측정한 모든 시행을 실제와 같은 출발 위치·속도로 NVIDIA Newton에서 다시 실행합니다. 한 번은 보정값으로, 한 번은 보정 전 시뮬레이터로 실행해 비교합니다. 보정값은 빠른 근사 모델로 찾았기 때문에, 실제로 사용할 물리 엔진에서 다시 확인하는 단계입니다.`)}</p>`;
+  const head = `<div><h3>${T("Check in NVIDIA Newton", "NVIDIA Newton 검증")}</h3>
+    <p class="small muted" style="margin-top:4px">${T("Reads the exported JSON, checks the Newton file constants, and runs in a separate process. With at least six usable pushes, fit on roughly the first 80% and predict the rest. Otherwise this replays pushes used for the fit.", "내보낸 JSON과 Newton 파일의 상수를 대조하고 별도 프로세스에서 실행합니다. 사용할 수 있는 시행이 6개 이상이면 앞의 약 80%로 보정하고 나머지를 예측합니다. 부족하면 보정에 쓴 시행을 다시 실행합니다.")}</p>`;
   if (!v) {
     el.innerHTML = head + `<div class="row" style="margin-top:12px"><button class="btn primary" id="v-run">${T("Replay in NVIDIA Newton", "NVIDIA Newton으로 재현하기")}</button><span class="small muted" id="v-note">${T("Takes a few seconds on CPU.", "CPU로 몇 초 걸립니다.")}</span></div></div>`;
     $("#v-run").onclick = async () => {
@@ -1808,7 +1820,7 @@ function renderVerify() {
     return;
   }
   const better = v.rms_current_m / Math.max(1e-6, v.rms_calibrated_m);
-  el.innerHTML = head + `<div class="stats">
+  el.innerHTML = head + `<p class="small"><b>${v.mode === "held-out prediction" ? T("Held-out prediction", "보정에서 제외한 시행 예측") : T("Replay of pushes used for the fit", "보정에 쓴 시행의 재현")}</b> · ${v.mode ? T("Export files executed in a separate process", "내보낸 파일을 별도 프로세스에서 실행했습니다") : T("Recorded replay; file round trip not verified", "기록된 재현 결과입니다. 파일 왕복 실행은 검증하지 않았습니다")}</p><div class="stats">
       <div><b class="g num">±${dist(v.rms_calibrated_m)}</b><span>${T("exported physics, rms stop error", "보정값의 평균 정지 위치 오차")}</span></div>
       <div><b class="num">±${dist(v.rms_current_m)}</b><span>${T("your current sim", "보정 전 시뮬레이터")}</span></div>
       <div><b class="num">${better >= 10 ? Math.round(better) : better.toFixed(1)}×</b><span>${T("closer to reality", "더 정확")}</span></div>
@@ -1825,7 +1837,7 @@ function renderExport() {
   $("#x-tabs").querySelectorAll("button").forEach(b => b.onclick = () => { state.exportTab = b.dataset.id; renderExport(); });
   const t = XTABS.find(x => x.id === state.exportTab), text = exportText(t.id);
   $("#x-code").innerHTML = highlight(text, t.id);
-  $("#x-note").textContent = { newton: "Material values for newton.ModelBuilder.ShapeConfig, plus the measured friction region.", isaaclab: "An EventTermCfg that randomizes the object's material over the measured interval at startup.", carla: T("CARLA 0.9.16: scales your vehicle's tire friction by measured / simulated μ, places a friction trigger on the wet or icy section, and ends with a braking check.", "CARLA 0.9.16용 설정입니다. 타이어 마찰을 ‘측정값/시뮬레이션값’ 비율로 조정하고, 젖거나 언 구간에 마찰 트리거를 배치하며, 제동 거리 검증식을 포함합니다."), markdown: "A one-page report to share.", json: "Everything above, machine-readable (tether.calibration/v1)." }[t.id];
+  $("#x-note").textContent = { newton: T("Run the check above to execute the exported files in Newton. Generation alone is not execution.", "위 검증을 실행하면 내보낸 파일을 Newton에서 실행합니다. 파일 생성만으로 실행이 검증되지는 않습니다."), isaaclab: T("Format-checked against a stand-in; not executed here. Requires average friction combine and registered object/table rigid assets.", "스탠드인 모듈로 형식을 확인했으며 이 환경에서 실행하지 않았습니다. 평균 마찰 결합과 등록된 물체·탁자 강체가 필요합니다."), carla: T("Format-checked against a stand-in, not executed here. CARLA 0.9.16: scales your vehicle's tire friction by measured / simulated μ, places a friction trigger on the wet or icy section, and ends with a braking check.", "스탠드인 모듈로 형식을 확인했으며 이 환경에서 실행하지 않았습니다. CARLA 0.9.16용 설정입니다. 타이어 마찰을 ‘측정값/시뮬레이션값’ 비율로 조정하고, 젖거나 언 구간에 마찰 트리거를 배치하며, 제동 거리 검증식을 포함합니다."), markdown: "A one-page report to share.", json: "Everything above, machine-readable (tether.calibration/v1)." }[t.id];
   $("#x-dl").hidden = !LIVE;
   const others = ["robot", "driving", "factory"].filter(id => id !== DOM.id);
   const home = $("#nav-home") && $("#nav-home").getAttribute("href");

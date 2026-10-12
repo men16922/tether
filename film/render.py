@@ -50,8 +50,8 @@ SCRIPT = [
                   "current simulator, and the next experiment worth running.", 13),
     ("retrain", "Then Tether retrains the policy in sixteen parallel NVIDIA Newton worlds drawn from what it measured. "
                 "On the vehicle log, hidden-world success goes from forty-two percent to one hundred.", 15),
-    ("appExport", "Before export, every run is replayed in NVIDIA Newton, and the calibrated physics goes straight into "
-                  "Newton, Isaac Lab or CARLA.", 11),
+    ("appExport", "Export files are checked in a separate Newton process, on pushes left out of the fit. Isaac Lab and "
+                  "CARLA exports are format checked here, not executed.", 11),
     ("appAsk", "And you can ask Tether about your own result. Nemotron answers from your session's numbers.", 10),
     ("proofReal", "It holds outside our own simulator. On real objects from a public benchmark, friction lands within "
                   "five hundredths of an independent measurement, for four of five.", 11),
@@ -108,7 +108,7 @@ def build_data() -> dict:
     rb = json.loads((ROOT / "runs/proof/real_benchmark.json").read_text())
     rows = sorted(rb["objects"], key=lambda o: o["mu_tilt_test"])
     data["real"] = {"within": rb["summary"]["video"]["within_0_05"], "objects": rb["summary"]["video"]["objects"],
-                    "mae": rb["summary"]["video"]["mean_abs_error"], "paper": rb["paper_estimator_on_real"]["mean_abs_error"],
+                    "mae": rb["summary"]["video"]["mean_abs_error"], "paper_reference": rb["paper_estimator_on_real"]["mean_abs_error"],
                     "rows": [{"object": o["object"], "truth": o["mu_tilt_test"], "tether": o["video"]["mu"],
                               "ok": abs(o["video"]["mu"] - o["mu_tilt_test"]) <= 0.05} for o in rows]}
     ce = json.loads((ROOT / "runs/proof/cross_engine.json").read_text())["summary"]["in-menu"]
@@ -122,7 +122,7 @@ def build_data() -> dict:
 
 
 # ------------------------------------------------------------------ narration and music
-def _elevenlabs(text: str, out: Path) -> None:
+def _elevenlabs(text: str, out: Path, cache_only: bool = False) -> None:
     import hashlib
     import os
 
@@ -136,6 +136,8 @@ def _elevenlabs(text: str, out: Path) -> None:
     TTS_CACHE.mkdir(parents=True, exist_ok=True)
     cached = TTS_CACHE / (hashlib.sha256(f"{actor}|{text}".encode()).hexdigest()[:20] + ".mp3")
     if not cached.exists():
+        if cache_only or os.environ.get("TETHER_TTS_CACHE_ONLY") == "1":
+            raise SystemExit(f"cached narration missing for {out.name}; no paid call made")
         voice = actor
         if not (len(actor) >= 16 and actor.isalnum()):  # a name: look its id up
             req = urllib.request.Request("https://api.elevenlabs.io/v1/voices", headers={"xi-api-key": key})
@@ -153,8 +155,13 @@ def _elevenlabs(text: str, out: Path) -> None:
 
 def narrate(text: str, out: Path, voice: str) -> float:
     """One narration line to audio (ElevenLabs, cached; or macOS say) -> its length in seconds."""
-    if voice == "elevenlabs":
-        _elevenlabs(text, out)
+    if voice in ("elevenlabs", "cache-or-local"):
+        try:
+            _elevenlabs(text, out, cache_only=voice == 'cache-or-local')
+        except SystemExit:
+            if voice != 'cache-or-local': raise
+            print(f'{out.name}: cached narration unavailable; using local Samantha, no paid call')
+            subprocess.run(["say", "-v", "Samantha", "-r", "178", "-o", str(out), text], check=True)
     else:
         subprocess.run(["say", "-v", "Samantha", "-r", "178", "-o", str(out), text], check=True)
     r = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(out)],
@@ -265,7 +272,7 @@ async def capture(page: Path, plan: list[tuple[str, float]], only: str | None) -
 # ------------------------------------------------------------------ assembly
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--voice", choices=["elevenlabs", "say"], default="elevenlabs")
+    ap.add_argument("--voice", choices=["elevenlabs", "say", "cache-or-local"], default="elevenlabs")
     ap.add_argument("--only", default=None, help="re-capture one scene")
     ap.add_argument("--out", type=Path, default=OUT / "tether_film.mp4")
     a = ap.parse_args()

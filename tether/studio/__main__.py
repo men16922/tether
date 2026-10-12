@@ -41,6 +41,10 @@ def _print_step(e: dict) -> None:
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(prog="python -m tether.studio", description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
+    r = sub.add_parser("replay", help="read exported files and run new pushes in a separate Newton process")
+    r.add_argument("directory")
+    r.add_argument("--speeds", type=float, nargs="+", default=[1.1, 1.7, 2.3], help="measured launch speeds in domain m/s")
+    r.add_argument("--starts", type=float, nargs="+", default=None, help="launch positions in domain metres")
     c = sub.add_parser("calibrate", help="calibrate from a robot log (CSV/JSON)")
     c.add_argument("log")
     v = sub.add_parser("video", help="track pushes in a phone video, then calibrate")
@@ -52,6 +56,14 @@ def main(argv=None) -> int:
         p.add_argument("--out", default=None)
         p.add_argument("--name", default=None)
     a = ap.parse_args(argv)
+    if a.cmd == "replay":
+        from tether.studio.roundtrip import replay
+        try:
+            print(json.dumps(replay(a.directory, a.speeds, a.starts), indent=2))
+        except (ValueError, OSError) as e:
+            print(f"error: {e}", file=sys.stderr)
+            return 2
+        return 0
     try:
         if a.cmd == "calibrate":
             path = Path(a.log)

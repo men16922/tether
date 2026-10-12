@@ -1,8 +1,25 @@
 # Progress Log
 
-Last Updated: 2026-10-11
+Last Updated: 2026-10-13
 
 This file maintains only recent incremental summaries (newest 3-5 items, ≤120 lines). Older entries are archived to `docs/archive/progress-YYYY-MM.md` via `/tidy-docs`.
+
+## 2026-10-13 — Local ship and blocked handoff checkpoint
+- Status: /ship authorizes one local Tether commit; the wider goal remains blocked by external-release approvals and owner inputs. No push, deployment, publication or paid call.
+- Changed: preserve the 2026-10-12 code/tests/docs and versioned demo/reference JSON; brief/status/plan separate local ship from pending external release. Generated QA/evaluation outputs, ablation response recordings and the credit ledger remain unstaged; portfolio WIP is untouched.
+- Verified: make check rerun: 144 passed in 241.75 s; post-checkpoint docs-number checks: 14 passed; diff/credential-pattern checks clean. Submission inventory has no missing files and two YouTube placeholders; media 147.85 s, 1080p, 67.9 s app footage. Strict presubmit, browser, NAT, remote CI/deployment and independent phone validation were not rerun; prior evidence remains in the 2026-10-12 entry.
+- Blockers: cumulative $0.40 credit decision (pilot 9/35, $0.0963855 of $0.10); Tether push/Cloud Run/portfolio approval; owner filming/tilt record (October 10 clips lack truth.json); public YouTube URL, Devpost owner checks/submission.
+- Next: read docs/project/NEXT_PLAN.md Priority 1; confirm credit before any paid call and resume with the existing local ledger. Follow Priority 2–4 as inputs/approvals arrive; preserve portfolio .serena/project.yml WIP.
+
+## 2026-10-12 — Claims, reliability and exported-file evidence
+- Status: A/B/C and E tooling/F local updates complete; publication, independent filming and full D comparison pending.
+- Changed: real benchmark baselines/LOPO/inputs/exclusions; reliability status (single-push intervals hidden), predictive bands; Isaac pair ranges; JSON ensemble/base; AST+separate-process Newton round trip and held-out verify; global friction-patch coordinates preserved for negative starts; phone split/rejection tooling; ablation fixtures/credit ledger; presubmit; EN/KO docs and recorded examples; portfolio local copies.
+- Verified: final make presubmit ran make check: 144 passed in 234.65 s; media/required files passed, strict failure only on two YouTube placeholders; EN/KO 1440/390 px live local workflow/export/refresh, no overflow or JS errors; robot/driving file round-trip tests; credential scan/diff checks. Optional NAT tests skipped (nat unavailable).
+- Evidence: matched-comparison training now excludes the same one short video push for all methods; held-out targets remain evaluated. `--from-recorded-sessions` reproducibly refits saved inputs. Real log μ MAE 0.019 vs median baseline 0.018; video 0.029 vs 0.037. Video retains 25/45 (20 excluded). Single cracker interval unavailable. All 10 real cases flagged; unflagged coverage not estimable. Sweep at n=6 MuJoCo 14/24, not a guarantee. Diagnosis: source Appendix C.3 uneven cardboard/anisotropic contact is consistent with low-scatter mocap bias; tilt ≤1.798°, clock corrected only in wording (source synchronized 30 Hz), no parameter/truth correction.
+- D: 9/35 complete, 0 cross-check overrules; token×price $0.0963855 ≤$0.10; 26 incomplete/missing. Expanded cumulative $0.40 approval pending; ledger and training-input hashes preserved, no fake agent scores. Original pilot latency unavailable.
+- Film: rebuilt 147.85 s, 67.9 s app footage; cached narration except revised export sentence via local Samantha (no paid TTS); submission regenerated. Portfolio copies uncommitted, not republished.
+- Blockers: additional D credit decision; owner phone filming; explicit Git/Cloud Run/portfolio release approval; YouTube URL/Devpost and judging-key check.
+- Next: resolve D credit scope, then NEXT_PLAN Priority 2–4. Tether/portfolio changes remain uncommitted.
 
 ## 2026-10-11 — Next plan from FEEDBACK.md (plan only, no code)
 - Status: plan written; nothing implemented. Waiting on the owner's answers (YouTube timing, filming, one Token Factory run).

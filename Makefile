@@ -1,7 +1,7 @@
 # Tether: tie your simulator to the real world (Nebius x NVIDIA Global AI Hackathon, Physical AI track)
 # The gate (make check) stays OFFLINE + DETERMINISTIC: no GPU, no network, no Nebius/Token Factory calls.
 .PHONY: check test lint smoke-local serve pages docker deploy demo replays franka-mesh studio-samples studio-record \
-        prove studio-bench cross-engine real-check real-benchmark prove-real film submission
+        prove studio-bench cross-engine real-check real-benchmark prove-real film submission presubmit
 
 PY := $(shell [ -x .venv/bin/python ] && echo .venv/bin/python || echo python3)
 PY_SRC := $(shell find tether film deploy -name '*.py' 2>/dev/null)
@@ -89,3 +89,6 @@ film:  # -> film/out/tether_film.mp4 (needs make real-benchmark, and make serve 
 # everything to upload (film, YouTube thumbnail and description, Devpost gallery and text) -> submission/, see docs/submission/SUBMIT.md
 submission:
 	$(PY) -m film.submission
+
+presubmit:
+	$(PY) -m tether.eval.presubmit
