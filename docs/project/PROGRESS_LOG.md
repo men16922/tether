@@ -4,12 +4,14 @@ Last Updated: 2026-10-13
 
 This file maintains only recent incremental summaries (newest 3-5 items, ≤120 lines). Older entries are archived to `docs/archive/progress-YYYY-MM.md` via `/tidy-docs`.
 
-## 2026-10-13 — Local ship and blocked handoff checkpoint
-- Status: /ship authorizes one local Tether commit; the wider goal remains blocked by external-release approvals and owner inputs. No push, deployment, publication or paid call.
-- Changed: preserve the 2026-10-12 code/tests/docs and versioned demo/reference JSON; brief/status/plan separate local ship from pending external release. Generated QA/evaluation outputs, ablation response recordings and the credit ledger remain unstaged; portfolio WIP is untouched.
-- Verified: make check rerun: 144 passed in 241.75 s; post-checkpoint docs-number checks: 14 passed; diff/credential-pattern checks clean. Submission inventory has no missing files and two YouTube placeholders; media 147.85 s, 1080p, 67.9 s app footage. Strict presubmit, browser, NAT, remote CI/deployment and independent phone validation were not rerun; prior evidence remains in the 2026-10-12 entry.
-- Blockers: cumulative $0.40 credit decision (pilot 9/35, $0.0963855 of $0.10); Tether push/Cloud Run/portfolio approval; owner filming/tilt record (October 10 clips lack truth.json); public YouTube URL, Devpost owner checks/submission.
-- Next: read docs/project/NEXT_PLAN.md Priority 1; confirm credit before any paid call and resume with the existing local ledger. Follow Priority 2–4 as inputs/approvals arrive; preserve portfolio .serena/project.yml WIP.
+## 2026-10-13 — Nemotron completed; local ship/readiness retained
+- Status: 35/35 Nemotron cases complete and replay-verified; ship d982276 exists; this local ship records the 17-file readiness/Nemotron follow-up, leaving generated outputs and portfolio WIP out. No push/deploy/publication; paid work stayed within the user-approved cumulative $0.40.
+- Changed: 26 remaining cases completed; canonical proof, recorded responses/ledger, complete-vs-continuation timing, README/DEVPOST/EN/KO articles and local portfolio copies updated. Devpost comparison moved inside the generated About body; submission rebuilt. Original nine response files unchanged.
+- Verified: ship reran make check: 146 passed (265.56 s); offline 35-case replay matched scores within 1e-8 and summary/timing exactly; 224 response token totals match $0.3060624 ledger, unknown reserve zero. Docs-number checks, diff/credential scan and budgets passed. Strict presubmit still has two owner YouTube placeholders; media/files valid.
+- Results: mean case-median stop error offline 3.027 / agent 3.018 / cross-check 3.018 cm; difference -0.0096, case-bootstrap 95% [-0.0288, 0.0000]. No accuracy advantage; exact fitted field sets 29/30 vs 3/30, a free-variable proxy. Zero failures/overrules. Fresh-case live timing n=23 (median 14.03 s, p90 18.41 s); nine old timings absent, three continuations separate. Invoice/balance and user comprehension unverified.
+- Prior readiness: 145 tests; isolated NAT replay 1 passed, archived-source checks 15 passed, deployment-source pages/browser/held-out Newton verified; URL parser, 165-character pitch and mixed narration credit corrected. These earlier checks are not new live/deployment evidence.
+- Blockers: owner filming + truth.json; Tether push/Cloud Run/portfolio approval; public YouTube URL and Devpost owner checks/submission. Next: NEXT_PLAN Priority 1; preserve portfolio .serena/project.yml WIP.
+- Evidence: runs/proof/agent_ablation.json; runs/qa/nemotron-completion-2026-10-13.json and residual-readiness-2026-10-13.json; detail: docs/project/plans/2026-10-11-feedback-hardening.md. Raw responses, credit ledger and generated QA outputs remain local/untracked.
 
 ## 2026-10-12 — Claims, reliability and exported-file evidence
 - Status: A/B/C and E tooling/F local updates complete; publication, independent filming and full D comparison pending.

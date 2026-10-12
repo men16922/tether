@@ -138,7 +138,7 @@ def summarize(rows):
     result={'paired_cases':len(paired),'unavailable_cases':len(rows)-len(attempted),
             'agent_failed_cases':sum(r['agent_status']=='failed' for r in attempted),
             'agent_failure_rate':sum(r['agent_status']=='failed' for r in attempted)/len(attempted) if attempted else None,
-            'methods':{},'note':'case-balanced errors on the complete subset; selected pilot cases, not population inference'}
+            'methods':{},'note':'case-balanced errors on the complete subset of the fixed 35-case suite; not population inference'}
     for method in ('offline','agent','agent_cross_check'):
         cs=[r['conditions'][method] for r in paired]
         structure=[c['structure_correct'] for c in cs if c.get('structure_correct') is not None]
@@ -150,6 +150,12 @@ def summarize(rows):
     draws=[sum(rng.choice(deltas) for _ in deltas)/len(deltas) for _ in range(1000)] if deltas else []
     result['paired_delta_cm']={'mean':float(np.mean(deltas)) if deltas else None,
                               'case_bootstrap_95':list(map(float,np.percentile(draws,[2.5,97.5]))) if draws else None}
+    latency=[r['original_live_agent_seconds'] for r in paired
+             if r.get('live_latency_scope')=='complete case' and r.get('original_live_agent_seconds') is not None]
+    result['original_live_latency']={'complete_cases':len(latency),'unavailable_cases':len(paired)-len(latency),
+        'median_seconds':float(np.median(latency)) if latency else None,
+        'p90_seconds':float(np.percentile(latency,90)) if latency else None,
+        'note':'original end-to-end agent time on successful fresh cases only; replay and partial continuations excluded'}
     return result
 
 
@@ -181,6 +187,7 @@ def main(argv=None):
             row['agent_status']='not run: training-only fixture missing; live run awaits approval'
             if fixture.exists():row['agent_status']='not evaluable: partial fixture at approved credit limit'
         else:
+            continuation=fixture.exists() and not complete
             llm=(RecordedLLM.from_file(fixture) if complete else ResumeLLM(budget,fixture) if fixture.exists()
                  else RecordingLLM(budget,fixture))
             before_calls=len(budget.calls) if budget else 0
@@ -194,9 +201,19 @@ def main(argv=None):
             row['usage']={k:after_usage[k]-before_usage[k] for k in ('calls','prompt_tokens','completion_tokens')}
             original=json.loads(meta.read_text()) if meta.exists() else {}
             original.update(training_sha256=digest,status=row['agent_status'])
-            if budget and len(budget.calls)>before_calls: original['live_agent_seconds']=elapsed
+            if budget and len(budget.calls)>before_calls:
+                if continuation:
+                    previous=original.pop('live_agent_seconds',None)
+                    if previous is not None:original['previous_partial_seconds']=previous
+                    original['live_continuation_seconds']=elapsed
+                    original['live_latency_scope']='continuation only'
+                else:
+                    original['live_agent_seconds']=elapsed
+                    original['live_latency_scope']='complete case'
             meta.write_text(json.dumps(original,indent=2)+'\n')
             row['original_live_agent_seconds']=original.get('live_agent_seconds')
+            row['live_continuation_seconds']=original.get('live_continuation_seconds')
+            row['live_latency_scope']=original.get('live_latency_scope','unavailable')
             # No money estimate without verified model prices. Report exact tokens and calls for pricing later.
             row['cost_usd']=float(sum(Decimal(c['cost_usd']) for c in budget.calls[before_calls:])) if budget else None
             row['cost_note']='actual new calls only; replay cost is zero; per-token prices in credit_ledger.json' if budget else 'offline replay; no live-cost claim'

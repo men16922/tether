@@ -55,7 +55,7 @@ https://nebiusglobalaihackathon.devpost.com 에서 "Enter a submission" (또는 
 
 **A. Elevator pitch**
 ```
-Tether ties your simulator to the real world: from a phone video or a robot log, Nemotron finds the physics your sim gets wrong, NVIDIA Newton checks the fix and retrains the policy.
+Tether estimates the physics gap of a pushing task from video or logs, shows where measurements are missing, and provides the next experiment and a verifiable setup.
 ```
 
 **B. Built with**

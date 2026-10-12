@@ -2,7 +2,7 @@
 
 Last Updated: 2026-10-13
 
-> ▶ NEXT SESSION: Goal blocked, not complete. Read `docs/project/NEXT_PLAN.md` Priority 1 and execution record `docs/project/plans/2026-10-11-feedback-hardening.md`; first confirm the additional-credit decision. Only if cumulative $0.40 is approved, run `.venv/bin/python -m tether.eval.agent_ablation --live --budget-usd 0.4` with the existing ledger (9/35 complete, $0.0963855 token×price; $0.10 cap). Local A/B/C/E-tooling/F work, 144 tests and rebuilt film are preserved. Tether local ship is authorized; push/Cloud Run/portfolio approval, owner filming/tilt record, YouTube/Devpost remain pending. Portfolio copies are uncommitted; local credit ledger and generated QA/evaluation outputs remain outside the ship commit.
+> ▶ NEXT SESSION: Nemotron completion is done: 35/35 live-recorded cases, offline replay matched, $0.3060624 reported cumulative cost within approved $0.40; 146 tests passed. Read `docs/project/NEXT_PLAN.md` Priority 1 (independent phone case); first await owner recordings + film/real/truth.json, then run `make prove-real`. Ship d982276 is committed; this local ship records the readiness/Nemotron follow-up. Portfolio copies remain uncommitted. No more Nemotron calls needed. Push/Cloud Run/portfolio approval, YouTube URL and Devpost remain pending. Detailed evidence: docs/project/plans/2026-10-11-feedback-hardening.md and runs/qa/nemotron-completion-2026-10-13.json.
 
 ## Snapshot
 

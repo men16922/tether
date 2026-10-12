@@ -1,9 +1,9 @@
 {
   "protocol": "last 20% held out before ANY agent call; one shared agent call; same fitter guards in all conditions",
   "precommitted_interpretation": "No accuracy advantage if agent+cross-check is indistinguishable from offline within uncertainty; guidance and experiment choice only.",
-  "live": false,
+  "live": true,
   "cases": 35,
-  "missing_fixtures": 26,
+  "missing_fixtures": 0,
   "measured_overrules": 0,
   "rows": [
     {
@@ -17,7 +17,7 @@
           "stop_median_cm": 2.563074564025264,
           "stop_p90_cm": 3.375278684063926,
           "structure_correct": true,
-          "seconds": 1.908903666999322,
+          "seconds": 1.87052337500063,
           "calls": 0
         },
         "agent": {
@@ -25,7 +25,7 @@
           "stop_median_cm": 2.563074564025264,
           "stop_p90_cm": 3.375278684063926,
           "structure_correct": false,
-          "agent_seconds": 0.3792336670003351,
+          "agent_seconds": 0.35930616699988605,
           "failure": false,
           "cross_check": null
         },
@@ -34,7 +34,7 @@
           "stop_median_cm": 2.563074564025264,
           "stop_p90_cm": 3.375278684063926,
           "structure_correct": false,
-          "agent_seconds": 0.3792336670003351,
+          "agent_seconds": 0.35930616699988605,
           "failure": false,
           "cross_check": {
             "agent_misfit": 3.14,
@@ -62,9 +62,11 @@
         "completion_tokens": 2186
       },
       "original_live_agent_seconds": null,
-      "cost_usd": null,
-      "cost_note": "offline replay; no live-cost claim",
-      "overruled": false
+      "cost_usd": 0.0,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": null,
+      "live_latency_scope": "unavailable"
     },
     {
       "case": "mujoco-01",
@@ -77,7 +79,7 @@
           "stop_median_cm": 2.333259223169426,
           "stop_p90_cm": 4.224751298723866,
           "structure_correct": true,
-          "seconds": 1.546618791999208,
+          "seconds": 1.8812094589993649,
           "calls": 0
         },
         "agent": {
@@ -85,7 +87,7 @@
           "stop_median_cm": 2.333259223169426,
           "stop_p90_cm": 4.224751298723866,
           "structure_correct": false,
-          "agent_seconds": 1.514709624999341,
+          "agent_seconds": 1.8558776249992661,
           "failure": false,
           "cross_check": null
         },
@@ -94,7 +96,7 @@
           "stop_median_cm": 2.333259223169426,
           "stop_p90_cm": 4.224751298723866,
           "structure_correct": false,
-          "agent_seconds": 1.514709624999341,
+          "agent_seconds": 1.8558776249992661,
           "failure": false,
           "cross_check": {
             "agent_misfit": 3.71,
@@ -122,9 +124,11 @@
         "completion_tokens": 1403
       },
       "original_live_agent_seconds": null,
-      "cost_usd": null,
-      "cost_note": "offline replay; no live-cost claim",
-      "overruled": false
+      "cost_usd": 0.0,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": null,
+      "live_latency_scope": "unavailable"
     },
     {
       "case": "mujoco-02",
@@ -137,7 +141,7 @@
           "stop_median_cm": 1.3147404961359022,
           "stop_p90_cm": 3.0356877672832487,
           "structure_correct": true,
-          "seconds": 1.3286118329997407,
+          "seconds": 1.6880780840001535,
           "calls": 0
         },
         "agent": {
@@ -145,7 +149,7 @@
           "stop_median_cm": 1.3147404961359022,
           "stop_p90_cm": 3.0356877672832487,
           "structure_correct": false,
-          "agent_seconds": 0.40861608300019725,
+          "agent_seconds": 0.4020739589977893,
           "failure": false,
           "cross_check": null
         },
@@ -154,7 +158,7 @@
           "stop_median_cm": 1.3147404961359022,
           "stop_p90_cm": 3.0356877672832487,
           "structure_correct": false,
-          "agent_seconds": 0.40861608300019725,
+          "agent_seconds": 0.4020739589977893,
           "failure": false,
           "cross_check": {
             "agent_misfit": 1.95,
@@ -183,9 +187,11 @@
         "completion_tokens": 2039
       },
       "original_live_agent_seconds": null,
-      "cost_usd": null,
-      "cost_note": "offline replay; no live-cost claim",
-      "overruled": false
+      "cost_usd": 0.0,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": null,
+      "live_latency_scope": "unavailable"
     },
     {
       "case": "mujoco-03",
@@ -198,7 +204,7 @@
           "stop_median_cm": 0.9508295314236193,
           "stop_p90_cm": 2.7716640794266247,
           "structure_correct": true,
-          "seconds": 1.7036934170000677,
+          "seconds": 2.0423085000002175,
           "calls": 0
         },
         "agent": {
@@ -206,7 +212,7 @@
           "stop_median_cm": 0.9508295314236193,
           "stop_p90_cm": 2.7716640794266247,
           "structure_correct": false,
-          "agent_seconds": 0.2376737080003295,
+          "agent_seconds": 0.277684833999956,
           "failure": false,
           "cross_check": null
         },
@@ -215,7 +221,7 @@
           "stop_median_cm": 0.9508295314236193,
           "stop_p90_cm": 2.7716640794266247,
           "structure_correct": false,
-          "agent_seconds": 0.2376737080003295,
+          "agent_seconds": 0.277684833999956,
           "failure": false,
           "cross_check": {
             "agent_misfit": 0.75,
@@ -241,9 +247,11 @@
         "completion_tokens": 699
       },
       "original_live_agent_seconds": null,
-      "cost_usd": null,
-      "cost_note": "offline replay; no live-cost claim",
-      "overruled": false
+      "cost_usd": 0.0,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": null,
+      "live_latency_scope": "unavailable"
     },
     {
       "case": "mujoco-04",
@@ -256,7 +264,7 @@
           "stop_median_cm": 1.5409803896377972,
           "stop_p90_cm": 1.9098274807314173,
           "structure_correct": true,
-          "seconds": 1.457560249999915,
+          "seconds": 1.8911630000002333,
           "calls": 0
         },
         "agent": {
@@ -264,7 +272,7 @@
           "stop_median_cm": 1.2050425730687486,
           "stop_p90_cm": 2.0485871436707903,
           "structure_correct": false,
-          "agent_seconds": 0.7885187499996391,
+          "agent_seconds": 0.9608237499996903,
           "failure": false,
           "cross_check": null
         },
@@ -273,7 +281,7 @@
           "stop_median_cm": 1.2050425730687486,
           "stop_p90_cm": 2.0485871436707903,
           "structure_correct": false,
-          "agent_seconds": 0.7885187499996391,
+          "agent_seconds": 0.9608237499996903,
           "failure": false,
           "cross_check": {
             "agent_misfit": 1.29,
@@ -301,9 +309,11 @@
         "completion_tokens": 2431
       },
       "original_live_agent_seconds": null,
-      "cost_usd": null,
-      "cost_note": "offline replay; no live-cost claim",
-      "overruled": false
+      "cost_usd": 0.0,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": null,
+      "live_latency_scope": "unavailable"
     },
     {
       "case": "mujoco-05",
@@ -316,7 +326,7 @@
           "stop_median_cm": 2.1122902420937173,
           "stop_p90_cm": 2.307417352711596,
           "structure_correct": true,
-          "seconds": 1.732862458999989,
+          "seconds": 1.9631205840014445,
           "calls": 0
         },
         "agent": {
@@ -324,7 +334,7 @@
           "stop_median_cm": 2.1122902420937173,
           "stop_p90_cm": 2.307417352711596,
           "structure_correct": false,
-          "agent_seconds": 1.1109487089997856,
+          "agent_seconds": 1.1557101250000414,
           "failure": false,
           "cross_check": null
         },
@@ -333,7 +343,7 @@
           "stop_median_cm": 2.1122902420937173,
           "stop_p90_cm": 2.307417352711596,
           "structure_correct": false,
-          "agent_seconds": 1.1109487089997856,
+          "agent_seconds": 1.1557101250000414,
           "failure": false,
           "cross_check": {
             "agent_misfit": 2.12,
@@ -361,9 +371,11 @@
         "completion_tokens": 1874
       },
       "original_live_agent_seconds": null,
-      "cost_usd": null,
-      "cost_note": "offline replay; no live-cost claim",
-      "overruled": false
+      "cost_usd": 0.0,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": null,
+      "live_latency_scope": "unavailable"
     },
     {
       "case": "mujoco-06",
@@ -376,7 +388,7 @@
           "stop_median_cm": 0.8828612908119204,
           "stop_p90_cm": 1.9911434870324562,
           "structure_correct": true,
-          "seconds": 2.5205179579998003,
+          "seconds": 2.784471791001124,
           "calls": 0
         },
         "agent": {
@@ -384,7 +396,7 @@
           "stop_median_cm": 0.8828612908119204,
           "stop_p90_cm": 1.9911434870324562,
           "structure_correct": false,
-          "agent_seconds": 0.16497462499955873,
+          "agent_seconds": 0.1647778330006986,
           "failure": false,
           "cross_check": null
         },
@@ -393,7 +405,7 @@
           "stop_median_cm": 0.8828612908119204,
           "stop_p90_cm": 1.9911434870324562,
           "structure_correct": false,
-          "agent_seconds": 0.16497462499955873,
+          "agent_seconds": 0.1647778330006986,
           "failure": false,
           "cross_check": {
             "agent_misfit": 2.24,
@@ -421,9 +433,11 @@
         "completion_tokens": 2551
       },
       "original_live_agent_seconds": null,
-      "cost_usd": null,
-      "cost_note": "offline replay; no live-cost claim",
-      "overruled": false
+      "cost_usd": 0.0,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": null,
+      "live_latency_scope": "unavailable"
     },
     {
       "case": "mujoco-07",
@@ -436,7 +450,7 @@
           "stop_median_cm": 2.4538516395761043,
           "stop_p90_cm": 3.2531973113728005,
           "structure_correct": true,
-          "seconds": 1.6564159170002313,
+          "seconds": 1.666705333002028,
           "calls": 0
         },
         "agent": {
@@ -444,7 +458,7 @@
           "stop_median_cm": 2.4538516395761043,
           "stop_p90_cm": 3.2531973113728005,
           "structure_correct": false,
-          "agent_seconds": 0.36257287500029634,
+          "agent_seconds": 0.3234816250005679,
           "failure": false,
           "cross_check": null
         },
@@ -453,7 +467,7 @@
           "stop_median_cm": 2.4538516395761043,
           "stop_p90_cm": 3.2531973113728005,
           "structure_correct": false,
-          "agent_seconds": 0.36257287500029634,
+          "agent_seconds": 0.3234816250005679,
           "failure": false,
           "cross_check": {
             "agent_misfit": 2.69,
@@ -482,9 +496,11 @@
         "completion_tokens": 1992
       },
       "original_live_agent_seconds": null,
-      "cost_usd": null,
-      "cost_note": "offline replay; no live-cost claim",
-      "overruled": false
+      "cost_usd": 0.0,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": null,
+      "live_latency_scope": "unavailable"
     },
     {
       "case": "mujoco-08",
@@ -497,7 +513,7 @@
           "stop_median_cm": 2.2112451040574355,
           "stop_p90_cm": 3.1488042534431626,
           "structure_correct": true,
-          "seconds": 2.2606837500006804,
+          "seconds": 2.010472624999238,
           "calls": 0
         },
         "agent": {
@@ -505,7 +521,7 @@
           "stop_median_cm": 2.2112451040574355,
           "stop_p90_cm": 3.1488042534431626,
           "structure_correct": false,
-          "agent_seconds": 0.20276716599983047,
+          "agent_seconds": 0.18538470899875392,
           "failure": false,
           "cross_check": null
         },
@@ -514,7 +530,7 @@
           "stop_median_cm": 2.2112451040574355,
           "stop_p90_cm": 3.1488042534431626,
           "structure_correct": false,
-          "agent_seconds": 0.20276716599983047,
+          "agent_seconds": 0.18538470899875392,
           "failure": false,
           "cross_check": {
             "agent_misfit": 1.92,
@@ -542,9 +558,11 @@
         "completion_tokens": 2415
       },
       "original_live_agent_seconds": null,
-      "cost_usd": null,
-      "cost_note": "offline replay; no live-cost claim",
-      "overruled": false
+      "cost_usd": 0.0,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": null,
+      "live_latency_scope": "unavailable"
     },
     {
       "case": "mujoco-09",
@@ -557,11 +575,57 @@
           "stop_median_cm": 1.287823266952226,
           "stop_p90_cm": 2.339081115255035,
           "structure_correct": true,
-          "seconds": 1.741388082999947,
+          "seconds": 1.609730041000148,
           "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 1.287823266952226,
+          "stop_p90_cm": 2.339081115255035,
+          "structure_correct": false,
+          "agent_seconds": 8.501188166999782,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 1.287823266952226,
+          "stop_p90_cm": 2.339081115255035,
+          "structure_correct": false,
+          "agent_seconds": 8.501188166999782,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 2.16,
+            "search_misfit": 2.16,
+            "search_structure": [
+              "mu_eff",
+              "actuator_gain",
+              "camera_dx",
+              "camera_pitch_deg",
+              "patch_y0",
+              "patch_mu"
+            ],
+            "unexplained": [
+              "stops not explained (> 1 cm rms): the structure is missing an effect",
+              "launch speeds disagree with the model: the stops may fit only by trading friction against actuator_gain (stops depend on gain^2/mu); free actuator_gain"
+            ],
+            "adopted": "agent"
+          }
         }
       },
-      "agent_status": "not evaluable: partial fixture at approved credit limit"
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 7,
+        "prompt_tokens": 27934,
+        "completion_tokens": 1805
+      },
+      "original_live_agent_seconds": null,
+      "cost_usd": 0.0051636,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": 8.501188166999782,
+      "live_latency_scope": "continuation only"
     },
     {
       "case": "mujoco-10",
@@ -574,11 +638,56 @@
           "stop_median_cm": 1.6746014831716005,
           "stop_p90_cm": 1.9911308161988872,
           "structure_correct": true,
-          "seconds": 2.430791166000745,
+          "seconds": 2.2311118750003516,
           "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 1.6746014831716005,
+          "stop_p90_cm": 1.9911308161988872,
+          "structure_correct": false,
+          "agent_seconds": 12.485106291002012,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 1.6746014831716005,
+          "stop_p90_cm": 1.9911308161988872,
+          "structure_correct": false,
+          "agent_seconds": 12.485106291002012,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 1.67,
+            "search_misfit": 1.67,
+            "search_structure": [
+              "mu_eff",
+              "actuator_gain",
+              "camera_dx",
+              "camera_pitch_deg",
+              "patch_y0",
+              "patch_mu"
+            ],
+            "unexplained": [
+              "stops not explained (> 1 cm rms): the structure is missing an effect"
+            ],
+            "adopted": "agent"
+          }
         }
       },
-      "agent_status": "not evaluable: partial fixture at approved credit limit"
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 6,
+        "prompt_tokens": 21744,
+        "completion_tokens": 1355
+      },
+      "original_live_agent_seconds": null,
+      "cost_usd": 0.0069441,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": 12.485106291002012,
+      "live_latency_scope": "continuation only"
     },
     {
       "case": "mujoco-11",
@@ -591,11 +700,57 @@
           "stop_median_cm": 3.308368772128861,
           "stop_p90_cm": 9.606127031943844,
           "structure_correct": true,
-          "seconds": 1.5336002499998358,
+          "seconds": 1.3706229999988864,
           "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 3.308368772128861,
+          "stop_p90_cm": 9.606127031943844,
+          "structure_correct": false,
+          "agent_seconds": 17.872872833002475,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 3.308368772128861,
+          "stop_p90_cm": 9.606127031943844,
+          "structure_correct": false,
+          "agent_seconds": 17.872872833002475,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 3.95,
+            "search_misfit": 3.95,
+            "search_structure": [
+              "mu_eff",
+              "actuator_gain",
+              "camera_dx",
+              "camera_pitch_deg",
+              "patch_y0",
+              "patch_mu"
+            ],
+            "unexplained": [
+              "stops not explained (> 1 cm rms): the structure is missing an effect",
+              "launch speeds disagree with the model: the stops may fit only by trading friction against actuator_gain (stops depend on gain^2/mu); free actuator_gain"
+            ],
+            "adopted": "agent"
+          }
         }
       },
-      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 8,
+        "prompt_tokens": 31785,
+        "completion_tokens": 2104
+      },
+      "original_live_agent_seconds": 17.872872833002475,
+      "cost_usd": 0.0114291,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": null,
+      "live_latency_scope": "complete case"
     },
     {
       "case": "mujoco-12",
@@ -608,11 +763,56 @@
           "stop_median_cm": 1.1294694354714363,
           "stop_p90_cm": 7.475333617129085,
           "structure_correct": true,
-          "seconds": 1.655573416000152,
+          "seconds": 1.463139957999374,
           "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 1.1294694354714363,
+          "stop_p90_cm": 7.475333617129085,
+          "structure_correct": false,
+          "agent_seconds": 9.186489708001318,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 1.1294694354714363,
+          "stop_p90_cm": 7.475333617129085,
+          "structure_correct": false,
+          "agent_seconds": 9.186489708001318,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 1.63,
+            "search_misfit": 1.63,
+            "search_structure": [
+              "mu_eff",
+              "actuator_gain",
+              "camera_dx",
+              "camera_pitch_deg",
+              "patch_y0",
+              "patch_mu"
+            ],
+            "unexplained": [
+              "stops not explained (> 1 cm rms): the structure is missing an effect"
+            ],
+            "adopted": "agent"
+          }
         }
       },
-      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 6,
+        "prompt_tokens": 20167,
+        "completion_tokens": 1145
+      },
+      "original_live_agent_seconds": 9.186489708001318,
+      "cost_usd": 0.0070806,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": null,
+      "live_latency_scope": "complete case"
     },
     {
       "case": "mujoco-13",
@@ -625,11 +825,56 @@
           "stop_median_cm": 0.27189881053291676,
           "stop_p90_cm": 1.0844438349548435,
           "structure_correct": true,
-          "seconds": 1.8203603330002807,
+          "seconds": 1.5937656249989232,
           "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 0.27189881053291676,
+          "stop_p90_cm": 1.0844438349548435,
+          "structure_correct": false,
+          "agent_seconds": 14.03346862500257,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 0.27189881053291676,
+          "stop_p90_cm": 1.0844438349548435,
+          "structure_correct": false,
+          "agent_seconds": 14.03346862500257,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 1.32,
+            "search_misfit": 1.32,
+            "search_structure": [
+              "mu_eff",
+              "actuator_gain",
+              "camera_dx",
+              "camera_pitch_deg",
+              "patch_y0",
+              "patch_mu"
+            ],
+            "unexplained": [
+              "stops not explained (> 1 cm rms): the structure is missing an effect"
+            ],
+            "adopted": "agent"
+          }
         }
       },
-      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 7,
+        "prompt_tokens": 25530,
+        "completion_tokens": 1820
+      },
+      "original_live_agent_seconds": 14.03346862500257,
+      "cost_usd": 0.009297,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": null,
+      "live_latency_scope": "complete case"
     },
     {
       "case": "mujoco-14",
@@ -642,11 +887,56 @@
           "stop_median_cm": 1.3497328096242267,
           "stop_p90_cm": 2.6343795668822256,
           "structure_correct": true,
-          "seconds": 1.4425214579996464,
+          "seconds": 1.6574114579998422,
           "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 1.3497328096242267,
+          "stop_p90_cm": 2.6343795668822256,
+          "structure_correct": false,
+          "agent_seconds": 15.003125624996756,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 1.3497328096242267,
+          "stop_p90_cm": 2.6343795668822256,
+          "structure_correct": false,
+          "agent_seconds": 15.003125624996756,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 3.11,
+            "search_misfit": 3.11,
+            "search_structure": [
+              "mu_eff",
+              "actuator_gain",
+              "camera_dx",
+              "camera_pitch_deg",
+              "patch_y0",
+              "patch_mu"
+            ],
+            "unexplained": [
+              "stops not explained (> 1 cm rms): the structure is missing an effect"
+            ],
+            "adopted": "agent"
+          }
         }
       },
-      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 8,
+        "prompt_tokens": 33045,
+        "completion_tokens": 1593
+      },
+      "original_live_agent_seconds": 15.003125624996756,
+      "cost_usd": 0.0113472,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": null,
+      "live_latency_scope": "complete case"
     },
     {
       "case": "mujoco-15",
@@ -659,11 +949,56 @@
           "stop_median_cm": 1.7493703465999655,
           "stop_p90_cm": 2.9124917002052086,
           "structure_correct": true,
-          "seconds": 2.2595248329998867,
+          "seconds": 2.6811270420002984,
           "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 1.7493703465999655,
+          "stop_p90_cm": 2.9124917002052086,
+          "structure_correct": false,
+          "agent_seconds": 14.886070749998908,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 1.7493703465999655,
+          "stop_p90_cm": 2.9124917002052086,
+          "structure_correct": false,
+          "agent_seconds": 14.886070749998908,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 2.23,
+            "search_misfit": 2.23,
+            "search_structure": [
+              "mu_eff",
+              "actuator_gain",
+              "camera_dx",
+              "camera_pitch_deg",
+              "patch_y0",
+              "patch_mu"
+            ],
+            "unexplained": [
+              "stops not explained (> 1 cm rms): the structure is missing an effect"
+            ],
+            "adopted": "agent"
+          }
         }
       },
-      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 8,
+        "prompt_tokens": 31136,
+        "completion_tokens": 1495
+      },
+      "original_live_agent_seconds": 14.886070749998908,
+      "cost_usd": 0.0106863,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": null,
+      "live_latency_scope": "complete case"
     },
     {
       "case": "mujoco-16",
@@ -676,11 +1011,56 @@
           "stop_median_cm": 1.7481457648059862,
           "stop_p90_cm": 2.7589699138926504,
           "structure_correct": true,
-          "seconds": 2.137852582999585,
+          "seconds": 2.361607541999547,
           "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 1.7481457648059862,
+          "stop_p90_cm": 2.7589699138926504,
+          "structure_correct": false,
+          "agent_seconds": 14.000400208002247,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 1.7481457648059862,
+          "stop_p90_cm": 2.7589699138926504,
+          "structure_correct": false,
+          "agent_seconds": 14.000400208002247,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 2.1,
+            "search_misfit": 2.1,
+            "search_structure": [
+              "mu_eff",
+              "actuator_gain",
+              "camera_dx",
+              "camera_pitch_deg",
+              "patch_y0",
+              "patch_mu"
+            ],
+            "unexplained": [
+              "stops not explained (> 1 cm rms): the structure is missing an effect"
+            ],
+            "adopted": "agent"
+          }
         }
       },
-      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 8,
+        "prompt_tokens": 32694,
+        "completion_tokens": 1623
+      },
+      "original_live_agent_seconds": 14.000400208002247,
+      "cost_usd": 0.0112689,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": null,
+      "live_latency_scope": "complete case"
     },
     {
       "case": "mujoco-17",
@@ -693,11 +1073,56 @@
           "stop_median_cm": 2.026085910864517,
           "stop_p90_cm": 4.007957882826168,
           "structure_correct": true,
-          "seconds": 1.9329590839997763,
+          "seconds": 2.0723840830032714,
           "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 2.026085910864517,
+          "stop_p90_cm": 4.007957882826168,
+          "structure_correct": false,
+          "agent_seconds": 15.549414875000366,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 2.026085910864517,
+          "stop_p90_cm": 4.007957882826168,
+          "structure_correct": false,
+          "agent_seconds": 15.549414875000366,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 2.43,
+            "search_misfit": 2.43,
+            "search_structure": [
+              "mu_eff",
+              "actuator_gain",
+              "camera_dx",
+              "camera_pitch_deg",
+              "patch_y0",
+              "patch_mu"
+            ],
+            "unexplained": [
+              "stops not explained (> 1 cm rms): the structure is missing an effect"
+            ],
+            "adopted": "agent"
+          }
         }
       },
-      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 7,
+        "prompt_tokens": 28312,
+        "completion_tokens": 1835
+      },
+      "original_live_agent_seconds": 15.549414875000366,
+      "cost_usd": 0.0101451,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": null,
+      "live_latency_scope": "complete case"
     },
     {
       "case": "mujoco-18",
@@ -710,11 +1135,56 @@
           "stop_median_cm": 0.16941152944837667,
           "stop_p90_cm": 0.33853206215655685,
           "structure_correct": true,
-          "seconds": 2.054498667000189,
+          "seconds": 1.8760521660005907,
           "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 0.16941152944837667,
+          "stop_p90_cm": 0.33853206215655685,
+          "structure_correct": false,
+          "agent_seconds": 15.116478834002919,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 0.16941152944837667,
+          "stop_p90_cm": 0.33853206215655685,
+          "structure_correct": false,
+          "agent_seconds": 15.116478834002919,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 1.28,
+            "search_misfit": 1.28,
+            "search_structure": [
+              "mu_eff",
+              "actuator_gain",
+              "camera_dx",
+              "camera_pitch_deg",
+              "patch_y0",
+              "patch_mu"
+            ],
+            "unexplained": [
+              "stops not explained (> 1 cm rms): the structure is missing an effect"
+            ],
+            "adopted": "agent"
+          }
         }
       },
-      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 7,
+        "prompt_tokens": 25255,
+        "completion_tokens": 2070
+      },
+      "original_live_agent_seconds": 15.116478834002919,
+      "cost_usd": 0.0094395,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": null,
+      "live_latency_scope": "complete case"
     },
     {
       "case": "mujoco-19",
@@ -727,11 +1197,56 @@
           "stop_median_cm": 1.9054132687733594,
           "stop_p90_cm": 3.725529006246888,
           "structure_correct": true,
-          "seconds": 2.519883999999365,
+          "seconds": 2.854619375000766,
           "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 1.9054132687733594,
+          "stop_p90_cm": 3.725529006246888,
+          "structure_correct": false,
+          "agent_seconds": 19.792831041999307,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 1.9054132687733594,
+          "stop_p90_cm": 3.725529006246888,
+          "structure_correct": false,
+          "agent_seconds": 19.792831041999307,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 2.08,
+            "search_misfit": 2.08,
+            "search_structure": [
+              "mu_eff",
+              "actuator_gain",
+              "camera_dx",
+              "camera_pitch_deg",
+              "patch_y0",
+              "patch_mu"
+            ],
+            "unexplained": [
+              "stops not explained (> 1 cm rms): the structure is missing an effect"
+            ],
+            "adopted": "agent"
+          }
         }
       },
-      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 7,
+        "prompt_tokens": 31606,
+        "completion_tokens": 1763
+      },
+      "original_live_agent_seconds": 19.792831041999307,
+      "cost_usd": 0.0110685,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": null,
+      "live_latency_scope": "complete case"
     },
     {
       "case": "mujoco-20",
@@ -744,11 +1259,56 @@
           "stop_median_cm": 0.26939907948811403,
           "stop_p90_cm": 1.4075913173367838,
           "structure_correct": true,
-          "seconds": 1.8890702919998148,
+          "seconds": 1.7758472500026983,
           "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 0.26939907948811403,
+          "stop_p90_cm": 1.4075913173367838,
+          "structure_correct": false,
+          "agent_seconds": 13.95869704100187,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 0.26939907948811403,
+          "stop_p90_cm": 1.4075913173367838,
+          "structure_correct": false,
+          "agent_seconds": 13.95869704100187,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 3.43,
+            "search_misfit": 3.43,
+            "search_structure": [
+              "mu_eff",
+              "actuator_gain",
+              "camera_dx",
+              "camera_pitch_deg",
+              "patch_y0",
+              "patch_mu"
+            ],
+            "unexplained": [
+              "stops not explained (> 1 cm rms): the structure is missing an effect"
+            ],
+            "adopted": "agent"
+          }
         }
       },
-      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 8,
+        "prompt_tokens": 31112,
+        "completion_tokens": 1536
+      },
+      "original_live_agent_seconds": 13.95869704100187,
+      "cost_usd": 0.010716,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": null,
+      "live_latency_scope": "complete case"
     },
     {
       "case": "mujoco-21",
@@ -761,11 +1321,56 @@
           "stop_median_cm": 5.273287441786101,
           "stop_p90_cm": 8.37907254302336,
           "structure_correct": true,
-          "seconds": 1.9079796659998465,
+          "seconds": 1.7294482500001322,
           "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 5.273287441786101,
+          "stop_p90_cm": 8.37907254302336,
+          "structure_correct": false,
+          "agent_seconds": 17.4928027499991,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 5.273287441786101,
+          "stop_p90_cm": 8.37907254302336,
+          "structure_correct": false,
+          "agent_seconds": 17.4928027499991,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 3.79,
+            "search_misfit": 3.79,
+            "search_structure": [
+              "mu_eff",
+              "actuator_gain",
+              "camera_dx",
+              "camera_pitch_deg",
+              "patch_y0",
+              "patch_mu"
+            ],
+            "unexplained": [
+              "stops not explained (> 1 cm rms): the structure is missing an effect"
+            ],
+            "adopted": "agent"
+          }
         }
       },
-      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 7,
+        "prompt_tokens": 29035,
+        "completion_tokens": 2297
+      },
+      "original_live_agent_seconds": 17.4928027499991,
+      "cost_usd": 0.0107778,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": null,
+      "live_latency_scope": "complete case"
     },
     {
       "case": "mujoco-22",
@@ -778,11 +1383,56 @@
           "stop_median_cm": 2.0627340917536485,
           "stop_p90_cm": 3.368365352708167,
           "structure_correct": true,
-          "seconds": 2.067319249999855,
+          "seconds": 1.826235500000621,
           "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 2.0627340917536485,
+          "stop_p90_cm": 3.368365352708167,
+          "structure_correct": false,
+          "agent_seconds": 14.028026707997924,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 2.0627340917536485,
+          "stop_p90_cm": 3.368365352708167,
+          "structure_correct": false,
+          "agent_seconds": 14.028026707997924,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 2.54,
+            "search_misfit": 2.54,
+            "search_structure": [
+              "mu_eff",
+              "actuator_gain",
+              "camera_dx",
+              "camera_pitch_deg",
+              "patch_y0",
+              "patch_mu"
+            ],
+            "unexplained": [
+              "stops not explained (> 1 cm rms): the structure is missing an effect"
+            ],
+            "adopted": "agent"
+          }
         }
       },
-      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 7,
+        "prompt_tokens": 26435,
+        "completion_tokens": 1595
+      },
+      "original_live_agent_seconds": 14.028026707997924,
+      "cost_usd": 0.009366,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": null,
+      "live_latency_scope": "complete case"
     },
     {
       "case": "mujoco-23",
@@ -795,11 +1445,56 @@
           "stop_median_cm": 1.3071747174210446,
           "stop_p90_cm": 2.2424174488581072,
           "structure_correct": true,
-          "seconds": 1.8637139170004957,
+          "seconds": 1.6334347920019354,
           "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 1.3071747174210446,
+          "stop_p90_cm": 2.2424174488581072,
+          "structure_correct": false,
+          "agent_seconds": 15.484557457999472,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 1.3071747174210446,
+          "stop_p90_cm": 2.2424174488581072,
+          "structure_correct": false,
+          "agent_seconds": 15.484557457999472,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 1.72,
+            "search_misfit": 1.72,
+            "search_structure": [
+              "mu_eff",
+              "actuator_gain",
+              "camera_dx",
+              "camera_pitch_deg",
+              "patch_y0",
+              "patch_mu"
+            ],
+            "unexplained": [
+              "stops not explained (> 1 cm rms): the structure is missing an effect"
+            ],
+            "adopted": "agent"
+          }
         }
       },
-      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 8,
+        "prompt_tokens": 30074,
+        "completion_tokens": 1693
+      },
+      "original_live_agent_seconds": 15.484557457999472,
+      "cost_usd": 0.0105459,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": null,
+      "live_latency_scope": "complete case"
     },
     {
       "case": "newton-brake-log",
@@ -812,11 +1507,54 @@
           "stop_median_cm": 0.03575444087142721,
           "stop_p90_cm": 0.04597886211942459,
           "structure_correct": true,
-          "seconds": 2.141202957999667,
+          "seconds": 1.8747808750013064,
           "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 0.03575444087142721,
+          "stop_p90_cm": 0.04597886211942459,
+          "structure_correct": false,
+          "agent_seconds": 7.495602208997298,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 0.03575444087142721,
+          "stop_p90_cm": 0.04597886211942459,
+          "structure_correct": false,
+          "agent_seconds": 7.495602208997298,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 0.8,
+            "search_misfit": 0.8,
+            "search_structure": [
+              "mu_eff",
+              "actuator_gain",
+              "camera_dx",
+              "camera_pitch_deg",
+              "patch_y0",
+              "patch_mu"
+            ],
+            "unexplained": [],
+            "adopted": "agent"
+          }
         }
       },
-      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 4,
+        "prompt_tokens": 12230,
+        "completion_tokens": 722
+      },
+      "original_live_agent_seconds": 7.495602208997298,
+      "cost_usd": 0.0043188,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": null,
+      "live_latency_scope": "complete case"
     },
     {
       "case": "newton-flick",
@@ -829,11 +1567,51 @@
           "stop_median_cm": 0.7469517818301963,
           "stop_p90_cm": 1.0699393196927964,
           "structure_correct": true,
-          "seconds": 0.07999225000003207,
+          "seconds": 0.06824487500125542,
           "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 2,
+          "stop_median_cm": 0.7469517818302018,
+          "stop_p90_cm": 1.0766143943692008,
+          "structure_correct": true,
+          "agent_seconds": 4.097986209002556,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 2,
+          "stop_median_cm": 0.7469517818302018,
+          "stop_p90_cm": 1.0766143943692008,
+          "structure_correct": true,
+          "agent_seconds": 4.097986209002556,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 0.44,
+            "search_misfit": 0.44,
+            "search_structure": [
+              "mu_eff",
+              "patch_y0",
+              "patch_mu"
+            ],
+            "unexplained": [],
+            "adopted": "agent"
+          }
         }
       },
-      "agent_status": "not evaluable: partial fixture at approved credit limit"
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 3,
+        "prompt_tokens": 8196,
+        "completion_tokens": 729
+      },
+      "original_live_agent_seconds": null,
+      "cost_usd": 0.0022302,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": 4.097986209002556,
+      "live_latency_scope": "continuation only"
     },
     {
       "case": "newton-lab-bench",
@@ -846,11 +1624,54 @@
           "stop_median_cm": 0.24982162943556208,
           "stop_p90_cm": 0.4088289713866783,
           "structure_correct": true,
-          "seconds": 1.3141817920004542,
+          "seconds": 1.164242209000804,
           "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 4,
+          "stop_median_cm": 0.24982162943556208,
+          "stop_p90_cm": 0.4088289713866783,
+          "structure_correct": false,
+          "agent_seconds": 9.025385499997356,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 4,
+          "stop_median_cm": 0.24982162943556208,
+          "stop_p90_cm": 0.4088289713866783,
+          "structure_correct": false,
+          "agent_seconds": 9.025385499997356,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 0.7,
+            "search_misfit": 0.7,
+            "search_structure": [
+              "mu_eff",
+              "actuator_gain",
+              "camera_dx",
+              "camera_pitch_deg",
+              "patch_y0",
+              "patch_mu"
+            ],
+            "unexplained": [],
+            "adopted": "agent"
+          }
         }
       },
-      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 5,
+        "prompt_tokens": 16147,
+        "completion_tokens": 1004
+      },
+      "original_live_agent_seconds": 9.025385499997356,
+      "cost_usd": 0.0057477,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": null,
+      "live_latency_scope": "complete case"
     },
     {
       "case": "newton-press-line",
@@ -863,11 +1684,54 @@
           "stop_median_cm": 0.49151789507526633,
           "stop_p90_cm": 0.6604382197931047,
           "structure_correct": true,
-          "seconds": 1.9658662080000795,
+          "seconds": 1.737399583998922,
           "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 0.49151789507526633,
+          "stop_p90_cm": 0.6604382197931047,
+          "structure_correct": true,
+          "agent_seconds": 11.27415199999814,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 3,
+          "stop_median_cm": 0.49151789507526633,
+          "stop_p90_cm": 0.6604382197931047,
+          "structure_correct": true,
+          "agent_seconds": 11.27415199999814,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 0.63,
+            "search_misfit": 0.63,
+            "search_structure": [
+              "mu_eff",
+              "actuator_gain",
+              "camera_dx",
+              "camera_pitch_deg",
+              "patch_y0",
+              "patch_mu"
+            ],
+            "unexplained": [],
+            "adopted": "agent"
+          }
         }
       },
-      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 6,
+        "prompt_tokens": 21472,
+        "completion_tokens": 1230
+      },
+      "original_live_agent_seconds": 11.27415199999814,
+      "cost_usd": 0.0075486,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": null,
+      "live_latency_scope": "complete case"
     },
     {
       "case": "newton-short-reach",
@@ -880,11 +1744,50 @@
           "stop_median_cm": 0.6107562084769036,
           "stop_p90_cm": 0.6107562084769036,
           "structure_correct": false,
-          "seconds": 0.14629575000071782,
+          "seconds": 0.12737108300279942,
           "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 1,
+          "stop_median_cm": 0.6107562084769036,
+          "stop_p90_cm": 0.6107562084769036,
+          "structure_correct": false,
+          "agent_seconds": 11.69818524999937,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 1,
+          "stop_median_cm": 0.6107562084769036,
+          "stop_p90_cm": 0.6107562084769036,
+          "structure_correct": false,
+          "agent_seconds": 11.69818524999937,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 0.7,
+            "search_misfit": 0.7,
+            "search_structure": [
+              "mu_eff",
+              "actuator_gain"
+            ],
+            "unexplained": [],
+            "adopted": "agent"
+          }
         }
       },
-      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 5,
+        "prompt_tokens": 13638,
+        "completion_tokens": 1747
+      },
+      "original_live_agent_seconds": 11.69818524999937,
+      "cost_usd": 0.0056637,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": null,
+      "live_latency_scope": "complete case"
     },
     {
       "case": "newton-stop-line",
@@ -897,11 +1800,51 @@
           "stop_median_cm": 0.7886575197272983,
           "stop_p90_cm": 1.0869326645419974,
           "structure_correct": true,
-          "seconds": 0.07091445800051588,
+          "seconds": 0.06118712500028778,
           "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 2,
+          "stop_median_cm": 0.7886575197272983,
+          "stop_p90_cm": 1.0869326645419974,
+          "structure_correct": true,
+          "agent_seconds": 6.542280958001356,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 2,
+          "stop_median_cm": 0.7886575197272983,
+          "stop_p90_cm": 1.0869326645419974,
+          "structure_correct": true,
+          "agent_seconds": 6.542280958001356,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 0.52,
+            "search_misfit": 0.52,
+            "search_structure": [
+              "mu_eff",
+              "patch_y0",
+              "patch_mu"
+            ],
+            "unexplained": [],
+            "adopted": "agent"
+          }
         }
       },
-      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 3,
+        "prompt_tokens": 7965,
+        "completion_tokens": 819
+      },
+      "original_live_agent_seconds": 6.542280958001356,
+      "cost_usd": 0.0031266,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": null,
+      "live_latency_scope": "complete case"
     },
     {
       "case": "real-pitcher",
@@ -914,11 +1857,52 @@
           "stop_median_cm": 10.002365649937284,
           "stop_p90_cm": 12.642245686533302,
           "structure_correct": null,
-          "seconds": 0.136767833999329,
+          "seconds": 0.11592899999959627,
           "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 2,
+          "stop_median_cm": 10.002365649937284,
+          "stop_p90_cm": 12.642245686533302,
+          "structure_correct": null,
+          "agent_seconds": 7.797282416999224,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 2,
+          "stop_median_cm": 10.002365649937284,
+          "stop_p90_cm": 12.642245686533302,
+          "structure_correct": null,
+          "agent_seconds": 7.797282416999224,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 16.94,
+            "search_misfit": 16.56,
+            "search_structure": [
+              "mu_eff"
+            ],
+            "unexplained": [
+              "stops not explained (> 1 cm rms): the structure is missing an effect",
+              "launch speeds disagree with the model: the stops may fit only by trading friction against actuator_gain (stops depend on gain^2/mu); free actuator_gain"
+            ],
+            "adopted": "agent"
+          }
         }
       },
-      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 3,
+        "prompt_tokens": 7835,
+        "completion_tokens": 1313
+      },
+      "original_live_agent_seconds": 7.797282416999224,
+      "cost_usd": 0.0035322,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": null,
+      "live_latency_scope": "complete case"
     },
     {
       "case": "real-mustard-bottle",
@@ -931,11 +1915,54 @@
           "stop_median_cm": 28.957835182794224,
           "stop_p90_cm": 46.897789311866546,
           "structure_correct": null,
-          "seconds": 0.13151099999959115,
+          "seconds": 0.11495466600172222,
           "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 2,
+          "stop_median_cm": 28.957835182794224,
+          "stop_p90_cm": 46.897789311866546,
+          "structure_correct": null,
+          "agent_seconds": 14.45662962500137,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 2,
+          "stop_median_cm": 28.957835182794224,
+          "stop_p90_cm": 46.897789311866546,
+          "structure_correct": null,
+          "agent_seconds": 14.45662962500137,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 35.53,
+            "search_misfit": 33.77,
+            "search_structure": [
+              "mu_eff",
+              "patch_y0",
+              "patch_mu"
+            ],
+            "unexplained": [
+              "stops not explained (> 1 cm rms): the structure is missing an effect",
+              "launch speeds disagree with the model: the stops may fit only by trading friction against actuator_gain (stops depend on gain^2/mu); free actuator_gain"
+            ],
+            "adopted": "agent"
+          }
         }
       },
-      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 5,
+        "prompt_tokens": 14322,
+        "completion_tokens": 2354
+      },
+      "original_live_agent_seconds": 14.45662962500137,
+      "cost_usd": 0.0064152,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": null,
+      "live_latency_scope": "complete case"
     },
     {
       "case": "real-bleach-cleanser",
@@ -948,11 +1975,52 @@
           "stop_median_cm": 12.27175185578896,
           "stop_p90_cm": 15.700109065955939,
           "structure_correct": null,
-          "seconds": 0.1335542920005537,
+          "seconds": 0.1118144169995503,
           "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 2,
+          "stop_median_cm": 12.27175185578896,
+          "stop_p90_cm": 15.700109065955939,
+          "structure_correct": null,
+          "agent_seconds": 30.30194137500075,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 2,
+          "stop_median_cm": 12.27175185578896,
+          "stop_p90_cm": 15.700109065955939,
+          "structure_correct": null,
+          "agent_seconds": 30.30194137500075,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 30.89,
+            "search_misfit": 30.89,
+            "search_structure": [
+              "mu_eff"
+            ],
+            "unexplained": [
+              "stops not explained (> 1 cm rms): the structure is missing an effect",
+              "launch speeds disagree with the model: the stops may fit only by trading friction against actuator_gain (stops depend on gain^2/mu); free actuator_gain"
+            ],
+            "adopted": "agent"
+          }
         }
       },
-      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 8,
+        "prompt_tokens": 26308,
+        "completion_tokens": 5154
+      },
+      "original_live_agent_seconds": 30.30194137500075,
+      "cost_usd": 0.012531,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": null,
+      "live_latency_scope": "complete case"
     },
     {
       "case": "real-cracker-box",
@@ -965,11 +2033,52 @@
           "stop_median_cm": 7.379134110385266,
           "stop_p90_cm": 7.379134110385266,
           "structure_correct": null,
-          "seconds": 0.0021966250005789334,
+          "seconds": 0.001649875001021428,
           "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 1,
+          "stop_median_cm": 7.379134110385266,
+          "stop_p90_cm": 7.379134110385266,
+          "structure_correct": null,
+          "agent_seconds": 9.074759999999515,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 1,
+          "stop_median_cm": 7.379134110385266,
+          "stop_p90_cm": 7.379134110385266,
+          "structure_correct": null,
+          "agent_seconds": 9.074759999999515,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 27.85,
+            "search_misfit": 27.85,
+            "search_structure": [
+              "mu_eff"
+            ],
+            "unexplained": [
+              "stops not explained (> 1 cm rms): the structure is missing an effect",
+              "launch speeds disagree with the model: the stops may fit only by trading friction against actuator_gain (stops depend on gain^2/mu); free actuator_gain"
+            ],
+            "adopted": "agent"
+          }
         }
       },
-      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 4,
+        "prompt_tokens": 11014,
+        "completion_tokens": 1373
+      },
+      "original_live_agent_seconds": 9.074759999999515,
+      "cost_usd": 0.0045399,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": null,
+      "live_latency_scope": "complete case"
     },
     {
       "case": "real-mug",
@@ -982,54 +2091,111 @@
           "stop_median_cm": 2.5306985004693083,
           "stop_p90_cm": 2.617104113048916,
           "structure_correct": null,
-          "seconds": 0.1744839580005646,
+          "seconds": 0.15141270800086204,
           "calls": 0
+        },
+        "agent": {
+          "evaluation_pushes": 2,
+          "stop_median_cm": 2.5306985004693083,
+          "stop_p90_cm": 2.617104113048916,
+          "structure_correct": null,
+          "agent_seconds": 18.544081332998758,
+          "failure": false,
+          "cross_check": null
+        },
+        "agent_cross_check": {
+          "evaluation_pushes": 2,
+          "stop_median_cm": 2.5306985004693083,
+          "stop_p90_cm": 2.617104113048916,
+          "structure_correct": null,
+          "agent_seconds": 18.544081332998758,
+          "failure": false,
+          "cross_check": {
+            "agent_misfit": 24.66,
+            "search_misfit": 24.66,
+            "search_structure": [
+              "mu_eff",
+              "patch_y0",
+              "patch_mu"
+            ],
+            "unexplained": [
+              "stops not explained (> 1 cm rms): the structure is missing an effect",
+              "launch speeds disagree with the model: the stops may fit only by trading friction against actuator_gain (stops depend on gain^2/mu); free actuator_gain"
+            ],
+            "adopted": "agent"
+          }
         }
       },
-      "agent_status": "not run: training-only fixture missing; live run awaits approval"
+      "agent_status": "evaluated",
+      "agent_error": "",
+      "usage": {
+        "calls": 6,
+        "prompt_tokens": 19441,
+        "completion_tokens": 3239
+      },
+      "original_live_agent_seconds": 18.544081332998758,
+      "cost_usd": 0.0087474,
+      "cost_note": "actual new calls only; replay cost is zero; per-token prices in credit_ledger.json",
+      "overruled": false,
+      "live_continuation_seconds": null,
+      "live_latency_scope": "complete case"
     }
   ],
   "users": "not tested with users",
   "scope": "24 in-menu MuJoCo + 6 Newton samples + 5 real log objects; queued probes not executed",
   "cost_basis": "reported tokens multiplied by contemporaneous model API prices, not an invoice/balance verification",
-  "live_spent_usd": 0.0,
-  "live_reserved_unknown_usd": 0.0,
-  "recorded_live_cost_usd": 0.0963855,
   "summary": {
-    "paired_cases": 9,
-    "unavailable_cases": 26,
+    "paired_cases": 35,
+    "unavailable_cases": 0,
     "agent_failed_cases": 0,
     "agent_failure_rate": 0.0,
     "methods": {
       "offline": {
-        "cases": 9,
-        "mean_of_case_medians_cm": 1.818125831214576,
-        "mean_of_case_p90_cm": 2.8908635238654554,
-        "structure_evaluable_cases": 9,
-        "structure_accuracy": 1.0
+        "cases": 35,
+        "mean_of_case_medians_cm": 3.027465542415579,
+        "mean_of_case_p90_cm": 4.840241470234507,
+        "structure_evaluable_cases": 30,
+        "structure_accuracy": 0.9666666666666667
       },
       "agent": {
-        "cases": 9,
-        "mean_of_case_medians_cm": 1.7807994071513487,
-        "mean_of_case_p90_cm": 2.9062812641920526,
-        "structure_evaluable_cases": 9,
-        "structure_accuracy": 0.0
+        "cases": 35,
+        "mean_of_case_medians_cm": 3.0178673190850347,
+        "mean_of_case_p90_cm": 4.844396748452102,
+        "structure_evaluable_cases": 30,
+        "structure_accuracy": 0.1
       },
       "agent_cross_check": {
-        "cases": 9,
-        "mean_of_case_medians_cm": 1.7807994071513487,
-        "mean_of_case_p90_cm": 2.9062812641920526,
-        "structure_evaluable_cases": 9,
-        "structure_accuracy": 0.0
+        "cases": 35,
+        "mean_of_case_medians_cm": 3.0178673190850347,
+        "mean_of_case_p90_cm": 4.844396748452102,
+        "structure_evaluable_cases": 30,
+        "structure_accuracy": 0.1
       }
     },
-    "note": "case-balanced errors on the complete subset; selected pilot cases, not population inference",
+    "note": "case-balanced errors on the complete subset of the fixed 35-case suite; not population inference",
     "paired_delta_cm": {
-      "mean": -0.037326424063227615,
+      "mean": -0.009598223330544085,
       "case_bootstrap_95": [
-        -0.11197927218968284,
-        0.0
+        -0.028794669991632733,
+        4.758098676964956e-16
       ]
+    },
+    "original_live_latency": {
+      "complete_cases": 23,
+      "unavailable_cases": 12,
+      "median_seconds": 14.03346862500257,
+      "p90_seconds": 18.409839632999503,
+      "note": "original end-to-end agent time on successful fresh cases only; replay and partial continuations excluded"
     }
-  }
+  },
+  "live_spent_usd": 0.3060624,
+  "live_reserved_unknown_usd": 0.0,
+  "recorded_live_cost_usd": 0.3060624,
+  "latency_provenance": "9 original pilot cases have no retained latency; 3 resumed partial cases report continuation time only; 23 fresh cases report full original end-to-end agent time",
+  "approval": {
+    "date": "2026-10-13",
+    "cumulative_cap_usd": 0.4,
+    "scope": "Nemotron 35-case completion only; no publication/deployment"
+  },
+  "raw_live_capture": "/var/folders/sm/qhl7_nzn5g76zvvb6pk6v0n80000gn/T/tether-nemotron-approval-yjt75ltl/agent-ablation-live-raw.json"
 }

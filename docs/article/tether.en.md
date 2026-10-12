@@ -329,6 +329,12 @@ The honest reading:
 
 We also ran the Nemotron family on the open and compound tiers, with only 6 worlds each, so read this as a rough ranking. Super scored 100% and 99%, 3.5 Lightning 100% and 95% (and was the cheapest), Ultra 100% and 83%, and Nano 97% and 53%. Bigger was not better.
 
+A separate 35-case Studio comparison withholds the last ~20% of pushes before any model call: 24 in-menu MuJoCo worlds, six Newton examples and five public EV-RealPhys log objects. Mean case-median stop error is 3.027 cm for offline structure search and 3.018 cm for Nemotron, with or without the cross-check. The paired difference is -0.0096 cm (case-bootstrap 95% interval [-0.0288, 0.0000]), so this does not establish an accuracy advantage. All 35 cases completed, with zero failures and zero cross-check overrules.
+
+Exact fitted field-set matches were 29/30 for offline search and 3/30 for the agent; this metric checks free-variable choices, not recovered parameter values. The agent often adds lens freedom or ends with a smaller fitted set.
+
+Reported tokens × API prices total $0.3060624 under the approved cumulative $0.40 cap; this is not an invoice/balance check. Full live latency is retained for 23 fresh cases (median 14.03 s, p90 18.41 s); nine older cases lack it and three resumed cases have continuation timing only. Experiments are queued rather than physically executed, and user comprehension has not been tested. The contribution remains model review, explanations and next-experiment guidance.
+
 ## Ask Tether
 
 Studio has a chat panel that answers questions about your own session in English or Korean. It also runs on Nemotron via Token Factory, grounded in the session's numbers. Asked "Which number should I trust least, and why?" about a robot log, it named the camera-tilt estimate, whose interval spans about 8°, the widest of all the parameters, and suggested what extra runs would narrow it.
@@ -353,7 +359,7 @@ The live demo runs on Google Cloud Run, built from the committed files (`git arc
 - **Scale to zero** when nobody is visiting. The first visit after an idle spell takes about 15 s.
 - **`--no-cpu-throttling`,** because retraining keeps running between the page's polls. It takes about 170 s there, against about 36 s on a laptop, since Warp on CPU is single-threaded.
 
-The 122 tests run offline: they replay recorded Nemotron sessions, so CI needs no network and spends no credits. `make prove` recomputes the headline numbers offline.
+The 146 tests run offline: they replay recorded Nemotron sessions, so CI needs no network and spends no credits. `make prove` recomputes the headline numbers offline.
 
 ## What it cannot do yet
 

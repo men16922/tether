@@ -50,3 +50,17 @@ def test_missing_fixtures_are_excluded_from_paired_metrics():
     assert r['paired_cases']==1 and r['unavailable_cases']==1
     assert r['methods']['offline']['mean_of_case_medians_cm']==2.0
     assert r['agent_failure_rate']==0 and r['paired_delta_cm']['mean']==0
+
+
+def test_live_latency_excludes_replay_and_incomplete_original_timing():
+    from tether.eval.agent_ablation import summarize
+    conditions={k:{'stop_median_cm':2.0,'stop_p90_cm':3.0,'structure_correct':True}
+                for k in ('offline','agent','agent_cross_check')}
+    rows=[{'agent_status':'evaluated','conditions':conditions,**timing} for timing in (
+        {'original_live_agent_seconds':20.0,'live_latency_scope':'complete case'},
+        {'original_live_agent_seconds':None,'live_continuation_seconds':1000.0,'live_latency_scope':'continuation only'},
+        {'original_live_agent_seconds':0.001,'live_latency_scope':'unavailable'},
+    )]
+    r=summarize(rows)['original_live_latency']
+    assert r['complete_cases']==1 and r['unavailable_cases']==2
+    assert r['median_seconds']==20.0 and r['p90_seconds']==20.0

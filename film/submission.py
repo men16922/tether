@@ -93,7 +93,7 @@ Code (Apache-2.0): {REPO}
 
 Built for the Nebius x NVIDIA Global AI Hackathon (Physical AI track).
 Real-object footage: EV-RealPhys (Kandukuri, Strecke, Stueckler 2023, Max Planck Institute), CC BY-SA 4.0.
-Narration: ElevenLabs. Music: generated for this film. Not affiliated with or endorsed by NVIDIA or Nebius.
+Narration: ElevenLabs, with the revised export sentence spoken by local macOS Samantha. Music: generated for this film. Not affiliated with or endorsed by NVIDIA or Nebius.
 """)
     devpost = (ROOT / "docs" / "submission" / "DEVPOST.md").read_text()
     about = devpost[devpost.index("## Inspiration"):devpost.index("## Built with")].rstrip() + "\n"

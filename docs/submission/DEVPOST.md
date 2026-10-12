@@ -201,6 +201,60 @@ Leave-one-push-out: remove the held-out push first, form a common eligible train
 - Nemotron family (open + compound, 6 worlds each): Super 100/99%, 3.5 Lightning 100/95% (cheapest), Ultra 100/83%,
   Nano 97/53%. Bigger was not better.
 
+### Nemotron contribution: complete 35-case comparison (2026-10-13)
+
+The last ~20% of pushes are withheld before any agent call. Offline structure search, Nemotron alone, and Nemotron plus the cross-check use the same training pushes and fitter. One recorded agent conversation is shared by the two agent conditions.
+
+| Method | Cases | Mean case-median stop error (cm) | Mean case-p90 error (cm) | Exact fitted field-set matches |
+|---|---|---|---|---|
+| Offline structure search | 35 | 3.027 | 4.840 | 29/30 |
+| Nemotron alone | 35 | 3.018 | 4.844 | 3/30 |
+| Nemotron + cross-check | 35 | 3.018 | 4.844 | 3/30 |
+
+Paired difference (Nemotron + cross-check minus offline): -0.0096 cm; case-bootstrap 95% interval [-0.0288, 0.0000] cm. The interval includes zero, so no stop-prediction accuracy advantage is established. Failures: 0/35; unavailable cases: 0; cross-check overrules: 0/35.
+
+The field-set metric requires an exact match to the known fitted-variable set in 30 synthetic cases; five public-real cases have no structure label. It checks the selected free fields, not parameter-value recovery. The agent often adds lens freedom or uses a smaller last-fit field set, so similar stop error does not establish correct structure recovery. All 24 MuJoCo field sets matched for offline search and none matched exactly for the agent; Newton examples matched 5/6 and 3/6 respectively.
+
+| Case | Offline median cm | Agent median cm | Agent + cross-check median cm |
+|---|---|---|---|
+| mujoco-00 | 2.56 | 2.56 | 2.56 |
+| mujoco-01 | 2.33 | 2.33 | 2.33 |
+| mujoco-02 | 1.31 | 1.31 | 1.31 |
+| mujoco-03 | 0.95 | 0.95 | 0.95 |
+| mujoco-04 | 1.54 | 1.21 | 1.21 |
+| mujoco-05 | 2.11 | 2.11 | 2.11 |
+| mujoco-06 | 0.88 | 0.88 | 0.88 |
+| mujoco-07 | 2.45 | 2.45 | 2.45 |
+| mujoco-08 | 2.21 | 2.21 | 2.21 |
+| mujoco-09 | 1.29 | 1.29 | 1.29 |
+| mujoco-10 | 1.67 | 1.67 | 1.67 |
+| mujoco-11 | 3.31 | 3.31 | 3.31 |
+| mujoco-12 | 1.13 | 1.13 | 1.13 |
+| mujoco-13 | 0.27 | 0.27 | 0.27 |
+| mujoco-14 | 1.35 | 1.35 | 1.35 |
+| mujoco-15 | 1.75 | 1.75 | 1.75 |
+| mujoco-16 | 1.75 | 1.75 | 1.75 |
+| mujoco-17 | 2.03 | 2.03 | 2.03 |
+| mujoco-18 | 0.17 | 0.17 | 0.17 |
+| mujoco-19 | 1.91 | 1.91 | 1.91 |
+| mujoco-20 | 0.27 | 0.27 | 0.27 |
+| mujoco-21 | 5.27 | 5.27 | 5.27 |
+| mujoco-22 | 2.06 | 2.06 | 2.06 |
+| mujoco-23 | 1.31 | 1.31 | 1.31 |
+| newton-brake-log | 0.04 | 0.04 | 0.04 |
+| newton-flick | 0.75 | 0.75 | 0.75 |
+| newton-lab-bench | 0.25 | 0.25 | 0.25 |
+| newton-press-line | 0.49 | 0.49 | 0.49 |
+| newton-short-reach | 0.61 | 0.61 | 0.61 |
+| newton-stop-line | 0.79 | 0.79 | 0.79 |
+| real-pitcher | 10.00 | 10.00 | 10.00 |
+| real-mustard-bottle | 28.96 | 28.96 | 28.96 |
+| real-bleach-cleanser | 12.27 | 12.27 | 12.27 |
+| real-cracker-box | 7.38 | 7.38 | 7.38 |
+| real-mug | 2.53 | 2.53 | 2.53 |
+
+Data origin: 24 in-menu MuJoCo worlds, six Newton synthetic examples, and five EV-RealPhys log objects. All 35 have complete training-only fixtures; probes are queued and were not physically executed. Reported tokens × contemporaneous model API prices total $0.3060624 within the user-approved cumulative $0.40 cap; invoice/balance not verified. Full original agent latency is available for 23 fresh cases: median 14.03 s, p90 18.41 s. Nine earlier pilot cases have no retained live latency and three resumed partial cases have continuation timing only; replay timing is not live timing. No user comprehension test was performed. Responses replay offline with identical training-input hashes.
+
 ## Challenges
 
 - **Making the LLM useful rather than decorative:** when it tuned numbers by hand it never committed. Structure from
@@ -296,20 +350,3 @@ Fixed, evenly spaced subsamples; 30 bootstrap draws; ten public real cases when 
 | stop-line | 8 / 3 | 1.79 | 17.63 |
 
 Data origin: Newton synthetic. Roughly the first 80% calibrates; the remaining pushes are withheld. Generated JSON and Newton constants are checked, then a separate process executes the withheld launches. Base units are shown to compare samples; driving lengths displayed/exported at full scale are 25× these values. This checks file execution and prediction within the data-generating engine; public real-data prediction is a separate evaluation. Isaac Lab and CARLA are format-checked against stand-ins and were not executed here.
-
-
-### Nemotron contribution: bounded pilot (2026-10-12)
-
-| Case (MuJoCo) | Offline median cm | Agent median cm | Agent + cross-check median cm |
-|---|---|---|---|
-| mujoco-00 | 2.56 | 2.56 | 2.56 |
-| mujoco-01 | 2.33 | 2.33 | 2.33 |
-| mujoco-02 | 1.31 | 1.31 | 1.31 |
-| mujoco-03 | 0.95 | 0.95 | 0.95 |
-| mujoco-04 | 1.54 | 1.21 | 1.21 |
-| mujoco-05 | 2.11 | 2.11 | 2.11 |
-| mujoco-06 | 0.88 | 0.88 | 0.88 |
-| mujoco-07 | 2.45 | 2.45 | 2.45 |
-| mujoco-08 | 2.21 | 2.21 | 2.21 |
-
-Data origin: MuJoCo cross-engine. Nine of the planned 35 cases have complete training-only Nemotron fixtures. Cross-check overrules: 0/9. These selected in-menu cases do not establish an accuracy advantage or cover all domains. The remaining 26 cases are unavailable or incomplete after the approved $0.10 cap blocked further calls. Reported tokens × model API prices total $0.0963855; invoice/balance not verified. Original per-case live latency was not retained for this pilot; replay latency is not live latency. No user comprehension test was performed. Responses replay offline with identical training-input hashes.

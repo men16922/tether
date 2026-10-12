@@ -35,7 +35,8 @@ def inventory(root=REPO):
         if not p.exists():missing.append(name);continue
         for n,line in enumerate(p.read_text().splitlines(),1):
             if PLACEHOLDER.search(line):placeholders.append({'file':name,'line':n,'text':line[:220]})
-            links.update(re.findall(r'https?://[^\s<>`\)\]]+',line))
+            # Quotes delimit URLs in code/HTML; prose punctuation is not part of the link.
+            links.update(url.rstrip('.,;') for url in re.findall(r"https?://[^\s<>`\)\]\"']+",line))
     return {'public_placeholders':placeholders,'missing_files':missing,'links':sorted(links),
             'scope':'offline gates only; links listed, not network-verified; no deployment/publication/submission implied'}
 
