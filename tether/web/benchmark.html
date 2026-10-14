@@ -20,6 +20,14 @@ body { line-height: 1.45; padding-block: 0 32px; }
 .phead h1 { font-size: 34px; line-height: 1.05; }
 .phead p { color: var(--muted); font-size: 15.5px; max-width: 82ch; }
 .phead a { color: var(--fg); font-weight: 600; text-underline-offset: 3px; }
+.score { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 0; margin-top: var(--s4); border-top: 2px solid var(--green); }
+.score .sc { padding: var(--s4) var(--s4) var(--s2) 0; display: grid; gap: 6px; align-content: start; }
+.score .sc + .sc { padding-left: var(--s4); border-left: 1px solid var(--line-soft); }
+.score b { font: 600 40px/1 var(--f-display); font-variant-numeric: tabular-nums; }
+.score b em { font-style: normal; color: var(--green); }
+.score span { color: var(--muted); font-size: 14px; }
+.scnote { font-size: 13px !important; color: var(--dim) !important; }
+@media (max-width: 720px) { .score { grid-template-columns: 1fr; } .score .sc + .sc { padding-left: 0; border-left: 0; border-top: 1px solid var(--line-soft); } }
 .intro { border: 1px solid var(--line); background: var(--panel); margin-top: var(--s4); padding: var(--s4) var(--s5); display: grid; gap: var(--s3); }
 .intro[hidden] { display: none; }
 .intro .ih { display: flex; justify-content: space-between; gap: var(--s3); align-items: baseline; }
@@ -1026,14 +1034,20 @@ function boot(B, LIVE) {
     B.runs.forEach((r, i) => (isLive(r) ? mine.push(`<button class="tab" role="tab" aria-selected="${S.tab === i}" data-tab="${i}">${esc(r.title)}${badge(r)}</button>`) : (r.open ? open : closed).push(tab(r, i))));
     if (B.open_benchmark) more.push(`<button class="tab" role="tab" aria-selected="${S.tab === "gapbench"}" data-tab="gapbench">Gap-Bench<span class="pill ok">${B.open_benchmark.rows.length} worlds</span></button>`);
     if (B.benchmark) more.push(`<button class="tab" role="tab" aria-selected="${S.tab === "bench"}" data-tab="bench">Tier-0 bench<span class="pill">${B.benchmark.rows.length}</span></button>`);
-    if (LIVE) mine.push(`<button class="tab new" role="tab" aria-selected="${S.tab === "new"}" data-tab="new">+ Stump the agent</button>`);
+    if (LIVE) more.push(`<button class="tab new" role="tab" aria-selected="${S.tab === "new"}" data-tab="new">+ Stump the agent</button>`);  // always in view
     const fin = B.runs.filter((r) => isLive(r) && r.final_success != null);
     const score = fin.length ? ` · closed ${fin.filter((r) => r.final_success >= 0.9).length}/${fin.length}` : "";
     const grp = (cls, label, items) => items.length ? `<div class="tgroup ${cls}"><span class="label">${cls === "open" || cls === "mine" ? "<i></i>" : ""}${label}</span><div class="tabs" role="tablist">${items.join("")}</div></div>` : "";
-    $("#tabs").innerHTML = grp("open", "Open world · faults outside the rule book", open) + grp("closed", "Closed world · rule-solvable", closed)
-      + grp("mine", `Your worlds${score}`, mine) + grp("bench", "Benchmarks", more);
+    // first look: the open-world cases and the benchmarks; rule-solvable cases and the visitor's own worlds fold away
+    // (they unfold on their own when one of them is selected)
+    const inFold = typeof S.tab === "number" && B.runs[S.tab] && (!B.runs[S.tab].open || isLive(B.runs[S.tab]));
+    const folded = !S.more && !inFold, nFold = closed.length + mine.length;
+    $("#tabs").innerHTML = grp("open", tl("Open world · faults outside the rule book", "열린 세계 · 규칙에 없는 원인"), open) + grp("bench", tl("Benchmarks", "벤치마크"), more)
+      + (folded ? (nFold ? `<div class="tgroup more"><span class="label">&nbsp;</span><div class="tabs"><button type="button" class="tab" id="more-cases">${tl(`More cases (${nFold})`, `다른 예시 (${nFold})`)} ▾</button></div></div>` : "")
+                : grp("closed", tl("Closed world · rule-solvable", "닫힌 세계 · 규칙으로 해결 가능"), closed) + grp("mine", tl(`Your worlds${score}`, `직접 만든 세계${score}`), mine));
   }
   $("#tabs").addEventListener("click", (e) => {
+    if (e.target.closest("#more-cases")) { S.more = true; renderTabs(); return; }
     const b = e.target.closest("[data-tab]"); if (!b) return;
     stopReplay();
     S.tab = ["bench", "new", "gapbench"].includes(b.dataset.tab) ? b.dataset.tab : +b.dataset.tab; S.iter = null; S.sel = null; S.shown = null; S.reveal = false;
@@ -1411,6 +1425,20 @@ function boot(B, LIVE) {
     return `<div class="legend" style="margin-bottom:8px">${GB_M.map(([, n, c]) => `<span><i class="sw" style="background:${c}"></i>${n}</span>`).join("")}<span>whisker = 95% CI</span></div>
       <svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Mean real success per tier and method">${g}</svg>`;
   }
+  // the answer before the detail: three numbers straight from Gap-Bench's hardest tier, with its honest caveat
+  function scoreCards() {
+    const ob = B.open_benchmark; if (!ob || !ob.summary) return "";
+    const sm = ob.summary, t = sm.compound ? "compound" : Object.keys(sm).pop(), m = sm[t], n = ob.rows.filter((r) => r.tier === t).length;
+    if (!m || !m.agent || !m.rule || !m.nominal) return "";
+    const u = ob.usage || {}, cost = ((u.prompt_tokens || 0) * 0.3 + (u.completion_tokens || 0) * 0.9) / 1e6;
+    const nAgent = ob.rows.filter((r) => r.success && r.success.agent != null).length || 1;
+    const card = (big, cls, txt) => `<div class="sc"><b class="${cls}">${big}</b><span>${txt}</span></div>`;
+    return `<div class="score">
+      ${card(`${pct(m.nominal.mean)} → <em>${pct(m.agent.mean)}</em>`, "", tl(`Hardest worlds (${n}, several hidden causes at once): robot success before calibration → after the Nemotron agent`, `가장 어려운 환경 ${n}개(원인 여러 개가 동시에 숨겨짐): 보정 전 → Nemotron AI 보정 후 로봇 성공률`))}
+      ${card(pct(m.rule.mean), "", tl("A rule book that only knows the usual parameters, on the same worlds", "흔한 항목만 아는 규칙 기반 방법, 같은 환경"))}
+      ${card(`$${(cost / nAgent).toFixed(4)}`, "", tl("Nemotron cost per world on Nebius Token Factory", "환경 하나당 Nemotron 비용 (Nebius Token Factory)"))}
+    </div><p class="scnote">${tl(`Honest note: System ID with a hand-ordered structure library matches the agent (${pct(m.sysid ? m.sysid.mean : 0)}). The agent's value is choosing the structures and experiments itself and explaining them.`, `솔직한 비교: 구조 목록을 사람이 정해 준 System ID도 AI와 비슷합니다(${pct(m.sysid ? m.sysid.mean : 0)}). AI의 장점은 어떤 구조와 실험을 쓸지 스스로 정하고 이유를 설명한다는 점입니다.`)} <a href="#gap-bench" data-go>${tl("See all methods and tiers →", "모든 방법·단계 보기 →")}</a></p>`;
+  }
   function renderGapBench() {
     const ob = B.open_benchmark, sm = ob.summary, tiers = Object.keys(sm);
     const nT = (t) => ob.rows.filter((r) => r.tier === t).length;
@@ -1684,7 +1712,8 @@ function boot(B, LIVE) {
     $("#phead").innerHTML = `<h1>${tl("Testing the AI on worlds whose answer we know", "정답을 아는 세계에서 AI를 시험합니다")}</h1>
       <p>${tl("Each case below hides a cause in a simulated “real” world: a wet strip, a weak motor, a tilted camera. Nemotron has to find it, fix the simulator and retrain the robot, and then you reveal the answer. Gap-Bench scores it against four other methods on 45 worlds.",
               "아래 예시마다 가상의 ‘실제 환경’에 원인을 숨겼습니다. 젖은 구간, 약한 모터, 기울어진 카메라 같은 것입니다. Nemotron은 원인을 찾아 시뮬레이터를 고치고 로봇을 다시 학습시켜야 하고, 마지막에 정답과 비교합니다. 벤치마크 탭에서는 환경 45개에서 다른 네 가지 방법과 성적을 비교합니다.")}</p>
-      <p>${tl("To calibrate a simulator from your own video or log, use", "내 영상이나 로그로 시뮬레이터를 보정하려면")} ${studio ? `<a href="${studio}${LANG === "ko" ? "?lang=ko" : ""}">Studio</a>` : "Studio"}${tl(".", "를 씁니다.")}</p>`;
+      <p>${tl("To calibrate a simulator from your own video or log, use", "내 영상이나 로그로 시뮬레이터를 보정하려면")} ${studio ? `<a href="${studio}${LANG === "ko" ? "?lang=ko" : ""}">Studio</a>` : "Studio"}${tl(".", "를 씁니다.")}</p>${scoreCards()}`;
+    $("#phead").querySelectorAll("[data-go]").forEach((a) => a.onclick = (ev) => { ev.preventDefault(); stopReplay(); S.tab = "gapbench"; S.iter = null; S.sel = null; S.shown = null; S.reveal = false; render(); $("#tabs").scrollIntoView({ behavior: "smooth" }); });
     const el = $("#intro");
     if (introHidden()) { el.hidden = true; return; }
     el.hidden = false;

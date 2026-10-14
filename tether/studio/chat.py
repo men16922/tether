@@ -32,6 +32,10 @@ the current simulator, wide domain randomization, and worlds drawn from Tether's
 known it scores each policy there, and Newton can render the three policies side by side) -> 6 Export (first a replay
 of every measured run in NVIDIA Newton with the exported physics vs the current simulator; then NVIDIA Newton snippet,
 Isaac Lab EventTermCfg whose randomization ranges are the intervals, CARLA for driving, Markdown report, JSON).
+Screens: the Studio shows three steps, 1 Choose data, 2 What we found, 3 Use it. Examples and simulated data are
+measured and analysed automatically; step 2 opens on a plain-language summary (what differs, before/after success, the
+hidden answer for examples), and engineers go deeper through four topic views: How we measured, The AI's notebook,
+Every number (intervals, reliability, charts, next experiment) and Retrain test. Step 3 is Export.
 Terms: mu / friction 0.2 = icy, 1.0 = rubbery; mu_eff = friction of the object-table pair; patch_y0 = where a region of
 different friction starts (m from the launch point); patch_mu = friction inside it; actuator_gain = real launch speed per
 unit command; camera_pitch_deg = camera tilt error; lens_k = lens distortion; next experiment = pushes where the plausible

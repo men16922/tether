@@ -74,22 +74,22 @@ def typing(sel: str, text: str) -> str:
 
 
 def studio_plan() -> list[dict]:
+    """The guided path: pick an example, the run measures and analyses itself, the summary answers in plain words,
+    then two "Go deeper" topics (every number, retraining) and the export with its Newton check."""
     return [
         {"go": f"{STUDIO}?lang=en#driving"}, {"wait": 2500}, {"js": CURSOR}, {"js": "window.scrollTo(0,0); 'ok'"},
         {"rec": "studio"}, {"wait": 900},
-        {"js": act("[data-id=stop-line]")}, {"wait": 2600},
-        {"mark": "track"}, {"js": act("#track")}, {"wait": 1600},
-        {"js": act("#vtabs [data-v=measure]", scroll=False)}, {"wait": 3600},  # the tracked runs on the video
-        {"mark": "agent"}, {"js": act("#vtabs [data-v=diag]", scroll=False)}, {"js": glide("#nb", 1000)}, {"wait": 8500},
-        {"mark": "results"}, {"js": act("#to-res")}, {"wait": 1800}, {"js": glide("0", 600)}, {"wait": 2600},
-        {"js": glide("#r-map", 1800)}, {"wait": 3200},
-        {"js": glide("#r-forest", 1800)}, {"wait": 2600},
-        {"mark": "retrain"}, {"js": act("#to-x")}, {"wait": 1200}, {"js": glide("0", 500)},
+        {"mark": "track"}, {"js": act("[data-id=stop-line]")}, {"wait": 3200},  # tracking with the pre-placed corners
+        {"mark": "agent"}, {"wait": 9000},  # the four plain stages while the recorded agent replays
+        {"mark": "results"}, {"js": glide("0", 400)}, {"wait": 3600},
+        {"js": act("#reveal")}, {"wait": 2600},
+        {"js": act("#r-topics [data-v=details]")}, {"wait": 1200}, {"js": glide("#r-forest", 1600)}, {"wait": 3000},
+        {"mark": "retrain"}, {"js": act("#vtabs [data-v=train]", scroll=False)}, {"wait": 900}, {"js": glide("0", 400)},
         {"js": act("#t-run")}, {"wait": 7500}, {"js": glide("#t-body", 1400)}, {"wait": 3000},
         {"js": glide("#t-vid-box", 1400)}, {"wait": 4500},
         {"mark": "export"}, {"js": act("#to-x2")}, {"wait": 1400}, {"js": glide("0", 500)},
-        {"js": act("#v-run")}, {"wait": 2800}, {"js": glide("#verify", 1200)}, {"wait": 2200},
-        {"js": act("[data-id=carla]")}, {"wait": 900}, {"js": glide("#x-code", 1200)}, {"wait": 3000},
+        {"js": act("[data-id=carla]")}, {"wait": 900},
+        {"js": act("#v-run")}, {"wait": 2800}, {"js": glide("#verify", 1200)}, {"wait": 2600},
         {"stop": True},
     ]
 
