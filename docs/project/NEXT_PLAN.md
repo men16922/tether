@@ -29,7 +29,7 @@ The 35-case comparison and offline replay are done ($0.3060624 within approved $
 
 ## Optional user comprehension check
 
-- [ ] [manual, optional] 3–5 first-time users interpret a result and choose an experiment. Currently explicitly not tested with users.
+- [ ] [manual, optional] 3–5 first-time users run the tasks in `docs/guide/07_사용자_테스트.md` (kit ready 2026-10-15: seven tasks, a record table, decision rules). Currently explicitly not tested with users.
 
 ## After submission — Independent phone validation
 
