@@ -363,7 +363,7 @@ The 146 tests run offline: they replay recorded Nemotron sessions, so CI needs n
 
 ## What it cannot do yet
 
-- Most results use simulated data, from Newton and MuJoCo, so the truth can be revealed. Real-object results come from a public benchmark; our own phone recording with a reference sheet is not in the results yet.
+- Submission uses Newton synthetic samples to demonstrate the application flow and public EV-RealPhys results for real-object measurement evidence. The public video evaluation uses dataset calibration and mocap-assisted inputs. Independent phone + A4 validation is deferred until after submission and remains unperformed. MuJoCo provides the separate-engine evaluation.
 - On real data, the intervals are too narrow.
 - The physics is one family: launched, sliding to a stop. There is no grasping, steering or lane changing.
 - The CARLA export has not run inside CARLA. GR00T is not used.

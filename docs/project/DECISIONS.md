@@ -2,6 +2,16 @@
 
 Record of architectural or hard-to-undo choices (provider, infra, data model, doc policy, public workflow).
 
+## 2026-10-15 — Layered Studio UX before submission
+- **Decision**: Owner asked for the full UX overhaul now: easy to learn for the general public, depth for engineers on topic views ("Easy To Learn, Hard To Master"); never everything on one screen. Overrides the earlier "UI frozen until after submission" note for the Studio.
+- **Reason**: Owner judged the Studio too dense for non-experts.
+- **Impact**: The submitted film shows the previous Studio; re-recording needs film/footage.py updated. API, exports and numbers unchanged. Plan and verification: docs/project/plans/2026-10-15-ux-redesign.md.
+
+## 2026-10-14 — Submit with existing samples and public real-object evidence
+- **Decision**: Owner approved Newton synthetic samples for the application flow and existing public EV-RealPhys results for real-object measurement evidence. Independent phone + A4 filming and `make prove-real` move to after submission.
+- **Reason**: Proceed with the recorded demo and available measurements without waiting for new owner footage.
+- **Impact**: Direct filming no longer blocks submission. Synthetic samples remain labelled synthetic; dataset camera calibration, mocap-assisted inputs, 25/45 retained video tracks and 20 exclusions remain disclosed. Phone-only usability/calibration stays unvalidated. This decision does not authorize commit/push, deployment, publication or paid calls.
+
 ## 2026-10-05 — Zero-cost, no-hardware scope (Tier 0 only)
 - **Decision**: No money spent, no robot/Jetson purchase. Submit Tier 0 (hidden-physics second simulator) only. Tier 1 (SO-101) and Tier 2 (Jetson) dropped.
 - **Reason**: User constraint. Physical AI track allows "key application modules in action" instead of hardware footage; demo URL not required.

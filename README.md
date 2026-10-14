@@ -91,6 +91,8 @@ python -m tether.studio video clip.mp4 --corners 409,368,536,439,649,330,534,287
 Newton's `SensorTiledCamera` from a world Studio never sees, and is labelled synthetic everywhere. Results
 from the API with Nemotron 3 Super on Token Factory:
 
+For submission, these Newton synthetic samples demonstrate the application flow; the public EV-RealPhys results below provide real-object measurement evidence. Independent phone + A4 recording is deferred until after submission and remains unvalidated. No new phone recording is required to reproduce this demo.
+
 | Sample | Measured (90% interval) | Hidden truth |
 |---|---|---|
 | Phone video, take 1 (7 flicks, reach 0.46 m) | friction 0.553 (0.542–0.574); slick region from ~0.36 m, still wide (0.33–0.43), its friction not yet pinned down (0.03–0.32); headline shown as a range because part of the table is unmeasured | 0.55; region from 0.364 m*, μ 0.30 |

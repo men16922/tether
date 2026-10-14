@@ -85,6 +85,7 @@ def main() -> None:
     chapters = "\n".join(f"{stamp(sc[n][0])} {label}" for n, label in CHAPTERS.items() if n in sc)
     (OUT / "youtube-description.txt").write_text(f"""Tether estimates the physics gap of a pushing task from video or logs, shows where measurements are missing, and provides the next experiment and a verifiable setup.
 The reasoning agent is NVIDIA Nemotron 3 Super on Nebius Token Factory. Robot and factory pushing are the lead cases; driving illustrates the same model at another scale.
+Application-flow examples are synthetic videos rendered in NVIDIA Newton. Real-object measurement evidence comes from public EV-RealPhys data, using dataset camera calibration and mocap-assisted inputs (25/45 video tracks retained; 20 excluded). Independent phone + A4 validation is deferred until after submission and remains unperformed.
 
 Try it: {LIVE}
 Code (Apache-2.0): {REPO}

@@ -1,8 +1,8 @@
 # Agent Brief
 
-Last Updated: 2026-10-13
+Last Updated: 2026-10-14
 
-> ▶ NEXT SESSION: Nemotron completion is done: 35/35 live-recorded cases, offline replay matched, $0.3060624 reported cumulative cost within approved $0.40; 146 tests passed. Read `docs/project/NEXT_PLAN.md` Priority 1 (independent phone case); first await owner recordings + film/real/truth.json, then run `make prove-real`. Ship d982276 is committed; this local ship records the readiness/Nemotron follow-up. Portfolio copies remain uncommitted. No more Nemotron calls needed. Push/Cloud Run/portfolio approval, YouTube URL and Devpost remain pending. Detailed evidence: docs/project/plans/2026-10-11-feedback-hardening.md and runs/qa/nemotron-completion-2026-10-13.json.
+> ▶ NEXT SESSION: Submission uses existing Newton synthetic sample videos + public EV-RealPhys results; independent phone + A4 validation is deferred until after submission, not completed. Read `docs/project/NEXT_PLAN.md` Priority 1: review the local scope/package changes, then obtain release authorization for commit/push, existing Cloud Run redeploy and portfolio publication. Remote main was verified at 8615aef on 2026-10-14. No more Nemotron calls or new filming needed before submission. Public YouTube URL and Devpost owner checks/submission remain pending. Evidence and limitations: docs/submission/SUBMIT.md.
 
 ## Snapshot
 
@@ -10,11 +10,11 @@ Tether (Nebius × NVIDIA Global AI Hackathon, Physical AI track): an agent close
 
 ## Active Work
 
-0. Studio product (`docs/project/plans/2026-10-09-studio-product.md`): `tether/studio/` core, `tether/server/studio_api.py`, `tether/web/studio.html`; samples in `tether/studio/samples/` (Newton-rendered, truth JSON beside each).
+0. Release the reviewed local scope/package changes, update the existing Cloud Run service and portfolio after authorization. Submission evidence: Newton synthetic samples + public EV-RealPhys; direct phone filming is deferred.
 
 Authority: `docs/project/NEXT_PLAN.md`.
 
-1. Award plan (`docs/project/plans/2026-10-07-award-plan.md`): open-world faults (friction strip, lens), Nemotron tool agent (fit/probe/commit), Gap-Bench vs rule + sysID, 3D viewer. Freeze 10-19.
+1. Owner reviews/uploads the existing film to public YouTube; add its URL, rerun strict presubmit, then owner completes Devpost. Guide: `docs/submission/SUBMIT.md`. Studio samples: `tether/studio/samples/` (Newton-rendered, truth JSON beside each); new features remain frozen through submission.
 
 ## Read Order
 

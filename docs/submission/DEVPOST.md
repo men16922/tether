@@ -272,7 +272,9 @@ Data origin: 24 in-menu MuJoCo worlds, six Newton synthetic examples, and five E
 
 - Most results use simulated data (Newton, and MuJoCo as a second engine) so the truth can be revealed. On real
   objects (EV-RealPhys) friction lands within ±0.05 for 4 of 5, with the dataset's camera calibration standing in for
-  the A4 sheet; our own sheet-referenced phone recording is not in the results yet. Intervals are too narrow on real data.
+  the A4 sheet, with mocap-assisted tracking inputs (25/45 video tracks retained, 20 excluded). Submission uses
+  Newton synthetic samples for the application flow and this public benchmark for real-object measurement evidence.
+  Independent phone + A4 validation is deferred until after submission and remains unperformed. Intervals are too narrow on real data.
 - The physics is one family: launched, sliding to a stop. No grasping, steering or lane changes.
 - The CARLA export was checked against CARLA 0.9.16's documented API and run against a stand-in module, not inside
   CARLA itself. GR00T is not used.
