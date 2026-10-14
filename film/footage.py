@@ -79,9 +79,10 @@ def studio_plan() -> list[dict]:
     return [
         {"go": f"{STUDIO}?lang=en#driving"}, {"wait": 2500}, {"js": CURSOR}, {"js": "window.scrollTo(0,0); 'ok'"},
         {"rec": "studio"}, {"wait": 900},
-        {"mark": "track"}, {"js": act("[data-id=stop-line]")}, {"wait": 3200},  # tracking with the pre-placed corners
-        {"mark": "agent"}, {"wait": 9000},  # the four plain stages while the recorded agent replays
-        {"mark": "results"}, {"js": glide("0", 400)}, {"wait": 3600},
+        {"mark": "track"}, {"js": act("[data-id=stop-line]")}, {"wait": 3400},  # tracking with the pre-placed corners
+        {"mark": "agent"}, {"wait": 1200}, {"js": act("#run-nb")}, {"wait": 900},  # open the agent's notebook mid-run
+        {"js": glide("#nb", 1000)}, {"wait": 9000},
+        {"mark": "results"}, {"js": act("#to-res")}, {"wait": 900}, {"js": glide("0", 400)}, {"wait": 3600},
         {"js": act("#reveal")}, {"wait": 2600},
         {"js": act("#r-topics [data-v=details]")}, {"wait": 1200}, {"js": glide("#r-forest", 1600)}, {"wait": 3000},
         {"mark": "retrain"}, {"js": act("#vtabs [data-v=train]", scroll=False)}, {"wait": 900}, {"js": glide("0", 400)},

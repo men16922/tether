@@ -74,3 +74,11 @@ D. Test (1 day)
 
 - Decided 2026-10-15: target is the general public first, engineers deeper (layered pages above); Home stays simple, details split by topic page.
 - Open: do slice B before the 10-29 submission, or leave all UI untouched until after (the film shows the current UI)? Recommended: after submission, except copy fixes that do not change what the film shows.
+
+## New-UI film (2026-10-15, local only)
+
+- film/out/footage/studio re-recorded with the new flow (previous footage backed up in the session scratchpad); the Ask clip is unchanged (needs paid live calls to redo).
+- film/stage.html zoom frames moved to the centred layout (x 100, width 1240).
+- `TETHER_TTS_CACHE_ONLY=1 python -m film.render --voice cache-or-local --out film/out/tether_film_v2.mp4`: 147.9 s, 1920×1080, 48.6 MB; same scene lengths and narration as the submitted film (export line in local Samantha as before); no paid TTS.
+- submission/tether_film.mp4 is untouched. Replacing it, rebuilding `make submission`, and uploading to YouTube are owner decisions.
+

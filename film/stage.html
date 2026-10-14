@@ -156,22 +156,22 @@ const SCENES = {
   async appInput(t, d) {
     const m = DATA.footage.studio.marks;
     await shot(t, d, { clip: "studio", from: 0, to: m.agent, title: "Bring a video or a log", label: "Tether Studio · roadside camera example",
-      zoom: [[0, 0, 0, 1440], [0.45, 0, 0, 1440], [0.85, 270, 96, 1170], [1, 270, 96, 1170]] });
+      zoom: [[0, 0, 0, 1440], [0.45, 0, 0, 1440], [0.85, 100, 60, 1240], [1, 100, 60, 1240]] });
   },
   async appAgent(t, d) {
     const m = DATA.footage.studio.marks;
     await shot(t, d, { clip: "studio", from: m.agent, to: m.results, minRate: 0.65, title: "Nemotron investigates",
-      label: "NVIDIA Nemotron 3 Super · Nebius Token Factory", zoom: [[0, 250, 40, 1040], [0.4, 250, 40, 1040], [1, 250, 240, 1040]] });
+      label: "NVIDIA Nemotron 3 Super · Nebius Token Factory", zoom: [[0, 100, 40, 1240], [0.4, 100, 40, 1240], [1, 100, 40, 1240]] });
   },
   async appResult(t, d) {
     const m = DATA.footage.studio.marks;
-    await shot(t, d, { clip: "studio", from: m.results, to: m.retrain, title: "Your simulator, corrected", label: "calibrated sim · intervals · next experiment",
-      zoom: [[0, 0, 0, 1440], [0.25, 270, 40, 1170], [1, 270, 40, 1170]] });
+    await shot(t, d, { clip: "studio", from: m.results, to: m.retrain, title: "Your simulator, corrected", label: "the answer in words · hidden-answer check · every number",
+      zoom: [[0, 0, 0, 1440], [0.25, 100, 40, 1240], [1, 100, 40, 1240]] });
   },
   async appExport(t, d) {
     const m = DATA.footage.studio.marks;
     await shot(t, d, { clip: "studio", from: m.export, to: DATA.footage.studio.length, title: "Checked in Newton, exported",
-      label: "replay in NVIDIA Newton · Newton · Isaac Lab · CARLA", zoom: [[0, 270, 40, 1170], [1, 270, 40, 1170]] });
+      label: "replay in NVIDIA Newton · Newton · Isaac Lab · CARLA", zoom: [[0, 100, 40, 1240], [1, 100, 40, 1240]] });
   },
   async appAsk(t, d) {
     const c = DATA.footage.ask;
@@ -249,7 +249,7 @@ const SCENES = {
     put(`<div class="abs h1" style="font-size:200px">Tether</div>`, { left: "140px", top: "400px" });
     put(`<div class="abs h3" style="font-size:52px;color:#cfcfcf;width:760px">Tie your simulator to the real world.</div>`, { left: "146px", top: "630px" });
     put(`<div class="abs lab" style="font-size:24px;white-space:nowrap">NVIDIA Newton · Nemotron on Nebius Token Factory</div>`, { left: "146px", top: "800px" });
-    const c = DATA.footage.studio, k = frameAt(c.times, c.marks.results + 3.4), fw = 940, fh = 529, z = [270, 40, 1170], sc = fw / z[2];
+    const c = DATA.footage.studio, k = frameAt(c.times, c.marks.results + 3.4), fw = 940, fh = 529, z = [100, 40, 1240], sc = fw / z[2];
     const fr = put(`<div class="frame" style="box-shadow:0 30px 80px rgba(0,0,0,.6)"></div>`, { left: "900px", top: "276px", width: fw + "px", height: fh + "px" });
     const img = el(`<img>`); fr.appendChild(img);
     Object.assign(img.style, { width: c.w * sc + "px", left: -z[0] * sc + "px", top: -z[1] * sc + "px" });
