@@ -15,7 +15,7 @@ The 35-case comparison and offline replay are done ($0.3060624 within approved $
 
 ## Priority 2 — YouTube and Devpost (target 10-29)
 
-- [ ] [manual] Owner reviews `submission/tether_film.mp4`, rebuilt 2026-10-15 as v2 with the layered Studio (147.85 s, 1080p; owner-approved swap; v1 backed up outside the repo). Owner feedback: the export line's switch to the local Samantha voice is awkward; its ElevenLabs audio is not cached (the earlier, overclaiming version is), so fixing it needs either an approved ElevenLabs call for that one line or another narration choice. Then upload PUBLIC and provide the URL.
+- [ ] [manual] Owner reviews `submission/tether_film.mp4`, rebuilt 2026-10-15 with the layered Studio (148.93 s, 1080p, 69.0 s app footage; one ElevenLabs voice throughout, the export line generated once with owner approval; v1 backed up outside the repo). Then upload PUBLIC and provide the URL.
 - [ ] [auto, after URL] Replace the two article placeholders and portfolio copies; add README link. Repeat `make submission` and `make presubmit` until strict gate passes. No link is invented.
 - [ ] [manual] Owner verifies eligibility/terms and Token Factory key/credit through judging 12-01–12-15, then submits Devpost. Official rules checked 2026-10-12: https://nebiusglobalaihackathon.devpost.com/rules (runtime inference qualifies; public <3-minute video and ≥1-minute core-module footage for no-hardware Physical AI). Existing live-demo fallback is in DEVPOST.
 - [ ] [auto] After owner publication/submission, read-only verification of the actual URL/state; no repeat publication.

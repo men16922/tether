@@ -17,7 +17,7 @@
 
 | 파일 | 쓰는 곳 |
 |---|---|
-| `tether_film.mp4` | YouTube 업로드 (2분 28초, 1080p) |
+| `tether_film.mp4` | YouTube 업로드 (2분 29초, 1080p) |
 | `youtube-thumbnail.png` | YouTube 미리보기 이미지 (1280×720) |
 | `youtube-description.txt` | YouTube 설명란 (챕터 포함) |
 | `gallery/00-cover.png` | Devpost 프로젝트 대표 이미지 (3:2) |
@@ -26,7 +26,7 @@
 
 해커톤 영상 조건은 다음과 같습니다.
 
-- 공개 YouTube 영상이어야 하고 3분 이내여야 합니다. 이 영상은 2분 28초입니다.
+- 공개 YouTube 영상이어야 하고 3분 이내여야 합니다. 이 영상은 2분 29초입니다.
 - 내레이션이 Nebius Token Factory와 Nemotron을 어떻게 썼는지 말해야 합니다. 0분 40초 부근과 마지막 장면에서 말합니다.
 - 하드웨어가 없는 Physical AI 프로젝트는 앱이 실제로 동작하는 화면을 1분 이상 보여야 합니다. 이 영상에는 Studio를 실제로 조작하는 화면이 약 68초 들어 있습니다.
 

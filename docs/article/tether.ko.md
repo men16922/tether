@@ -6,7 +6,7 @@ _Tether가 Nebius Token Factory의 NVIDIA Nemotron과 NVIDIA Newton으로 시뮬
 
 _Figure origin: Newton synthetic recorded demo / Newton 합성 데이터의 기록 화면; not independent phone footage._
 
-**공개 데모:** https://tether-454741001655.us-central1.run.app (Studio는 `/studio?lang=ko`) · **코드 (Apache-2.0):** https://github.com/men16922/tether · **데모 영상 (2분 28초):** YOUTUBE_LINK
+**공개 데모:** https://tether-454741001655.us-central1.run.app (Studio는 `/studio?lang=ko`) · **코드 (Apache-2.0):** https://github.com/men16922/tether · **데모 영상 (2분 29초):** YOUTUBE_LINK
 
 Nebius × NVIDIA Global AI Hackathon의 Physical AI 트랙 출품작입니다.
 

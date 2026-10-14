@@ -2,7 +2,7 @@
 
 Status: final 2026-10-11. Numbers come from `runs/proof/*.json` (`make prove`), `runs/bench/open_newton_super_n15.json`
 (Gap-Bench) and `runs/studio-demo/*.json` (recorded Studio runs with Nemotron). Demo film: `film/out/tether_film.mp4`
-(2:28). Live demo: https://tether-454741001655.us-central1.run.app · Code: https://github.com/men16922/tether.
+(2:29). Live demo: https://tether-454741001655.us-central1.run.app · Code: https://github.com/men16922/tether.
 How to fill in each Devpost field: `docs/submission/SUBMIT.md`.
 
 ## Tagline

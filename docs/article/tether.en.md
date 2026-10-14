@@ -6,7 +6,7 @@ _How Tether uses NVIDIA Nemotron on Nebius Token Factory and NVIDIA Newton to fi
 
 _Figure origin: Newton synthetic recorded demo / Newton 합성 데이터의 기록 화면; not independent phone footage._
 
-**Live demo:** https://tether-454741001655.us-central1.run.app (Studio at `/studio`) · **Code (Apache-2.0):** https://github.com/men16922/tether · **Demo video (2:28):** YOUTUBE_LINK
+**Live demo:** https://tether-454741001655.us-central1.run.app (Studio at `/studio`) · **Code (Apache-2.0):** https://github.com/men16922/tether · **Demo video (2:29):** YOUTUBE_LINK
 
 Built for the Nebius × NVIDIA Global AI Hackathon, Physical AI track.
 
