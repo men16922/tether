@@ -1,4 +1,4 @@
-# Devpost draft — Tether
+# Devpost Draft — Tether
 
 Status: final 2026-10-11. Numbers come from `runs/proof/*.json` (`make prove`), `runs/bench/open_newton_super_n15.json`
 (Gap-Bench) and `runs/studio-demo/*.json` (recorded Studio runs with Nemotron). Demo film: `film/out/tether_film.mp4`
@@ -24,7 +24,7 @@ Tether estimates the physics gap of a pushing task from video or logs, shows whe
 
 Robot and factory pushing are the lead cases. Driving is the same simplified model, scaled; real vehicle dynamics are not validated. User comprehension has not been tested with users.
 
-## What it does
+## What It Does
 
 Tether has three connected pages: an **Overview**, a **Benchmark** that tests the AI on worlds whose answer is known, and
 **Studio**, where you bring your own data.
@@ -60,7 +60,7 @@ world whose physics the agent cannot see, let Nemotron investigate, fix the simu
 "Run this case yourself in Studio" button that opens Studio's virtual table with the same hidden physics.
 **NVIDIA Cosmos Reason 2**, running locally, watches the clips as a second opinion on whether the object slid or tipped.
 
-## How we built it
+## How We Built It
 
 - **NVIDIA Newton** (Warp, CPU) for physics, camera rendering (SensorTiledCamera) and the replay check. A small Warp
   kernel switches the body's friction when it crosses a region, because a seam between two surface bodies tipped
@@ -111,7 +111,7 @@ world whose physics the agent cannot see, let Nemotron investigate, fix the simu
   The short log stays below 100% for an honest reason: it never measured the far table, and Studio says so before you
   train. Wide randomization trains a
   policy that is mediocre everywhere; the current simulator is confidently wrong.
-- **Phone robustness** (same hidden table filmed clean vs hand-held with motion blur, exposure flicker and heavy
+- **Phone robustness** (same hidden table filmed clean and hand-held with motion blur, exposure flicker and heavy
   compression; automatic corners, tracking and fit end to end): 11 of 11 pushes found in both; launch speed reads
   0.8% low clean and 6.5% low on the bad video; the hidden values fall inside their intervals 3 of 3 on the clean video
   and 2 of 3 on the bad one.
@@ -120,7 +120,7 @@ world whose physics the agent cannot see, let Nemotron investigate, fix the simu
   follows 45 of them, and constant deceleration (the Coulomb sliding Tether fits) explains each slide with median
   R² 0.9985. The clips have no size reference and no stated slow-motion factor, so friction itself is only known up
   to one constant per object and camera: calibrated on the other surfaces, the predictions correlate with the
-  dynamometer (r 0.70) but are not more accurate than guessing the mean (MAE 0.068 vs 0.058). That is the reason
+  dynamometer (r 0.70) but are not more accurate than guessing the mean (MAE 0.068 compared to 0.058). That is the reason
   Studio asks for a sheet of known size and the frame rate.
 - **A different engine makes the data** (`make cross-engine`; MuJoCo, 24 random hidden worlds per condition, the
   robot's first-day log, policies run in the hidden world, 24 targets ±3 cm):
@@ -133,7 +133,7 @@ world whose physics the agent cannot see, let Nemotron investigate, fix the simu
   | + a 1.5–3° tilt | 8% | 9% | 26% | 33% | **90%** (87–93) |
 
   \* a DR baseline no user could build. Tether is at least as good as the best DR in 94 of 96 worlds. Held-out stops:
-  1.6–2.0 cm vs 18–30 cm. The new pattern check names what the model misses instead of thresholding its size: it
+  1.6–2.0 cm compared to 18–30 cm. The new pattern check names what the model misses instead of thresholding its size: it
   reports speed dependence in 24 of 24 worlds that have it, a change along the surface in 15 of 24 two-region
   worlds, and raises 2 false alarms on 24 in-menu worlds (the old 1 cm rule flagged 23).
 - **Real objects, real video, independently measured friction** (EV-RealPhys, a public MPI benchmark: YCB objects
@@ -154,7 +154,7 @@ world whose physics the agent cannot see, let Nemotron investigate, fix the simu
   dropped with a note.
 - **Real footage, friction law:** on the 45 tracked real slides, Coulomb sliding (Tether's model) beats a viscous
   law decisively on 35 and is the best of three laws on 36 (scale-free BIC).
-- **Next experiment:** reaching 95% hidden-world success takes 5.76 runs with Tether's suggestions vs 6.84 random, the
+- **Next experiment:** reaching 95% hidden-world success takes 5.76 runs with Tether's suggestions compared to 6.84 random, the
   same as a well-designed manual sweep (5.76): the suggestions match an expert's sweep without knowing the table.
 
 Reference only: the paper reports mean error 0.082 (median 0.025) under a **different protocol: RGB-D online tracking and filtering**; this is not a same-input baseline.
@@ -201,7 +201,7 @@ Leave-one-push-out: remove the held-out push first, form a common eligible train
 - Nemotron family (open + compound, 6 worlds each): Super 100/99%, 3.5 Lightning 100/95% (cheapest), Ultra 100/83%,
   Nano 97/53%. Bigger was not better.
 
-### Nemotron contribution: complete 35-case comparison (2026-10-13)
+### Nemotron Contribution: Complete 35-Case Comparison (October 13, 2026)
 
 The last ~20% of pushes are withheld before any agent call. Offline structure search, Nemotron alone, and Nemotron plus the cross-check use the same training pushes and fitter. One recorded agent conversation is shared by the two agent conditions.
 
@@ -268,7 +268,7 @@ Data origin: 24 in-menu MuJoCo worlds, six Newton synthetic examples, and five E
 - **Cosmos on tiny objects:** about 10 px wide; crops and per-frame questions got slid-vs-tipped to 88%, so it stays
   a second opinion.
 
-## Limits we state plainly
+## Limits We State Plainly
 
 - Most results use simulated data (Newton, and MuJoCo as a second engine) so the truth can be revealed. On real
   objects (EV-RealPhys) friction lands within ±0.05 for 4 of 5, with the dataset's camera calibration standing in for
@@ -279,12 +279,12 @@ Data origin: 24 in-menu MuJoCo worlds, six Newton synthetic examples, and five E
 - The CARLA export was checked against CARLA 0.9.16's documented API and run against a stand-in module, not inside
   CARLA itself. GR00T is not used.
 
-## What's next
+## What's Next
 
 - Real phone and vehicle data; more structures (several regions, non-linear actuators); dynamic Franka contact and
   GR00T policies trained on the calibrated, randomized simulator.
 
-## Built with
+## Built With
 
 nvidia-newton, nvidia-warp, nemotron, nebius-token-factory, nemo-agent-toolkit, cosmos-reason, mujoco, llama.cpp, three.js,
 fastapi, python, openai-python, scipy, opencv. Export targets (generated, not executed here): Isaac Lab, CARLA.
@@ -296,7 +296,7 @@ Physical AI. There is no physical hardware; the video shows the application modu
 check and the export; Ask Tether on the live server), plus retraining in parallel NVIDIA Newton worlds and the
 validation on real objects (EV-RealPhys) and on worlds from a different engine (MuJoCo).
 
-## How it maps to the judging criteria
+## How It Maps to the Judging Criteria
 
 | Criterion | Where to look |
 |---|---|
@@ -306,7 +306,7 @@ validation on real objects (EV-RealPhys) and on worlds from a different engine (
 | Quality of the idea | An agent that fixes the simulator instead of the policy, and says how sure it is |
 
 
-### Reliability on public real data (2026-10-12 recomputed)
+### Reliability on Public Real Data (Recomputed October 12, 2026)
 
 | Object / path | μ error | Reliability | Error > 0.05 flagged | Interval covers tilt |
 |---|---|---|---|---|
@@ -327,7 +327,7 @@ This is a diagnostic flag, not a validated detector of friction bias. Both >0.05
 If the live demo is unavailable: clone the repository, install `requirements.txt`, run `make serve`, and open `/studio`. `make pages` also produces recorded standalone pages in `tether/web/dist/`. They replay recorded responses and do not establish new live-model results.
 
 
-### Coverage versus push count (2026-10-12 recomputed)
+### Coverage Versus Push Count (Recomputed October 12, 2026)
 
 | Usable pushes | Public real coverage | MuJoCo coverage |
 |---|---|---|
@@ -340,7 +340,7 @@ If the live demo is unavailable: clone the repository, install `requirements.txt
 Fixed, evenly spaced subsamples; 30 bootstrap draws; ten public real cases when enough pushes exist, and 24 in-menu MuJoCo worlds. The one-push row is the **pre-change diagnostic**; the product now hides that interval. Six pushes is a conservative product policy because structure search becomes available there, not proof of statistical sufficiency. Coverage remains poor and nonmonotonic; shared bias and cross-engine differences are not covered. An OK status does not mean 90% accuracy or validated coverage.
 
 
-### Export-file verification on held-out Newton pushes (2026-10-12 recomputed)
+### Export-File Verification on Held-Out Newton Pushes (Recomputed October 12, 2026)
 
 | Newton sample | Fit / held-out pushes | Calibrated RMS (base cm) | Current RMS (base cm) |
 |---|---|---|---|

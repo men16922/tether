@@ -1,8 +1,14 @@
 # Progress Log
 
-Last Updated: 2026-10-15
+Last Updated: 2026-10-17
 
 This file maintains only recent incremental summaries (newest 3-5 items, ≤120 lines). Older entries are archived to `docs/project/archive/progress-YYYY-MM.md` via `/tidy-docs`.
+
+## 2026-10-17 — English copy follows the NVIDIA writing guide
+- Status: owner asked to apply the style rules from NVIDIA's open-source Run:ai repo (`docs/WRITING.md`, github.com/dsx-ai-factory/run-ai) to README, DEVPOST and the EN article. Committed locally; not pushed or deployed. No paid calls.
+- Changed: 14 prose "vs"/"via"/"just" replaced; headings in title case; `make` commands moved out of three README headings; heading dates as Month DD, YYYY; `film/submission.py` cuts About at "## Built With". Numbers unchanged. Portfolio EN copy re-synced locally (uncommitted, also fixes its stale 2:28).
+- Already compliant: no "a NVIDIA", marketing words, filler or contractions. Not applied: splitting sentences over 30 words.
+- Verified: make check 146 passed (242 s); make submission rebuilt (film bytes unchanged, About cut correct); presubmit --allow-pending: only the two YouTube placeholders remain.
 
 ## 2026-10-15 — Layered Studio UX ("easy to learn, hard to master")
 - Status: owner asked for the full UX overhaul before submission; implemented locally, uncommitted, not deployed. No paid calls (server ran with TETHER_LLM=none).

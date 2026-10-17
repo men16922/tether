@@ -45,7 +45,7 @@ Plain-Korean guides live in `docs/guide/` (start with `docs/guide/00_처음_읽�
 `make prove` recomputes every headline number offline in about five minutes (`runs/proof/PROOF.md`);
 `make film` rebuilds the demo film (`film/out/tether_film.mp4`).
 
-## Tether Studio: calibrate from your own data
+## Tether Studio: Calibrate From Your Own Data
 
 The agent loop above runs against a hidden simulated world. **Studio** points the same machinery at
 measurements you bring, and hands back a simulator you can use:
@@ -61,7 +61,7 @@ measurements you bring, and hands back a simulator you can use:
 4. **Calibrated sim.** You get:
    - the physics that differs from your simulator, each value with a 90% interval (bootstrap over your pushes);
    - the measured friction painted onto your own video frame;
-   - predicted success of a policy trained in the old vs calibrated simulator. Stretches of table that no push
+   - predicted success of a policy trained in the old simulator compared to the calibrated one. Stretches of table that no push
      reached are treated as unknown (±30% what-ifs), so the prediction is not falsely certain.
 5. **Next experiment.** It names the pushes where plausible models still disagree, within your working range.
 6. **Export.** A snippet for NVIDIA Newton (`ShapeConfig` mu and the friction region), an Isaac Lab
@@ -114,10 +114,12 @@ recovery from the sheet gives 0.481 m height and 579 px focal length (true: 0.48
 and heavy compression, all at 30 fps. On it, stops stay within about 4 cm, but launch speeds read 10–15% low
 and the friction region is not pinned down. Film in slow motion or at 60 fps. On 52 public real clips (IDPP,
 `make real-check`) the tracker follows 45 and constant deceleration fits each tracked slide (median R² 0.9985), but
-without a size reference or known frame rate the friction value itself is not identified (error 0.068 vs 0.058 for
+without a size reference or known frame rate the friction value itself is not identified (error 0.068 compared to 0.058 for
 guessing the mean). Real objects with independently measured friction: see the EV-RealPhys benchmark below.
 
-### Data from a different engine: MuJoCo hidden worlds (`make cross-engine`)
+### Data From a Different Engine: MuJoCo Hidden Worlds
+
+Run it with `make cross-engine`.
 
 Tether fits a Newton-family model, so data made by Newton only checks self-consistency. Here every "real" push comes
 from **MuJoCo** instead: soft contacts, and a paddle that pushes the object up to speed rather than an assigned
@@ -135,7 +137,7 @@ trained in each simulator and run in the hidden MuJoCo world (24 targets, ±3 cm
 \* No user knows this distribution; it is the most favourable possible DR baseline. Domain randomization was swept
 over 25/50/75/100% of each parameter's range around the current sim, and the best width is shown. Tether is at least
 as good as the best DR in 94 of 96 worlds. Stop error on 12 held-out pushes is 1.6–2.0 cm (median) for the
-calibrated sim vs 18–30 cm for the current one. That is about the scatter of MuJoCo's contact launch (1–2% in speed).
+calibrated sim, compared to 18–30 cm for the current one. That is about the scatter of MuJoCo's contact launch (1–2% in speed).
 
 "Exact hidden parameters" means training on MuJoCo's own parameter values. It loses wherever the engine's behaviour
 differs from its parameters (effective friction is a few % lower) or an off-menu effect acts. Tether fits the
@@ -143,7 +145,9 @@ behaviour, so off-menu effects cost little inside the measured range. The patter
 replaces a size threshold that flagged 23 of 24 in-menu worlds: it looks for deceleration that changes with speed or
 along the surface, after subtracting the model.
 
-### Real objects, real video, independently measured friction (`make real-benchmark`)
+### Real Objects, Real Video, Independently Measured Friction
+
+Run it with `make real-benchmark`.
 
 **EV-RealPhys** (Kandukuri, Strecke, Stueckler 2023, MPI, CC BY-SA 4.0) is a public research benchmark. YCB objects
 are pushed by hand across a real table and filmed at 30 Hz, with motion capture and a camera calibrated to the table.
@@ -202,7 +206,9 @@ Two things this benchmark changed in Tether:
   too soon for its speed is the tracker losing the object (a ruler pushing a white bottle across a white table), not
   physics.
 
-### Real footage: which friction law? (`make real-check`)
+### Real Footage: Which Friction Law?
+
+Run it with `make real-check`.
 
 The tracker follows 45 of 52 public slow-motion slides (IDPP, Apache-2.0). Each slide is compared, scale-free, by BIC:
 
@@ -223,7 +229,7 @@ Honest reading: with the fitter that reads the whole slide, every strategy needs
 need about 16% fewer than random ones. They tie a sweep that an engineer who already knows to push long would write.
 The difference is that the suggestions adapt to the table, so you do not need to know that in advance.
 
-## How it works
+## How It Works
 
 ```mermaid
 flowchart LR
@@ -245,7 +251,7 @@ flowchart LR
   - **lens distortion**
   - combinations of these
 
-**The agent never sees the hidden values.** It sees only what a real robot would log: where each cube stopped, camera tracks of the cube, and perceived vs known target positions. It can also pay for extra hidden-world pushes.
+**The agent never sees the hidden values.** It sees only what a real robot would log: where each cube stopped, camera tracks of the cube, and perceived and known target positions. It can also pay for extra hidden-world pushes.
 
 **Nemotron as a scientist:** Nemotron 3 Super on Token Factory works through tool calls. Each step is shown in the Benchmark page's lab notebook.
 
@@ -259,7 +265,7 @@ flowchart LR
 
 ## Results
 
-### Gap-Bench (NVIDIA Newton, 15 hidden worlds per tier, mean hidden-world success ± 95% CI)
+### Gap-Bench (NVIDIA Newton, 15 Hidden Worlds per Tier, Mean Hidden-World Success ± 95% CI)
 
 | Tier | Nominal sim | Domain rand. | Rule-based agent | System-ID baseline | **Nemotron tool agent** |
 |---|---|---|---|---|---|
@@ -269,7 +275,7 @@ flowchart LR
 
 - **Rule-based tuning breaks outside its map.** The rule-based agent adjusts a fixed set of known parameters from tracked motion, and it stays at 54–83% when the world has effects it has no parameter for.
 - **The Nemotron agent closes those gaps** in about 2 iterations, using about 40–50 hidden-world pushes.
-- **Honest comparison:** the System-ID baseline fits a hand-ordered library of model structures with the same least-squares fitter and matches the agent. A smaller 6-worlds-per-tier run showed the agent ahead on compound worlds (99% vs 93%), but that gap disappeared at 15 worlds per tier. So the claim is not "LLM beats system identification". It is that Nemotron reaches system-ID accuracy **on its own**:
+- **Honest comparison:** the System-ID baseline fits a hand-ordered library of model structures with the same least-squares fitter and matches the agent. A smaller 6-worlds-per-tier run showed the agent ahead on compound worlds (99% compared to 93%), but that gap disappeared at 15 worlds per tier. So the claim is not "LLM beats system identification". It is that Nemotron reaches system-ID accuracy **on its own**:
   - it chooses which structures to try
   - it designs its own experiments
   - it explains every fix in plain language
@@ -284,7 +290,7 @@ Nemotron family on the open and compound tiers (Newton, 6 worlds each; indicativ
 | Nemotron 3 Ultra 550B | 100% | 83% | ~$0.52 |
 | Nemotron 3 Nano 30B | 97% | 53% | ~$0.14 |
 
-### Recorded scenarios (Benchmark page)
+### Recorded Scenarios (Benchmark Page)
 
 All of these were recorded with Nemotron 3 Super on Token Factory and run in Newton.
 
@@ -311,7 +317,7 @@ open tether/web/dist/benchmark.standalone.html
 make replays          # 3D viewer data only: per-frame Newton poses for the recorded bundle (no LLM)
 ```
 
-The Benchmark page's main visual is a three.js 3D replay of each measured push: per-frame cube and Franka FR3 link poses recorded from NVIDIA Newton, the hidden-physics cube solid and the agent's sim cube as a ghost (or split view), with orbit, scrub, speed, a lane close-up and the stop error vs the target line. three.js and the decimated Franka meshes are inlined, so the standalone page works offline; the WebP camera clips remain as a fallback.
+The Benchmark page's main visual is a three.js 3D replay of each measured push: per-frame cube and Franka FR3 link poses recorded from NVIDIA Newton, the hidden-physics cube solid and the agent's sim cube as a ghost (or split view), with orbit, scrub, speed, a lane close-up and the stop error against the target line. three.js and the decimated Franka meshes are inlined, so the standalone page works offline; the WebP camera clips remain as a fallback.
 
 Live server (the same image runs the public demo on Google Cloud Run):
 
@@ -348,7 +354,7 @@ LLM providers (`TETHER_LLM`):
 
 Model ids are resolved at runtime from the provider's model list, so no id is hard-coded.
 
-## Cosmos eyes (optional, local)
+## Cosmos Eyes (Optional, Local)
 
 Built on NVIDIA Cosmos. `tether/agent/cosmos_eyes.py` asks **NVIDIA Cosmos Reason 2 8B** what happened in each real clip
 (`slid 0.17 s → tipped 0.69 s`). It runs locally in llama.cpp at no cost, takes about 4 to 6 s per clip on an M4 Max, and uses about 9 GB of unified memory.
@@ -378,7 +384,7 @@ down, `CosmosEyes.available()` is False and `events()` returns `[]`. The default
 never need the model. The model is `nvidia/Cosmos-Reason2-8B` under the NVIDIA Open Model License (community GGUF quantization, local inference
 only, no weights redistributed).
 
-## Repository map
+## Repository Map
 
 ```text
 tether/                    the application, one Python package
@@ -428,7 +434,7 @@ Uses NVIDIA Newton (Apache-2.0), NVIDIA Nemotron 3 open models, NVIDIA Cosmos Re
 License: Apache-2.0.
 
 
-### Reliability on public real data (2026-10-12 recomputed)
+### Reliability on Public Real Data (Recomputed October 12, 2026)
 
 | Object / path | μ error | Reliability | Error > 0.05 flagged | Interval covers tilt |
 |---|---|---|---|---|
@@ -446,7 +452,7 @@ License: Apache-2.0.
 This is a diagnostic flag, not a validated detector of friction bias. Both >0.05-error cases receive warnings, but other accurate cases also do. Among unflagged cases: 0 evaluable, 0 covered (coverage cannot be estimated with no unflagged cases).
 
 
-### Coverage versus push count (2026-10-12 recomputed)
+### Coverage Versus Push Count (Recomputed October 12, 2026)
 
 | Usable pushes | Public real coverage | MuJoCo coverage |
 |---|---|---|
@@ -459,7 +465,7 @@ This is a diagnostic flag, not a validated detector of friction bias. Both >0.05
 Fixed, evenly spaced subsamples; 30 bootstrap draws; ten public real cases when enough pushes exist, and 24 in-menu MuJoCo worlds. The one-push row is the **pre-change diagnostic**; the product now hides that interval. Six pushes is a conservative product policy because structure search becomes available there, not proof of statistical sufficiency. Coverage remains poor and nonmonotonic; shared bias and cross-engine differences are not covered. An OK status does not mean 90% accuracy or validated coverage.
 
 
-### Export-file verification on held-out Newton pushes (2026-10-12 recomputed)
+### Export-File Verification on Held-Out Newton Pushes (Recomputed October 12, 2026)
 
 | Newton sample | Fit / held-out pushes | Calibrated RMS (base cm) | Current RMS (base cm) |
 |---|---|---|---|
@@ -473,7 +479,7 @@ Fixed, evenly spaced subsamples; 30 bootstrap draws; ten public real cases when 
 Data origin: Newton synthetic. Roughly the first 80% calibrates; the remaining pushes are withheld. Generated JSON and Newton constants are checked, then a separate process executes the withheld launches. Base units are shown to compare samples; driving lengths displayed/exported at full scale are 25× these values. This checks file execution and prediction within the data-generating engine; public real-data prediction is a separate evaluation. Isaac Lab and CARLA are format-checked against stand-ins and were not executed here.
 
 
-### Nemotron contribution: complete 35-case comparison (2026-10-13)
+### Nemotron Contribution: Complete 35-Case Comparison (October 13, 2026)
 
 The last ~20% of pushes are withheld before any agent call. Offline structure search, Nemotron alone, and Nemotron plus the cross-check use the same training pushes and fitter. One recorded agent conversation is shared by the two agent conditions.
 

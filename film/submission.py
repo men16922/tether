@@ -97,7 +97,7 @@ Real-object footage: EV-RealPhys (Kandukuri, Strecke, Stueckler 2023, Max Planck
 Narration: ElevenLabs, with the revised export sentence spoken by local macOS Samantha. Music: generated for this film. Not affiliated with or endorsed by NVIDIA or Nebius.
 """)
     devpost = (ROOT / "docs" / "submission" / "DEVPOST.md").read_text()
-    about = devpost[devpost.index("## Inspiration"):devpost.index("## Built with")].rstrip() + "\n"
+    about = devpost[devpost.index("## Inspiration"):devpost.index("## Built With")].rstrip() + "\n"
     (OUT / "about-the-project.md").write_text(about)
     shutil.copyfile(ROOT / "docs" / "submission" / "SUBMIT.md", OUT / "SUBMIT.md")
     print(f"submission/: film {total:.0f} s, thumbnail, {len(STILLS) + 1} gallery images, youtube-description.txt, about-the-project.md, SUBMIT.md")

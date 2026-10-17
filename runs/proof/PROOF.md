@@ -1,5 +1,7 @@
 # Tether: proof run
 
+> Historical snapshot from 2026-10-10/11. Submission scope was updated on 2026-10-14 to existing Newton synthetic samples + public EV-RealPhys evidence; independent phone + A4 validation remains unperformed and is deferred until after submission. For current real-object inputs, exclusions, held-out evaluation and single-push interval limits, use `runs/proof/real_benchmark.json`, README and `docs/submission/SUBMIT.md`. The older section 9 paper comparison/interval wording below is superseded by those records.
+
 2026-10-10 23:46 · git c9bd732 · arm64 Darwin · 776 s · full
 
 Everything below except section 5 was recomputed by `python -m tether.eval.prove` on this machine, with no network.
