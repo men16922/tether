@@ -9,6 +9,7 @@ This file maintains only recent incremental summaries (newest 3-5 items, ≤120 
 - Changed: 14 prose "vs"/"via"/"just" replaced; headings in title case; `make` commands moved out of three README headings; heading dates as Month DD, YYYY; `film/submission.py` cuts About at "## Built With". Numbers unchanged. Portfolio EN copy re-synced locally (uncommitted, also fixes its stale 2:28).
 - Already compliant: no "a NVIDIA", marketing words, filler or contractions. Not applied: splitting sentences over 30 words.
 - Verified: make check 146 passed (242 s); make submission rebuilt (film bytes unchanged, About cut correct); presubmit --allow-pending: only the two YouTube placeholders remain.
+- Cleanup (owner-requested): deleted ~4.7 GB of regenerable local files — film frame JPGs (per-scene mp4s kept, so `--only` re-renders still concatenate), the EV-RealPhys tar.gz and two IDPP zips (extracted data kept; `real_friction --download` now skips a zip whose folder exists), caches. Kept: TTS cache (paid), film/out films, film/real, runs/studio/live, extracted datasets. runs/qa, ablation fixtures and presubmit.json now gitignored (files kept); reliability_sweep/real_diagnosis proof JSONs committed. make check 146 passed after the change.
 
 ## 2026-10-15 — Layered Studio UX ("easy to learn, hard to master")
 - Status: owner asked for the full UX overhaul before submission; implemented locally, uncommitted, not deployed. No paid calls (server ran with TETHER_LLM=none).

@@ -16,3 +16,8 @@ runs/real_data/
 *.egg-info/
 .pytest_cache/
 .DS_Store
+
+# local evidence kept out of git: raw Nemotron responses + credit ledger, QA screenshots/notes, per-run presubmit
+runs/ablation-fixtures/
+runs/qa/
+runs/proof/presubmit.json

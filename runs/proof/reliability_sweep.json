@@ -1,0 +1,1971 @@
+{
+  "design": "fixed evenly spaced subsamples; 30 bootstrap draws; real 10 cases + 24 in-menu MuJoCo worlds",
+  "summary": {
+    "EV-RealPhys": {
+      "1": {
+        "cases": 10,
+        "covered": 1,
+        "coverage": 0.1
+      },
+      "2": {
+        "cases": 9,
+        "covered": 5,
+        "coverage": 0.5555555555555556
+      },
+      "4": {
+        "cases": 9,
+        "covered": 7,
+        "coverage": 0.7777777777777778
+      },
+      "6": {
+        "cases": 6,
+        "covered": 5,
+        "coverage": 0.8333333333333334
+      },
+      "8": {
+        "cases": 5,
+        "covered": 3,
+        "coverage": 0.6
+      }
+    },
+    "MuJoCo": {
+      "1": {
+        "cases": 24,
+        "covered": 0,
+        "coverage": 0.0
+      },
+      "2": {
+        "cases": 24,
+        "covered": 0,
+        "coverage": 0.0
+      },
+      "4": {
+        "cases": 24,
+        "covered": 0,
+        "coverage": 0.0
+      },
+      "6": {
+        "cases": 24,
+        "covered": 14,
+        "coverage": 0.5833333333333334
+      },
+      "8": {
+        "cases": 24,
+        "covered": 14,
+        "coverage": 0.5833333333333334
+      }
+    }
+  },
+  "rows": [
+    {
+      "origin": "EV-RealPhys",
+      "case": "pitcher/log",
+      "pushes": 1,
+      "mu": 0.2112,
+      "truth": 0.22,
+      "interval": [
+        0.2051,
+        0.2188
+      ],
+      "covered": false
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "pitcher/log",
+      "pushes": 2,
+      "mu": 0.2255,
+      "truth": 0.22,
+      "interval": [
+        0.2098,
+        0.2341
+      ],
+      "covered": true
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "pitcher/log",
+      "pushes": 4,
+      "mu": 0.2183,
+      "truth": 0.22,
+      "interval": [
+        0.2065,
+        0.2356
+      ],
+      "covered": true
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "pitcher/log",
+      "pushes": 6,
+      "mu": 0.03,
+      "truth": 0.22,
+      "interval": [
+        0.03,
+        0.2299
+      ],
+      "covered": true
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "pitcher/log",
+      "pushes": 8,
+      "mu": 0.2187,
+      "truth": 0.22,
+      "interval": [
+        0.2092,
+        0.2297
+      ],
+      "covered": true
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "pitcher/video",
+      "pushes": 1,
+      "mu": 0.2514,
+      "truth": 0.22,
+      "interval": [
+        0.2434,
+        0.2612
+      ],
+      "covered": false
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "pitcher/video",
+      "pushes": 2,
+      "mu": 0.2514,
+      "truth": 0.22,
+      "interval": [
+        0.224,
+        0.2559
+      ],
+      "covered": false
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "pitcher/video",
+      "pushes": 4,
+      "mu": 0.229,
+      "truth": 0.22,
+      "interval": [
+        0.201,
+        0.26
+      ],
+      "covered": true
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "mustard bottle/log",
+      "pushes": 1,
+      "mu": 0.1729,
+      "truth": 0.159,
+      "interval": [
+        0.1685,
+        0.1784
+      ],
+      "covered": false
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "mustard bottle/log",
+      "pushes": 2,
+      "mu": 0.1618,
+      "truth": 0.159,
+      "interval": [
+        0.1429,
+        0.1751
+      ],
+      "covered": true
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "mustard bottle/log",
+      "pushes": 4,
+      "mu": 0.1685,
+      "truth": 0.159,
+      "interval": [
+        0.1549,
+        0.1752
+      ],
+      "covered": true
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "mustard bottle/log",
+      "pushes": 6,
+      "mu": 0.155,
+      "truth": 0.159,
+      "interval": [
+        0.1479,
+        0.1667
+      ],
+      "covered": true
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "mustard bottle/log",
+      "pushes": 8,
+      "mu": 0.1579,
+      "truth": 0.159,
+      "interval": [
+        0.1425,
+        0.251
+      ],
+      "covered": true
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "mustard bottle/video",
+      "pushes": 1,
+      "mu": 0.1994,
+      "truth": 0.159,
+      "interval": [
+        0.1519,
+        0.2547
+      ],
+      "covered": true
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "mustard bottle/video",
+      "pushes": 2,
+      "mu": 0.1744,
+      "truth": 0.159,
+      "interval": [
+        0.171,
+        0.2117
+      ],
+      "covered": false
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "mustard bottle/video",
+      "pushes": 4,
+      "mu": 0.1768,
+      "truth": 0.159,
+      "interval": [
+        0.149,
+        0.2844
+      ],
+      "covered": true
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "mustard bottle/video",
+      "pushes": 6,
+      "mu": 0.1652,
+      "truth": 0.159,
+      "interval": [
+        0.1559,
+        0.1749
+      ],
+      "covered": true
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "bleach cleanser/log",
+      "pushes": 1,
+      "mu": 0.1604,
+      "truth": 0.169,
+      "interval": [
+        0.1561,
+        0.1657
+      ],
+      "covered": false
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "bleach cleanser/log",
+      "pushes": 2,
+      "mu": 0.1549,
+      "truth": 0.169,
+      "interval": [
+        0.1403,
+        0.1625
+      ],
+      "covered": false
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "bleach cleanser/log",
+      "pushes": 4,
+      "mu": 0.1562,
+      "truth": 0.169,
+      "interval": [
+        0.149,
+        0.161
+      ],
+      "covered": false
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "bleach cleanser/log",
+      "pushes": 6,
+      "mu": 0.1568,
+      "truth": 0.169,
+      "interval": [
+        0.1534,
+        0.1661
+      ],
+      "covered": false
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "bleach cleanser/log",
+      "pushes": 8,
+      "mu": 0.1583,
+      "truth": 0.169,
+      "interval": [
+        0.1527,
+        0.1638
+      ],
+      "covered": false
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "bleach cleanser/video",
+      "pushes": 1,
+      "mu": 0.1828,
+      "truth": 0.169,
+      "interval": [
+        0.1774,
+        0.1895
+      ],
+      "covered": false
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "bleach cleanser/video",
+      "pushes": 2,
+      "mu": 0.1602,
+      "truth": 0.169,
+      "interval": [
+        0.1416,
+        0.1854
+      ],
+      "covered": true
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "bleach cleanser/video",
+      "pushes": 4,
+      "mu": 0.177,
+      "truth": 0.169,
+      "interval": [
+        0.1454,
+        0.1904
+      ],
+      "covered": true
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "cracker box/log",
+      "pushes": 1,
+      "mu": 0.1962,
+      "truth": 0.28,
+      "interval": [
+        0.1901,
+        0.2039
+      ],
+      "covered": false
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "cracker box/log",
+      "pushes": 2,
+      "mu": 0.2063,
+      "truth": 0.28,
+      "interval": [
+        0.1947,
+        0.2119
+      ],
+      "covered": false
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "cracker box/log",
+      "pushes": 4,
+      "mu": 0.208,
+      "truth": 0.28,
+      "interval": [
+        0.1976,
+        0.216
+      ],
+      "covered": false
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "cracker box/video",
+      "pushes": 1,
+      "mu": 0.1733,
+      "truth": 0.28,
+      "interval": [
+        0.1701,
+        0.1777
+      ],
+      "covered": false
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "mug/log",
+      "pushes": 1,
+      "mu": 0.1179,
+      "truth": 0.11,
+      "interval": [
+        0.1145,
+        0.1221
+      ],
+      "covered": false
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "mug/log",
+      "pushes": 2,
+      "mu": 0.1108,
+      "truth": 0.11,
+      "interval": [
+        0.1052,
+        0.1195
+      ],
+      "covered": true
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "mug/log",
+      "pushes": 4,
+      "mu": 0.1144,
+      "truth": 0.11,
+      "interval": [
+        0.1068,
+        0.1219
+      ],
+      "covered": true
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "mug/log",
+      "pushes": 6,
+      "mu": 0.1126,
+      "truth": 0.11,
+      "interval": [
+        0.1076,
+        0.1196
+      ],
+      "covered": true
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "mug/log",
+      "pushes": 8,
+      "mu": 0.1125,
+      "truth": 0.11,
+      "interval": [
+        0.1083,
+        0.1178
+      ],
+      "covered": true
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "mug/video",
+      "pushes": 1,
+      "mu": 0.1287,
+      "truth": 0.11,
+      "interval": [
+        0.1265,
+        0.1318
+      ],
+      "covered": false
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "mug/video",
+      "pushes": 2,
+      "mu": 0.1194,
+      "truth": 0.11,
+      "interval": [
+        0.1033,
+        0.1303
+      ],
+      "covered": true
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "mug/video",
+      "pushes": 4,
+      "mu": 0.1241,
+      "truth": 0.11,
+      "interval": [
+        0.1084,
+        0.1344
+      ],
+      "covered": true
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "mug/video",
+      "pushes": 6,
+      "mu": 0.1094,
+      "truth": 0.11,
+      "interval": [
+        0.0997,
+        0.1135
+      ],
+      "covered": true
+    },
+    {
+      "origin": "EV-RealPhys",
+      "case": "mug/video",
+      "pushes": 8,
+      "mu": 0.1205,
+      "truth": 0.11,
+      "interval": [
+        0.1137,
+        0.1266
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "0",
+      "pushes": 1,
+      "mu": 0.336,
+      "truth": 0.5848927593706219,
+      "interval": [
+        0.3314,
+        0.3416
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "0",
+      "pushes": 2,
+      "mu": 0.3393,
+      "truth": 0.5848927593706219,
+      "interval": [
+        0.3334,
+        0.3455
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "0",
+      "pushes": 4,
+      "mu": 0.343,
+      "truth": 0.5848927593706219,
+      "interval": [
+        0.3348,
+        0.3534
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "0",
+      "pushes": 6,
+      "mu": 0.5792,
+      "truth": 0.5848927593706219,
+      "interval": [
+        0.5381,
+        0.6868
+      ],
+      "covered": true
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "0",
+      "pushes": 8,
+      "mu": 0.5849,
+      "truth": 0.5848927593706219,
+      "interval": [
+        0.5393,
+        0.6058
+      ],
+      "covered": true
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "1",
+      "pushes": 1,
+      "mu": 0.3263,
+      "truth": 0.6668989400795358,
+      "interval": [
+        0.3218,
+        0.3317
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "1",
+      "pushes": 2,
+      "mu": 0.3215,
+      "truth": 0.6668989400795358,
+      "interval": [
+        0.3154,
+        0.3305
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "1",
+      "pushes": 4,
+      "mu": 0.3226,
+      "truth": 0.6668989400795358,
+      "interval": [
+        0.3165,
+        0.328
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "1",
+      "pushes": 6,
+      "mu": 0.6293,
+      "truth": 0.6668989400795358,
+      "interval": [
+        0.5758,
+        1.1431
+      ],
+      "covered": true
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "1",
+      "pushes": 8,
+      "mu": 0.5911,
+      "truth": 0.6668989400795358,
+      "interval": [
+        0.5684,
+        0.7131
+      ],
+      "covered": true
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "2",
+      "pushes": 1,
+      "mu": 0.4735,
+      "truth": 0.6858778382748729,
+      "interval": [
+        0.4671,
+        0.4814
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "2",
+      "pushes": 2,
+      "mu": 0.455,
+      "truth": 0.6858778382748729,
+      "interval": [
+        0.4389,
+        0.4797
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "2",
+      "pushes": 4,
+      "mu": 0.4588,
+      "truth": 0.6858778382748729,
+      "interval": [
+        0.4422,
+        0.471
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "2",
+      "pushes": 6,
+      "mu": 0.4769,
+      "truth": 0.6858778382748729,
+      "interval": [
+        0.4564,
+        0.5067
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "2",
+      "pushes": 8,
+      "mu": 0.6424,
+      "truth": 0.6858778382748729,
+      "interval": [
+        0.6092,
+        0.6744
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "3",
+      "pushes": 1,
+      "mu": 0.8,
+      "truth": 0.7753372615272003,
+      "interval": [
+        0.8,
+        0.8
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "3",
+      "pushes": 2,
+      "mu": 0.524,
+      "truth": 0.7753372615272003,
+      "interval": [
+        0.517,
+        0.5327
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "3",
+      "pushes": 4,
+      "mu": 0.5813,
+      "truth": 0.7753372615272003,
+      "interval": [
+        0.5215,
+        0.7575
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "3",
+      "pushes": 6,
+      "mu": 0.577,
+      "truth": 0.7753372615272003,
+      "interval": [
+        0.5332,
+        0.7149
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "3",
+      "pushes": 8,
+      "mu": 0.7508,
+      "truth": 0.7753372615272003,
+      "interval": [
+        0.7227,
+        0.7675
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "4",
+      "pushes": 1,
+      "mu": 0.5848,
+      "truth": 0.7438924259577263,
+      "interval": [
+        0.5769,
+        0.5945
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "4",
+      "pushes": 2,
+      "mu": 0.5957,
+      "truth": 0.7438924259577263,
+      "interval": [
+        0.5817,
+        0.6068
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "4",
+      "pushes": 4,
+      "mu": 0.5916,
+      "truth": 0.7438924259577263,
+      "interval": [
+        0.581,
+        0.6047
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "4",
+      "pushes": 6,
+      "mu": 0.6455,
+      "truth": 0.7438924259577263,
+      "interval": [
+        0.6083,
+        0.6772
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "4",
+      "pushes": 8,
+      "mu": 0.7006,
+      "truth": 0.7438924259577263,
+      "interval": [
+        0.6834,
+        0.771
+      ],
+      "covered": true
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "5",
+      "pushes": 1,
+      "mu": 0.2965,
+      "truth": 0.4445045042706,
+      "interval": [
+        0.2925,
+        0.3014
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "5",
+      "pushes": 2,
+      "mu": 0.2993,
+      "truth": 0.4445045042706,
+      "interval": [
+        0.2941,
+        0.3044
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "5",
+      "pushes": 4,
+      "mu": 0.3013,
+      "truth": 0.4445045042706,
+      "interval": [
+        0.2954,
+        0.3099
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "5",
+      "pushes": 6,
+      "mu": 0.4384,
+      "truth": 0.4445045042706,
+      "interval": [
+        0.3465,
+        0.4521
+      ],
+      "covered": true
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "5",
+      "pushes": 8,
+      "mu": 0.4202,
+      "truth": 0.4445045042706,
+      "interval": [
+        0.3822,
+        0.4288
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "6",
+      "pushes": 1,
+      "mu": 0.2947,
+      "truth": 0.38683873436063415,
+      "interval": [
+        0.2907,
+        0.2996
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "6",
+      "pushes": 2,
+      "mu": 0.2929,
+      "truth": 0.38683873436063415,
+      "interval": [
+        0.2887,
+        0.2998
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "6",
+      "pushes": 4,
+      "mu": 0.2922,
+      "truth": 0.38683873436063415,
+      "interval": [
+        0.2868,
+        0.2976
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "6",
+      "pushes": 6,
+      "mu": 0.362,
+      "truth": 0.38683873436063415,
+      "interval": [
+        0.1977,
+        0.3895
+      ],
+      "covered": true
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "6",
+      "pushes": 8,
+      "mu": 0.3737,
+      "truth": 0.38683873436063415,
+      "interval": [
+        0.3444,
+        0.3953
+      ],
+      "covered": true
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "7",
+      "pushes": 1,
+      "mu": 0.4005,
+      "truth": 0.7154919135116289,
+      "interval": [
+        0.3951,
+        0.4071
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "7",
+      "pushes": 2,
+      "mu": 0.3832,
+      "truth": 0.7154919135116289,
+      "interval": [
+        0.3686,
+        0.4057
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "7",
+      "pushes": 4,
+      "mu": 0.3877,
+      "truth": 0.7154919135116289,
+      "interval": [
+        0.3736,
+        0.399
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "7",
+      "pushes": 6,
+      "mu": 0.5689,
+      "truth": 0.7154919135116289,
+      "interval": [
+        0.4327,
+        0.6743
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "7",
+      "pushes": 8,
+      "mu": 0.623,
+      "truth": 0.7154919135116289,
+      "interval": [
+        0.5968,
+        0.6702
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "8",
+      "pushes": 1,
+      "mu": 0.275,
+      "truth": 0.37325104701217804,
+      "interval": [
+        0.2713,
+        0.2796
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "8",
+      "pushes": 2,
+      "mu": 0.2756,
+      "truth": 0.37325104701217804,
+      "interval": [
+        0.2717,
+        0.2804
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "8",
+      "pushes": 4,
+      "mu": 0.2758,
+      "truth": 0.37325104701217804,
+      "interval": [
+        0.2715,
+        0.2811
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "8",
+      "pushes": 6,
+      "mu": 0.3566,
+      "truth": 0.37325104701217804,
+      "interval": [
+        0.3343,
+        0.7757
+      ],
+      "covered": true
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "8",
+      "pushes": 8,
+      "mu": 0.3044,
+      "truth": 0.37325104701217804,
+      "interval": [
+        0.2887,
+        0.3657
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "9",
+      "pushes": 1,
+      "mu": 0.4412,
+      "truth": 0.698468716087349,
+      "interval": [
+        0.4352,
+        0.4485
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "9",
+      "pushes": 2,
+      "mu": 0.4415,
+      "truth": 0.698468716087349,
+      "interval": [
+        0.4351,
+        0.4496
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "9",
+      "pushes": 4,
+      "mu": 0.4414,
+      "truth": 0.698468716087349,
+      "interval": [
+        0.4341,
+        0.4512
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "9",
+      "pushes": 6,
+      "mu": 0.6545,
+      "truth": 0.698468716087349,
+      "interval": [
+        0.552,
+        1.0351
+      ],
+      "covered": true
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "9",
+      "pushes": 8,
+      "mu": 0.6752,
+      "truth": 0.698468716087349,
+      "interval": [
+        0.6577,
+        0.8319
+      ],
+      "covered": true
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "10",
+      "pushes": 1,
+      "mu": 0.4238,
+      "truth": 0.587112996584288,
+      "interval": [
+        0.4181,
+        0.4309
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "10",
+      "pushes": 2,
+      "mu": 0.4234,
+      "truth": 0.587112996584288,
+      "interval": [
+        0.4172,
+        0.4315
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "10",
+      "pushes": 4,
+      "mu": 0.428,
+      "truth": 0.587112996584288,
+      "interval": [
+        0.4195,
+        0.436
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "10",
+      "pushes": 6,
+      "mu": 0.5373,
+      "truth": 0.587112996584288,
+      "interval": [
+        0.5048,
+        0.6442
+      ],
+      "covered": true
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "10",
+      "pushes": 8,
+      "mu": 0.525,
+      "truth": 0.587112996584288,
+      "interval": [
+        0.511,
+        0.5554
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "11",
+      "pushes": 1,
+      "mu": 0.3343,
+      "truth": 0.6217533936566848,
+      "interval": [
+        0.3298,
+        0.3399
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "11",
+      "pushes": 2,
+      "mu": 0.3288,
+      "truth": 0.6217533936566848,
+      "interval": [
+        0.3229,
+        0.3387
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "11",
+      "pushes": 4,
+      "mu": 0.3327,
+      "truth": 0.6217533936566848,
+      "interval": [
+        0.3252,
+        0.3385
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "11",
+      "pushes": 6,
+      "mu": 0.5633,
+      "truth": 0.6217533936566848,
+      "interval": [
+        0.5072,
+        0.7528
+      ],
+      "covered": true
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "11",
+      "pushes": 8,
+      "mu": 0.5744,
+      "truth": 0.6217533936566848,
+      "interval": [
+        0.4089,
+        0.6275
+      ],
+      "covered": true
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "12",
+      "pushes": 1,
+      "mu": 0.5816,
+      "truth": 0.7624381516614533,
+      "interval": [
+        0.5737,
+        0.5912
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "12",
+      "pushes": 2,
+      "mu": 0.5883,
+      "truth": 0.7624381516614533,
+      "interval": [
+        0.5775,
+        0.6003
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "12",
+      "pushes": 4,
+      "mu": 0.5952,
+      "truth": 0.7624381516614533,
+      "interval": [
+        0.5814,
+        0.6112
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "12",
+      "pushes": 6,
+      "mu": 0.6031,
+      "truth": 0.7624381516614533,
+      "interval": [
+        0.5825,
+        0.6282
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "12",
+      "pushes": 8,
+      "mu": 0.755,
+      "truth": 0.7624381516614533,
+      "interval": [
+        0.6962,
+        0.7994
+      ],
+      "covered": true
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "13",
+      "pushes": 1,
+      "mu": 0.3244,
+      "truth": 0.4726599708259122,
+      "interval": [
+        0.32,
+        0.3298
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "13",
+      "pushes": 2,
+      "mu": 0.3158,
+      "truth": 0.4726599708259122,
+      "interval": [
+        0.3105,
+        0.3286
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "13",
+      "pushes": 4,
+      "mu": 0.3245,
+      "truth": 0.4726599708259122,
+      "interval": [
+        0.3117,
+        0.3361
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "13",
+      "pushes": 6,
+      "mu": 0.4368,
+      "truth": 0.4726599708259122,
+      "interval": [
+        0.4309,
+        0.4554
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "13",
+      "pushes": 8,
+      "mu": 0.4573,
+      "truth": 0.4726599708259122,
+      "interval": [
+        0.4461,
+        0.4658
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "14",
+      "pushes": 1,
+      "mu": 0.2774,
+      "truth": 0.4726263430954142,
+      "interval": [
+        0.2737,
+        0.282
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "14",
+      "pushes": 2,
+      "mu": 0.2745,
+      "truth": 0.4726263430954142,
+      "interval": [
+        0.2701,
+        0.2816
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "14",
+      "pushes": 4,
+      "mu": 0.2757,
+      "truth": 0.4726263430954142,
+      "interval": [
+        0.2695,
+        0.2814
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "14",
+      "pushes": 6,
+      "mu": 0.4517,
+      "truth": 0.4726263430954142,
+      "interval": [
+        0.3518,
+        0.5036
+      ],
+      "covered": true
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "14",
+      "pushes": 8,
+      "mu": 0.43,
+      "truth": 0.4726263430954142,
+      "interval": [
+        0.3586,
+        0.466
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "15",
+      "pushes": 1,
+      "mu": 0.4908,
+      "truth": 0.7940557377181119,
+      "interval": [
+        0.4842,
+        0.499
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "15",
+      "pushes": 2,
+      "mu": 0.4916,
+      "truth": 0.7940557377181119,
+      "interval": [
+        0.4845,
+        0.5006
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "15",
+      "pushes": 4,
+      "mu": 0.4977,
+      "truth": 0.7940557377181119,
+      "interval": [
+        0.4887,
+        0.5078
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "15",
+      "pushes": 6,
+      "mu": 0.8577,
+      "truth": 0.7940557377181119,
+      "interval": [
+        0.8337,
+        1.3042
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "15",
+      "pushes": 8,
+      "mu": 0.6791,
+      "truth": 0.7940557377181119,
+      "interval": [
+        0.6063,
+        0.9123
+      ],
+      "covered": true
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "16",
+      "pushes": 1,
+      "mu": 0.3531,
+      "truth": 0.5313557369127865,
+      "interval": [
+        0.3483,
+        0.359
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "16",
+      "pushes": 2,
+      "mu": 0.3549,
+      "truth": 0.5313557369127865,
+      "interval": [
+        0.3498,
+        0.3614
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "16",
+      "pushes": 4,
+      "mu": 0.3578,
+      "truth": 0.5313557369127865,
+      "interval": [
+        0.3518,
+        0.366
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "16",
+      "pushes": 6,
+      "mu": 0.5153,
+      "truth": 0.5313557369127865,
+      "interval": [
+        0.482,
+        0.5861
+      ],
+      "covered": true
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "16",
+      "pushes": 8,
+      "mu": 0.5175,
+      "truth": 0.5313557369127865,
+      "interval": [
+        0.5018,
+        0.5267
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "17",
+      "pushes": 1,
+      "mu": 0.2204,
+      "truth": 0.4380416702324803,
+      "interval": [
+        0.2174,
+        0.2241
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "17",
+      "pushes": 2,
+      "mu": 0.2204,
+      "truth": 0.4380416702324803,
+      "interval": [
+        0.2172,
+        0.2245
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "17",
+      "pushes": 4,
+      "mu": 0.2211,
+      "truth": 0.4380416702324803,
+      "interval": [
+        0.2173,
+        0.2253
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "17",
+      "pushes": 6,
+      "mu": 0.4379,
+      "truth": 0.4380416702324803,
+      "interval": [
+        0.2871,
+        0.886
+      ],
+      "covered": true
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "17",
+      "pushes": 8,
+      "mu": 0.441,
+      "truth": 0.4380416702324803,
+      "interval": [
+        0.4011,
+        0.4643
+      ],
+      "covered": true
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "18",
+      "pushes": 1,
+      "mu": 0.585,
+      "truth": 0.7289109299925987,
+      "interval": [
+        0.5771,
+        0.5947
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "18",
+      "pushes": 2,
+      "mu": 0.5793,
+      "truth": 0.7289109299925987,
+      "interval": [
+        0.5695,
+        0.594
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "18",
+      "pushes": 4,
+      "mu": 0.5813,
+      "truth": 0.7289109299925987,
+      "interval": [
+        0.5704,
+        0.5933
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "18",
+      "pushes": 6,
+      "mu": 0.6904,
+      "truth": 0.7289109299925987,
+      "interval": [
+        0.6426,
+        0.7177
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "18",
+      "pushes": 8,
+      "mu": 0.6998,
+      "truth": 0.7289109299925987,
+      "interval": [
+        0.6832,
+        0.7296
+      ],
+      "covered": true
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "19",
+      "pushes": 1,
+      "mu": 0.3466,
+      "truth": 0.3722493199456672,
+      "interval": [
+        0.2505,
+        0.3505
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "19",
+      "pushes": 2,
+      "mu": 0.2536,
+      "truth": 0.3722493199456672,
+      "interval": [
+        0.2499,
+        0.258
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "19",
+      "pushes": 4,
+      "mu": 0.2535,
+      "truth": 0.3722493199456672,
+      "interval": [
+        0.2494,
+        0.2584
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "19",
+      "pushes": 6,
+      "mu": 0.3162,
+      "truth": 0.3722493199456672,
+      "interval": [
+        0.3086,
+        0.8332
+      ],
+      "covered": true
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "19",
+      "pushes": 8,
+      "mu": 0.3564,
+      "truth": 0.3722493199456672,
+      "interval": [
+        0.2905,
+        0.57
+      ],
+      "covered": true
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "20",
+      "pushes": 1,
+      "mu": 0.3344,
+      "truth": 0.6458531159810308,
+      "interval": [
+        0.3299,
+        0.34
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "20",
+      "pushes": 2,
+      "mu": 0.3342,
+      "truth": 0.6458531159810308,
+      "interval": [
+        0.3294,
+        0.3405
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "20",
+      "pushes": 4,
+      "mu": 0.3337,
+      "truth": 0.6458531159810308,
+      "interval": [
+        0.3277,
+        0.3422
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "20",
+      "pushes": 6,
+      "mu": 0.6951,
+      "truth": 0.6458531159810308,
+      "interval": [
+        0.3963,
+        0.7752
+      ],
+      "covered": true
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "20",
+      "pushes": 8,
+      "mu": 0.6193,
+      "truth": 0.6458531159810308,
+      "interval": [
+        0.5983,
+        0.6647
+      ],
+      "covered": true
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "21",
+      "pushes": 1,
+      "mu": 0.2348,
+      "truth": 0.45876693577484196,
+      "interval": [
+        0.2316,
+        0.2387
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "21",
+      "pushes": 2,
+      "mu": 0.2349,
+      "truth": 0.45876693577484196,
+      "interval": [
+        0.2315,
+        0.2392
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "21",
+      "pushes": 4,
+      "mu": 0.2361,
+      "truth": 0.45876693577484196,
+      "interval": [
+        0.2321,
+        0.2402
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "21",
+      "pushes": 6,
+      "mu": 0.4189,
+      "truth": 0.45876693577484196,
+      "interval": [
+        0.2235,
+        1.1881
+      ],
+      "covered": true
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "21",
+      "pushes": 8,
+      "mu": 0.4987,
+      "truth": 0.45876693577484196,
+      "interval": [
+        0.4045,
+        0.5555
+      ],
+      "covered": true
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "22",
+      "pushes": 1,
+      "mu": 0.445,
+      "truth": 0.6761900562753187,
+      "interval": [
+        0.439,
+        0.4524
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "22",
+      "pushes": 2,
+      "mu": 0.4509,
+      "truth": 0.6761900562753187,
+      "interval": [
+        0.4422,
+        0.4641
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "22",
+      "pushes": 4,
+      "mu": 0.4588,
+      "truth": 0.6761900562753187,
+      "interval": [
+        0.4436,
+        0.483
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "22",
+      "pushes": 6,
+      "mu": 0.4558,
+      "truth": 0.6761900562753187,
+      "interval": [
+        0.4481,
+        0.4722
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "22",
+      "pushes": 8,
+      "mu": 0.5938,
+      "truth": 0.6761900562753187,
+      "interval": [
+        0.5661,
+        0.6816
+      ],
+      "covered": true
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "23",
+      "pushes": 1,
+      "mu": 0.4366,
+      "truth": 0.5820504567180871,
+      "interval": [
+        0.4307,
+        0.4438
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "23",
+      "pushes": 2,
+      "mu": 0.4406,
+      "truth": 0.5820504567180871,
+      "interval": [
+        0.4331,
+        0.448
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "23",
+      "pushes": 4,
+      "mu": 0.449,
+      "truth": 0.5820504567180871,
+      "interval": [
+        0.4353,
+        0.4622
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "23",
+      "pushes": 6,
+      "mu": 0.5269,
+      "truth": 0.5820504567180871,
+      "interval": [
+        0.5166,
+        0.5616
+      ],
+      "covered": false
+    },
+    {
+      "origin": "MuJoCo",
+      "case": "23",
+      "pushes": 8,
+      "mu": 0.5622,
+      "truth": 0.5820504567180871,
+      "interval": [
+        0.5469,
+        0.5761
+      ],
+      "covered": false
+    }
+  ],
+  "policy_note": "Push-count threshold is a product policy; neither 6 nor any count guarantees 90% coverage.",
+  "single_push_note": "n=1 rows capture pre-change bootstrap behaviour for diagnosis; the final product hides single-push intervals."
+}

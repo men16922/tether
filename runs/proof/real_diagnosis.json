@@ -1,0 +1,519 @@
+{
+  "hypotheses": [
+    "RGB tracking error alone",
+    "large tilt during free slide",
+    "reference/protocol or clock mismatch"
+  ],
+  "rows": [
+    {
+      "object": "pitcher",
+      "sequence": "test_sliding/000000",
+      "log_mu": 0.19688591487877932,
+      "video_mu": 0.2610216082642257,
+      "height_range_mm": 1.118,
+      "orientation_change_deg": 14.662,
+      "normal_tilt_deg": 0.198,
+      "video_vs_mocap_stop_m": 0.0174
+    },
+    {
+      "object": "mustard bottle",
+      "sequence": "test_sliding/000001",
+      "log_mu": 0.18029099165181883,
+      "video_mu": 0.19904471932768605,
+      "height_range_mm": 0.788,
+      "orientation_change_deg": 178.989,
+      "normal_tilt_deg": 0.809,
+      "video_vs_mocap_stop_m": 0.5617
+    },
+    {
+      "object": "bleach cleanser",
+      "sequence": "test_sliding/000002",
+      "log_mu": 0.15695106378653048,
+      "video_mu": 0.18477068681865577,
+      "height_range_mm": 0.472,
+      "orientation_change_deg": 54.689,
+      "normal_tilt_deg": 0.995,
+      "video_vs_mocap_stop_m": 0.0476
+    },
+    {
+      "object": "cracker box",
+      "sequence": "test_sliding/000003",
+      "log_mu": 0.20144177301505206,
+      "video_mu": 0.16274153533782326,
+      "height_range_mm": 1.526,
+      "orientation_change_deg": 29.762,
+      "normal_tilt_deg": 0.368,
+      "video_vs_mocap_stop_m": 0.3273
+    },
+    {
+      "object": "mug",
+      "sequence": "test_sliding/000004",
+      "log_mu": 0.11780475646595204,
+      "video_mu": 0.12827535017572012,
+      "height_range_mm": 5.634,
+      "orientation_change_deg": 118.209,
+      "normal_tilt_deg": 8.967,
+      "video_vs_mocap_stop_m": 0.4047
+    },
+    {
+      "object": "pitcher",
+      "sequence": "test_sliding/000005",
+      "log_mu": 0.23099346597329343,
+      "video_mu": 0.253367798261379,
+      "height_range_mm": 2.43,
+      "orientation_change_deg": 44.362,
+      "normal_tilt_deg": 0.455,
+      "video_vs_mocap_stop_m": 0.189
+    },
+    {
+      "object": "mustard bottle",
+      "sequence": "test_sliding/000006",
+      "log_mu": 0.15749754897295065,
+      "video_mu": null,
+      "height_range_mm": 4.799,
+      "orientation_change_deg": 76.261,
+      "normal_tilt_deg": 0.676,
+      "video_vs_mocap_stop_m": null
+    },
+    {
+      "object": "bleach cleanser",
+      "sequence": "test_sliding/000007",
+      "log_mu": 0.1645992989723063,
+      "video_mu": null,
+      "height_range_mm": 5.57,
+      "orientation_change_deg": 175.418,
+      "normal_tilt_deg": 2.367,
+      "video_vs_mocap_stop_m": null
+    },
+    {
+      "object": "cracker box",
+      "sequence": "test_sliding/000008",
+      "log_mu": 0.2125304898280049,
+      "video_mu": null,
+      "height_range_mm": 4.894,
+      "orientation_change_deg": 90.737,
+      "normal_tilt_deg": 1.512,
+      "video_vs_mocap_stop_m": null
+    },
+    {
+      "object": "mug",
+      "sequence": "test_sliding/000009",
+      "log_mu": 0.11940778234908059,
+      "video_mu": 0.10546931261247854,
+      "height_range_mm": 5.323,
+      "orientation_change_deg": 178.642,
+      "normal_tilt_deg": 1.605,
+      "video_vs_mocap_stop_m": 0.1279
+    },
+    {
+      "object": "pitcher",
+      "sequence": "test_sliding/000010",
+      "log_mu": 0.17881747412713958,
+      "video_mu": null,
+      "height_range_mm": 1.278,
+      "orientation_change_deg": 40.847,
+      "normal_tilt_deg": 0.382,
+      "video_vs_mocap_stop_m": null
+    },
+    {
+      "object": "mustard bottle",
+      "sequence": "test_sliding/000011",
+      "log_mu": 0.12738668706432654,
+      "video_mu": 0.1577703831820992,
+      "height_range_mm": 0.301,
+      "orientation_change_deg": 82.709,
+      "normal_tilt_deg": 0.501,
+      "video_vs_mocap_stop_m": 0.1407
+    },
+    {
+      "object": "bleach cleanser",
+      "sequence": "test_sliding/000012",
+      "log_mu": 0.141359555940967,
+      "video_mu": null,
+      "height_range_mm": 1.805,
+      "orientation_change_deg": 175.71,
+      "normal_tilt_deg": 2.451,
+      "video_vs_mocap_stop_m": null
+    },
+    {
+      "object": "cracker box",
+      "sequence": "test_sliding/000013",
+      "log_mu": 0.2103582354398182,
+      "video_mu": null,
+      "height_range_mm": 1.104,
+      "orientation_change_deg": 54.174,
+      "normal_tilt_deg": 0.742,
+      "video_vs_mocap_stop_m": null
+    },
+    {
+      "object": "mug",
+      "sequence": "test_sliding/000014",
+      "log_mu": 0.11426899377203838,
+      "video_mu": 0.12815197419883248,
+      "height_range_mm": 1.467,
+      "orientation_change_deg": 51.054,
+      "normal_tilt_deg": 1.021,
+      "video_vs_mocap_stop_m": 0.2322
+    },
+    {
+      "object": "pitcher",
+      "sequence": "test_sliding/000015",
+      "log_mu": 0.23203141934754612,
+      "video_mu": 0.17200984292896387,
+      "height_range_mm": 0.721,
+      "orientation_change_deg": 4.55,
+      "normal_tilt_deg": 0.105,
+      "video_vs_mocap_stop_m": 0.0051
+    },
+    {
+      "object": "mustard bottle",
+      "sequence": "test_sliding/000016",
+      "log_mu": 0.1772233917280419,
+      "video_mu": null,
+      "height_range_mm": 0.781,
+      "orientation_change_deg": 114.448,
+      "normal_tilt_deg": 0.619,
+      "video_vs_mocap_stop_m": 0.4442
+    },
+    {
+      "object": "bleach cleanser",
+      "sequence": "test_sliding/000017",
+      "log_mu": 0.16646908335649344,
+      "video_mu": null,
+      "height_range_mm": 1.503,
+      "orientation_change_deg": 121.717,
+      "normal_tilt_deg": 2.194,
+      "video_vs_mocap_stop_m": null
+    },
+    {
+      "object": "cracker box",
+      "sequence": "test_sliding/000018",
+      "log_mu": 0.20532171472350438,
+      "video_mu": null,
+      "height_range_mm": 1.327,
+      "orientation_change_deg": 148.214,
+      "normal_tilt_deg": 1.798,
+      "video_vs_mocap_stop_m": null
+    },
+    {
+      "object": "mug",
+      "sequence": "test_sliding/000019",
+      "log_mu": 0.0993078804531396,
+      "video_mu": 0.11274846291390134,
+      "height_range_mm": 0.927,
+      "orientation_change_deg": 61.235,
+      "normal_tilt_deg": 1.038,
+      "video_vs_mocap_stop_m": 0.102
+    },
+    {
+      "object": "pitcher",
+      "sequence": "test_sliding/000020",
+      "log_mu": 0.237405834414101,
+      "video_mu": null,
+      "height_range_mm": 3.669,
+      "orientation_change_deg": 86.052,
+      "normal_tilt_deg": 0.859,
+      "video_vs_mocap_stop_m": null
+    },
+    {
+      "object": "mustard bottle",
+      "sequence": "test_sliding/000021",
+      "log_mu": 0.16038772395220136,
+      "video_mu": null,
+      "height_range_mm": 3.435,
+      "orientation_change_deg": 176.722,
+      "normal_tilt_deg": 0.995,
+      "video_vs_mocap_stop_m": null
+    },
+    {
+      "object": "bleach cleanser",
+      "sequence": "test_sliding/000022",
+      "log_mu": 0.1406809845487339,
+      "video_mu": null,
+      "height_range_mm": 4.871,
+      "orientation_change_deg": 169.293,
+      "normal_tilt_deg": 2.514,
+      "video_vs_mocap_stop_m": null
+    },
+    {
+      "object": "cracker box",
+      "sequence": "test_sliding/000023",
+      "log_mu": 0.21319303985211255,
+      "video_mu": null,
+      "height_range_mm": 4.936,
+      "orientation_change_deg": 64.423,
+      "normal_tilt_deg": 1.277,
+      "video_vs_mocap_stop_m": null
+    },
+    {
+      "object": "mug",
+      "sequence": "test_sliding/000024",
+      "log_mu": 0.0962213900890388,
+      "video_mu": null,
+      "height_range_mm": 3.695,
+      "orientation_change_deg": 179.477,
+      "normal_tilt_deg": 1.065,
+      "video_vs_mocap_stop_m": null
+    },
+    {
+      "object": "pitcher",
+      "sequence": "val_sliding/000000",
+      "log_mu": 0.24328732627049549,
+      "video_mu": null,
+      "height_range_mm": 1.183,
+      "orientation_change_deg": 56.103,
+      "normal_tilt_deg": 0.72,
+      "video_vs_mocap_stop_m": null
+    },
+    {
+      "object": "pitcher",
+      "sequence": "val_sliding/000001",
+      "log_mu": 0.18657924715063645,
+      "video_mu": null,
+      "height_range_mm": 0.874,
+      "orientation_change_deg": 160.623,
+      "normal_tilt_deg": 1.165,
+      "video_vs_mocap_stop_m": null
+    },
+    {
+      "object": "pitcher",
+      "sequence": "val_sliding/000002",
+      "log_mu": 0.20004357138754772,
+      "video_mu": null,
+      "height_range_mm": 5.598,
+      "orientation_change_deg": 95.209,
+      "normal_tilt_deg": 1.03,
+      "video_vs_mocap_stop_m": null
+    },
+    {
+      "object": "pitcher",
+      "sequence": "val_sliding/000003",
+      "log_mu": 0.18922090289254465,
+      "video_mu": 0.26745183386038546,
+      "height_range_mm": 4.455,
+      "orientation_change_deg": 155.554,
+      "normal_tilt_deg": 1.296,
+      "video_vs_mocap_stop_m": 0.5703
+    },
+    {
+      "object": "pitcher",
+      "sequence": "val_sliding/000004",
+      "log_mu": 0.23778376352769984,
+      "video_mu": null,
+      "height_range_mm": 1.022,
+      "orientation_change_deg": 123.332,
+      "normal_tilt_deg": 0.752,
+      "video_vs_mocap_stop_m": null
+    },
+    {
+      "object": "bleach cleanser",
+      "sequence": "val_sliding/000005",
+      "log_mu": 0.16901710300376055,
+      "video_mu": 0.2023292257339645,
+      "height_range_mm": 0.888,
+      "orientation_change_deg": 49.011,
+      "normal_tilt_deg": 1.431,
+      "video_vs_mocap_stop_m": 0.2433
+    },
+    {
+      "object": "bleach cleanser",
+      "sequence": "val_sliding/000006",
+      "log_mu": 0.1480704086905746,
+      "video_mu": 0.41136279297512934,
+      "height_range_mm": 0.603,
+      "orientation_change_deg": 136.597,
+      "normal_tilt_deg": 2.638,
+      "video_vs_mocap_stop_m": 0.4658
+    },
+    {
+      "object": "bleach cleanser",
+      "sequence": "val_sliding/000007",
+      "log_mu": 0.17683028865244277,
+      "video_mu": 0.020691014942553678,
+      "height_range_mm": 5.853,
+      "orientation_change_deg": 177.337,
+      "normal_tilt_deg": 2.595,
+      "video_vs_mocap_stop_m": 0.4958
+    },
+    {
+      "object": "bleach cleanser",
+      "sequence": "val_sliding/000008",
+      "log_mu": 0.16120963527958285,
+      "video_mu": null,
+      "height_range_mm": 3.37,
+      "orientation_change_deg": 148.62,
+      "normal_tilt_deg": 2.099,
+      "video_vs_mocap_stop_m": null
+    },
+    {
+      "object": "bleach cleanser",
+      "sequence": "val_sliding/000009",
+      "log_mu": 0.13780188629515416,
+      "video_mu": 0.12641254704534127,
+      "height_range_mm": 0.88,
+      "orientation_change_deg": 62.044,
+      "normal_tilt_deg": 1.326,
+      "video_vs_mocap_stop_m": 0.1603
+    },
+    {
+      "object": "mustard bottle",
+      "sequence": "val_sliding/000010",
+      "log_mu": 0.16320841386285223,
+      "video_mu": 0.16160845751238645,
+      "height_range_mm": 1.157,
+      "orientation_change_deg": 35.692,
+      "normal_tilt_deg": 0.558,
+      "video_vs_mocap_stop_m": 0.2076
+    },
+    {
+      "object": "mustard bottle",
+      "sequence": "val_sliding/000011",
+      "log_mu": 0.17922204644189413,
+      "video_mu": 0.1177317291962709,
+      "height_range_mm": 2.206,
+      "orientation_change_deg": 83.284,
+      "normal_tilt_deg": 1.042,
+      "video_vs_mocap_stop_m": 0.5996
+    },
+    {
+      "object": "mustard bottle",
+      "sequence": "val_sliding/000012",
+      "log_mu": 0.1477405022268184,
+      "video_mu": 0.16152595846924298,
+      "height_range_mm": 5.38,
+      "orientation_change_deg": 58.071,
+      "normal_tilt_deg": 0.431,
+      "video_vs_mocap_stop_m": 0.2074
+    },
+    {
+      "object": "mustard bottle",
+      "sequence": "val_sliding/000013",
+      "log_mu": 0.13193527006571223,
+      "video_mu": 0.17353180642693394,
+      "height_range_mm": 1.657,
+      "orientation_change_deg": 24.976,
+      "normal_tilt_deg": 0.627,
+      "video_vs_mocap_stop_m": 0.3982
+    },
+    {
+      "object": "mustard bottle",
+      "sequence": "val_sliding/000014",
+      "log_mu": 0.14762076073445307,
+      "video_mu": null,
+      "height_range_mm": 1.183,
+      "orientation_change_deg": 21.886,
+      "normal_tilt_deg": 0.354,
+      "video_vs_mocap_stop_m": null
+    },
+    {
+      "object": "mug",
+      "sequence": "val_sliding/000015",
+      "log_mu": 0.10335780683501757,
+      "video_mu": 0.10740871135496076,
+      "height_range_mm": 0.821,
+      "orientation_change_deg": 105.819,
+      "normal_tilt_deg": 1.761,
+      "video_vs_mocap_stop_m": 0.016
+    },
+    {
+      "object": "mug",
+      "sequence": "val_sliding/000016",
+      "log_mu": 0.12216607321606848,
+      "video_mu": 0.14103261845341988,
+      "height_range_mm": 3.359,
+      "orientation_change_deg": 129.889,
+      "normal_tilt_deg": 2.427,
+      "video_vs_mocap_stop_m": 0.0327
+    },
+    {
+      "object": "mug",
+      "sequence": "val_sliding/000017",
+      "log_mu": 0.13485815019244252,
+      "video_mu": null,
+      "height_range_mm": 6.231,
+      "orientation_change_deg": 131.718,
+      "normal_tilt_deg": 2.809,
+      "video_vs_mocap_stop_m": null
+    },
+    {
+      "object": "mug",
+      "sequence": "val_sliding/000018",
+      "log_mu": 0.11945472621982858,
+      "video_mu": 0.13107978359099115,
+      "height_range_mm": 2.101,
+      "orientation_change_deg": 158.742,
+      "normal_tilt_deg": 1.221,
+      "video_vs_mocap_stop_m": 0.358
+    },
+    {
+      "object": "mug",
+      "sequence": "val_sliding/000019",
+      "log_mu": 0.10198711852815569,
+      "video_mu": 0.09987849882660454,
+      "height_range_mm": 2.805,
+      "orientation_change_deg": 105.319,
+      "normal_tilt_deg": 1.858,
+      "video_vs_mocap_stop_m": 0.0548
+    }
+  ],
+  "summary": {
+    "cracker box": {
+      "log_mu_median": 0.2103582354398182,
+      "log_mu_min_max": [
+        0.20144177301505206,
+        0.21319303985211255
+      ],
+      "log_mu_cv": 0.02161484012178534,
+      "max_height_range_mm": 4.936,
+      "max_orientation_change_deg": 148.214,
+      "max_normal_tilt_deg": 1.798
+    },
+    "mustard bottle": {
+      "log_mu_median": 0.158942636462576,
+      "log_mu_min_max": [
+        0.12738668706432654,
+        0.18029099165181883
+      ],
+      "log_mu_cv": 0.11329117879337712,
+      "max_height_range_mm": 5.38,
+      "max_orientation_change_deg": 178.989,
+      "max_normal_tilt_deg": 1.042
+    },
+    "pitcher": {
+      "log_mu_median": 0.21551851868042057,
+      "log_mu_min_max": [
+        0.17881747412713958,
+        0.24328732627049549
+      ],
+      "log_mu_cv": 0.11164936278534629,
+      "max_height_range_mm": 5.598,
+      "max_orientation_change_deg": 160.623,
+      "max_normal_tilt_deg": 1.296
+    },
+    "bleach cleanser": {
+      "log_mu_median": 0.15908034953305666,
+      "log_mu_min_max": [
+        0.13780188629515416,
+        0.17683028865244277
+      ],
+      "log_mu_cv": 0.08236066433275631,
+      "max_height_range_mm": 5.853,
+      "max_orientation_change_deg": 177.337,
+      "max_normal_tilt_deg": 2.638
+    },
+    "mug": {
+      "log_mu_median": 0.11603687511899521,
+      "log_mu_min_max": [
+        0.0962213900890388,
+        0.13485815019244252
+      ],
+      "log_mu_cv": 0.10301751193481672,
+      "max_height_range_mm": 6.231,
+      "max_orientation_change_deg": 179.477,
+      "max_normal_tilt_deg": 8.967
+    }
+  },
+  "source": "https://arxiv.org/html/2309.15703 (v3, Appendix B.5, C.3; accessed 2026-10-12)",
+  "conclusion": "Cracker mismatch exists in mocap and quadratic fits too, so RGB tracking alone cannot explain it. Maximum surface-normal tilt is 1.798 degrees (yaw alone is not tipping). The source Appendix C.3 explicitly describes uneven cardboard contact and anisotropic friction; the measured mismatch is consistent with the constant-friction model limitation, not a demonstrated clock error. Appendix B.5 reports more variation of cracker tilt-test values. A shared bias is not detected by fitter/baseline agreement or small scatter. Source confirms synchronised/downsampled 30 Hz; no truth or clock correction is applied. This does not independently isolate the physical contact cause in the original lab.",
+  "single_push_interval": "One push contributes no between-push bootstrap variation; measurement assumptions alone make its narrow interval. Such intervals must be unavailable, not interpreted as confidence."
+}

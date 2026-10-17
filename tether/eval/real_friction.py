@@ -233,10 +233,10 @@ def download() -> list[str]:
     out = []
     for z in ZIPS:
         dst = root / z
-        if not dst.exists():
-            subprocess.run(["curl", "-sL", "-o", str(dst), HF + z], check=True)
         d = root / z.replace(".zip", "")
         if not d.exists():
+            if not dst.exists():
+                subprocess.run(["curl", "-sL", "-o", str(dst), HF + z], check=True)
             with zipfile.ZipFile(dst) as f:
                 f.extractall(d)
         out.append(str(d))
